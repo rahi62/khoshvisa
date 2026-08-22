@@ -1,5 +1,5 @@
 import type { Landing } from "./content";
-import { cms } from "./digitalafarin-cms";
+import { getCmsClient } from "./digitalafarin-cms";
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL ?? "http://localhost:8000/api/v1";
 
@@ -53,6 +53,8 @@ export async function getTrustItems(): Promise<TrustItem[]> { return getList<Tru
 
 export async function getMainMenu(): Promise<MenuItem[]> {
   try {
+    const cms = getCmsClient();
+    if (!cms) return [];
     const payload = await cms.getMenu("main") as { results?: Array<{ items?: MenuItem[] }> } | Array<{ items?: MenuItem[] }>;
     const menus = Array.isArray(payload) ? payload : payload.results ?? [];
     return menus[0]?.items ?? [];
@@ -62,6 +64,8 @@ export async function getMainMenu(): Promise<MenuItem[]> {
 export async function getLanding(type: "visa" | "tour", slug: string): Promise<Landing | null> {
   const route = type === "visa" ? `/visa/${slug}` : `/tours/${slug}`;
   try {
+    const cms = getCmsClient();
+    if (!cms) throw new Error("CMS is not configured");
     const resolved = await cms.resolve(route);
     const textBlock = resolved.blocks.find((block) => block.type === "rich_text" || block.type === "text");
     const text = textBlock?.data?.text;
