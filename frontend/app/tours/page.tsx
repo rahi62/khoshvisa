@@ -1,3 +1,7 @@
-import type {Metadata} from "next";import Link from "next/link";import {getTours} from "@/lib/api";
-export const metadata:Metadata={title:"تورهای خارجی",description:"تور استانبول، دبی و اروپا با اطلاعات شفاف خدمات سفر"};
-export default async function Page(){const pages=await getTours();return <main><section className="page-hero"><div className="shell"><span className="eyebrow">پکیج‌های منتخب سفر</span><h1>تورهای خارجی</h1><p>مقصد و پکیج مناسب را بر اساس بودجه، زمان و سبک سفر انتخاب کنید.</p></div></section><section className="section shell cards">{pages.map(x=><Link href={`/tours/${x.slug}`} key={x.slug}><small>{x.destination}</small><h2>{x.title}</h2><p>{x.summary}</p><b>{x.price_label||"جزئیات تور"} ←</b></Link>)}</section></main>}
+import type { Metadata } from "next";
+import Link from "next/link";
+import { tourPages } from "@/lib/content";
+
+export const metadata: Metadata = { title: "تورهای خارجی", description: "تورهای استانبول، دبی و اروپا با استعلام قیمت و مشاوره سفر از خوش ویزا." };
+export default function ToursIndex() { return <main className="container section"><p className="breadcrumb"><Link href="/">خانه</Link> / تورهای خارجی</p><h1>تورهای خارجی</h1><p className="lead">پکیج‌ها بر اساس تاریخ حرکت، ظرفیت، پرواز و هتل به‌روزرسانی می‌شوند. برای قیمت قطعی استعلام بگیرید.</p><div className="cards">{Object.values(tourPages).map((item) => <Link className="card" key={item.slug} href={`/tours/${item.slug}`}><h2>{item.title}</h2><p>{item.excerpt}</p></Link>)}</div></main>; }
+
