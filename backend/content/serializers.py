@@ -32,7 +32,7 @@ class LeadSerializer(serializers.ModelSerializer):
     def validate_phone(self, value):
         normalized = value.replace(" ", "").replace("-", "")
         if not normalized.startswith("09") or len(normalized) != 11 or not normalized.isdigit():
-            raise serializers.ValidationError("Ø´ÙØ§Ø±Ù ÙÙØ¨Ø§ÛÙ ÙØ¹ØªØ¨Ø± ÙØ§Ø±Ø¯ Ú©ÙÛØ¯.")
+            raise serializers.ValidationError("شماره موبایل معتبر وارد کنید.")
         return normalized
 
 
