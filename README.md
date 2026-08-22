@@ -17,6 +17,7 @@ python -m venv .venv
 pip install -r requirements.txt
 python manage.py migrate
 python manage.py seed_content
+python manage.py seed_cms --domain localhost:3000
 python manage.py createsuperuser
 python manage.py runserver
 ```
@@ -47,3 +48,20 @@ npm run dev
 ## اجرای بدون Docker
 
 این پروژه برای توسعه و استقرار به Docker نیاز ندارد. در توسعه از SQLite یا PostgreSQL محلی و در Production از PostgreSQL مدیریت‌شده استفاده کنید.
+
+## CMS دیجیتال‌آفرین
+
+نسخه `0.2.1` روی Backend و Frontend نصب شده است:
+
+- API: `http://localhost:8000/api/cms/v1/`
+- SDK فرانت‌اند: `@digitalafarin/cms-next`
+- Adapter: `frontend/lib/digitalafarin-cms.ts`
+
+برای Production:
+
+```env
+DIGITALAFARIN_CMS_URL=https://api.khoshvisa.ir/api/cms/v1
+DIGITALAFARIN_CMS_SITE=khoshvisa.ir
+```
+
+مدل قبلی لندینگ در دوره مهاجرت به‌عنوان fallback باقی مانده است. صفحات داخلی ابتدا محتوای CMS و در صورت عدم دسترسی، API قبلی را دریافت می‌کنند.
