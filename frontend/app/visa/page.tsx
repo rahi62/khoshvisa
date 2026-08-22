@@ -1,0 +1,3 @@
+import type {Metadata} from "next";import Link from "next/link";import {getVisas} from "@/lib/api";
+export const metadata:Metadata={title:"خدمات ویزا",description:"خدمات ویزای شینگن، فرانسه، ایتالیا و اسپانیا"};
+export default async function Page(){const pages=await getVisas();return <main><section className="page-hero"><div className="shell"><span className="eyebrow">ارزیابی تخصصی پرونده</span><h1>خدمات ویزای توریستی</h1><p>بررسی شرایط، مدارک و مسیر مناسب اقدام با توضیح شفاف ریسک‌ها و هزینه‌ها.</p></div></section><section className="section shell cards">{pages.map(x=><Link href={`/visa/${x.slug}`} key={x.slug}><small>راهنمای ویزا</small><h2>{x.title}</h2><p>{x.summary}</p><b>مشاهده جزئیات ←</b></Link>)}</section></main>}
