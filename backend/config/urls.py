@@ -1,7 +1,9 @@
 from django.contrib import admin
+from django.http import JsonResponse
 from django.urls import include, path
 
 urlpatterns = [
+    path("health/", lambda request: JsonResponse({"status": "ok"}), name="health"),
     path("admin/", admin.site.urls),
     path("api/v1/", include("content.urls")),
 ]
