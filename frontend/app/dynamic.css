@@ -12,4 +12,5 @@
 .faqList p { color: var(--muted); }
 .softSection { background: var(--soft); border-radius: 28px; padding-inline: 28px; }
 .brand img { display: block; max-width: 140px; max-height: 48px; }
-
+.priceBox { padding: 14px 18px; border-radius: 12px; background: var(--soft); color: var(--brand); }
+.priceBox small { color: var(--muted); }
