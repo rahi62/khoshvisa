@@ -1,0 +1,3 @@
+import type {Metadata} from "next";import Link from "next/link";import {getTours} from "@/lib/api";
+export const metadata:Metadata={title:"تورهای خارجی",description:"تور استانبول، دبی و اروپا با اطلاعات شفاف خدمات سفر"};
+export default async function Page(){const pages=await getTours();return <main><section className="page-hero"><div className="shell"><span className="eyebrow">پکیج‌های منتخب سفر</span><h1>تورهای خارجی</h1><p>مقصد و پکیج مناسب را بر اساس بودجه، زمان و سبک سفر انتخاب کنید.</p></div></section><section className="section shell cards">{pages.map(x=><Link href={`/tours/${x.slug}`} key={x.slug}><small>{x.destination}</small><h2>{x.title}</h2><p>{x.summary}</p><b>{x.price_label||"جزئیات تور"} ←</b></Link>)}</section></main>}
