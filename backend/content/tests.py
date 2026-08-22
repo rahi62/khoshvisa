@@ -1,7 +1,7 @@
 from django.test import TestCase
 from rest_framework.test import APIClient
 
-from .models import LandingPage
+from .models import FAQ, LandingPage, SiteSettings
 
 
 class PublicApiTests(TestCase):
@@ -31,3 +31,17 @@ class PublicApiTests(TestCase):
     def test_invalid_phone_is_rejected(self):
         response = self.client.post("/api/v1/leads/", {"full_name": "کاربر تست", "phone": "123"}, format="json")
         self.assertEqual(response.status_code, 400)
+
+    def test_public_settings_include_dynamic_home_fields(self):
+        SiteSettings.objects.create()
+        response = self.client.get("/api/v1/settings/")
+        self.assertEqual(response.status_code, 200)
+        self.assertIn("hero_title", response.json())
+
+    def test_only_active_faqs_are_public(self):
+        FAQ.objects.create(question="فعال", answer="پاسخ", is_active=True)
+        FAQ.objects.create(question="غیرفعال", answer="پاسخ", is_active=False)
+        response = self.client.get("/api/v1/faqs/")
+        payload = response.json()
+        items = payload.get("results", payload) if isinstance(payload, dict) else payload
+        self.assertEqual(len(items), 1)
