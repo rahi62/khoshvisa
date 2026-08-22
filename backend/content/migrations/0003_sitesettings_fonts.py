@@ -13,7 +13,7 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name="sitesettings",
             name="font_file",
-            field=models.FileField(blank=True, help_text="ÙØ±ÙØª Ù¾ÛØ´ÙÙØ§Ø¯Û WOFF2Ø Ø­Ø¯Ø§Ú©Ø«Ø± Ø­Ø¬Ù Ù¾ÛØ´ÙÙØ§Ø¯Û Û³Û°Û° Ú©ÛÙÙØ¨Ø§ÛØª", upload_to="fonts/"),
+            field=models.FileField(blank=True, help_text="فرمت پیشنهادی WOFF2؛ حداکثر حجم پیشنهادی ۳۰۰ کیلوبایت", upload_to="fonts/"),
         ),
         migrations.AddField(
             model_name="sitesettings",
@@ -23,6 +23,6 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name="sitesettings",
             name="google_font_url",
-            field=models.URLField(blank=True, help_text="ÙÙØ· ÙÙØªÛ ÙÙÙØª ÙØ­ÙÛ Ø¢Ù¾ÙÙØ¯ ÙØ´Ø¯Ù Ø¨Ø§Ø´Ø¯ Ø¨Ø§Ø±Ú¯Ø°Ø§Ø±Û ÙÛâØ´ÙØ¯"),
+            field=models.URLField(blank=True, help_text="فقط وقتی فونت محلی آپلود نشده باشد بارگذاری می‌شود"),
         ),
     ]
