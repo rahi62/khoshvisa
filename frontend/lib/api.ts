@@ -2,6 +2,21 @@ import type { Landing } from "./content";
 import { getCmsClient } from "./digitalafarin-cms";
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL ?? "http://localhost:8000/api/v1";
+const FETCH_TIMEOUT_MS = 3_500;
+
+async function withTimeout<T>(promise: Promise<T>, timeoutMs = FETCH_TIMEOUT_MS): Promise<T> {
+  let timer: ReturnType<typeof setTimeout> | undefined;
+  try {
+    return await Promise.race([
+      promise,
+      new Promise<T>((_, reject) => {
+        timer = setTimeout(() => reject(new Error("Request timed out")), timeoutMs);
+      }),
+    ]);
+  } finally {
+    if (timer) clearTimeout(timer);
+  }
+}
 
 export type SiteSettings = {
   brand_name: string; brand_name_en: string; tagline: string; brand_description: string;
@@ -26,6 +41,7 @@ async function request<T>(path: string): Promise<T | null> {
     const response = await fetch(`${API_URL}${path}`, {
       next: { revalidate: 300 },
       headers: { Accept: "application/json" },
+      signal: AbortSignal.timeout(FETCH_TIMEOUT_MS),
     });
     if (!response.ok) return null;
     return (await response.json()) as T;
@@ -36,7 +52,7 @@ async function request<T>(path: string): Promise<T | null> {
 
 export async function getLandings(type: "visa" | "tour"): Promise<Landing[] | null> {
   const payload = await request<Landing[] | { results: Landing[] }>(type === "visa" ? "/visa-services/" : "/tours/");
-  return payload ? (Array.isArray(payload) ? payload : payload.results) : null;
+  return payload ? (Array.isArray(payload) ? payload : Array.isArray(payload.results) ? payload.results : []) : null;
 }
 
 export async function getSiteSettings(): Promise<SiteSettings | null> { return request<SiteSettings>("/settings/"); }
@@ -44,7 +60,7 @@ export async function getSiteSettings(): Promise<SiteSettings | null> { return r
 async function getList<T>(path: string): Promise<T[]> {
   const payload = await request<T[] | { results: T[] }>(path);
   if (!payload) return [];
-  return Array.isArray(payload) ? payload : payload.results;
+  return Array.isArray(payload) ? payload : Array.isArray(payload.results) ? payload.results : [];
 }
 
 export async function getFAQs(path = ""): Promise<FAQ[]> { return getList<FAQ>(`/faqs/${path ? `?path=${encodeURIComponent(path)}` : ""}`); }
@@ -55,7 +71,7 @@ export async function getMainMenu(): Promise<MenuItem[]> {
   try {
     const cms = getCmsClient();
     if (!cms) return [];
-    const payload = await cms.getMenu("main") as { results?: Array<{ items?: MenuItem[] }> } | Array<{ items?: MenuItem[] }>;
+    const payload = await withTimeout(cms.getMenu("main")) as { results?: Array<{ items?: MenuItem[] }> } | Array<{ items?: MenuItem[] }>;
     const menus = Array.isArray(payload) ? payload : payload.results ?? [];
     return menus[0]?.items ?? [];
   } catch { return []; }
@@ -66,7 +82,7 @@ export async function getLanding(type: "visa" | "tour", slug: string): Promise<L
   try {
     const cms = getCmsClient();
     if (!cms) throw new Error("CMS is not configured");
-    const resolved = await cms.resolve(route);
+    const resolved = await withTimeout(cms.resolve(route));
     const textBlock = resolved.blocks.find((block) => block.type === "rich_text" || block.type === "text");
     const text = textBlock?.data?.text;
     return {
