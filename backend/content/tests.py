@@ -20,7 +20,9 @@ class PublicApiTests(TestCase):
     def test_visa_list_only_returns_published_visa_pages(self):
         response = self.client.get("/api/v1/visa-services/")
         self.assertEqual(response.status_code, 200)
-        self.assertEqual(response.json()[0]["slug"], "france")
+        payload = response.json()
+        items = payload.get("results", payload) if isinstance(payload, dict) else payload
+        self.assertEqual(items[0]["slug"], "france")
 
     def test_valid_lead_is_created(self):
         response = self.client.post("/api/v1/leads/", {"full_name": "کاربر تست", "phone": "09123456789"}, format="json")
@@ -29,4 +31,3 @@ class PublicApiTests(TestCase):
     def test_invalid_phone_is_rejected(self):
         response = self.client.post("/api/v1/leads/", {"full_name": "کاربر تست", "phone": "123"}, format="json")
         self.assertEqual(response.status_code, 400)
-
