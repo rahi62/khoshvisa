@@ -1,6 +1,6 @@
 from django.core.management.base import BaseCommand
 
-from content.models import LandingPage, SiteSettings
+from content.models import FAQ, LandingPage, SiteSettings, Testimonial, TrustItem
 
 
 LANDINGS = [
@@ -43,5 +43,8 @@ class Command(BaseCommand):
                     "sort_order": order,
                 },
             )
+        FAQ.objects.update_or_create(question="آیا صدور ویزا تضمینی است؟", defaults={"answer": "خیر. تصمیم نهایی صدور یا رد ویزا صرفاً بر عهده سفارت یا کنسولگری مربوطه است.", "is_active": True, "sort_order": 1})
+        FAQ.objects.update_or_create(question="چطور مشاوره اولیه دریافت کنم؟", defaults={"answer": "فرم درخواست تماس را تکمیل کنید تا کارشناسان خوش ویزا برای ارزیابی اولیه با شما تماس بگیرند.", "is_active": True, "sort_order": 2})
+        Testimonial.objects.update_or_create(customer_name="مسافر خوش ویزا", defaults={"text": "روند بررسی مدارک و مراحل سفر شفاف و منظم توضیح داده شد.", "rating": 5, "is_active": True, "sort_order": 1})
+        TrustItem.objects.update_or_create(title="بررسی شفاف پرونده", defaults={"description": "شرایط هر متقاضی بدون وعده صدور تضمینی بررسی می‌شود.", "item_type": "badge", "is_active": True, "sort_order": 1})
         self.stdout.write(self.style.SUCCESS("محتوای اولیه خوش ویزا ایجاد یا به‌روزرسانی شد."))
-
