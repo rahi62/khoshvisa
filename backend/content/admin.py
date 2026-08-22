@@ -6,14 +6,14 @@ from .models import FAQ, LandingPage, Lead, SiteSettings, Testimonial, TrustItem
 class SiteSettingsAdmin(admin.ModelAdmin):
     list_display = ("brand_name", "mobile", "phone", "updated_at")
     fieldsets = (
-        ("Ø¨Ø±ÙØ¯", {"fields": ("brand_name", "brand_name_en", "tagline", "brand_description", "logo", "logo_dark", "favicon", "primary_color", "accent_color", "default_og_image", "site_domain")}),
-        ("ØªØ§ÛÙ¾ÙÚ¯Ø±Ø§ÙÛ Ù ÙÙÙØª", {"fields": ("font_family_name", "font_file", "font_weight", "google_font_url"), "description": "ÙÙÙØª WOFF2 Ø±Ø§ Ø¢Ù¾ÙÙØ¯ Ú©ÙÛØ¯. Ø¨Ø§ ÙØ¬ÙØ¯ ÙØ§ÛÙ ÙØ­ÙÛØ Google Fonts Ø¨ÙâØ·ÙØ± Ú©Ø§ÙÙ ØºÛØ±ÙØ¹Ø§Ù ÙÛâØ´ÙØ¯."}),
-        ("ØªÙØ§Ø³ Ù Ø´Ø¨Ú©ÙâÙØ§Û Ø§Ø¬ØªÙØ§Ø¹Û", {"fields": ("mobile", "phone", "whatsapp", "email", "working_hours", "telegram_url", "instagram_url", "primary_cta_text", "mobile_sticky_call_enabled")}),
-        ("ÙØ´Ø§ÙÛ ÙØ¹ÙÛ", {"fields": ("north_office", "west_office"), "description": "ÙØ¯Ù ÙØ³ØªÙÙ Ø´Ø¹Ø¨ Ø·Ø¨Ù ØªØµÙÛÙ ÙØ¹ÙÛ Ø§ÛØ¬Ø§Ø¯ ÙØ´Ø¯Ù Ø§Ø³Øª."}),
-        ("Ø³Ø¦ÙÛ Ø¹ÙÙÙÛ", {"fields": ("default_meta_title", "default_meta_description", "title_template", "default_robots_index", "default_robots_follow", "breadcrumb_enabled", "google_site_verification", "google_analytics_id", "google_tag_manager_id")}),
-        ("Ø­ÙÙÙÛ", {"fields": ("legal_name", "registration_number", "national_id", "tourism_license_number", "license_issuer", "visa_disclaimer")}),
-        ("ÙØ±ÙâÙØ§", {"fields": ("privacy_consent_text", "lead_success_message", "lead_error_message", "lead_notification_email", "captcha_enabled")}),
-        ("ØµÙØ­Ù Ø§ØµÙÛ", {"fields": ("hero_eyebrow", "hero_title", "hero_description", "hero_image", "home_services_enabled", "home_testimonials_enabled", "home_faq_enabled", "home_trust_enabled")}),
+        ("برند", {"fields": ("brand_name", "brand_name_en", "tagline", "brand_description", "logo", "logo_dark", "favicon", "primary_color", "accent_color", "default_og_image", "site_domain")}),
+        ("تایپوگرافی و فونت", {"fields": ("font_family_name", "font_file", "font_weight", "google_font_url"), "description": "فونت WOFF2 را آپلود کنید. با وجود فایل محلی، Google Fonts به‌طور کامل غیرفعال می‌شود."}),
+        ("تماس و شبکه‌های اجتماعی", {"fields": ("mobile", "phone", "whatsapp", "email", "working_hours", "telegram_url", "instagram_url", "primary_cta_text", "mobile_sticky_call_enabled")}),
+        ("نشانی فعلی", {"fields": ("north_office", "west_office"), "description": "مدل مستقل شعب طبق تصمیم فعلی ایجاد نشده است."}),
+        ("سئوی عمومی", {"fields": ("default_meta_title", "default_meta_description", "title_template", "default_robots_index", "default_robots_follow", "breadcrumb_enabled", "google_site_verification", "google_analytics_id", "google_tag_manager_id")}),
+        ("حقوقی", {"fields": ("legal_name", "registration_number", "national_id", "tourism_license_number", "license_issuer", "visa_disclaimer")}),
+        ("فرم‌ها", {"fields": ("privacy_consent_text", "lead_success_message", "lead_error_message", "lead_notification_email", "captcha_enabled")}),
+        ("صفحه اصلی", {"fields": ("hero_eyebrow", "hero_title", "hero_description", "hero_image", "home_services_enabled", "home_testimonials_enabled", "home_faq_enabled", "home_trust_enabled")}),
     )
 
     def has_add_permission(self, request):
