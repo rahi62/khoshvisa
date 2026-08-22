@@ -1,0 +1,33 @@
+.menuToggle {
+  position: relative;
+  z-index: 10002;
+}
+
+.menuBackdrop {
+  z-index: 10000 !important;
+  background: #092b35cc !important;
+  opacity: 1 !important;
+  backdrop-filter: none !important;
+}
+
+.mobileMenuPanel {
+  z-index: 10001 !important;
+  background: #fff !important;
+  background-color: #fff !important;
+  opacity: 1 !important;
+  color: var(--ink);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  box-shadow: -20px 0 60px rgba(3, 28, 34, .32) !important;
+}
+
+@media (max-width: 800px) {
+  .siteHeader {
+    z-index: 9999 !important;
+    isolation: isolate;
+  }
+
+  .menuOpen .siteHeader {
+    backdrop-filter: none !important;
+  }
+}
