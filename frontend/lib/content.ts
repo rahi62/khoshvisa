@@ -5,6 +5,14 @@ export type Landing = {
   body: string;
   meta_title: string;
   meta_description: string;
+  custom_fields?: {
+    requirements?: string[];
+    steps?: string[];
+    price?: string | number;
+    currency?: string;
+    valid_until?: string;
+    availability?: string;
+  };
 };
 
 export const visaPages: Record<string, Landing> = {
@@ -68,4 +76,3 @@ export const tourPages: Record<string, Landing> = {
     meta_description: "پکیج‌های تور اروپا با برنامه سفر، هتل، پرواز و خدمات بررسی پرونده ویزای شینگن.",
   },
 };
-
