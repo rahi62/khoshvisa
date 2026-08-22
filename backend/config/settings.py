@@ -73,3 +73,8 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 CORS_ALLOWED_ORIGINS = [x.strip() for x in os.getenv("CORS_ALLOWED_ORIGINS", "http://localhost:3000").split(",") if x.strip()]
 REST_FRAMEWORK = {"DEFAULT_PERMISSION_CLASSES": ["rest_framework.permissions.AllowAny"]}
 
+
+# BEGIN DIGITALAFARIN CMS
+from digitalafarin_cms.settings import apply_defaults as _digitalafarin_cms_apply_defaults
+_digitalafarin_cms_apply_defaults(globals())
+# END DIGITALAFARIN CMS
