@@ -1,8 +1,9 @@
 from django.urls import path
-from .views import FAQListView, LandingDetailView, LandingListView, LeadCreateView, SettingsView, TestimonialListView, TrustItemListView
+from .views import FAQListView, LandingDetailView, LandingListView, LeadCreateView, SettingsView, SiteFontView, TestimonialListView, TrustItemListView
 
 urlpatterns = [
     path("settings/", SettingsView.as_view(), name="settings"),
+    path("site-font/", SiteFontView.as_view(), name="site-font"),
     path("visa-services/", LandingListView.as_view(), {"page_type": "visa"}, name="visa-list"),
     path("visa-services/<slug:slug>/", LandingDetailView.as_view(), {"page_type": "visa"}, name="visa-detail"),
     path("tours/", LandingListView.as_view(), {"page_type": "tour"}, name="tour-list"),
