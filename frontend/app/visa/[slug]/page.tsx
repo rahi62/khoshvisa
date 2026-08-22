@@ -1,4 +1,14 @@
-import type {Metadata} from "next";import {notFound} from "next/navigation";import {LeadBox} from "@/components/site-shell";import {getVisa,getVisas} from "@/lib/api";
-export async function generateStaticParams(){return (await getVisas()).map(x=>({slug:x.slug}))}
-export async function generateMetadata({params}:{params:Promise<{slug:string}>}):Promise<Metadata>{const {slug}=await params,p=await getVisa(slug);return p?{title:p.meta_title||p.title,description:p.meta_description||p.summary,alternates:{canonical:`/visa/${slug}`}}:{}}
-export default async function Page({params}:{params:Promise<{slug:string}>}){const {slug}=await params,p=await getVisa(slug);if(!p)notFound();return <main><div className="crumb shell"><a href="/">خانه</a> / <a href="/visa">خدمات ویزا</a> / {p.title}</div><section className="page-hero"><div className="shell"><span className="eyebrow">راهنمای اقدام</span><h1>{p.title}</h1><p>{p.summary}</p></div></section><article className="article shell"><h2>شرایط و مراحل {p.title}</h2>{p.content.split("\n").map(x=><p key={x}>{x}</p>)}<h2>ارزیابی مدارک و شرایط پرونده</h2><p>چک‌لیست نهایی با توجه به مقصد، هدف سفر و شرایط شغلی و مالی شما تعیین می‌شود. هزینه رسمی و هزینه خدمات جداگانه اعلام خواهند شد.</p><aside>صدور ویزا قابل تضمین نیست و تصمیم نهایی فقط بر عهده سفارت یا مرجع رسمی کشور مقصد است.</aside></article><div className="shell"><LeadBox service="visa"/></div></main>}
+import type { Metadata } from "next";
+import Link from "next/link";
+import { notFound } from "next/navigation";
+import { LeadForm } from "@/components/LeadForm";
+import { visaPages } from "@/lib/content";
+
+export function generateStaticParams() { return Object.keys(visaPages).map((slug) => ({ slug })); }
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> { const { slug } = await params; const page = visaPages[slug]; return page ? { title: page.meta_title, description: page.meta_description, alternates: { canonical: `/visa/${slug}` } } : {}; }
+
+export default async function VisaPage({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params; const page = visaPages[slug]; if (!page) notFound();
+  return <main className="container section article"><p className="breadcrumb"><Link href="/">خانه</Link> / <Link href="/visa">خدمات ویزا</Link> / {page.title}</p><span className="eyebrow">خدمات ویزا</span><h1>{page.title}؛ شرایط، مدارک و مراحل درخواست</h1><p className="lead">{page.excerpt}</p><section><h2>پیش از اقدام چه بدانیم؟</h2><p>{page.body}</p></section><section><h2>مراحل همکاری با خوش ویزا</h2><ol><li>ارزیابی اولیه شرایط سفر و سوابق پرونده</li><li>ارائه چک‌لیست اختصاصی مدارک</li><li>بررسی و نظم‌دهی پرونده پیش از تحویل</li><li>راهنمایی وقت سفارت و پیگیری مراحل</li></ol></section><aside className="formCard"><h2>ارزیابی اولیه {page.title}</h2><LeadForm service={page.title} /></aside></main>;
+}
+
