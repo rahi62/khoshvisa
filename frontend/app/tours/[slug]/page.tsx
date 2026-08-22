@@ -1,4 +1,10 @@
-import type {Metadata} from "next";import {notFound} from "next/navigation";import {LeadBox} from "@/components/site-shell";import {getTour,getTours} from "@/lib/api";
-export async function generateStaticParams(){return (await getTours()).map(x=>({slug:x.slug}))}
-export async function generateMetadata({params}:{params:Promise<{slug:string}>}):Promise<Metadata>{const {slug}=await params,p=await getTour(slug);return p?{title:p.meta_title||p.title,description:p.meta_description||p.summary,alternates:{canonical:`/tours/${slug}`}}:{}}
-export default async function Page({params}:{params:Promise<{slug:string}>}){const {slug}=await params,p=await getTour(slug);if(!p)notFound();return <main><div className="crumb shell"><a href="/">خانه</a> / <a href="/tours">تورها</a> / {p.title}</div><section className="page-hero"><div className="shell"><span className="eyebrow">{p.destination}</span><h1>{p.title}</h1><p>{p.summary}</p><div className="facts"><b>{p.duration}</b><b>{p.price_label}</b></div></div></section><article className="article shell"><h2>راهنمای انتخاب {p.title}</h2><p>{p.content}</p><h2>خدمات و شرایط رزرو</h2><p>جزئیات پرواز، هتل، ترانسفر، بیمه و شرایط کنسلی پیش از پرداخت در قرارداد درج می‌شوند. قیمت نهایی پس از کنترل ظرفیت تأیید می‌شود.</p></article><div className="shell"><LeadBox service="tour"/></div></main>}
+import type { Metadata } from "next";
+import Link from "next/link";
+import { notFound } from "next/navigation";
+import { LeadForm } from "@/components/LeadForm";
+import { tourPages } from "@/lib/content";
+
+export function generateStaticParams() { return Object.keys(tourPages).map((slug) => ({ slug })); }
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> { const { slug } = await params; const page = tourPages[slug]; return page ? { title: page.meta_title, description: page.meta_description, alternates: { canonical: `/tours/${slug}` } } : {}; }
+export default async function TourPage({ params }: { params: Promise<{ slug: string }> }) { const { slug } = await params; const page = tourPages[slug]; if (!page) notFound(); return <main className="container section article"><p className="breadcrumb"><Link href="/">خانه</Link> / <Link href="/tours">تورها</Link> / {page.title}</p><span className="eyebrow">تورهای خارجی</span><h1>{page.title}؛ قیمت و پکیج‌های سفر</h1><p className="lead">{page.excerpt}</p><section><h2>جزئیات و قیمت تور</h2><p>{page.body}</p></section><section><h2>پیش از رزرو بررسی می‌کنیم</h2><ul><li>تاریخ و ساعت پرواز و میزان بار مجاز</li><li>درجه، موقعیت و خدمات هتل</li><li>خدمات شامل و غیرشامل پکیج</li><li>شرایط تغییر تاریخ و کنسلی</li></ul></section><aside className="formCard"><h2>استعلام {page.title}</h2><LeadForm service={page.title} /></aside></main>; }
+
