@@ -1,11 +1,10 @@
-.env
+.venv/
 __pycache__/
 *.py[cod]
-.venv/
 db.sqlite3
-staticfiles/
-media/
+.env
 node_modules/
 .next/
 out/
 npm-debug.log*
+
