@@ -1,0 +1,15 @@
+.leadForm .consent {
+  grid-template-columns: auto 1fr;
+  align-items: start;
+  font-size: .82rem;
+  font-weight: 400;
+  color: var(--muted);
+}
+.leadForm .consent input { width: auto; margin-top: 8px; }
+.faqList { display: grid; gap: 12px; }
+.faqList details { background: #fff; border: 1px solid var(--line); border-radius: 14px; padding: 14px 18px; }
+.faqList summary { cursor: pointer; font-weight: 800; }
+.faqList p { color: var(--muted); }
+.softSection { background: var(--soft); border-radius: 28px; padding-inline: 28px; }
+.brand img { display: block; max-width: 140px; max-height: 48px; }
+
