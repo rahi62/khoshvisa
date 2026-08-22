@@ -1,6 +1,6 @@
 from django.core.management.base import BaseCommand
 
-from digitalafarin_cms.apps.content.models import ContentEntry, ContentTypeDefinition
+from digitalafarin_cms.apps.content.models import ContentEntry, ContentTypeDefinition, Menu, MenuItem
 from digitalafarin_cms.apps.seo.models import SeoMeta
 from digitalafarin_cms.apps.sites.models import Organization, Site
 
@@ -40,7 +40,16 @@ class Command(BaseCommand):
                 defaults={
                     "name": name,
                     "is_public": True,
-                    "schema": {"body": {"type": "rich_text", "label": "محتوای اصلی"}},
+                    "schema": {"fields": [
+                        {"key": "body", "type": "rich_text", "label": "محتوای اصلی", "required": True},
+                        {"key": "requirements", "type": "list", "label": "مدارک یا الزامات"},
+                        {"key": "steps", "type": "list", "label": "مراحل"},
+                        {"key": "price", "type": "money", "label": "قیمت"},
+                        {"key": "currency", "type": "text", "label": "واحد پول"},
+                        {"key": "valid_until", "type": "date", "label": "اعتبار قیمت"},
+                        {"key": "availability", "type": "select", "label": "وضعیت پذیرش یا فروش"},
+                        {"key": "faq_ids", "type": "list", "label": "سؤالات مرتبط"},
+                    ]},
                     "icon": "file-text",
                 },
             )
@@ -57,7 +66,7 @@ class Command(BaseCommand):
                     "slug": landing.slug,
                     "excerpt": landing.excerpt,
                     "blocks": [{"type": "rich_text", "data": {"text": landing.body}}],
-                    "custom_fields": {"legacy_landing_id": landing.pk},
+                    "custom_fields": {"legacy_landing_id": landing.pk, "body": landing.body, "availability": "active"},
                     "status": ContentEntry.Status.PUBLISHED,
                 },
             )
@@ -75,5 +84,8 @@ class Command(BaseCommand):
                 },
             )
             count += 1
+        menu, _ = Menu.objects.update_or_create(site=site, key="main", defaults={"name": "منوی اصلی"})
+        MenuItem.objects.filter(menu=menu).delete()
+        for order, (label, url) in enumerate((("صفحه اصلی", "/"), ("خدمات ویزا", "/visa"), ("تورهای خارجی", "/tours"), ("دفاتر فروش", "/#offices")), start=1):
+            MenuItem.objects.create(menu=menu, label=label, url=url, sort_order=order)
         self.stdout.write(self.style.SUCCESS(f"{count} لندینگ به CMS دیجیتال‌آفرین منتقل شد."))
-
