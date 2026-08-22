@@ -11,8 +11,8 @@ export async function generateMetadata(): Promise<Metadata> {
   const settings = await getSiteSettings();
   return {
     metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? "https://khoshvisa.ir"),
-    title: { default: settings?.default_meta_title ?? "Ø®ÙØ´ ÙÛØ²Ø§ | Ø®Ø¯ÙØ§Øª ÙÛØ²Ø§ Ù ØªÙØ±ÙØ§Û Ø®Ø§Ø±Ø¬Û", template: "%s | Ø®ÙØ´ ÙÛØ²Ø§" },
-    description: settings?.default_meta_description ?? "Ø®Ø¯ÙØ§Øª Ø¨Ø±Ø±Ø³Û Ù ØªÚ©ÙÛÙ Ù¾Ø±ÙÙØ¯Ù ÙÛØ²Ø§ Ù Ø±Ø²Ø±Ù ØªÙØ±ÙØ§Û Ø®Ø§Ø±Ø¬Û Ø¯Ø± Ø®ÙØ´ ÙÛØ²Ø§.",
+    title: { default: settings?.default_meta_title ?? "خوش ویزا | خدمات ویزا و تورهای خارجی", template: "%s | خوش ویزا" },
+    description: settings?.default_meta_description ?? "خدمات بررسی و تکمیل پرونده ویزا و رزرو تورهای خارجی در خوش ویزا.",
     verification: settings?.google_site_verification ? { google: settings.google_site_verification } : undefined,
     icons: settings?.favicon ? { icon: settings.favicon } : undefined,
     openGraph: settings?.default_og_image ? { images: [settings.default_og_image] } : undefined,
@@ -36,7 +36,7 @@ export default async function RootLayout({ children }: Readonly<{ children: Reac
         <Header />
         {children}
         <Footer />
-        {(settings?.mobile_sticky_call_enabled ?? true) && <Link className="mobileCall" href={`tel:${mobile}`}>{settings?.primary_cta_text ?? "ØªÙØ§Ø³ Ù ÙØ´Ø§ÙØ±Ù"}</Link>}
+        {(settings?.mobile_sticky_call_enabled ?? true) && <Link className="mobileCall" href={`tel:${mobile}`}>{settings?.primary_cta_text ?? "تماس و مشاوره"}</Link>}
       </body>
     </html>
   );
