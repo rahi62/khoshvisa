@@ -1,7 +1,7 @@
-Django>=5.1,<5.3
-djangorestframework>=3.15,<3.17
-django-cors-headers>=4.4,<5
-django-filter>=24.3,<26
-psycopg[binary]>=3.2,<4
-gunicorn>=23,<24
-Pillow>=11,<12
+Django>=5.1,<6.0
+djangorestframework>=3.15,<4.0
+django-cors-headers>=4.4,<5.0
+psycopg[binary]>=3.2,<4.0
+python-dotenv>=1.0,<2.0
+gunicorn>=23.0,<24.0
+
