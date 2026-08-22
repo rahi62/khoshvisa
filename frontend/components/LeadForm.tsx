@@ -7,15 +7,16 @@ export function LeadForm({ service = "مشاوره تور و ویزا" }: { serv
 
   async function submit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
+    const formElement = event.currentTarget;
     setStatus("در حال ارسال...");
-    const form = new FormData(event.currentTarget);
+    const form = new FormData(formElement);
     const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL ?? "http://localhost:8000/api/v1"}/leads/`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ full_name: form.get("full_name"), phone: form.get("phone"), service }),
     });
     if (response.ok) {
-      event.currentTarget.reset();
+      formElement.reset();
       setStatus("درخواست شما ثبت شد؛ با شما تماس می‌گیریم.");
     } else {
       setStatus("ارسال انجام نشد؛ شماره را بررسی کنید یا مستقیم تماس بگیرید.");
@@ -31,4 +32,3 @@ export function LeadForm({ service = "مشاوره تور و ویزا" }: { serv
     </form>
   );
 }
-
