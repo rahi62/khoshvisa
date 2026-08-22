@@ -6,6 +6,7 @@ import { getSiteSettings } from "@/lib/api";
 import "./globals.css";
 import "./dynamic.css";
 import "./v2.css";
+import "./mobile-nav-fix.css";
 
 export async function generateMetadata(): Promise<Metadata> {
   const settings = await getSiteSettings();
