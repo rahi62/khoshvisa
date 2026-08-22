@@ -1,0 +1,2 @@
+import type {MetadataRoute} from "next";import {getTours,getVisas} from "@/lib/api";
+export default async function sitemap():Promise<MetadataRoute.Sitemap>{const base=process.env.NEXT_PUBLIC_SITE_URL||"http://localhost:3000",[v,t]=await Promise.all([getVisas(),getTours()]);return ["","/visa","/tours"].map((x,i)=>({url:`${base}${x}`,lastModified:new Date(),priority:i?0.9:1})).concat(v.map(x=>({url:`${base}/visa/${x.slug}`,lastModified:new Date(),priority:.8})),t.map(x=>({url:`${base}/tours/${x.slug}`,lastModified:new Date(),priority:.8})))}
