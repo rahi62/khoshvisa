@@ -2,8 +2,8 @@ from rest_framework import generics
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
-from .models import LandingPage, Lead, SiteSettings
-from .serializers import LandingPageSerializer, LeadSerializer, SiteSettingsSerializer
+from .models import FAQ, LandingPage, Lead, SiteSettings, Testimonial, TrustItem
+from .serializers import FAQSerializer, LandingPageSerializer, LeadSerializer, SiteSettingsSerializer, TestimonialSerializer, TrustItemSerializer
 
 
 class SettingsView(APIView):
@@ -33,3 +33,21 @@ class LeadCreateView(generics.CreateAPIView):
     queryset = Lead.objects.all()
     serializer_class = LeadSerializer
 
+
+class FAQListView(generics.ListAPIView):
+    serializer_class = FAQSerializer
+
+    def get_queryset(self):
+        queryset = FAQ.objects.filter(is_active=True)
+        path = self.request.query_params.get("path")
+        return queryset.filter(page_path__in=["", path]) if path else queryset.filter(page_path="")
+
+
+class TestimonialListView(generics.ListAPIView):
+    serializer_class = TestimonialSerializer
+    queryset = Testimonial.objects.filter(is_active=True)
+
+
+class TrustItemListView(generics.ListAPIView):
+    serializer_class = TrustItemSerializer
+    queryset = TrustItem.objects.filter(is_active=True)
