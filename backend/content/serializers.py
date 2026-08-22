@@ -3,6 +3,15 @@ from .models import FAQ, LandingPage, Lead, SiteSettings, Testimonial, TrustItem
 
 
 class SiteSettingsSerializer(serializers.ModelSerializer):
+    font_file = serializers.SerializerMethodField()
+
+    def get_font_file(self, obj):
+        if not obj.font_file:
+            return ""
+        request = self.context.get("request")
+        path = "/api/v1/site-font/"
+        return request.build_absolute_uri(path) if request else path
+
     class Meta:
         model = SiteSettings
         fields = "__all__"
@@ -23,7 +32,7 @@ class LeadSerializer(serializers.ModelSerializer):
     def validate_phone(self, value):
         normalized = value.replace(" ", "").replace("-", "")
         if not normalized.startswith("09") or len(normalized) != 11 or not normalized.isdigit():
-            raise serializers.ValidationError("شماره موبایل معتبر وارد کنید.")
+            raise serializers.ValidationError("Ø´ÙØ§Ø±Ù ÙÙØ¨Ø§ÛÙ ÙØ¹ØªØ¨Ø± ÙØ§Ø±Ø¯ Ú©ÙÛØ¯.")
         return normalized
 
 
