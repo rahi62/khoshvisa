@@ -24,6 +24,7 @@ async function cmsRequest<T>(path: string): Promise<T | null> {
 export type SiteSettings = {
   brand_name: string; brand_name_en: string; tagline: string; brand_description: string;
   logo: string; logo_dark: string; favicon: string; primary_color: string; accent_color: string;
+  font_family_name: string; font_file: string; font_weight: string; google_font_url: string;
   default_og_image: string; site_domain: string; mobile: string; phone: string; whatsapp: string;
   telegram_url: string; instagram_url: string; email: string; working_hours: string;
   primary_cta_text: string; mobile_sticky_call_enabled: boolean; north_office: string; west_office: string;
