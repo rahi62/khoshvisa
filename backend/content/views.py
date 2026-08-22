@@ -1,3 +1,4 @@
+from django.http import FileResponse, Http404
 from rest_framework import generics
 from rest_framework.response import Response
 from rest_framework.views import APIView
@@ -11,7 +12,23 @@ class SettingsView(APIView):
         settings = SiteSettings.objects.first()
         if not settings:
             settings = SiteSettings()
-        return Response(SiteSettingsSerializer(settings).data)
+        return Response(SiteSettingsSerializer(settings, context={"request": request}).data)
+
+
+class SiteFontView(APIView):
+    authentication_classes = []
+    permission_classes = []
+
+    def get(self, request):
+        settings = SiteSettings.objects.first()
+        if not settings or not settings.font_file:
+            raise Http404
+        filename = settings.font_file.name.lower()
+        content_type = "font/woff2" if filename.endswith(".woff2") else "font/woff"
+        response = FileResponse(settings.font_file.open("rb"), content_type=content_type)
+        response["Cache-Control"] = "public, max-age=31536000, immutable"
+        response["Access-Control-Allow-Origin"] = "*"
+        return response
 
 
 class LandingListView(generics.ListAPIView):
