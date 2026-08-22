@@ -16,6 +16,7 @@ python -m venv .venv
 # Linux/macOS: source .venv/bin/activate
 pip install -r requirements.txt
 python manage.py migrate
+python manage.py seed_content
 python manage.py createsuperuser
 python manage.py runserver
 ```
@@ -42,3 +43,7 @@ npm run dev
 - `POST /api/v1/leads/`
 
 اطلاعات ویزا باید مرتب بازبینی شوند و صدور ویزا قابل تضمین نیست.
+
+## اجرای بدون Docker
+
+این پروژه برای توسعه و استقرار به Docker نیاز ندارد. در توسعه از SQLite یا PostgreSQL محلی و در Production از PostgreSQL مدیریت‌شده استفاده کنید.
