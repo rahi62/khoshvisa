@@ -72,6 +72,7 @@ export async function getLanding(type: "visa" | "tour", slug: string): Promise<L
       body: typeof text === "string" ? text : resolved.content.excerpt,
       meta_title: resolved.seo?.title || resolved.content.title,
       meta_description: resolved.seo?.description || resolved.content.excerpt,
+      custom_fields: resolved.content.custom_fields,
     };
   } catch {
     // Keep the legacy endpoint as a safe migration fallback until CMS content is verified.
