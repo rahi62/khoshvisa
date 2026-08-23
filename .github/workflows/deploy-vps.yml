@@ -69,6 +69,7 @@ jobs:
 
           rollback_cms_admin() {
             echo "CMS Admin activation failed; restoring previous release if available."
+            sudo /usr/bin/systemctl stop khoshvisa-cms-admin.service || true
             rm -rf "$CMS_ADMIN_ACTIVE"
             if [ -d "$CMS_ADMIN_PREVIOUS" ]; then
               mv "$CMS_ADMIN_PREVIOUS" "$CMS_ADMIN_ACTIVE"
@@ -84,6 +85,8 @@ jobs:
             echo "khoshvisa-cms-admin.service is not installed. Run deploy/install-cms-admin.sh on the VPS before deploying this release."
             exit 1
           fi
+
+          node -e 'const [major, minor] = process.versions.node.split(".").map(Number); if (major < 20 || (major === 20 && minor < 9)) { console.error(`Node ${process.versions.node} is too old for CMS Admin; Node >=20.9 is required.`); process.exit(1); }'
 
           set -a
           . "$BACKEND_ENV"
