@@ -60,12 +60,13 @@ jobs:
           set -Eeuo pipefail
 
           APP_ROOT=/var/www/khoshvisa
-          BACKUP_DIR="$APP_ROOT/shared/backups"
-          BACKEND_ENV="$APP_ROOT/shared/backend.env"
-          FRONTEND_ENV="$APP_ROOT/shared/frontend.env"
-          CMS_ADMIN_ACTIVE="$APP_ROOT/cms-admin"
-          CMS_ADMIN_BUILD="$APP_ROOT/cms-admin-build"
-          CMS_ADMIN_PREVIOUS="$APP_ROOT/cms-admin-previous"
+          SHARED_ROOT="$APP_ROOT/shared"
+          BACKUP_DIR="$SHARED_ROOT/backups"
+          BACKEND_ENV="$SHARED_ROOT/backend.env"
+          FRONTEND_ENV="$SHARED_ROOT/frontend.env"
+          CMS_ADMIN_ACTIVE="$SHARED_ROOT/cms-admin"
+          CMS_ADMIN_BUILD="$SHARED_ROOT/cms-admin-build"
+          CMS_ADMIN_PREVIOUS="$SHARED_ROOT/cms-admin-previous"
 
           rollback_cms_admin() {
             echo "CMS Admin activation failed; restoring previous release if available."
@@ -79,7 +80,7 @@ jobs:
 
           test -f "$BACKEND_ENV"
           test -f "$FRONTEND_ENV"
-          mkdir -p "$BACKUP_DIR" "$APP_ROOT/shared/media" "$APP_ROOT/shared/static"
+          mkdir -p "$BACKUP_DIR" "$SHARED_ROOT/media" "$SHARED_ROOT/static"
 
           if ! sudo /usr/bin/systemctl cat khoshvisa-cms-admin.service >/dev/null 2>&1; then
             echo "khoshvisa-cms-admin.service is not installed. Run deploy/install-cms-admin.sh on the VPS before deploying this release."
