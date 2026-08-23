@@ -80,13 +80,13 @@ http://localhost:3001/cms/
 
 این پروژه برای توسعه و استقرار به Docker نیاز ندارد. در توسعه از SQLite یا PostgreSQL محلی و در Production از PostgreSQL استفاده می‌شود.
 
-## DigitalAfarin CMS v0.4
+## DigitalAfarin CMS rollout
 
-نسخه `0.4.0` مبنای پروژه است:
+برای rollout پنل جدید، Backend و Admin روی v0.4 هستند:
 
 - Backend: `digitalafarin-cms[all]==0.4.0`
-- Frontend SDK: `@digitalafarin/cms-next@0.4.0`
 - Admin: `@digitalafarin/cms-admin@0.4.0`
+- Frontend SDK عمومی: فعلاً `@digitalafarin/cms-next@0.2.1` باقی مانده تا ارتقای آن جداگانه با regression test انجام شود
 - API: `/api/cms/v1/`
 - پنل اصلی مدیریت محتوا: `/cms/`
 
