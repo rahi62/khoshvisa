@@ -7,7 +7,7 @@ Wants=khoshvisa-backend.service
 Type=simple
 User=deploy
 Group=www-data
-WorkingDirectory=/var/www/khoshvisa/cms-admin
+WorkingDirectory=/var/www/khoshvisa/shared/cms-admin
 Environment=NODE_ENV=production
 Environment=PORT=3001
 ExecStart=/usr/bin/npm start -- --hostname 127.0.0.1 --port 3001
