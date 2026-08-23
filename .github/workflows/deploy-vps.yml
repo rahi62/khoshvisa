@@ -6,6 +6,7 @@ on:
     paths:
       - "backend/**"
       - "frontend/**"
+      - "deploy/**"
       - ".github/workflows/deploy-vps.yml"
   workflow_dispatch:
 
@@ -16,7 +17,7 @@ concurrency:
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    timeout-minutes: 30
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -59,13 +60,34 @@ jobs:
           set -Eeuo pipefail
 
           APP_ROOT=/var/www/khoshvisa
-          BACKUP_DIR="$APP_ROOT/shared/backups"
-          BACKEND_ENV="$APP_ROOT/shared/backend.env"
-          FRONTEND_ENV="$APP_ROOT/shared/frontend.env"
+          SHARED_ROOT="$APP_ROOT/shared"
+          BACKUP_DIR="$SHARED_ROOT/backups"
+          BACKEND_ENV="$SHARED_ROOT/backend.env"
+          FRONTEND_ENV="$SHARED_ROOT/frontend.env"
+          CMS_ADMIN_ACTIVE="$SHARED_ROOT/cms-admin"
+          CMS_ADMIN_BUILD="$SHARED_ROOT/cms-admin-build"
+          CMS_ADMIN_PREVIOUS="$SHARED_ROOT/cms-admin-previous"
+
+          rollback_cms_admin() {
+            echo "CMS Admin activation failed; restoring previous release if available."
+            sudo /usr/bin/systemctl stop khoshvisa-cms-admin.service || true
+            rm -rf "$CMS_ADMIN_ACTIVE"
+            if [ -d "$CMS_ADMIN_PREVIOUS" ]; then
+              mv "$CMS_ADMIN_PREVIOUS" "$CMS_ADMIN_ACTIVE"
+              sudo /usr/bin/systemctl restart khoshvisa-cms-admin.service || true
+            fi
+          }
 
           test -f "$BACKEND_ENV"
           test -f "$FRONTEND_ENV"
-          mkdir -p "$BACKUP_DIR" "$APP_ROOT/shared/media" "$APP_ROOT/shared/static"
+          mkdir -p "$BACKUP_DIR" "$SHARED_ROOT/media" "$SHARED_ROOT/static"
+
+          if ! sudo /usr/bin/systemctl cat khoshvisa-cms-admin.service >/dev/null 2>&1; then
+            echo "khoshvisa-cms-admin.service is not installed. Run deploy/install-cms-admin.sh on the VPS before deploying this release."
+            exit 1
+          fi
+
+          node -e 'const [major, minor] = process.versions.node.split(".").map(Number); if (major < 20 || (major === 20 && minor < 9)) { console.error(`Node ${process.versions.node} is too old for CMS Admin; Node >=20.9 is required.`); process.exit(1); }'
 
           set -a
           . "$BACKEND_ENV"
@@ -80,6 +102,7 @@ jobs:
 
           cd "$APP_ROOT/app/backend"
           "$APP_ROOT/venv/bin/python" manage.py migrate --noinput
+          "$APP_ROOT/venv/bin/python" manage.py check
           "$APP_ROOT/venv/bin/python" manage.py collectstatic --noinput
           sudo /usr/bin/systemctl restart khoshvisa-backend.service
 
@@ -91,8 +114,57 @@ jobs:
           npm run build
           sudo /usr/bin/systemctl restart khoshvisa-frontend.service
 
+          rm -rf "$CMS_ADMIN_BUILD"
+          npx --yes @digitalafarin/cms-admin@0.4.0 scaffold \
+            --dir "$CMS_ADMIN_BUILD" \
+            --base-path /cms \
+            --api-url https://api.khoshvisa.ir/api/cms/v1 \
+            --port 3001 \
+            --skip-install
+
+          cd "$CMS_ADMIN_BUILD"
+          npm install --no-audit --no-fund
+          npm run build
+
+          rm -rf "$CMS_ADMIN_PREVIOUS"
+          if [ -d "$CMS_ADMIN_ACTIVE" ]; then
+            mv "$CMS_ADMIN_ACTIVE" "$CMS_ADMIN_PREVIOUS"
+          fi
+          mv "$CMS_ADMIN_BUILD" "$CMS_ADMIN_ACTIVE"
+
+          if ! sudo /usr/bin/systemctl restart khoshvisa-cms-admin.service; then
+            rollback_cms_admin
+            exit 1
+          fi
+
+          if ! sudo /usr/bin/systemctl is-active --quiet khoshvisa-cms-admin.service; then
+            rollback_cms_admin
+            exit 1
+          fi
+
+          if ! curl --fail --silent --show-error --retry 5 --retry-delay 2 http://127.0.0.1:3001/cms/login >/dev/null; then
+            rollback_cms_admin
+            exit 1
+          fi
+
+          CMS_PROXY_STATUS="$(curl --silent --show-error --output /dev/null --write-out '%{http_code}' \
+            -H 'Content-Type: application/json' \
+            --data '{"username":"__cms_health__","password":"__cms_health__"}' \
+            http://127.0.0.1:3001/cms/api-proxy/auth/token/)"
+          case "$CMS_PROXY_STATUS" in
+            400|401) ;;
+            *)
+              echo "Unexpected CMS API proxy health status: $CMS_PROXY_STATUS"
+              rollback_cms_admin
+              exit 1
+              ;;
+          esac
+
+          rm -rf "$CMS_ADMIN_PREVIOUS"
+
           sudo /usr/bin/systemctl is-active khoshvisa-backend.service
           sudo /usr/bin/systemctl is-active khoshvisa-frontend.service
+          sudo /usr/bin/systemctl is-active khoshvisa-cms-admin.service
           curl --fail --silent --show-error --retry 5 --retry-delay 2 http://127.0.0.1:8000/health/
           curl --fail --silent --show-error --retry 5 --retry-delay 2 --head http://127.0.0.1:3000/
           REMOTE
