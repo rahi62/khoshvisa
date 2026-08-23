@@ -1,0 +1,98 @@
+name: Deploy KhoshVisa to VPS
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "backend/**"
+      - "frontend/**"
+      - ".github/workflows/deploy-vps.yml"
+  workflow_dispatch:
+
+concurrency:
+  group: khoshvisa-production
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Configure SSH
+        env:
+          VPS_SSH_KEY: ${{ secrets.VPS_SSH_KEY }}
+          VPS_KNOWN_HOSTS: ${{ secrets.VPS_KNOWN_HOSTS }}
+        run: |
+          install -d -m 700 ~/.ssh
+          printf '%s\n' "$VPS_SSH_KEY" > ~/.ssh/khoshvisa_deploy
+          printf '%s\n' "$VPS_KNOWN_HOSTS" > ~/.ssh/known_hosts
+          chmod 600 ~/.ssh/khoshvisa_deploy ~/.ssh/known_hosts
+
+      - name: Sync application files
+        env:
+          VPS_HOST: ${{ secrets.VPS_HOST }}
+          VPS_USER: ${{ secrets.VPS_USER }}
+          VPS_PORT: ${{ secrets.VPS_PORT }}
+        run: |
+          rsync -az --delete \
+            --exclude='.git/' \
+            --exclude='.env' \
+            --exclude='.env.*' \
+            --exclude='node_modules/' \
+            --exclude='.next/' \
+            --exclude='.venv/' \
+            --exclude='__pycache__/' \
+            --exclude='db.sqlite3' \
+            -e "ssh -i ~/.ssh/khoshvisa_deploy -p ${VPS_PORT}" \
+            ./ "${VPS_USER}@${VPS_HOST}:/var/www/khoshvisa/app/"
+
+      - name: Build, migrate and restart
+        env:
+          VPS_HOST: ${{ secrets.VPS_HOST }}
+          VPS_USER: ${{ secrets.VPS_USER }}
+          VPS_PORT: ${{ secrets.VPS_PORT }}
+        run: |
+          ssh -i ~/.ssh/khoshvisa_deploy -p "$VPS_PORT" "$VPS_USER@$VPS_HOST" 'bash -se' <<'REMOTE'
+          set -Eeuo pipefail
+
+          APP_ROOT=/var/www/khoshvisa
+          BACKUP_DIR="$APP_ROOT/shared/backups"
+          BACKEND_ENV="$APP_ROOT/shared/backend.env"
+          FRONTEND_ENV="$APP_ROOT/shared/frontend.env"
+
+          test -f "$BACKEND_ENV"
+          test -f "$FRONTEND_ENV"
+          mkdir -p "$BACKUP_DIR" "$APP_ROOT/shared/media" "$APP_ROOT/shared/static"
+
+          set -a
+          . "$BACKEND_ENV"
+          set +a
+
+          pg_dump "$DATABASE_URL" | gzip > "$BACKUP_DIR/predeploy-$(date +%Y%m%d-%H%M%S).sql.gz"
+          find "$BACKUP_DIR" -type f -name 'predeploy-*.sql.gz' -mtime +14 -delete
+
+          python3 -m venv "$APP_ROOT/venv"
+          "$APP_ROOT/venv/bin/pip" install --upgrade pip wheel
+          "$APP_ROOT/venv/bin/pip" install -r "$APP_ROOT/app/backend/requirements.txt"
+
+          cd "$APP_ROOT/app/backend"
+          "$APP_ROOT/venv/bin/python" manage.py migrate --noinput
+          "$APP_ROOT/venv/bin/python" manage.py collectstatic --noinput
+          sudo /usr/bin/systemctl restart khoshvisa-backend.service
+
+          cd "$APP_ROOT/app/frontend"
+          set -a
+          . "$FRONTEND_ENV"
+          set +a
+          npm ci
+          npm run build
+          sudo /usr/bin/systemctl restart khoshvisa-frontend.service
+
+          sudo /usr/bin/systemctl is-active khoshvisa-backend.service
+          sudo /usr/bin/systemctl is-active khoshvisa-frontend.service
+          curl --fail --silent --show-error --retry 5 --retry-delay 2 http://127.0.0.1:8000/health/
+          curl --fail --silent --show-error --retry 5 --retry-delay 2 --head http://127.0.0.1:3000/
+          REMOTE
