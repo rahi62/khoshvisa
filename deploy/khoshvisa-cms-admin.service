@@ -6,7 +6,7 @@ Wants=khoshvisa-backend.service
 [Service]
 Type=simple
 User=deploy
-Group=deploy
+Group=www-data
 WorkingDirectory=/var/www/khoshvisa/cms-admin
 Environment=NODE_ENV=production
 Environment=PORT=3001
