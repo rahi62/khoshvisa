@@ -1,0 +1,20 @@
+[Unit]
+Description=KhoshVisa DigitalAfarin CMS Admin
+After=network.target khoshvisa-backend.service
+Wants=khoshvisa-backend.service
+
+[Service]
+Type=simple
+User=deploy
+Group=deploy
+WorkingDirectory=/var/www/khoshvisa/cms-admin
+Environment=NODE_ENV=production
+Environment=PORT=3001
+ExecStart=/usr/bin/npm start
+Restart=on-failure
+RestartSec=5
+TimeoutStopSec=20
+KillSignal=SIGTERM
+
+[Install]
+WantedBy=multi-user.target
