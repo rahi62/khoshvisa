@@ -97,10 +97,10 @@ DIGITALAFARIN_CMS_URL=https://api.khoshvisa.ir/api/cms/v1
 DIGITALAFARIN_CMS_SITE=khoshvisa.ir
 ```
 
-Admin در Production روی پورت داخلی `3001` اجرا می‌شود و Nginx مسیر `https://khoshvisa.ir/cms/` را به آن proxy می‌کند. Admin برای اتصال به Django از آدرس داخلی زیر استفاده می‌کند:
+Admin در Production فقط روی `127.0.0.1:3001` اجرا می‌شود و Nginx مسیر `https://khoshvisa.ir/cms/` را به آن proxy می‌کند. Browser مستقیماً به `api.khoshvisa.ir` درخواست نمی‌زند؛ درخواست‌ها ابتدا به `/cms/api-proxy/*` می‌روند و Next.js Admin آن‌ها را server-side به این upstream می‌فرستد:
 
 ```text
-http://127.0.0.1:8000/api/cms/v1
+https://api.khoshvisa.ir/api/cms/v1
 ```
 
 مدل قبلی لندینگ در دوره مهاجرت به‌عنوان fallback باقی مانده است. صفحات داخلی ابتدا محتوای CMS و در صورت عدم دسترسی، API قبلی را دریافت می‌کنند.
@@ -138,4 +138,4 @@ deploy/nginx.cms.conf
 deploy/install-cms-admin.sh
 ```
 
-یک‌بار روی سرور setup انجام می‌شود. پس از آن GitHub Actions در هر deploy نسخه pin‌شده `@digitalafarin/cms-admin@0.4.0` را در staging scaffold و build می‌کند و فقط بعد از build موفق، نسخه فعال را جایگزین می‌کند.
+یک‌بار روی سرور setup انجام می‌شود. پس از آن GitHub Actions در هر deploy نسخه pin‌شده `@digitalafarin/cms-admin@0.4.0` را در staging scaffold و build می‌کند و فقط بعد از build، restart و health-check موفق، نسخه فعال را جایگزین نهایی می‌کند. اگر activation یا proxy health-check fail شود، نسخه قبلی Admin برگردانده می‌شود.
