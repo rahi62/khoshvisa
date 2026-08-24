@@ -115,7 +115,7 @@ jobs:
           sudo /usr/bin/systemctl restart khoshvisa-frontend.service
 
           rm -rf "$CMS_ADMIN_BUILD"
-          npx --yes @digitalafarin/cms-admin@0.4.0 scaffold \
+          npx --yes @digitalafarin/cms-admin@0.4.2 scaffold \
             --dir "$CMS_ADMIN_BUILD" \
             --base-path /cms \
             --api-url https://api.khoshvisa.ir/api/cms/v1 \
