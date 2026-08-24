@@ -7,7 +7,7 @@ import { getCmsClient } from "@/lib/digitalafarin-cms";
 type RouteParams = { path: string[] };
 
 function cmsPath(segments: string[]) {
-  return `/${segments.map((segment) => decodeURIComponent(segment)).join("/")}`;
+  return `/${segments.join("/")}`;
 }
 
 async function resolvePage(path: string): Promise<ResolvedPage | null> {
@@ -92,17 +92,20 @@ export default async function CmsCatchAllPage({ params }: { params: Promise<Rout
   const page = await resolvePage(path);
 
   if (!page) {
+    let redirectMatch: { match: boolean; type?: number; destination?: string | null } | null = null;
     if (client) {
       try {
-        const match = await client.resolveRedirect(path);
-        if (match.match && match.destination) {
-          if (match.type === 301 || match.type === 308) permanentRedirect(match.destination);
-          redirect(match.destination);
-        }
+        redirectMatch = await client.resolveRedirect(path);
       } catch {
-        // No matching CMS redirect; fall through to the real 404 page.
+        redirectMatch = null;
       }
     }
+
+    if (redirectMatch?.match && redirectMatch.destination) {
+      if (redirectMatch.type === 301 || redirectMatch.type === 308) permanentRedirect(redirectMatch.destination);
+      redirect(redirectMatch.destination);
+    }
+
     notFound();
   }
 
