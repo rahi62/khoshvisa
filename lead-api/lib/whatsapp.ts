@@ -44,6 +44,7 @@ export function parseInbound(body:unknown,phoneNumberId:string):Inbound[]{
        if(!REF.test(trackingReference))trackingReference="";
        let landingPath=line(text,"صفحه ورود",200);
        if(!LANDING.test(landingPath))landingPath="";
+       if(result.length>=50)return result;
        result.push({messageId:mid,waId,kind,name:line(text,"نام",120)||names.get(waId)||"",
          destination:line(text,"مقصد",80),purpose:line(text,"هدف سفر",80),
          travelWindow:line(text,"زمان تقریبی سفر",80),trackingReference,landingPath});

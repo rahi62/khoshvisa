@@ -1,5 +1,5 @@
 import {NextRequest,NextResponse} from "next/server";
-import {isAdmin,safeOrigin} from "@/lib/auth";
+import {adminRedirect,isAdmin,safeOrigin} from "@/lib/auth";
 import {transaction} from "@/lib/db";
 import {stages,type LeadRow,type Stage} from "@/lib/types";
 export const runtime="nodejs";
@@ -15,7 +15,7 @@ function parseTehran(value:string):Date|null{
 }
 export async function POST(req:NextRequest,{params}:{params:Promise<{id:string}>}){
  if(!safeOrigin(req))return NextResponse.json({error:"origin_forbidden"},{status:403});
- if(!await isAdmin())return NextResponse.redirect(new URL("/admin/login",req.url),303);
+ if(!await isAdmin())return NextResponse.redirect(adminRedirect("/admin/login"),303);
  const {id}=await params;if(!uuid.test(id))return NextResponse.json({error:"invalid_id"},{status:400});
  const form=await req.formData();
  const stage=text(form.get("stage"),24) as Stage;
@@ -27,10 +27,10 @@ export async function POST(req:NextRequest,{params}:{params:Promise<{id:string}>
  const scope=text(form.get("partner_scope"),240);
  const evidence=text(form.get("partner_evidence"),190);
  let due:Date|null;
- try{due=parseTehran(text(form.get("follow_up_at"),30))}catch{return NextResponse.redirect(new URL("/admin/leads/"+id+"?error=invalid_date",req.url),303)}
+ try{due=parseTehran(text(form.get("follow_up_at"),30))}catch{return NextResponse.redirect(adminRedirect("/admin/leads/"+id+"?error=invalid_date"),303)}
  if(!stages.includes(stage)||!Number.isSafeInteger(version)||version<0)return NextResponse.json({error:"invalid_request"},{status:400});
  if(stage==="follow_up"&&!due)return NextResponse.redirect(new URL("/admin/leads/"+id+"?error=due_required",req.url),303);
- const back=(error:string)=>NextResponse.redirect(new URL("/admin/leads/"+id+"?error="+error,req.url),303);
+ const back=(error:string)=>NextResponse.redirect(adminRedirect("/admin/leads/"+id+"?error="+error),303);
  try{
  const result=await transaction(async db=>{
   const current=await db.query<LeadRow>("SELECT * FROM leads WHERE id=$1 FOR UPDATE",[id]);
@@ -62,6 +62,6 @@ export async function POST(req:NextRequest,{params}:{params:Promise<{id:string}>
   if(referredAt&&!row.referred_at)await db.query("INSERT INTO lead_audit(lead_id,actor,action) VALUES($1,'admin','actual_referral_recorded')",[id]);
   return "saved";
  });
- return result==="saved"?NextResponse.redirect(new URL("/admin/leads/"+id+"?saved=1",req.url),303):back(result);
+ return result==="saved"?NextResponse.redirect(adminRedirect("/admin/leads/"+id+"?saved=1"),303):back(result);
  }catch(e){console.error("Lead update failed",e instanceof Error?e.name:"UnknownError");return back("unavailable")}
 }

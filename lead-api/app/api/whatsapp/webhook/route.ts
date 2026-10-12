@@ -1,4 +1,5 @@
 import {NextRequest,NextResponse} from "next/server";
+import {timingSafeEqual} from "node:crypto";
 import {parseInbound,validSignature} from "@/lib/whatsapp";
 import {transaction} from "@/lib/db";
 
@@ -11,7 +12,8 @@ export async function GET(req:NextRequest){
  const mode=req.nextUrl.searchParams.get("hub.mode");
  const token=req.nextUrl.searchParams.get("hub.verify_token");
  const challenge=req.nextUrl.searchParams.get("hub.challenge")||"";
- if(mode!=="subscribe"||!token||token!==secret||!/^[0-9]{1,64}$/.test(challenge))
+ const equal=Boolean(token)&&Buffer.byteLength(token||"")===Buffer.byteLength(secret)&&timingSafeEqual(Buffer.from(token||""),Buffer.from(secret));
+ if(mode!=="subscribe"||!equal||!/^[0-9]{1,64}$/.test(challenge))
   return new Response("Forbidden",{status:403});
  return new Response(challenge,{status:200,headers:{"content-type":"text/plain; charset=utf-8"}});
 }

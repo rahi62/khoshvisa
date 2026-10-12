@@ -28,6 +28,11 @@ export async function isAdmin(){
  const jar=await cookies();
  return verifySession(jar.get(COOKIE)?.value);
 }
+export function adminRedirect(path:string):URL{
+ const origin=process.env.PUBLIC_ORIGIN;
+ if(!origin)throw Error("PUBLIC_ORIGIN is required");
+ return new URL(path,origin);
+}
 export function safeOrigin(req:NextRequest):boolean{
  const expected=process.env.PUBLIC_ORIGIN;
  const origin=req.headers.get("origin");

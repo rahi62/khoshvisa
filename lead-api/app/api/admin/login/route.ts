@@ -1,7 +1,7 @@
 import {NextRequest,NextResponse} from "next/server";
-import {blockedLogin,clearLoginFailures,cookieOptions,COOKIE,issueSession,recordLoginFailure,safeOrigin,verifyPassword} from "@/lib/auth";
+import {adminRedirect,blockedLogin,clearLoginFailures,cookieOptions,COOKIE,issueSession,recordLoginFailure,safeOrigin,verifyPassword} from "@/lib/auth";
 export const runtime="nodejs";export const dynamic="force-dynamic";
-const go=(request:NextRequest,error:string)=>NextResponse.redirect(new URL("/admin/login?error="+encodeURIComponent(error),request.url),303);
+const go=(request:NextRequest,error:string)=>NextResponse.redirect(adminRedirect("/admin/login?error="+encodeURIComponent(error)),303);
 export async function POST(req:NextRequest){
  if(!safeOrigin(req))return NextResponse.json({error:"origin_forbidden"},{status:403});
  let form:FormData;
@@ -18,7 +18,7 @@ export async function POST(req:NextRequest){
     return go(req,"invalid");
   }
   await clearLoginFailures(req);
-  const response=NextResponse.redirect(new URL("/admin",req.url),303);
+  const response=NextResponse.redirect(adminRedirect("/admin"),303);
   response.cookies.set(COOKIE,issueSession(),cookieOptions());
   response.headers.set("cache-control","no-store");
   return response;
