@@ -22,7 +22,7 @@ class Command(BaseCommand):
         cutoff = timezone.now() - timedelta(days=days)
         candidates = WhatsAppContact.objects.filter(
             last_inbound_at__lt=cutoff,
-            lead__source="whatsapp",
+            lead__source__in=("whatsapp", "whatsapp-manual"),
             lead__status__in=("closed", "invalid"),
         )
         count = candidates.count()
@@ -32,5 +32,5 @@ class Command(BaseCommand):
         with transaction.atomic():
             ids = list(candidates.values_list("lead_id", flat=True))
             from content.models import Lead
-            deleted = Lead.objects.filter(id__in=ids, source="whatsapp").delete()
+            deleted = Lead.objects.filter(id__in=ids, source__in=("whatsapp", "whatsapp-manual")).delete()
         self.stdout.write(self.style.SUCCESS(f"Deleted {len(ids)} eligible lead records and related events."))

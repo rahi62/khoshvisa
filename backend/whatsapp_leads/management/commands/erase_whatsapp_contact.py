@@ -22,8 +22,8 @@ class Command(BaseCommand):
             return
         from content.models import Lead
         with transaction.atomic():
-            if contact.lead_id and contact.lead.source == "whatsapp":
-                Lead.objects.filter(id=contact.lead_id, source="whatsapp").delete()
+            if contact.lead_id and contact.lead.source in ("whatsapp", "whatsapp-manual"):
+                Lead.objects.filter(id=contact.lead_id, source__in=("whatsapp", "whatsapp-manual")).delete()
             else:
                 contact.delete()
         self.stdout.write(self.style.SUCCESS("Requested WhatsApp record and related events erased."))

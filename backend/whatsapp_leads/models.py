@@ -36,6 +36,8 @@ class WhatsAppContact(models.Model):
 
     def clean(self):
         errors = {}
+        if self._state.adding and self.message_count == 0 and not self.lead_id:
+            errors["lead"] = "برای ثبت دستی مکالمه، ابتدا یک پرونده Lead ایجاد و آن را انتخاب کنید."
         if not re.fullmatch(r"[1-9][0-9]{7,14}", self.wa_id or ""):
             errors["wa_id"] = "شناسه واتساپ باید عدد بین‌المللی معتبر بدون علامت + باشد."
         if self.partner_share_consent and not self.partner_share_consent_evidence.strip():
