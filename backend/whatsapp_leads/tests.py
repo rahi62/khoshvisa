@@ -140,6 +140,15 @@ class WhatsAppWebhookTests(TestCase):
                              HTTP_X_HUB_SIGNATURE_256=signature)
         self.assertEqual(r.status_code, 413)
 
+    def test_follow_up_requires_a_due_date_for_whatsapp(self):
+        self.post_payload(make_payload())
+        lead = Lead.objects.get()
+        lead.status = "follow_up"
+        with self.assertRaises(ValidationError):
+            lead.full_clean()
+        lead.follow_up_at = timezone.now()
+        lead.full_clean()
+
     def test_referral_requires_separate_evidenced_consent(self):
         self.post_payload(make_payload())
         lead = Lead.objects.get()
@@ -154,8 +163,11 @@ class WhatsAppWebhookTests(TestCase):
         contact.partner_share_consent_at = timezone.now()
         contact.full_clean()
         contact.save()
-        lead.full_clean()  # can now mark referred
-        lead.save(update_fields=["status"])
+        with self.assertRaises(ValidationError):
+            lead.full_clean()  # consent alone is NOT evidence the data was forwarded
         contact.forwarded_partner = "مجموعه همکار آزمایشی"
         contact.forwarded_at = timezone.now()
         contact.full_clean()
+        contact.save()
+        lead.full_clean()
+        lead.save(update_fields=["status"])

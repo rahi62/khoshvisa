@@ -171,6 +171,7 @@ class Lead(TimestampedModel):
     landing_path = models.CharField(max_length=255, blank=True)
     consent = models.BooleanField(default=True)
     admin_notes = models.TextField(blank=True)
+    follow_up_at = models.DateTimeField("زمان پیگیری بعدی", null=True, blank=True, db_index=True)
 
     class Meta:
         ordering = ["-created_at"]
@@ -179,11 +180,13 @@ class Lead(TimestampedModel):
 
     def clean(self):
         super().clean()
+        if self.source == "whatsapp" and self.status == "follow_up" and not self.follow_up_at:
+            raise ValidationError({"follow_up_at": "برای وضعیت نیازمند پیگیری، تاریخ پیگیری را وارد کنید."})
         if self.status == "referred" and self.source == "whatsapp":
             from whatsapp_leads.models import WhatsAppContact
             contact = WhatsAppContact.objects.filter(lead_id=self.pk).first() if self.pk else None
-            if not contact or not contact.partner_share_consent:
-                raise ValidationError({"status": "برای ثبت ارجاع واتساپی، رضایت مستقل و مستند لازم است."})
+            if not contact or not contact.partner_share_consent or not contact.forwarded_at or not contact.forwarded_partner:
+                raise ValidationError({"status": "قبل از ثبت ارجاع، رضایت مستند و تاریخ/گیرنده انتقال باید ثبت شده باشد."})
 
     def __str__(self):
         return f"{self.full_name} - {self.phone}"

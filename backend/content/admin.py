@@ -34,8 +34,8 @@ class LandingPageAdmin(admin.ModelAdmin):
 
 @admin.register(Lead)
 class LeadAdmin(admin.ModelAdmin):
-    list_display = ("full_name", "phone", "service", "status", "source", "created_at")
-    list_filter = ("status", "source", "consent", "created_at")
+    list_display = ("full_name", "phone", "service", "status", "follow_up_at", "source", "created_at")
+    list_filter = ("status", "source", "consent", "follow_up_at", "created_at")
     search_fields = ("full_name", "phone", "service")
     readonly_fields = ("created_at", "updated_at", "consent", "landing_path", "source")
 
