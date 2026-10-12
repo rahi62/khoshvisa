@@ -1,0 +1,29 @@
+name: KhoshVisa Hybrid Next QA
+on:
+  pull_request:
+    branches: [static]
+    paths:
+      - "static-site/**"
+      - ".github/workflows/khoshvisa-hybrid-ci.yml"
+  workflow_dispatch:
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    defaults:
+      run:
+        working-directory: static-site
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Install
+        run: npm install --no-audit --no-fund
+      - name: Test WhatsApp parser and HMAC
+        run: npm run test:crm
+      - name: Typecheck
+        run: npx tsc --noEmit
+      - name: Build hybrid Next.js
+        run: npm run build
