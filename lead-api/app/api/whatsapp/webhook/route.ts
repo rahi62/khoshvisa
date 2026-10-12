@@ -41,6 +41,7 @@ export async function POST(req:NextRequest){
      VALUES($1,$2,'whatsapp_webhook',$3,$4,$5,$6,$7,1)
      ON CONFLICT(wa_id) DO UPDATE SET
        name=CASE WHEN leads.name='' THEN EXCLUDED.name ELSE leads.name END,
+       source='whatsapp_webhook',
        destination=CASE WHEN leads.destination='' THEN EXCLUDED.destination ELSE leads.destination END,
        purpose=CASE WHEN leads.purpose='' THEN EXCLUDED.purpose ELSE leads.purpose END,
        travel_window=CASE WHEN leads.travel_window='' THEN EXCLUDED.travel_window ELSE leads.travel_window END,

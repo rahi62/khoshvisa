@@ -23,7 +23,7 @@ export default async function Dashboard({searchParams}:{searchParams:Promise<Fil
  ]);
  const total=Number(count.rows[0].total);
  const hasNext=page*50<total;
- const link=(n:number)=>"/admin?"+new URLSearchParams({...stage?{stage}:{},page:String(n)});
+ const link=(n:number)=>"/admin?"+new URLSearchParams(stage?{stage,page:String(n)}:{page:String(n)}).toString();
  return <main className="admin-shell">
   <header className="admin-top"><div><strong>✦ خوش‌ویزا</strong><span>مدیریت درخواست‌های واتساپ</span></div><form method="post" action="/api/admin/logout"><button type="submit">خروج امن</button></form></header>
   <div className="admin-width"><div className="admin-heading"><div><h1>داشبورد لیدها</h1><p>ثبت واقعی از واتساپ، پیگیری انسانی و اشتراک اطلاعات فقط با رضایت مستند</p></div><Link href="https://khoshvisa.ir/consultation/" target="_blank">صفحه دریافت لید ↗</Link></div>

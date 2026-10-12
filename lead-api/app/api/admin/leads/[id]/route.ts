@@ -29,7 +29,7 @@ export async function POST(req:NextRequest,{params}:{params:Promise<{id:string}>
  let due:Date|null;
  try{due=parseTehran(text(form.get("follow_up_at"),30))}catch{return NextResponse.redirect(adminRedirect("/admin/leads/"+id+"?error=invalid_date"),303)}
  if(!stages.includes(stage)||!Number.isSafeInteger(version)||version<0)return NextResponse.json({error:"invalid_request"},{status:400});
- if(stage==="follow_up"&&!due)return NextResponse.redirect(new URL("/admin/leads/"+id+"?error=due_required",req.url),303);
+ if(stage==="follow_up"&&!due)return NextResponse.redirect(adminRedirect("/admin/leads/"+id+"?error=due_required"),303);
  const back=(error:string)=>NextResponse.redirect(adminRedirect("/admin/leads/"+id+"?error="+error),303);
  try{
  const result=await transaction(async db=>{
