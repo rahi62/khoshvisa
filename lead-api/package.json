@@ -1,0 +1,29 @@
+{
+  "name": "khoshvisa-lead-api",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev -p 3084",
+    "build": "next build",
+    "start": "next start -p 3084",
+    "check": "tsc --noEmit",
+    "test": "tsx --test tests/*.test.ts",
+    "migrate": "node scripts/migrate.mjs",
+    "retention:dry": "node scripts/retention.mjs",
+    "retention:apply": "node scripts/retention.mjs --apply"
+  },
+  "dependencies": {
+    "next": "^15.5.0",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
+    "pg": "^8.16.0"
+  },
+  "devDependencies": {
+    "typescript": "^5.8.0",
+    "@types/node": "^22.0.0",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "@types/pg": "^8.15.0",
+    "tsx": "^4.20.0"
+  }
+}
