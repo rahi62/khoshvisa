@@ -1,0 +1,1 @@
+import Link from "next/link";export const metadata={title:"درباره خوش‌ویزا"};export default function Page(){return <main className="wrap section"><Link href="/">← صفحه اصلی</Link><h1>درباره خوش‌ویزا</h1><p>خوش‌ویزا راهنمای فارسی اطلاعات ویزای توریستی است. اطلاعات منتشرشده جایگزین دستورالعمل رسمی سفارت یا مشاوره حقوقی نیست. تصمیم صدور ویزا تنها با مراجع رسمی است.</p></main>}
