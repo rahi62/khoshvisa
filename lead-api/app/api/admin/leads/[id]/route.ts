@@ -51,12 +51,12 @@ export async function POST(req:NextRequest,{params}:{params:Promise<{id:string}>
     referredTo=provider;referredAt=new Date();
   }
   if(stage==="referred"&&!referredAt)return "transfer_required";
-  await db.query(\`
+  await db.query(`
     UPDATE leads SET stage=$2,follow_up_at=$3,admin_notes=$4,
       partner_consent_at=$5,partner_consent_provider=$6,partner_consent_scope=$7,
       partner_consent_evidence=$8,referred_to=$9,referred_at=$10,version=version+1,updated_at=now()
     WHERE id=$1
-  \`,[id,stage,due,notes,consentAt,consentProvider,consentScope,consentEvidence,referredTo,referredAt]);
+  `,[id,stage,due,notes,consentAt,consentProvider,consentScope,consentEvidence,referredTo,referredAt]);
   if(row.stage!==stage)await db.query("INSERT INTO lead_audit(lead_id,actor,action,old_stage,new_stage) VALUES($1,'admin','stage_changed',$2,$3)",[id,row.stage,stage]);
   if(consentAt&&!row.partner_consent_at)await db.query("INSERT INTO lead_audit(lead_id,actor,action) VALUES($1,'admin','partner_consent_recorded')",[id]);
   if(referredAt&&!row.referred_at)await db.query("INSERT INTO lead_audit(lead_id,actor,action) VALUES($1,'admin','actual_referral_recorded')",[id]);

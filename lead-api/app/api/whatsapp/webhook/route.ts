@@ -36,7 +36,7 @@ export async function POST(req:NextRequest){
     "INSERT INTO whatsapp_inbound_events(message_id,sender_wa_id,kind) VALUES($1,$2,$3) ON CONFLICT(message_id) DO NOTHING RETURNING message_id",
     [m.messageId,m.waId,m.kind]);
    if(!saved.rowCount)return;
-   const lead=await db.query<{id:string}>(\`
+   const lead=await db.query<{id:string}>(`
      INSERT INTO leads (wa_id,name,source,destination,purpose,travel_window,tracking_reference,landing_path,message_count)
      VALUES($1,$2,'whatsapp_webhook',$3,$4,$5,$6,$7,1)
      ON CONFLICT(wa_id) DO UPDATE SET
@@ -50,7 +50,7 @@ export async function POST(req:NextRequest){
        message_count=leads.message_count+1,
        last_contact_at=now(),updated_at=now(),version=leads.version+1
      RETURNING id
-   \`,[m.waId,m.name,m.destination,m.purpose,m.travelWindow,m.trackingReference,m.landingPath]);
+   `,[m.waId,m.name,m.destination,m.purpose,m.travelWindow,m.trackingReference,m.landingPath]);
    await db.query("UPDATE whatsapp_inbound_events SET lead_id=$1 WHERE message_id=$2",[lead.rows[0].id,m.messageId]);
    // No raw message, attachments or sensitive documents are saved.
   });

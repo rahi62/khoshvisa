@@ -64,14 +64,14 @@ export async function blockedLogin(req:NextRequest):Promise<boolean>{
 }
 export async function recordLoginFailure(req:NextRequest){
  const key=ipKey(req);
- await database().query(\`
+ await database().query(`
  INSERT INTO admin_login_attempts(ip_hash,failures,started_at,blocked_until)
  VALUES($1,1,now(),NULL)
  ON CONFLICT(ip_hash) DO UPDATE SET
   failures=CASE WHEN admin_login_attempts.started_at<now()-interval '15 minutes' THEN 1 ELSE admin_login_attempts.failures+1 END,
   started_at=CASE WHEN admin_login_attempts.started_at<now()-interval '15 minutes' THEN now() ELSE admin_login_attempts.started_at END,
   blocked_until=CASE WHEN admin_login_attempts.started_at>=now()-interval '15 minutes' AND admin_login_attempts.failures>=6 THEN now()+interval '15 minutes' ELSE NULL END
- \`,[key]);
+ `,[key]);
 }
 export async function clearLoginFailures(req:NextRequest){
  await database().query("DELETE FROM admin_login_attempts WHERE ip_hash=$1",[ipKey(req)]);

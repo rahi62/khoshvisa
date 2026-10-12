@@ -14,11 +14,11 @@ export async function POST(req:NextRequest){
  if(!/^[1-9][0-9]{7,14}$/.test(waId))return NextResponse.redirect(adminRedirect("/admin?error=invalid_phone"),303);
  if(reference&&!/^KV-[0-9A-F]{20}$/.test(reference))return NextResponse.redirect(adminRedirect("/admin?error=invalid_reference"),303);
  try{
- const q=await database().query<{id:string}>(\`
+ const q=await database().query<{id:string}>(`
    INSERT INTO leads(wa_id,name,source,destination,tracking_reference)
    VALUES($1,$2,'whatsapp_manual',$3,$4)
    ON CONFLICT (wa_id) DO NOTHING RETURNING id
- \`,[waId,name,destination,reference]);
+ `,[waId,name,destination,reference]);
  if(!q.rows.length)return NextResponse.redirect(adminRedirect("/admin?error=already_exists"),303);
  await database().query("INSERT INTO lead_audit(lead_id,actor,action,new_stage) VALUES($1,'admin','manual_verified','new')",[q.rows[0].id]);
  return NextResponse.redirect(adminRedirect("/admin/leads/"+q.rows[0].id),303);
