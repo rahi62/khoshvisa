@@ -1,3 +1,3 @@
 import DestinationExplorer from "../../components/DestinationExplorer";import {VisaCompare} from "../../components/VisaTools";import {visas} from "../../lib/content";
-export const metadata={title:"کشف و مقایسه مقصدهای ویزا",description:"جست‌وجو، فیلتر و مقایسه اطلاعات مقدماتی ویزای توریستی مقصدهای مختلف."};
+export const metadata={alternates:{canonical:"/visa-explorer/"},title:"کشف و مقایسه مقصدهای ویزا",description:"جست‌وجو، فیلتر و مقایسه اطلاعات مقدماتی ویزای توریستی مقصدهای مختلف."};
 export default function Page(){return <main className="cin-tools-page"><section className="innerHero"><div className="shell"><span className="overline">VISA EXPLORER</span><h1>جهانت را <em>کشف کن</em></h1><p>مقصدها را پیدا کنید، اطلاعات اولیه را مقایسه کنید و از منابع رسمی شروع کنید.</p></div></section><div className="shell sectionSpace"><DestinationExplorer items={visas}/><VisaCompare items={visas}/></div></main>}

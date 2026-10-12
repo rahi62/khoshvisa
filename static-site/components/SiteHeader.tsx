@@ -16,13 +16,13 @@ export default function SiteHeader(){
  <nav className="cin-desktop-nav" aria-label="ناوبری اصلی"><Link className={path==="/"?"active":""} href="/">صفحه اصلی</Link>
  <div className="cin-mega-parent" onMouseEnter={()=>setMega(true)} onMouseLeave={()=>setMega(false)}>
  <button type="button" aria-expanded={mega} aria-controls="cin-mega-menu" onClick={()=>setMega(v=>!v)} onKeyDown={e=>{if(e.key==="Escape")setMega(false)}}>مقصدها <span aria-hidden>⌄</span></button>
- <div id="cin-mega-menu" className={"cin-mega "+(mega?"is-open":"")} onKeyDown={e=>{if(e.key==="Escape")setMega(false)}}>
+ <div id="cin-mega-menu" aria-hidden={!mega} inert={!mega} className={"cin-mega "+(mega?"is-open":"")} onKeyDown={e=>{if(e.key==="Escape")setMega(false)}}>
  <div className="cin-mega-list"><strong>مقصدهای پرطرفدار</strong>{visas.slice(0,6).map(v=><Link onClick={()=>setMega(false)} key={v.slug} href={"/"+v.slug+"/"}>{v.flag} ویزای {v.name}<span>←</span></Link>)}</div>
  <div className="cin-mega-actions"><strong>برای سفر برنامه‌ریزی کنید</strong><p>راهنمای کشورها و مراحل رسمی درخواست ویزا را ببینید.</p><Link href="/visa-explorer/" onClick={()=>setMega(false)}>کشف هوشمند مقصد ←</Link><Link href="/destinations/" onClick={()=>setMega(false)}>همه مقصدها ←</Link></div>
  </div></div>
  <Link href="/visa-readiness/">بررسی اولیه</Link><Link href="/visa-guides/">مقالات</Link><Link href="/about/">درباره ما</Link><Link href="/contact/">تماس با ما</Link></nav>
  <Link href="/consultation/" className="cin-header-cta">درخواست مشاوره ←</Link>
  <button ref={toggleRef} className="cin-mobile-toggle" type="button" aria-label={mobile?"بستن منو":"باز کردن منو"} aria-expanded={mobile} aria-controls="cin-mobile-menu" onClick={()=>setMobile(v=>!v)}><span className={mobile?"cin-burger is-open":"cin-burger"}><i/><i/><i/></span></button></div>
- <div className={"cin-mobile-overlay "+(mobile?"is-open":"")} id="cin-mobile-menu" aria-hidden={!mobile} ref={menuRef}><div className="cin-mobile-art" aria-hidden="true"/><div className="cin-mobile-links" role="navigation" aria-label="منوی موبایل">{mainLinks.map(([href,label],i)=><Link key={href} href={href} tabIndex={mobile?0:-1} style={{"--nav-index":i} as React.CSSProperties}>{label}<span aria-hidden>←</span></Link>)}<Link href="/consultation/" tabIndex={mobile?0:-1} className="cin-mobile-cta">درخواست مشاوره ویزا ←</Link></div><p>سفر به جهان، با خیال راحت</p></div>
+ <div className={"cin-mobile-overlay "+(mobile?"is-open":"")} id="cin-mobile-menu" aria-hidden={!mobile} inert={!mobile} ref={menuRef}><div className="cin-mobile-art" aria-hidden="true"/><div className="cin-mobile-links" role="navigation" aria-label="منوی موبایل">{mainLinks.map(([href,label],i)=><Link key={href} href={href} tabIndex={mobile?0:-1} style={{"--nav-index":i} as React.CSSProperties}>{label}<span aria-hidden>←</span></Link>)}<Link href="/consultation/" tabIndex={mobile?0:-1} className="cin-mobile-cta">درخواست مشاوره ویزا ←</Link></div><p>سفر به جهان، با خیال راحت</p></div>
  </header>
 }

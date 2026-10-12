@@ -1,7 +1,7 @@
 /* KhoshVisa 2.0: cinematic visual layer. Applied after existing styles. */
 :root{--kv-night:#071d2e;--kv-navy:#102b3f;--kv-gold:#c99747;--kv-cream:#f6f3ec;--kv-ease:cubic-bezier(.22,1,.36,1)}
 html{scroll-padding-top:90px}body{color:var(--kv-navy);background:#fff}a,button{-webkit-tap-highlight-color:transparent}:focus-visible{outline:3px solid #d9a351;outline-offset:4px}::selection{background:#c99747;color:white}
-.cin-header{height:78px;position:sticky;top:0;z-index:100;background:#071d2ef2;color:#fff;box-shadow:0 8px 30px #061b2a22;backdrop-filter:blur(18px)}
+.cin-header{height:78px;position:sticky;top:0;z-index:100;background:#071d2ef2;color:#fff;box-shadow:0 8px 30px #061b2a22;backdrop-filter:none}
 .cin-header-inner{height:100%;display:flex;align-items:center;justify-content:space-between;gap:24px;position:relative}
 .cin-brand{display:flex;align-items:center;gap:8px;color:#fff;font-size:24px;font-weight:900;line-height:1.2;white-space:nowrap}.cin-brand small{display:block;color:#d7c2a5;font-size:9px;font-weight:400;line-height:2}
 .cin-brand-mark{color:#d3a253;font-size:37px;transform:rotate(-20deg);display:inline-block}
@@ -60,3 +60,11 @@ html{scroll-padding-top:90px}body{color:var(--kv-navy);background:#fff}a,button{
 .cin-intro-strip{padding-top:42px;align-items:start;flex-direction:column}.cin-carousel-stage{height:310px}.cin-destination-card{height:280px;width:62vw}.cin-feature-ribbon{gap:12px}.cin-feature-ribbon>div{font-size:11px;justify-content:start;line-height:1.7}.cin-feature-ribbon span{font-size:19px}.cin-parallax{height:370px}.cin-parallax h2{font-size:35px}.cin-home-steps .cin-step-stack,.cin-visa-page .cin-step-stack,.cin-lab-preview .cin-step-stack{grid-template-columns:1fr}.cin-home-step-footer{flex-direction:column;text-align:center}.cin-sequence-frame{height:360px;min-height:0}.cin-sequence-label{right:20px;bottom:20px}.cin-sequence-pills button{padding:7px 11px;font-size:11px}.cin-horizontal-panel{width:84vw;height:350px;padding:25px}.cin-consult-photo{min-height:260px}.cin-consult-reasons{padding:37px 23px}.cin-article-grid,.cin-compare-grid{grid-template-columns:1fr}.cin-article-card .refArticlePhoto{height:200px}.cin-compare-grid article{max-width:100%}.cin-spatial{min-height:400px}.cin-spatial-cards{transform:scale(.73) rotateX(-6deg)}.cin-spatial-globe{width:240px;height:240px}.cin-readiness{padding:24px 16px}.cin-choice-grid{grid-template-columns:1fr}.cin-lab-selector{grid-template-columns:repeat(2,minmax(0,1fr))}.cin-lab-preview{padding:14px}.cin-lab-top h2{font-size:17px}.cin-lab-preview .cin-horizontal{height:auto}.cin-lab-preview .cin-horizontal-sticky{height:auto}
 }
 @media(prefers-reduced-motion:reduce){.cin-home-hero .refHeroPhoto{animation:none}.cin-blur-text>span,.cin-kinetic span,.cin-rotate-text strong{filter:none;opacity:1;transform:none;transition:none}.cin-mask-image,.cin-destination-card,.cin-sequence-slices>div,.cin-mobile-overlay,.cin-mobile-links>a{animation:none!important;transition:none!important}.cin-mask-image{clip-path:none;transform:none!important}.cin-reveal{opacity:1;filter:none;transform:none;transition:none}.cin-mobile-links>a{opacity:1;transform:none}.cin-horizontal-track{transform:none!important;overflow-x:auto}.cin-horizontal{height:auto}.cin-horizontal-sticky{position:static;height:auto}}
+
+/* Native same-origin cross-document shared-element transitions (progressive enhancement). */
+@view-transition{navigation:auto}
+::view-transition-old(root){animation:kv-out .23s ease both}
+::view-transition-new(root){animation:kv-in .35s ease both}
+@keyframes kv-out{to{opacity:.5;filter:blur(4px)}}
+@keyframes kv-in{from{opacity:.5;filter:blur(4px)}to{opacity:1;filter:blur(0)}}
+@media(prefers-reduced-motion:reduce){::view-transition-old(root),::view-transition-new(root){animation:none}}

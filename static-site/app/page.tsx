@@ -1,3 +1,4 @@
+export const metadata={alternates:{canonical:"/"}};
 import Link from "next/link";
 import {visas,guides} from "../lib/content";
 import ConsultationForm from "../components/ConsultationForm";
