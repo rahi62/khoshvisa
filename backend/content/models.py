@@ -1,4 +1,5 @@
 from django.db import models
+from django.core.exceptions import ValidationError
 
 
 class TimestampedModel(models.Model):
@@ -159,7 +160,7 @@ class LandingPage(TimestampedModel):
 
 
 class Lead(TimestampedModel):
-    STATUS_CHOICES = [("new", "جدید"), ("contacted", "تماس گرفته شد"), ("follow_up", "نیازمند پیگیری"), ("qualified", "واجد شرایط"), ("converted", "تبدیل به مشتری"), ("closed", "بسته‌شده"), ("invalid", "نامعتبر")]
+    STATUS_CHOICES = [("new", "جدید"), ("contacted", "تماس گرفته شد"), ("follow_up", "نیازمند پیگیری"), ("qualified", "واجد شرایط"), ("referred", "ارجاع ثبت‌شده با رضایت"), ("converted", "تبدیل به مشتری"), ("closed", "بسته‌شده"), ("invalid", "نامعتبر")]
     full_name = models.CharField(max_length=120)
     phone = models.CharField(max_length=20)
     service = models.CharField(max_length=180, blank=True)
@@ -175,6 +176,14 @@ class Lead(TimestampedModel):
         ordering = ["-created_at"]
         verbose_name = "درخواست مشاوره"
         verbose_name_plural = "درخواست‌های مشاوره"
+
+    def clean(self):
+        super().clean()
+        if self.status == "referred" and self.source == "whatsapp":
+            from whatsapp_leads.models import WhatsAppContact
+            contact = WhatsAppContact.objects.filter(lead_id=self.pk).first() if self.pk else None
+            if not contact or not contact.partner_share_consent:
+                raise ValidationError({"status": "برای ثبت ارجاع واتساپی، رضایت مستقل و مستند لازم است."})
 
     def __str__(self):
         return f"{self.full_name} - {self.phone}"

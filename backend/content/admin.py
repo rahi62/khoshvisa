@@ -1,5 +1,6 @@
 from django.contrib import admin
 from .models import FAQ, LandingPage, Lead, SiteSettings, Testimonial, TrustItem
+from whatsapp_leads.models import LeadStatusHistory
 
 
 @admin.register(SiteSettings)
@@ -37,6 +38,14 @@ class LeadAdmin(admin.ModelAdmin):
     list_filter = ("status", "source", "consent", "created_at")
     search_fields = ("full_name", "phone", "service")
     readonly_fields = ("created_at", "updated_at", "consent", "landing_path", "source")
+
+    def save_model(self, request, obj, form, change):
+        previous = Lead.objects.filter(pk=obj.pk).values_list("status", flat=True).first() if change else ""
+        super().save_model(request, obj, form, change)
+        if previous and previous != obj.status and obj.source == "whatsapp":
+            LeadStatusHistory.objects.create(
+                lead=obj, from_status=previous, to_status=obj.status, changed_by=request.user,
+            )
 
 
 @admin.register(FAQ)

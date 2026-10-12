@@ -20,6 +20,7 @@ INSTALLED_APPS = [
     "corsheaders",
     "rest_framework",
     "content",
+    "whatsapp_leads",
 ]
 
 MIDDLEWARE = [
@@ -86,3 +87,9 @@ REST_FRAMEWORK = {"DEFAULT_PERMISSION_CLASSES": ["rest_framework.permissions.All
 from digitalafarin_cms.settings import apply_defaults as _digitalafarin_cms_apply_defaults
 _digitalafarin_cms_apply_defaults(globals())
 # END DIGITALAFARIN CMS
+
+# WhatsApp Business Platform webhook. Never expose these secrets to Next.js.
+WHATSAPP_WEBHOOK_VERIFY_TOKEN = os.getenv("WHATSAPP_WEBHOOK_VERIFY_TOKEN", "")
+WHATSAPP_APP_SECRET = os.getenv("WHATSAPP_APP_SECRET", "")
+WHATSAPP_PHONE_NUMBER_ID = os.getenv("WHATSAPP_PHONE_NUMBER_ID", "")
+WHATSAPP_RETENTION_DAYS = max(30, int(os.getenv("WHATSAPP_RETENTION_DAYS", "180")))
