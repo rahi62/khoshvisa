@@ -1,1 +1,2 @@
+export const dynamic = "force-static";
 import type {MetadataRoute} from "next";import {visas} from "../lib/content";export default function sitemap():MetadataRoute.Sitemap{return ["","destinations","visa-guides","consultation","about",...visas.map(v=>v.slug)].map(s=>({url:"https://khoshvisa.ir/"+(s?s+"/":""),changeFrequency:"monthly" as const,priority:s?0.7:1}))}
