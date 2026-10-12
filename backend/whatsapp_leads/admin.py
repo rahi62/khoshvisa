@@ -42,8 +42,22 @@ class WhatsAppContactAdmin(admin.ModelAdmin):
         return format_html('<a href="{}">مشاهده / تغییر وضعیت درخواست #{}</a>', url, obj.lead_id)
 
     def has_add_permission(self, request):
-        # All records must originate from a signed inbound webhook.
-        return False
+        # Superusers may explicitly register a confirmed WhatsApp Business App chat.
+        # This is manual intake, never represented as a webhook-confirmed event.
+        return request.user.is_superuser
+
+    def get_readonly_fields(self, request, obj=None):
+        if obj is None:
+            return ("first_inbound_at", "last_inbound_at", "message_count", "partner_share_consent_at")
+        return self.readonly_fields
+
+    def get_fieldsets(self, request, obj=None):
+        if obj is None:
+            return ((
+                "ثبت دستی مکالمه موجود در واتساپ",
+                {"fields": ("lead", "wa_id", "tracking_reference", "destination", "purpose", "travel_window", "partner_share_consent", "partner_share_consent_evidence", "forwarded_partner", "forwarded_at")},
+            ),)
+        return self.fieldsets
 
     def has_delete_permission(self, request, obj=None):
         # Use the explicit retention/purge process rather than ad hoc deletion.

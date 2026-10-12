@@ -39,10 +39,16 @@ class LeadAdmin(admin.ModelAdmin):
     search_fields = ("full_name", "phone", "service")
     readonly_fields = ("created_at", "updated_at", "consent", "landing_path", "source")
 
+    def get_readonly_fields(self, request, obj=None):
+        # Allow staff to classify manually confirmed WhatsApp Business App chats on creation.
+        if obj is None:
+            return tuple(x for x in self.readonly_fields if x != "source")
+        return self.readonly_fields
+
     def save_model(self, request, obj, form, change):
         previous = Lead.objects.filter(pk=obj.pk).values_list("status", flat=True).first() if change else ""
         super().save_model(request, obj, form, change)
-        if previous and previous != obj.status and obj.source == "whatsapp":
+        if previous and previous != obj.status and obj.source.startswith("whatsapp"):
             LeadStatusHistory.objects.create(
                 lead=obj, from_status=previous, to_status=obj.status, changed_by=request.user,
             )

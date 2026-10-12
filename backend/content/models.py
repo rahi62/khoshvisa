@@ -180,9 +180,9 @@ class Lead(TimestampedModel):
 
     def clean(self):
         super().clean()
-        if self.source == "whatsapp" and self.status == "follow_up" and not self.follow_up_at:
+        if self.source.startswith("whatsapp") and self.status == "follow_up" and not self.follow_up_at:
             raise ValidationError({"follow_up_at": "برای وضعیت نیازمند پیگیری، تاریخ پیگیری را وارد کنید."})
-        if self.status == "referred" and self.source == "whatsapp":
+        if self.status == "referred" and self.source.startswith("whatsapp"):
             from whatsapp_leads.models import WhatsAppContact
             contact = WhatsAppContact.objects.filter(lead_id=self.pk).first() if self.pk else None
             if not contact or not contact.partner_share_consent or not contact.forwarded_at or not contact.forwarded_partner:

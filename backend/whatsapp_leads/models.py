@@ -1,3 +1,5 @@
+import re
+
 from django.conf import settings
 from django.core.exceptions import ValidationError
 from django.db import models
@@ -34,6 +36,8 @@ class WhatsAppContact(models.Model):
 
     def clean(self):
         errors = {}
+        if not re.fullmatch(r"[1-9][0-9]{7,14}", self.wa_id or ""):
+            errors["wa_id"] = "شناسه واتساپ باید عدد بین‌المللی معتبر بدون علامت + باشد."
         if self.partner_share_consent and not self.partner_share_consent_evidence.strip():
             errors["partner_share_consent_evidence"] = "ثبت مستند رضایت قبل از انتقال الزامی است."
         if self.forwarded_at is not None:
