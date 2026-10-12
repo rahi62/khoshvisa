@@ -35,6 +35,7 @@ CREATE TABLE IF NOT EXISTS leads (
        partner_consent_at IS NOT NULL AND referred_to <> '' AND referred_to = partner_consent_provider
     )
  ),
+ CONSTRAINT due_date_for_follow_up CHECK (stage <> 'follow_up' OR follow_up_at IS NOT NULL),
  CONSTRAINT stage_referral_is_recorded CHECK (
     stage <> 'referred' OR referred_at IS NOT NULL
  )
