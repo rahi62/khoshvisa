@@ -1,7 +1,7 @@
 import Link from "next/link";
 import {visas,guides} from "../lib/content";
 import ScenicHero from "../components/ScenicHero";
-import {DestinationDeck,StoryJourney,AnimatedSteps,HorizontalFilmStrip} from "../components/KV3Journey";
+import {DestinationDeck,StoryJourney,AnimatedSteps,HorizontalFilmStrip,ScrollTextReveal} from "../components/KV3Journey";
 import WebGLGlobe from "../components/WebGLGlobe";
 import {Reveal,WordReveal} from "../components/CinematicMotion";
 export const metadata={alternates:{canonical:"/"},title:"خوش‌ویزا | راهنمای ویزا و تجربه سفر"};
@@ -11,7 +11,7 @@ export default function Home(){
  <ScenicHero destinations={featured}/>
  <section className="kv3-trustline"><div className="kv3-container"><span>✧ سفر آگاهانه</span><i/><span>◈ راهنمای مقصدها</span><i/><span>✦ اطلاعات مستند</span><i/><span>⌁ مسیرهای رسمی ویزا</span></div></section>
  <section id="destinations" className="kv3-destination-section"><div className="kv3-container"><div className="kv3-section-heading"><Reveal><span className="kv3-eyebrow">01 / DESTINATIONS — DISCOVER</span><h2>مقصد بعدی‌ات<br/><em>کجای جهان است؟</em></h2><p>کارت‌ها را حرکت بده، مقصدت را انتخاب کن و راهنمای ویزای آن را ببین.</p></Reveal><Link className="kv3-text-action" href="/destinations/">همه مقصدها <span>↗</span></Link></div><DestinationDeck items={featured}/></div></section>
- <section className="kv3-statement"><div className="kv3-container"><div className="kv3-statement-mark">“</div><span>DISCOVER MORE THAN DESTINATIONS</span><WordReveal text="ما به تو کمک می‌کنیم پیش از بستن چمدان، مسیر سفر و مدارک ویزا را بهتر بشناسی."/><Link href="/visa-readiness/">بررسی اولیه برای سفر ←</Link></div></section>
+ <section className="kv3-statement"><div className="kv3-container"><div className="kv3-statement-mark">“</div><span>DISCOVER MORE THAN DESTINATIONS</span><ScrollTextReveal text="ما به تو کمک می‌کنیم پیش از بستن چمدان، مسیر سفر و مدارک ویزا را بهتر بشناسی."/><Link href="/visa-readiness/">بررسی اولیه برای سفر ←</Link></div></section>
  <StoryJourney items={[visas[2],visas[1],visas[0],visas[3]]}/>
  <HorizontalFilmStrip items={[visas[4],visas[3],visas[1],visas[2]]}/>
  <section className="kv3-roadmap"><div className="kv3-container"><div className="kv3-section-heading"><Reveal><span className="kv3-eyebrow">02 / THE PROCESS</span><h2>هر سفر بزرگ،<br/><em>با یک تصمیم شروع می‌شود.</em></h2><p>پنج گام متداول در مسیر درخواست ویزای توریستی؛ قابل بررسی و انتخاب.</p></Reveal></div><AnimatedSteps steps={visas[0].steps}/></div></section>
