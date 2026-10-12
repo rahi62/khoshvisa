@@ -16,12 +16,74 @@ export function DestinationDeck({items}:{items:Destination[]}){
  </div>;
 }
 export function StoryJourney({items}:{items:Destination[]}){
- const ref=useRef<HTMLElement>(null),[active,setActive]=useState(0),[progress,setProgress]=useState(0);
- useEffect(()=>{const el=ref.current;if(!el)return;let frame=0;
- const update=()=>{if(frame)return;frame=requestAnimationFrame(()=>{frame=0;const r=el.getBoundingClientRect();const max=Math.max(1,el.offsetHeight-window.innerHeight);const value=Math.max(0,Math.min(1,-r.top/max));setProgress(value);setActive(Math.min(items.length-1,Math.floor(value*items.length)))})};
- window.addEventListener("scroll",update,{passive:true});window.addEventListener("resize",update);update();return()=>{window.removeEventListener("scroll",update);window.removeEventListener("resize",update);cancelAnimationFrame(frame)}},[items.length]);
- return <section className="kv3-story" style={{"--kv-stories":items.length} as CSSProperties} ref={ref}><div className="kv3-story-sticky"><div className="kv3-story-heading"><span>IMMERSIVE DESTINATIONS</span><h2>هر مقصد،<br/><em>یک داستان متفاوت</em></h2></div>
- <div className="kv3-story-photo">{items.map((v,i)=><div key={v.slug} className={"kv3-story-frame "+(i===active?"active":"")} aria-hidden={i!==active} style={{backgroundImage:"linear-gradient(270deg,#071c30d1,#071c3030),url('"+v.photo+"')"}}><div className="kv3-story-copy"><span>{num(i+1)} / {num(items.length)} — {v.region}</span><h3>{v.name}</h3><p>{v.intro}</p><a href={"/"+v.slug+"/"} tabIndex={i===active?0:-1}>کشف مسیر ویزای {v.name} ↗</a></div></div>)}</div><div className="kv3-story-progress"><i style={{height:(progress*100)+"%"}}/></div><div className="kv3-story-index">{num(active+1)} <small>/ {num(items.length)}</small></div></div></section>;
+ const ref=useRef<HTMLElement>(null),mobileTrack=useRef<HTMLDivElement>(null);
+ const [active,setActive]=useState(0),[mobileActive,setMobileActive]=useState(0),[progress,setProgress]=useState(0);
+ useEffect(()=>{
+  const el=ref.current;if(!el)return;
+  const desktop=window.matchMedia("(min-width: 761px)");
+  let frame=0;
+  const update=()=>{
+   if(!desktop.matches||frame)return;
+   frame=requestAnimationFrame(()=>{
+    frame=0;
+    const r=el.getBoundingClientRect();
+    const travel=Math.max(1,el.offsetHeight-window.innerHeight);
+    const value=Math.max(0,Math.min(1,-r.top/travel));
+    setProgress(value);
+    setActive(Math.min(items.length-1,Math.round(value*(items.length-1))));
+   });
+  };
+  const sync=()=>{if(desktop.matches)update()};
+  window.addEventListener("scroll",sync,{passive:true});
+  window.addEventListener("resize",sync);
+  desktop.addEventListener("change",sync);
+  update();
+  return()=>{
+   window.removeEventListener("scroll",sync);
+   window.removeEventListener("resize",sync);
+   desktop.removeEventListener("change",sync);
+   cancelAnimationFrame(frame);
+  };
+ },[items.length]);
+ const chooseMobile=(index:number)=>{
+  const next=Math.max(0,Math.min(items.length-1,index));
+  const node=mobileTrack.current?.querySelectorAll<HTMLElement>("[data-story-index]")[next];
+  if(!node)return;
+  setMobileActive(next);
+  node.scrollIntoView({behavior:window.matchMedia("(prefers-reduced-motion: reduce)").matches?"instant":"smooth",block:"nearest",inline:"center"});
+ };
+ const syncMobile=()=>{
+  const track=mobileTrack.current;if(!track)return;
+  const center=track.getBoundingClientRect().left+track.clientWidth/2;
+  let next=0,nearest=Number.POSITIVE_INFINITY;
+  track.querySelectorAll<HTMLElement>("[data-story-index]").forEach((node,i)=>{
+   const rect=node.getBoundingClientRect(),distance=Math.abs(rect.left+rect.width/2-center);
+   if(distance<nearest){nearest=distance;next=i}
+  });
+  setMobileActive(next);
+ };
+ return <section className="kv3-story" style={{"--kv-stories":items.length} as CSSProperties} ref={ref} aria-label="داستان مقصدهای ویزا">
+  <div className="kv3-story-sticky">
+   <div className="kv3-story-heading"><span>IMMERSIVE DESTINATIONS</span><h2>هر مقصد،<br/><em>یک داستان متفاوت</em></h2></div>
+   <div className="kv3-story-photo">{items.map((v,i)=><div key={v.slug} className={"kv3-story-frame "+(i===active?"active":"")} aria-hidden={i!==active} style={{backgroundImage:"linear-gradient(270deg,#071c30d1,#071c3030),url('"+v.photo+"')"}}><div className="kv3-story-copy"><span>{num(i+1)} / {num(items.length)} — {v.region}</span><h3>{v.name}</h3><p>{v.intro}</p><a href={"/"+v.slug+"/"} tabIndex={i===active?0:-1}>کشف مسیر ویزای {v.name} ↗</a></div></div>)}</div>
+   <div className="kv3-story-progress" aria-hidden="true"><i style={{height:(progress*100)+"%"}}/></div>
+   <div className="kv3-story-index">{num(active+1)} <small>/ {num(items.length)}</small></div>
+  </div>
+  <div className="kv3-story-mobile">
+   <div className="kv3-container kv3-story-mobile-heading"><span className="kv3-eyebrow">IMMERSIVE DESTINATIONS</span><h2>هر مقصد، <em>یک داستان متفاوت</em></h2><p>کارت‌ها را به چپ و راست بکش؛ بدون اسکرول طولانی و فضای خالی.</p></div>
+   <div className="kv3-story-mobile-track" ref={mobileTrack} onScroll={syncMobile} role="region" aria-roledescription="کاروسل" aria-label="راهنمای تصویری مقصدهای ویزا">
+    {items.map((v,i)=><a data-story-index={i} key={v.slug} className="kv3-story-mobile-card" href={"/"+v.slug+"/"} aria-label={"مشاهده راهنمای ویزای "+v.name} style={{backgroundImage:"linear-gradient(0deg,rgba(4,19,32,.97),rgba(4,19,32,.16) 75%),url('"+v.photo+"')"}}>
+      <div className="kv3-story-mobile-top"><span>{num(i+1)} / {num(items.length)}</span><span>{v.region}</span></div>
+      <div className="kv3-story-mobile-copy"><h3>{v.name}</h3><p>{v.intro}</p><strong>کشف مسیر ویزا ↗</strong></div>
+     </a>)}
+   </div>
+   <div className="kv3-container kv3-story-mobile-controls">
+    <span aria-live="polite">{num(mobileActive+1)} / {num(items.length)}</span>
+    <div><button type="button" onClick={()=>chooseMobile(mobileActive-1)} disabled={mobileActive===0} aria-label="مقصد قبلی">→</button>
+    <button type="button" onClick={()=>chooseMobile(mobileActive+1)} disabled={mobileActive===items.length-1} aria-label="مقصد بعدی">←</button></div>
+   </div>
+  </div>
+ </section>;
 }
 export function AnimatedSteps({steps}:{steps:string[]}){
  const [selected,setSelected]=useState(0),labels=["انتخاب مقصد","آماده‌سازی مدارک","ثبت درخواست","ارائه اطلاعات","پیگیری رسمی"];
