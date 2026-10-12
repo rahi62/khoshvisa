@@ -1,16 +1,24 @@
-# KhoshVisa static
+# KhoshVisa — Static Experience
 
-Independent Next.js static export, no CMS or Django dependency.
+Premium Persian RTL tourism visa website, built with Next.js App Router, TypeScript and static export.
 
-## Vercel
-Select branch `static`, Root Directory `static-site`, Framework `Next.js`, Build Command `npm run build`. Static export is enabled in next.config.mjs.
+## Deploy on Vercel
+- Git branch: static
+- Root Directory: static-site
+- Framework: Next.js
+- Build: npm run build
+- No runtime CMS, Django or database needed
 
-## Local
-`npm install && npm run build`
+## Architecture
+- 8 destination guides, three editorial guides, destination search and region filters
+- Mobile menu, mobile consultation/destination dock, responsive layouts
+- Static metadata, canonical routes, robots.txt and sitemap.xml
+- Official visa references and transparent no-guarantee disclosures
 
-## Before launch
-- Replace remote Unsplash imagery with licensed locally optimized images.
-- Confirm official agency identity and contact number; connect a secure form endpoint with consent and spam protection.
-- Verify official visa fees and policies, add detailed original content and dated editorial review.
-- Confirm domain canonical and redirect behavior before indexing.
-- Current service pages are a content scaffold, not completed competitive SEO articles.
+## Launch blockers
+1. Replace externally hosted travel images with licensed optimized local assets.
+2. Confirm agency identity, phone, contact address and implement a real secure lead intake endpoint; current consultation page intentionally collects no data.
+3. Perform detailed competitor research and expand service content before expecting search rankings.
+4. QA build, real devices, accessibility, Core Web Vitals, sitemap and indexing in Search Console.
+
+Never represent visa approvals as guaranteed. Existing main branch and CMS remain untouched.
