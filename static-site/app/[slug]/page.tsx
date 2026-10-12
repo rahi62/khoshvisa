@@ -1,12 +1,14 @@
 import Link from "next/link";
 import {notFound} from "next/navigation";
 import {visas} from "../../lib/content";
+import {visaProfiles} from "../../lib/visa-profiles";
+import {VisaPillarPage} from "../../components/VisaPillarPage";
 import {AnimatedSteps} from "../../components/KV3Journey";
 import {Reveal} from "../../components/CinematicMotion";
 export function generateStaticParams(){return visas.map(v=>({slug:v.slug}))}
-export async function generateMetadata({params}:{params:Promise<{slug:string}>}){const {slug}=await params;const v=visas.find(x=>x.slug===slug);return {title:v?"ویزای توریستی "+v.name+" | شرایط، مدارک و مراحل":"ویزای توریستی",description:v?.summary,alternates:{canonical:"/"+slug+"/"}}}
+export async function generateMetadata({params}:{params:Promise<{slug:string}>}){const {slug}=await params;const v=visas.find(x=>x.slug===slug);const p=visaProfiles[slug];return {title:p?`${p.primaryKeyword} | شرایط، مدارک، هزینه و وقت درخواست`:v?"ویزای توریستی "+v.name+" | شرایط، مدارک و مراحل":"ویزای توریستی",description:p?p.subtitle:v?.summary,alternates:{canonical:"/"+slug+"/"}}}
 export default async function Page({params}:{params:Promise<{slug:string}>}){
- const {slug}=await params;const visa=visas.find(v=>v.slug===slug);if(!visa)notFound();
+ const {slug}=await params;const visa=visas.find(v=>v.slug===slug);if(!visa)notFound();const profile=visaProfiles[slug];if(profile)return <VisaPillarPage visa={visa} profile={profile}/>;
  return <main className="kv3-visa-page">
  <section className="kv3-visa-hero" style={{backgroundImage:"linear-gradient(270deg,#061a2cf0,#061a2c9d 55%,#061a2c35),url('"+visa.photo+"')",viewTransitionName:"kv-visa-"+visa.slug}}>
  <div className="kv3-container kv3-visa-intro"><div className="kv3-visa-crumb"><Link href="/">خوش‌ویزا</Link><span> / </span><Link href="/destinations/">مقصدها</Link><span> / </span>{visa.name}</div><span className="kv3-eyebrow">VISAS & DESTINATIONS • {visa.region}</span><h1>ویزای توریستی<br/><em>{visa.name}</em></h1><p>{visa.intro}</p><div className="kv3-visa-hero-actions"><Link href="/visa-readiness/" className="kv3-button kv3-button-gold">بررسی اولیه مسیر ویزا ↗</Link><a href={visa.source} target="_blank" rel="noopener noreferrer" className="kv3-button kv3-button-outline">اطلاعات مرجع رسمی ↗</a></div></div><span className="kv3-visa-hero-number" aria-hidden="true">{visa.flag}</span></section>
