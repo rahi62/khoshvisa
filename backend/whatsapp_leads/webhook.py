@@ -154,10 +154,16 @@ class WhatsAppWebhookView(View):
         if not isinstance(payload, dict) or payload.get("object") != "whatsapp_business_account":
             return JsonResponse({"received": True})
 
-        for entry in payload.get("entry", [])[:10]:
+        entries = payload.get("entry")
+        if not isinstance(entries, list):
+            return JsonResponse({"received": True})
+        for entry in entries[:10]:
             if not isinstance(entry, dict):
                 continue
-            for change in entry.get("changes", [])[:10]:
+            changes = entry.get("changes")
+            if not isinstance(changes, list):
+                continue
+            for change in changes[:10]:
                 if not isinstance(change, dict) or change.get("field") != "messages":
                     continue
                 value = change.get("value")
@@ -168,12 +174,20 @@ class WhatsAppWebhookView(View):
                     continue
                 if str(metadata.get("phone_number_id", "")) != business_phone_id:
                     continue
+                contacts = value.get("contacts")
+                messages = value.get("messages")
+                if not isinstance(contacts, list):
+                    contacts = []
+                if not isinstance(messages, list):
+                    messages = []
                 profiles = {
-                    c.get("wa_id"): (c.get("profile") or {}).get("name", "")
-                    for c in value.get("contacts", [])[:25]
-                    if isinstance(c, dict) and isinstance(c.get("profile"), dict)
+                    c["wa_id"]: c["profile"].get("name", "")
+                    for c in contacts[:25]
+                    if isinstance(c, dict)
+                    and isinstance(c.get("wa_id"), str)
+                    and isinstance(c.get("profile"), dict)
                 }
-                for msg in value.get("messages", [])[:25]:
+                for msg in messages[:25]:
                     if isinstance(msg, dict):
                         _store_inbound(msg, profiles.get(msg.get("from"), ""))
 
