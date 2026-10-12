@@ -54,7 +54,7 @@ export default function WebGLGlobe({items}:{items:Destination[]}){
    if(started)return;started=true;
    try{
     const atlas=(await import("world-atlas/countries-110m.json")).default;
-    const collection=feature(atlas as never,atlas.objects.countries as never) as FeatureCollection<Geometry>;
+    const collection=feature(atlas as never,atlas.objects.countries as never) as unknown as FeatureCollection<Geometry>;
     if(alive)setCountries(collection);
    }catch{
     if(alive)setError(true);
