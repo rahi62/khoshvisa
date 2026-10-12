@@ -68,3 +68,23 @@
  .kv3-story-mobile-card{transition:none}
  .kv3-globe-picks button{transition:none}
 }
+
+/* Large screens with reduced motion also use a fully styled, non-sticky card strip. */
+@media(min-width:761px) and (prefers-reduced-motion:reduce){
+ .kv3-story{height:auto;min-height:0;padding:55px 0 50px;overflow:hidden}
+ .kv3-story-mobile-heading{padding:0 0 20px;color:#fff}
+ .kv3-story-mobile-heading h2{font-size:clamp(33px,4vw,55px);line-height:1.45;margin:10px 0;color:#fff}
+ .kv3-story-mobile-heading h2 em{color:#e2b16e;font-style:normal}
+ .kv3-story-mobile-heading p{color:#d8e4ec;font-size:14px;line-height:2}
+ .kv3-story-mobile-track{direction:rtl;display:flex;gap:18px;overflow-x:auto;scroll-snap-type:x proximity;overscroll-behavior-inline:contain;padding:8px max(25px,calc((100vw - 1200px)/2)) 18px;scrollbar-width:thin}
+ .kv3-story-mobile-card{scroll-snap-align:center;flex:0 0 min(42vw,440px);height:480px;display:flex;flex-direction:column;justify-content:space-between;padding:25px;background-position:center;background-size:cover;border:1px solid #e0c39450;border-radius:16px;color:#fff}
+ .kv3-story-mobile-top{display:flex;justify-content:space-between;color:#e8c394;font-size:12px}
+ .kv3-story-mobile-copy h3{color:#fff;font-size:60px;line-height:1.4;margin:0}
+ .kv3-story-mobile-copy p{font-size:14px;line-height:2.1;color:#f4f6f8}
+ .kv3-story-mobile-copy strong{display:inline-block;border-bottom:1px solid #e9c18a;padding-bottom:8px;color:#f0c588;font-size:13px}
+ .kv3-story-mobile-controls{display:flex;justify-content:space-between;align-items:center;padding-top:12px;color:#eac58d}
+ .kv3-story-mobile-controls>div{display:flex;gap:10px}
+ .kv3-story-mobile-controls button{width:47px;height:47px;border-radius:50%;border:1px solid #eac18c7a;background:#ffffff16;color:#eac58d;cursor:pointer;font-size:20px}
+ .kv3-story-mobile-controls button:disabled{opacity:.3;cursor:default}
+ .kv3-story-mobile-card:focus-visible{outline:3px solid #eac58d;outline-offset:-4px}
+}
