@@ -1,6 +1,7 @@
 "use client";
 
 import {useEffect,useRef,useState} from "react";
+import type {PointerEvent as CanvasPointerEvent,KeyboardEvent as CanvasKeyboardEvent} from "react";
 import Link from "next/link";
 import type {Visa} from "../lib/content";
 import {geoContains,geoDistance,geoGraticule10,geoOrthographic,geoPath} from "d3-geo";
@@ -214,12 +215,12 @@ export default function WebGLGlobe({items}:{items:Destination[]}){
   else setNotCovered(true);
  }
  const pointer=useRef<Pointer|null>(null);
- function down(e:React.PointerEvent<HTMLCanvasElement>){
+ function down(e:CanvasPointerEvent<HTMLCanvasElement>){
   cancelAnimationFrame(spinFrame.current);
   pointer.current={startX:e.clientX,startY:e.clientY,x:e.clientX,y:e.clientY,dragged:false,id:e.pointerId};
   e.currentTarget.setPointerCapture(e.pointerId);
  }
- function move(e:React.PointerEvent<HTMLCanvasElement>){
+ function move(e:CanvasPointerEvent<HTMLCanvasElement>){
   const p=pointer.current;if(!p||p.id!==e.pointerId)return;
   const dx=e.clientX-p.x,dy=e.clientY-p.y;
   if(Math.abs(e.clientX-p.startX)+Math.abs(e.clientY-p.startY)>9)p.dragged=true;
@@ -232,13 +233,13 @@ export default function WebGLGlobe({items}:{items:Destination[]}){
   }
   p.x=e.clientX;p.y=e.clientY;
  }
- function up(e:React.PointerEvent<HTMLCanvasElement>){
+ function up(e:CanvasPointerEvent<HTMLCanvasElement>){
   const p=pointer.current;if(!p||p.id!==e.pointerId)return;
   if(!p.dragged)handleCountryClick(e.clientX,e.clientY);
   pointer.current=null;
   if(e.currentTarget.hasPointerCapture(e.pointerId))e.currentTarget.releasePointerCapture(e.pointerId);
  }
- function keyboard(e:React.KeyboardEvent<HTMLCanvasElement>){
+ function keyboard(e:CanvasKeyboardEvent<HTMLCanvasElement>){
   const amount=12;
   if(e.key==="ArrowLeft"||e.key==="ArrowRight"||e.key==="ArrowUp"||e.key==="ArrowDown"){
    e.preventDefault();
