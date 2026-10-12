@@ -3,7 +3,7 @@ import type {Visa} from "../lib/content";
 import type {VisaProfile} from "../lib/visa-profiles";
 
 const sections=[
- ["overview","معرفی و شرایط"],["facts","هزینه و زمان"],["documents","مدارک لازم"],
+ ["overview","معرفی و شرایط"],["facts","هزینه و زمان"],["requirements","شرایط پرونده"],["documents","مدارک لازم"],
  ["apply","مراحل اقدام"],["iran","نکات متقاضی ایرانی"],
  ["risks","خطاهای رایج"],["faq","سؤالات متداول"],["sources","منابع رسمی"]
 ];
