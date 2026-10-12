@@ -15,11 +15,11 @@ export default async function Dashboard({searchParams}:{searchParams:Promise<Fil
  const page=Math.max(1,Math.min(500,Number.parseInt(params.page||"1",10)||1));
  const offset=(page-1)*50;
  const [data,count,due]=await Promise.all([
-   database().query<LeadRow>(\`
+   database().query<LeadRow>(`
     SELECT * FROM leads WHERE ($1::text = '' OR stage=$1) ORDER BY last_contact_at DESC LIMIT 50 OFFSET $2
-   \`,[stage,offset]),
+   `,[stage,offset]),
    database().query<{total:string}>("SELECT count(*)::text AS total FROM leads WHERE ($1::text='' OR stage=$1)",[stage]),
-   database().query<{total:string}>(\`SELECT count(*)::text AS total FROM leads WHERE stage='follow_up' AND follow_up_at<=now()\`),
+   database().query<{total:string}>(`SELECT count(*)::text AS total FROM leads WHERE stage='follow_up' AND follow_up_at<=now()`),
  ]);
  const total=Number(count.rows[0].total);
  const hasNext=page*50<total;
