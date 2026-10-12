@@ -71,9 +71,9 @@ export function VisaPillarPage({visa,profile}:{visa:Visa;profile:VisaProfile}){
     <span className="seo-overline">YOUR TRAVEL ROADMAP</span>
     <h2>قدم بعدی در مسیر ویزای {visa.name}</h2>
     <p>قبل از هر اقدامی، چک‌لیست اولیه وضعیت خود را تهیه و مرجع رسمی کشور مقصد را بررسی کنید.</p>
-    <Link href="/visa-readiness/" className="seo-button seo-button-gold">چک‌لیست اولیه ←</Link>
+    <Link href={"/consultation/?destination="+visa.slug} className="seo-button seo-button-gold">درخواست راهنمایی در واتساپ ←</Link>
     <a href={profile.sources[0].url} target="_blank" rel="noopener noreferrer" className="seo-aside-source">مشاهده راهنمای رسمی ↗</a>
-    <p className="seo-aside-note">درخواست مشاوره آنلاین فعلاً فعال نیست؛ اطلاعات شخصی در این مرحله دریافت نمی‌شود.</p></div>
+    <p className="seo-aside-note">پیام فقط پس از تأیید و ارسال خود شما در واتساپ دریافت می‌شود؛ اطلاعات پیش از آن از فرم سایت ارسال نمی‌شود.</p></div>
     <div className="seo-aside-toc"><strong>در این راهنما</strong>{sections.map(([id,label])=><a href={"#"+id} key={id}>{label}</a>)}</div>
    </aside>
   </div>
