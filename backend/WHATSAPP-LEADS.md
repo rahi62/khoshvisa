@@ -58,7 +58,7 @@ The frontend number \`NEXT_PUBLIC_KHOSHVISA_WHATSAPP_NUMBER\` is **public**. It 
 
 1. Real inbound message → new CRM lead, status **new**.
 2. Staff replies in WhatsApp, updates Lead in Django Admin to **contacted**.
-3. Needs later answer → **follow_up**; record the due date in internal admin notes (not visible to website visitors).
+3. Needs later answer → **follow_up**; enter **follow_up_at** in the dedicated admin field. Django validates that WhatsApp follow-up statuses have a due date.
 4. After review → **qualified** or **invalid**.
 5. **Never auto-send the individual's data to another business.** If service delivery requires an independent provider, tell the individual what categories of data will be shared with whom and why, obtain their separate informed permission and record evidence in the WhatsApp Contact admin.
 6. Only then manually send the permitted data using an approved channel, record the provider identifier/date and set Lead status to **referred**; model validation blocks \`referred\` on WhatsApp leads without the separate permission.
