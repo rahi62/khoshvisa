@@ -44,7 +44,8 @@ const validEmail=(s:string)=>!s||(/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(s)&&s.length
 export function validateSettings(s:SiteSettingsData):boolean{
  for(const [field,max] of Object.entries(SETTINGS_FIELDS) as [TextSettingField,number][]){
   const value=s[field];
-  if(typeof value!=="string"||value.length>max||/[\u0000-\u0008\u000B\u000C\u000E-\u001F\u007F]/.test(value)||\n     (field!=="footerDescription"&&/[\r\n]/.test(value)))return false;
+  if(typeof value!=="string"||value.length>max||/[\u0000-\u0008\u000B\u000C\u000E-\u001F\u007F]/.test(value)||
+     (field!=="footerDescription"&&/[\r\n]/.test(value)))return false;
  }
  if(!s.brandName||!s.brandNameEn||!s.defaultMetaTitle||!s.defaultMetaDescription)return false;
  if(!validMobile(s.supportMobile)||!validLandline(s.supportLandline)||(!s.supportMobile&&!s.supportLandline))return false;
