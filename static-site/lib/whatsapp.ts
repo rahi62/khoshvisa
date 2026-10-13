@@ -11,7 +11,9 @@ export type WhatsAppDraft={
   timing:string;
   sourcePath:string;
 };
-export const WA_NUMBER=(process.env.NEXT_PUBLIC_KHOSHVISA_WHATSAPP_NUMBER||"").replace(/\D/g,"");
+// Public response number provided by the site operator (09351300502). The Vercel variable may override it.
+export const DEFAULT_WA_NUMBER="989351300502";
+export const WA_NUMBER=(process.env.NEXT_PUBLIC_KHOSHVISA_WHATSAPP_NUMBER?.trim()||DEFAULT_WA_NUMBER).replace(/\D/g,"");
 export const WA_NUMBER_READY=/^[1-9][0-9]{7,14}$/.test(WA_NUMBER);
 
 const compact=(s:string,max:number)=>s.normalize("NFC").replace(/[\r\n\t]+/g," ").replace(/\s+/g," ").trim().slice(0,max);
