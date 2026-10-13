@@ -32,6 +32,19 @@ for(const [route,tokens] of Object.entries(countryContent)){
  if(!html.includes("BreadcrumbList")){console.error("Missing breadcrumb structured data",route);process.exitCode=1}
  if(!html.includes("WebPage")){console.error("Missing citeable WebPage JSON-LD",route);process.exitCode=1}
 }
+const guideRoutes={
+ "/visa-guides/visa-documents":["Article","BreadcrumbList","مدارک ویزای توریستی","جدول مقایسه مدارک","سؤالات متداول","کمیسیون اروپا","GOV.UK"],
+ "/visa-guides/visa-rejection":["Article","BreadcrumbList","نامه رد"],
+ "/visa-guides/visa-fees":["Article","BreadcrumbList","هزینه"]
+};
+for(const [route,tokens] of Object.entries(guideRoutes)){
+ const file=join(base,"server","app",route.substring(1)+".html");
+ if(!existsSync(file)){console.error("Missing statically-rendered educational guide:",route);process.exitCode=1;continue}
+ const html=readFileSync(file,"utf8");
+ if(!html.includes('lang="fa"')||!html.includes('dir="rtl"')){console.error("Incorrect guide language/RTL:",route);process.exitCode=1}
+ if(!html.includes('rel="canonical"')){console.error("Missing guide canonical:",route);process.exitCode=1}
+ for(const token of tokens)if(!html.includes(token)){console.error("Missing guide schema/content token:",route,token);process.exitCode=1}
+}
 if(!prerendered.has("/sitemap.xml")||!prerendered.has("/robots.txt")){
  console.error("Sitemap or robots.txt missing from prerendered routes");process.exitCode=1
 }
