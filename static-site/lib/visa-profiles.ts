@@ -5,6 +5,7 @@
  * Never imply an application approval prediction or a service commitment.
  */
 import {europeVisaProfiles} from "./visa-profiles-europe";
+import {additionalVisaProfiles} from "./visa-profiles-more";
 
 export type VisaProfile={
  slug:string;
@@ -26,6 +27,7 @@ export type VisaProfile={
 const checked="۲۰۲۶/۱۰/۱۲";
 export const visaProfiles:Record<string,VisaProfile>={
 ...europeVisaProfiles,
+...additionalVisaProfiles,
 "schengen-visa":{
  slug:"schengen-visa",reviewed:checked,primaryKeyword:"ویزای شینگن",
  subtitle:"شرایط ویزای شینگن برای متقاضی ایرانی؛ مدارک، هزینه رسمی، وقت سفارت و مراحل درخواست",
