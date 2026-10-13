@@ -1,4 +1,5 @@
 import Link from "next/link";
+import ContactChannels from "../../components/ContactChannels";
 import type {Metadata} from "next";
 
 export const metadata:Metadata={
@@ -14,7 +15,9 @@ export default function Page(){
    <p>سؤال‌ها و درخواست اولیه درباره مقصد موردنظرت را از مسیر ارتباطی خود خوش‌ویزا مطرح کن.</p>
   </div></section>
   <section className="shell sectionSpace prose">
-   <h2>ثبت درخواست اولیه از طریق واتساپ</h2>
+   <h2>شماره‌های رسمی پاسخ‌گویی خوش‌ویزا</h2>
+   <ContactChannels/>
+   <h2>شروع ارتباط در واتساپ، در صورت فعال‌بودن</h2>
    <p>در صفحه ارتباط، مقصد، هدف سفر و بازه زمانی احتمالی را مشخص می‌کنی. در صورت فعال‌بودن شماره رسمی خوش‌ویزا، یک پیام آماده در واتساپ باز می‌شود؛ تا وقتی خودت دکمه ارسال را نزنی، پیامی به خوش‌ویزا نمی‌رسد.</p>
    <p>این مرحله صرفاً برای شروع ارتباط و هماهنگی احتمالی است و به معنای مشاوره تخصصی، تشکیل قطعی پرونده یا تضمین خدمات نیست. ممکن است مسیر واتساپ تا زمان راه‌اندازی شماره رسمی غیرفعال باشد.</p>
    <Link className="btn btnDark" href="/consultation/">مشاهده فرم ارتباط واتساپی ↗</Link>
