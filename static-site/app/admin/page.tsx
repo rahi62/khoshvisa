@@ -26,7 +26,7 @@ export default async function Dashboard({searchParams}:{searchParams:Promise<Fil
  const link=(n:number)=>"/admin?"+new URLSearchParams(stage?{stage,page:String(n)}:{page:String(n)}).toString();
  return <main className="admin-shell">
   <header className="admin-top"><div><strong>✦ خوش‌ویزا</strong><span>مدیریت درخواست‌های واتساپ</span></div><form method="post" action="/api/admin/logout"><button type="submit">خروج امن</button></form></header>
-  <div className="admin-width"><div className="admin-heading"><div><h1>داشبورد لیدها</h1><p>ثبت واقعی از واتساپ، پیگیری انسانی و اشتراک اطلاعات فقط با رضایت مستند</p></div><Link href="https://khoshvisa.ir/consultation/" target="_blank">صفحه دریافت لید ↗</Link></div>
+  <div className="admin-width"><div className="admin-heading"><div><h1>داشبورد لیدها</h1><p>ثبت واقعی از واتساپ، پیگیری انسانی و اشتراک اطلاعات فقط با رضایت مستند</p></div><div className="admin-shortcuts"><Link href="/admin/settings">شماره‌های پاسخگویی ⚙</Link><Link href="https://khoshvisa.ir/consultation/" target="_blank">صفحه دریافت لید ↗</Link></div></div>
   <div className="metrics"><div><strong>{total.toLocaleString("fa-IR")}</strong><span>{stage?"تعداد در این وضعیت":"مجموع لیدها"}</span></div><div><strong>{Number(due.rows[0].total).toLocaleString("fa-IR")}</strong><span>پیگیری‌های سررسید شده</span></div><div><strong>واتساپ</strong><span>کانال دریافت اولیه</span></div></div>
   {params.error&&<p className="error" role="alert">ثبت دستی انجام نشد: {params.error==="already_exists"?"این شماره قبلاً ثبت شده است.":params.error==="not_confirmed"?"تأیید دریافت واقعی پیام لازم است.":params.error==="invalid_phone"?"شماره واتساپ نامعتبر است.":"ورودی یا سرویس را بررسی کنید."}</p>}
   <section className="panel">
