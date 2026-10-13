@@ -1,7 +1,7 @@
 import {NextRequest,NextResponse} from "next/server";
 import {adminRedirect,blockedLogin,clearLoginFailures,cookieOptions,COOKIE,issueSession,recordLoginFailure,safeOrigin,verifyPassword} from "@/lib/crm-auth";
 export const runtime="nodejs";export const dynamic="force-dynamic";
-const go=(request:NextRequest,error:string)=>NextResponse.redirect(adminRedirect("/admin/login?error="+encodeURIComponent(error)),303);
+const go=(request:NextRequest,error:string,next="/admin")=>NextResponse.redirect(adminRedirect("/admin/login?error="+encodeURIComponent(error)+(next==="/admin/settings"?"&next=%2Fadmin%2Fsettings":"")),303);
 export async function POST(req:NextRequest){
  if(!safeOrigin(req))return NextResponse.json({error:"origin_forbidden"},{status:403});
  let form:FormData;
@@ -11,12 +11,12 @@ export async function POST(req:NextRequest){
  const next=form.get("next")==="/admin/settings"?"/admin/settings":"/admin";
  const configured=process.env.ADMIN_EMAIL?.trim().toLowerCase()||"";
  if(!configured||!process.env.SESSION_SECRET||!process.env.ADMIN_PASSWORD_SCRYPT)
-   return go(req,"setup");
+   return go(req,"setup",next);
  try{
-  if(await blockedLogin(req))return go(req,"wait");
+  if(await blockedLogin(req))return go(req,"wait",next);
   if(email!==configured||!verifyPassword(password)){
     await recordLoginFailure(req);
-    return go(req,"invalid");
+    return go(req,"invalid",next);
   }
   await clearLoginFailures(req);
   const response=NextResponse.redirect(adminRedirect(next),303);
@@ -25,6 +25,6 @@ export async function POST(req:NextRequest){
   return response;
  }catch(e){
   console.error("Admin authentication unavailable",e instanceof Error?e.name:"UnknownError");
-  return go(req,"unavailable");
+  return go(req,"unavailable",next);
  }
 }
