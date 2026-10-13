@@ -21,3 +21,12 @@ test("cannot disable all phone channels or serve malformed public settings",()=>
  assert.equal(isPublicContactSettings({mobile:"09123456789",landline:"",whatsappNumber:"",whatsappEnabled:"yes"}),false);
  assert.equal(isPublicContactSettings(null),false);
 });
+
+import {normalizeLeadPhone} from "../lib/lead-phone";
+test("phone contacts can be logged as phone leads, never as an assumed WhatsApp account",()=>{
+ assert.equal(normalizeLeadPhone("09351300502"),"989351300502");
+ assert.equal(normalizeLeadPhone("02146010788"),"982146010788");
+ assert.equal(normalizeLeadPhone("+98 935 130 0502"),"989351300502");
+ assert.equal(normalizeLeadPhone("00000000"),"");
+ assert.equal(normalizeLeadPhone("javascript:alert(1)"),"");
+});
