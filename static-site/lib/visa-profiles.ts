@@ -4,10 +4,13 @@
  * verified 2026-10-12. Verify the linked official sites again before making any payment.
  * Never imply an application approval prediction or a service commitment.
  */
+import {europeVisaProfiles} from "./visa-profiles-europe";
+
 export type VisaProfile={
  slug:string;
  subtitle:string;
  reviewed:string;
+ reviewedISO?:string;
  primaryKeyword:string;
  overview:string[];
  quick:{label:string;value:string;note?:string;source?:string}[];
@@ -22,6 +25,7 @@ export type VisaProfile={
 };
 const checked="۲۰۲۶/۱۰/۱۲";
 export const visaProfiles:Record<string,VisaProfile>={
+...europeVisaProfiles,
 "schengen-visa":{
  slug:"schengen-visa",reviewed:checked,primaryKeyword:"ویزای شینگن",
  subtitle:"شرایط ویزای شینگن برای متقاضی ایرانی؛ مدارک، هزینه رسمی، وقت سفارت و مراحل درخواست",
