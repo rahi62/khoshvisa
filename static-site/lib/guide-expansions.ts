@@ -13,6 +13,8 @@ export type GuideExpansion={
  quickAnswerTitle?:string;
  metaDescription?:string;
  comparisonTitle?:string;
+ comparisonRequirementLabel?:string;
+ notice?:string;
  comparisonCaption?:string;
  faqTitle?:string;
  comparison?:{intro:string;rows:{destination:string;slug:string;requirement:string;source:string;href:string}[]};
