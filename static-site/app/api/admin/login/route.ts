@@ -8,6 +8,7 @@ export async function POST(req:NextRequest){
  try{form=await req.formData()}catch{return go(req,"invalid")}
  const email=String(form.get("email")||"").trim().toLowerCase().slice(0,180);
  const password=String(form.get("password")||"");
+ const next=form.get("next")==="/admin/settings"?"/admin/settings":"/admin";
  const configured=process.env.ADMIN_EMAIL?.trim().toLowerCase()||"";
  if(!configured||!process.env.SESSION_SECRET||!process.env.ADMIN_PASSWORD_SCRYPT)
    return go(req,"setup");
@@ -18,7 +19,7 @@ export async function POST(req:NextRequest){
     return go(req,"invalid");
   }
   await clearLoginFailures(req);
-  const response=NextResponse.redirect(adminRedirect("/admin"),303);
+  const response=NextResponse.redirect(adminRedirect(next),303);
   response.cookies.set(COOKIE,issueSession(),cookieOptions());
   response.headers.set("cache-control","no-store");
   return response;
