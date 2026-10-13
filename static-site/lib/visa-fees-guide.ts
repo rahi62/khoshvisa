@@ -17,7 +17,7 @@ export const visaFeesGuide:GuideExpansion={
   rows:[
    {destination:"شینگن",slug:"schengen-visa",requirement:"بزرگسال: ۹۰ یورو؛ کودکان از ۶ تا کمتر از ۱۲ سال: ۴۵ یورو؛ کودکان زیر ۶ سال معاف از هزینه ویزا. کارمزد مرکز می‌تواند جدا باشد.",source:"کمیسیون اروپا",href:"https://home-affairs.ec.europa.eu/policies/schengen/visa-policy/applying-schengen-visa_en"},
    {destination:"فرانسه",slug:"france-tourist-visa",requirement:"ویزای کوتاه‌مدت عادی مشمول تعرفه شینگن: ۹۰ یورو بزرگسال؛ کارمزد مرکز ویزا و تبدیل ارز محلی جداگانه بررسی شود.",source:"کمیسیون اروپا / France-Visas",href:"https://www.france-visas.gouv.fr/"},
-   {destination:"آلمان",slug:"germany-tourist-visa",requirement:"ویزای کوتاه‌مدت عادی مشمول تعرفه شینگن: ۹۰ یورو بزرگسال؛ خدمات مرکز درخواست و هزینه جانبی در این مبلغ نیست.",source:"کمیسیون اروپا / سفارت آلمان",href:"https://teheran.diplo.de/ir-de/service/05-VisaEinreise"},
+   {destination:"آلمان",slug:"germany-tourist-visa",requirement:"ویزای کوتاه‌مدت عادی مشمول تعرفه شینگن: ۹۰ یورو بزرگسال؛ خدمات مرکز درخواست و هزینه جانبی در این مبلغ نیست.",source:"کمیسیون اروپا / سفارت آلمان",href:"https://teheran.diplo.de/ir-de/02-service/2404274-2404274"},
    {destination:"ایتالیا",slug:"italy-tourist-visa",requirement:"ویزای کوتاه‌مدت عادی مشمول تعرفه شینگن: ۹۰ یورو بزرگسال؛ کارمزد مرکز و تبدیل ریالی را از منبع رسمی محل اقدام استعلام کنید.",source:"کمیسیون اروپا / سفارت ایتالیا",href:"https://ambteheran.esteri.it/fa/servizi-consolari-e-visti/servizi-per-il-cittadino-straniero/visti/"},
    {destination:"کانادا",slug:"canada-tourist-visa",requirement:"هزینه بررسی Visitor Visa: ۱۰۰ دلار کانادا برای هر نفر؛ اگر بیومتریک لازم باشد، معمولاً ۸۵ دلار کانادا به‌ازای هر نفر. سقف‌های خانوادگی شرایط خاص دارند.",source:"IRCC کانادا",href:"https://www.ircc.canada.ca/english/information/fees/fees.asp"},
    {destination:"انگلیس",slug:"uk-tourist-visa",requirement:"Standard Visitor تا ۶ ماه: ۱۳۵ پوند برای هر نفر؛ نسخه‌های بلندمدت ۲، ۵ و ۱۰ ساله تعرفه‌های دیگری دارند.",source:"GOV.UK",href:"https://www.gov.uk/standard-visitor/apply-standard-visitor-visa"},
@@ -109,7 +109,7 @@ export const visaFeesGuide:GuideExpansion={
   {name:"سفارت ژاپن — هزینه ویزا در ایران از ژوئیه ۲۰۲۶",url:"https://www.ir.emb-japan.go.jp/itpr_fa/visa.html"},
   {name:"وزارت خارجه ژاپن — FAQ هزینه صدور",url:"https://www.mofa.go.jp/j_info/visit/visa/faq.html"},
   {name:"France-Visas — اطلاعات ویزای فرانسه",url:"https://www.france-visas.gouv.fr/"},
-  {name:"سفارت آلمان — ویزا",url:"https://teheran.diplo.de/ir-de/service/05-VisaEinreise"},
+  {name:"سفارت آلمان — ویزا",url:"https://teheran.diplo.de/ir-de/02-service/2404274-2404274"},
   {name:"سفارت ایتالیا — اطلاعات ویزا",url:"https://ambteheran.esteri.it/fa/servizi-consolari-e-visti/servizi-per-il-cittadino-straniero/visti/"}
  ]
 };
