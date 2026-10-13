@@ -8,15 +8,16 @@ const errors:Record<string,string>={
  setup:"نام کاربری یا تنظیمات امنیتی سرور هنوز کامل نشده است.",
  unavailable:"سرویس مدیریت موقتاً در دسترس نیست.",
 };
-export default async function Login({searchParams}:{searchParams:Promise<{error?:string}>}){
- if(await isAdmin())redirect("/admin");
- const {error}=await searchParams;
+export default async function Login({searchParams}:{searchParams:Promise<{error?:string;next?:string}>}){
+ const {error,next}=await searchParams;
+ const destination=next==="/admin/settings"?"/admin/settings":"/admin";
+ if(await isAdmin())redirect(destination);
  return <main className="login-screen"><section className="login-card">
-  <div className="brand">✦ خوش‌ویزا <small>LEAD OPERATIONS</small></div>
+  <div className="brand">✦ خوش‌ویزا <small>SITE ADMIN</small></div>
   <h1>ورود مدیر</h1>
-  <p>پیگیری مکالمات واقعی واتساپ و وضعیت درخواست‌ها</p>
+  <p>ورود امن به تنظیمات سایت و مدیریت درخواست‌ها</p>
   {error&&<p className="error" role="alert">{errors[error]||"عملیات انجام نشد."}</p>}
-  <form action="/api/admin/login" method="post">
+  <form action="/api/admin/login" method="post"><input type="hidden" name="next" value={destination}/>
     <label htmlFor="login-email">ایمیل مدیر</label><input id="login-email" name="email" type="email" autoComplete="username" required maxLength={180}/>
     <label htmlFor="login-password">رمز عبور</label><input id="login-password" name="password" type="password" autoComplete="current-password" required/>
     <button type="submit">ورود امن به پنل ←</button>
