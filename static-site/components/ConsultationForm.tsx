@@ -2,7 +2,8 @@
 import {useEffect,useState} from "react";
 import Link from "next/link";
 import {visas} from "../lib/content";
-import {WA_NUMBER_READY,buildWhatsAppUrl,makeLeadReference} from "../lib/whatsapp";
+import {buildWhatsAppUrl,makeLeadReference} from "../lib/whatsapp";
+import {usePublicContactSettings} from "./ContactChannels";
 
 const purposes=["گردشگری","دیدار خانواده یا دوستان","سفر کاری کوتاه‌مدت","سایر اهداف (نیازمند بررسی نوع ویزا)"];
 const windows=["کمتر از ۳ ماه آینده","۳ تا ۶ ماه آینده","بیشتر از ۶ ماه آینده","هنوز مشخص نیست"];
@@ -14,6 +15,8 @@ export default function ConsultationForm(){
  const [sourcePath,setSourcePath]=useState("/consultation/");
  const [consent,setConsent]=useState(false),[status,setStatus]=useState<HandoffStatus>("idle");
  const [lastReference,setLastReference]=useState("");
+ const {settings:contact, state:contactState}=usePublicContactSettings();
+ const whatsappReady=!!contact?.whatsappEnabled&&!!contact.whatsappNumber;
  useEffect(()=>{
    const params=new URLSearchParams(window.location.search);
    const requested=params.get("destination")||"";
@@ -21,13 +24,13 @@ export default function ConsultationForm(){
    if(valid){setDestination(requested);setSourcePath("/"+requested+"/")}
  },[]);
  const selected=visas.find(v=>v.slug===destination);
- const ready=WA_NUMBER_READY&&!!selected&&!!purpose&&!!timing&&consent;
+ const ready=whatsappReady&&!!selected&&!!purpose&&!!timing&&consent;
  const resetStatus=()=>setStatus("idle");
  function openWhatsApp(event:React.MouseEvent<HTMLAnchorElement>){
    if(!ready){event.preventDefault();setStatus("error");return}
    try{
      const reference=makeLeadReference(window.crypto);
-     const href=buildWhatsAppUrl({name,destination,purpose,timing,sourcePath},reference,visas);
+     const href=buildWhatsAppUrl({name,destination,purpose,timing,sourcePath},reference,visas,contact?.whatsappNumber||"");
      event.currentTarget.href=href;
      setLastReference(reference);
      setStatus("opened");
@@ -54,10 +57,10 @@ export default function ConsultationForm(){
     <label htmlFor="kv-wa-consent" className="kv-wa-consent"><input id="kv-wa-consent" type="checkbox" checked={consent} onChange={e=>{setConsent(e.target.checked);resetStatus()}}/><span>موافقم متن آماده‌شده پس از تأیید و ارسال خودم از طریق واتساپ برای خوش‌ویزا فرستاده شود. می‌دانم واتساپ یک سرویس مستقل است و شماره حساب واتساپ من برای گیرنده نمایش داده می‌شود.</span></label>
     <Link href="/privacy/">مطالعه حریم خصوصی و نحوه استفاده از اطلاعات ←</Link>
    </div>
-   {WA_NUMBER_READY?<a href={"https://wa.me/"+(process.env.NEXT_PUBLIC_KHOSHVISA_WHATSAPP_NUMBER||"").replace(/\D/g,"")} target="_blank" rel="noopener noreferrer" onClick={openWhatsApp} aria-disabled={!ready} className={"kv-wa-submit "+(!ready?"is-disabled":"")}>ادامه در واتساپ <span aria-hidden="true">↗</span></a>:<button type="button" disabled className="kv-wa-submit is-disabled" aria-disabled="true">واتساپ خوش‌ویزا در حال راه‌اندازی است</button>}
+   {whatsappReady?<a href={"https://wa.me/"+contact!.whatsappNumber} target="_blank" rel="noopener noreferrer" onClick={openWhatsApp} aria-disabled={!ready} className={"kv-wa-submit "+(!ready?"is-disabled":"")}>ادامه در واتساپ <span aria-hidden="true">↗</span></a>:<button type="button" disabled className="kv-wa-submit is-disabled" aria-disabled="true">ارتباط واتساپی فعلاً فعال نیست</button>}
    {!selected&&<p className="kv-wa-hint" role="status">برای ادامه، کشور مقصد را مشخص کنید.</p>}
    {selected&&!consent&&<p className="kv-wa-hint">لطفاً قبل از رفتن به واتساپ، توضیح انتقال داده را بخوانید و تأیید کنید.</p>}
-   {!WA_NUMBER_READY&&<p className="kv-wa-warning" role="status">شماره رسمی واتساپ خوش‌ویزا هنوز توسط مدیر سایت تنظیم نشده است. این فرم اطلاعاتی ارسال یا ذخیره نمی‌کند.</p>}
+   {!whatsappReady&&<div className="kv-wa-warning" role="status"><p>{contactState==="loading"?"در حال بررسی کانال‌های ارتباطی…":contactState==="error"?"دریافت تنظیمات تماس موقتاً ناموفق بود.": "واتساپ خوش‌ویزا فعلاً فعال نیست؛ برای شروع از شماره‌های تماس زیر استفاده کنید."}</p>{contact?.mobile&&<p>موبایل: <a href={"tel:+98"+contact.mobile.slice(1)} dir="ltr">{contact.mobile}</a></p>}{contact?.landline&&<p>تلفن ثابت: <a href={"tel:+98"+contact.landline.slice(1)} dir="ltr">{contact.landline}</a></p>}</div>}
    {status==="opened"&&<div className="kv-wa-notice" role="status"><strong>واتساپ باز شد؛ پیام هنوز ثبت‌شده محسوب نمی‌شود.</strong><p>متن را در واتساپ بخوانید و برای ارسال، دکمه «ارسال» آن برنامه را بزنید. کد پیگیری همین مکالمه: <b dir="ltr">{lastReference}</b>. تا زمان دریافت پیام، امکان پیگیری از طرف خوش‌ویزا وجود ندارد.</p></div>}
    {status==="error"&&<p className="kv-wa-warning" role="alert">باز کردن واتساپ انجام نشد. مقصد و رضایت را کنترل کنید؛ اگر لازم بود از یک مرورگر به‌روز استفاده کنید.</p>}
    <small className="kv-wa-disclaimer">خوش‌ویزا نمایندگی رسمی سفارت، صادرکننده ویزا یا ارائه‌دهنده مستقیم مشاوره تخصصی نیست و نتیجه را تضمین نمی‌کند. در این صفحه اطلاعات در سرور سایت ثبت نمی‌شود. هویت مجری احتمالی و هدف انتقال داده پیش از اشتراک‌گذاری اعلام و رضایت جداگانه گرفته خواهد شد.</small>
