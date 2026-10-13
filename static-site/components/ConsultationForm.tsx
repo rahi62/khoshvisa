@@ -49,7 +49,7 @@ export default function ConsultationForm(){
      setStatus("error");
    }
  }
- return <div className="refForm kv-wa-form">
+ return <div id="kv-wa-form" className="refForm kv-wa-form">
   <span className="kv-wa-overline">KHOSHVISA / WHATSAPP CONTACT</span>
   <h2>ثبت درخواست اولیه سفر</h2>
   <p>مقصد، هدف و زمان احتمالی سفر را انتخاب کنید. ارسال نهایی پیام تنها با تأیید شما در واتساپ انجام می‌شود؛ این مرحله به معنی تشکیل قطعی پرونده یا مشاوره حقوقی نیست.</p>
