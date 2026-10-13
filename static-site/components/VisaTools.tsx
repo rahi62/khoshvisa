@@ -46,8 +46,8 @@ export function VisaReadiness({items}:{items:Visa[]}){
  {step===0&&<div><h2>کدام کشور را انتخاب کرده‌اید؟</h2><p>این ابزار فقط یک چک‌لیست اطلاعاتی در مرورگر است؛ اطلاعاتی ارسال نمی‌شود و واجدشرایط‌بودن را تأیید نمی‌کند.</p>
  <label className="cin-readiness-select">مقصد سفر<select value={destination} onChange={e=>selectDestination(e.target.value)}><option value="">انتخاب مقصد</option>{items.map(v=><option key={v.slug} value={v.slug}>{v.name}</option>)}</select></label>
  </div>}
- {step===1&&<div><h2>هدف واقعی سفر چیست؟</h2><div className="cin-choice-grid">{["گردشگری","دیدار خانواده یا دوستان","هدف دیگر که نیاز به بررسی نوع ویزا دارد"].map(v=><button key={v} type="button" aria-pressed={purpose===v} onClick={()=>setPurpose(v)}>{v}</button>)}</div><p>انتخاب دسته ویزا باید متناسب با فعالیت مجاز و مقررات کشور مقصد باشد.</p></div>}
- {step===2&&<div><h2>برای چه زمانی برنامه دارید؟</h2><div className="cin-choice-grid">{["کمتر از ۳ ماه آینده","۳ تا ۶ ماه آینده","بیشتر از ۶ ماه آینده","زمان هنوز مشخص نیست"].map(v=><button key={v} type="button" aria-pressed={timing===v} onClick={()=>setTiming(v)}>{v}</button>)}</div><p>زمان مجاز ثبت درخواست و ظرفیت وقت سفارت برای کشورها متفاوت است.</p></div>}
+ {step===1&&<div><h2>هدف واقعی سفر چیست؟</h2><div className="cin-choice-grid">{["گردشگری","دیدار خانواده یا دوستان","سایر اهداف (نیازمند بررسی نوع ویزا)"].map(v=><button key={v} type="button" aria-pressed={purpose===v} onClick={()=>setPurpose(v)}>{v}</button>)}</div><p>انتخاب دسته ویزا باید متناسب با فعالیت مجاز و مقررات کشور مقصد باشد.</p></div>}
+ {step===2&&<div><h2>برای چه زمانی برنامه دارید؟</h2><div className="cin-choice-grid">{["کمتر از ۳ ماه آینده","۳ تا ۶ ماه آینده","بیشتر از ۶ ماه آینده","هنوز مشخص نیست"].map(v=><button key={v} type="button" aria-pressed={timing===v} onClick={()=>setTiming(v)}>{v}</button>)}</div><p>زمان مجاز ثبت درخواست و ظرفیت وقت سفارت برای کشورها متفاوت است.</p></div>}
  {step===3&&<div><h2>کدام گروه مدارک را آماده دارید؟</h2><p>چک‌لیست مقدماتی {visa?.name} است؛ فهرست رسمی و شخصی متقاضی می‌تواند متفاوت باشد. نتیجه فقط روی این صفحه محاسبه می‌شود.</p>
  <div className="cin-check-list">{checks.map(x=><label key={x}><input type="checkbox" checked={docs.includes(x)} onChange={e=>setDocs(a=>e.target.checked?[...a,x]:a.filter(y=>y!==x))}/><span>{x}</span></label>)}</div></div>}
  <div className="cin-readiness-actions">{step>0&&<button type="button" className="cin-secondary-button" onClick={()=>setStep(s=>s-1)}>مرحله قبل →</button>}{step<3&&<button type="button" className="cin-primary-button" disabled={(step===0&&!destination)||(step===1&&!purpose)||(step===2&&!timing)} onClick={()=>setStep(s=>s+1)}>ادامه ←</button>}</div>
@@ -57,7 +57,7 @@ export function VisaReadiness({items}:{items:Visa[]}){
  {checks.some(x=>!docs.includes(x))&&<><strong>مواردی که هنوز باید بررسی کنید:</strong><ul>{checks.filter(x=>!docs.includes(x)).map(x=><li key={x}>{x}</li>)}</ul></>}
  {facts&&<p>{facts.warning}</p>}
  <p>برای بررسی شرایط قانونی، مدارک شخصی و زمان ثبت درخواست، حتماً به راهنمای رسمی مراجعه کنید.</p>
- <div className="cin-compare-actions"><Link href={"/"+visa?.slug+"/"}>راهنمای مقصد ←</Link><a href={facts?.official||visa?.source} target="_blank" rel="noopener noreferrer">مرجع رسمی ↗</a></div>
+ <div className="cin-compare-actions"><Link href={"/"+visa?.slug+"/"}>راهنمای مقصد ←</Link><a href={facts?.official||visa?.source} target="_blank" rel="noopener noreferrer">مرجع رسمی ↗</a><Link href={"/consultation/?"+new URLSearchParams({destination,purpose,timing,source:"readiness"}).toString()} className="cin-primary-button">ادامه درخواست در واتساپ ↗</Link></div>
  </div>}
  </section>;
 }
