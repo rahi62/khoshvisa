@@ -62,15 +62,15 @@ export default async function Page({params}:Props){
   </div></header>
   <div className="seo-container seo-guide-layout">
    <article>
-    <div className="seo-guide-notice">این مطلب راهنمای عمومی برای متقاضیان ایرانی است و جایگزین چک‌لیست صادرشده از سفارت یا سامانه رسمی مربوط به شرایط شخصی شما نیست.</div>
+    <div className="seo-guide-notice">{detail.notice||"این مطلب راهنمای عمومی برای متقاضیان ایرانی است و جایگزین چک‌لیست صادرشده از سفارت یا سامانه رسمی مربوط به شرایط شخصی شما نیست."}</div>
     {detail.quickAnswer&&<section id="answer" className="seo-guide-section kv-guide-answer"><span className="seo-overline">پاسخ کوتاه</span>
      <h2>{detail.quickAnswerTitle||"مدارک ویزای توریستی چیست؟"}</h2><p>{detail.quickAnswer}</p>
-     <p className="kv-guide-hint">برای مشاهده تفاوت کشورها، <a href="#countries">جدول مقایسه مدارک هشت مقصد</a> را ببینید.</p>
+     <p className="kv-guide-hint">برای مشاهده تفاوت مقصدها، <a href="#countries">{detail.comparisonTitle||"جدول مقایسه مدارک هشت مقصد"}</a> را ببینید.</p>
     </section>}
     {detail.comparison&&<section className="seo-guide-section" id="countries">
      <span className="seo-overline">تفاوت مدارک کشورها</span><h2>{detail.comparisonTitle||"مقایسه چک‌لیست مدارک ویزای ۸ مقصد"}</h2><p>{detail.comparison.intro}</p>
      <div className="kv-guide-table-wrap"><table className="kv-guide-table"><caption>{detail.comparisonCaption||"مقایسه کلی مدارک متقاضی ایرانی به تفکیک مقصد"}</caption>
-      <thead><tr><th scope="col">مقصد</th><th scope="col">تمرکز مدارک</th><th scope="col">منبع رسمی</th></tr></thead>
+      <thead><tr><th scope="col">مقصد</th><th scope="col">{detail.comparisonRequirementLabel||"تمرکز مدارک"}</th><th scope="col">منبع رسمی</th></tr></thead>
       <tbody>{detail.comparison.rows.map(row=><tr key={row.slug}><th scope="row"><Link href={"/"+row.slug+"/"}>{row.destination}</Link></th><td>{row.requirement}</td><td><a href={row.href} target="_blank" rel="noopener noreferrer">{row.source} ↗</a></td></tr>)}</tbody>
      </table></div>
     </section>}
@@ -86,6 +86,11 @@ export default async function Page({params}:Props){
     {detail.questions&&<section className="seo-guide-section" id="questions"><span className="seo-overline">پرسش‌های متداول</span><h2>{detail.faqTitle||"سؤالات متداول درباره مدارک ویزا"}</h2>
      <div className="kv-guide-questions">{detail.questions.map(({q,a})=><div key={q}><h3>{q}</h3><p>{a}</p></div>)}</div>
     </section>}
+    <section className="seo-guide-section kv-guide-next-step">
+     <span className="seo-overline">گام بعدی</span><h2>قبل از تصمیم، راهنمای مقصد خود را بررسی کنید</h2>
+     <p>اطلاعات این صفحه عمومی است؛ برای مسیر واقعی، مقررات و شرایط همان نوع ویزا ملاک‌اند. می‌توانید مقصدتان را انتخاب کنید و در صورت فعال‌بودن کانال ارتباطی، درخواست اولیه خود را برای هماهنگی به خوش‌ویزا بفرستید. هیچ نتیجه ویزایی تضمین نمی‌شود.</p>
+     <p><Link className="seo-button seo-button-gold" href="/consultation/">شروع ارتباط اولیه با خوش‌ویزا ←</Link></p>
+    </section>
     <section className="seo-guide-section" id="references">
      <span className="seo-overline">منابع اولیه و به‌روزرسانی</span><h2>منابع رسمی مقاله</h2>
      <p>این منابع در تاریخ <time dateTime={date}>{detail.updated}</time> برای محتوای فعلی مرور شده‌اند؛ در روز ثبت درخواست، نسخه جدید مرجع رسمی را دوباره بررسی کنید. خوش‌ویزا نماینده سفارت یا صادرکننده ویزا نیست.</p>
@@ -108,7 +113,7 @@ export default async function Page({params}:Props){
   </div>
   <section className="seo-container seo-related"><span className="seo-overline">صفحات مرتبط</span><h2>راهنمای ویزا برای مقصدهای مختلف</h2>
    <div>{detail.related.map(r=><Link href={"/"+r.slug+"/"} key={r.slug}>{r.title} <span>←</span></Link>)}</div>
-   <p>راهنماهای تکمیلی: <Link href="/visa-guides/visa-rejection/">دلایل رد درخواست ویزا</Link> · <Link href="/visa-guides/visa-fees/">هزینه‌های ویزای توریستی</Link></p>
+   <p>راهنماهای تکمیلی: {guides.filter(item=>item.slug!==slug).map((item,i)=><span key={item.slug}>{i>0&&" · "}<Link href={"/visa-guides/"+item.slug+"/"}>{item.title}</Link></span>)}</p>
   </section>
  </main>;
 }
