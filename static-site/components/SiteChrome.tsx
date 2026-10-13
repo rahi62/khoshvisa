@@ -7,5 +7,5 @@ export default function SiteChrome({header,footer,children}:{header:ReactNode;fo
  const path=usePathname();
  const isAdmin=path==="/admin"||path.startsWith("/admin/");
  if(isAdmin)return <>{children}</>;
- return <>{header}{children}{footer}<div className="mobileDock"><a href="/destinations/">⌕ <span>مقصدها</span></a><a href="/consultation/">✦ <span>مشاوره</span></a></div></>;
+ return <>{header}{children}{footer}<div className="mobileDock"><a href="/destinations/">⌕ <span>مقصدها</span></a><a href="/consultation/">✦ <span>ارتباط</span></a></div></>;
 }

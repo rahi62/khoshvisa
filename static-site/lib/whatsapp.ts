@@ -11,9 +11,6 @@ export type WhatsAppDraft={
   timing:string;
   sourcePath:string;
 };
-export const WA_NUMBER=(process.env.NEXT_PUBLIC_KHOSHVISA_WHATSAPP_NUMBER||"").replace(/\D/g,"");
-export const WA_NUMBER_READY=/^[1-9][0-9]{7,14}$/.test(WA_NUMBER);
-
 const compact=(s:string,max:number)=>s.normalize("NFC").replace(/[\r\n\t]+/g," ").replace(/\s+/g," ").trim().slice(0,max);
 
 /** Only crypto-secure randomness; no personal information is encoded in this reference. */
@@ -38,8 +35,9 @@ export function buildWhatsAppMessage(draft:WhatsAppDraft,ref:string,visas:Visa[]
   parts.push("کد پیگیری: "+ref);
   return parts.join("\n");
 }
-export function buildWhatsAppUrl(draft:WhatsAppDraft,reference:string,visas:Visa[]):string{
-  if(!WA_NUMBER_READY)throw new Error("whatsapp_not_configured");
+export function buildWhatsAppUrl(draft:WhatsAppDraft,reference:string,visas:Visa[],recipient:string):string{
+  const number=recipient.replace(/\D/g,"");
+  if(!/^[1-9][0-9]{7,14}$/.test(number))throw new Error("whatsapp_not_configured");
   const text=buildWhatsAppMessage(draft,reference,visas);
-  return "https://wa.me/"+WA_NUMBER+"?text="+encodeURIComponent(text);
+  return "https://wa.me/"+number+"?text="+encodeURIComponent(text);
 }
