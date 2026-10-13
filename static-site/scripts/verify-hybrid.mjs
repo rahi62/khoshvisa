@@ -51,6 +51,16 @@ for(const route of Object.keys(countryContent)){
   if(!html.includes('href="'+link+'"')){console.error("Missing money-to-guide link",route,link);process.exitCode=1}
  }
 }
+const homeHtmlPath=join(base,"server","app","index.html");
+if(!existsSync(homeHtmlPath)){console.error("Missing static homepage HTML");process.exitCode=1}
+else{
+ const html=readFileSync(homeHtmlPath,"utf8");
+ for(const marker of ["Organization","WebSite","tel:+989351300502","tel:+982146010788","/visa-guides/visa-fees/"]){
+  if(!html.includes(marker)){console.error("Homepage missing verified SEO/trust content:",marker);process.exitCode=1}
+ }
+ for(const slug of Object.keys(countryContent))if(!html.includes('href="'+slug+'/')){console.error("Homepage missing static destination:",slug);process.exitCode=1}
+ if(html.includes('href="/motion-lab/"')){console.error("Developer-only motion-lab link found in homepage");process.exitCode=1}
+}
 if(!prerendered.has("/sitemap.xml")||!prerendered.has("/robots.txt")){
  console.error("Sitemap or robots.txt missing from prerendered routes");process.exitCode=1
 }
