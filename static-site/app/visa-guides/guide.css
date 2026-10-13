@@ -1,0 +1,25 @@
+/* Scoped styles for reference-style visa guides; preserve existing site's RTL layout. */
+.seo-guide .kv-guide-answer{background:#f7f3e9;border:1px solid #e4d8bd;border-radius:16px;padding:clamp(18px,3vw,28px)}
+.seo-guide .kv-guide-answer p{line-height:2.15}
+.seo-guide .kv-guide-hint{font-size:.93rem}
+.seo-guide .kv-guide-hint a,.seo-guide .kv-guide-inline-sources a,.seo-guide .seo-related a{text-decoration:underline;text-underline-offset:3px}
+.seo-guide .kv-guide-table-wrap{max-width:100%;overflow-x:auto;margin:20px 0 30px;border:1px solid #dae4ea;border-radius:14px;overscroll-behavior-x:contain}
+.seo-guide .kv-guide-table{width:100%;border-collapse:collapse;min-width:530px;font-size:.9rem;line-height:1.95;text-align:right}
+.seo-guide .kv-guide-table caption{caption-side:top;text-align:right;font-weight:700;padding:12px 16px;background:#f1f5f7;color:#36515f}
+.seo-guide .kv-guide-table th,.seo-guide .kv-guide-table td{border-top:1px solid #dfe6ea;padding:14px 16px;vertical-align:top;overflow-wrap:anywhere}
+.seo-guide .kv-guide-table thead th{background:#eff4f6;color:#244256;white-space:nowrap}
+.seo-guide .kv-guide-table tbody tr:nth-child(even){background:#fafcfd}
+.seo-guide .kv-guide-table tbody th{font-weight:750;white-space:nowrap}
+.seo-guide .kv-guide-table a{color:#0e536a;text-decoration:underline;text-underline-offset:3px}
+.seo-guide .kv-guide-inline-sources{border-right:3px solid #c5a26b;padding:10px 12px;margin:20px 0;background:#f6f8f9;font-size:.84rem;line-height:2;color:#475f6c}
+.seo-guide .kv-guide-inline-sources span{display:inline}
+.seo-guide .kv-guide-questions{display:grid;gap:13px}
+.seo-guide .kv-guide-questions>div{border:1px solid #e0e7eb;border-radius:14px;padding:18px 20px;background:#fff}
+.seo-guide .kv-guide-questions h3{font-size:1.05rem;margin:0 0 10px;line-height:1.9}
+.seo-guide .kv-guide-questions p{margin:0;line-height:2}
+.seo-guide :is(.kv-guide-answer,.seo-guide-section){scroll-margin-top:120px}
+@media(max-width:720px){
+ .seo-guide .kv-guide-table{font-size:.82rem}
+ .seo-guide .kv-guide-table th,.seo-guide .kv-guide-table td{padding:11px 12px}
+ .seo-guide .kv-guide-questions>div{padding:14px}
+}
