@@ -9,6 +9,7 @@
     "postbuild": "node scripts/verify-hybrid.mjs",
     "test:crm": "tsx --test tests/*.test.ts",
     "db:migrate": "node scripts/migrate-leads.mjs",
+    "db:settings:migrate": "node scripts/migrate-site-settings.mjs",
     "db:retention:dry": "node scripts/retention-leads.mjs",
     "db:retention:apply": "node scripts/retention-leads.mjs --apply"
   },
