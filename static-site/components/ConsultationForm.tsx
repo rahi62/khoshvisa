@@ -51,8 +51,8 @@ export default function ConsultationForm(){
  }
  return <div className="refForm kv-wa-form">
   <span className="kv-wa-overline">KHOSHVISA / WHATSAPP CONTACT</span>
-  <h2>درخواست راهنمایی ویزا</h2>
-  <p>اطلاعات اولیه سفر را انتخاب کنید؛ سپس متن آماده را در واتساپ خوش‌ویزا بررسی و در صورت تمایل ارسال کنید. ارسال نهایی با خود شماست.</p>
+  <h2>ثبت درخواست اولیه سفر</h2>
+  <p>مقصد، هدف و زمان احتمالی سفر را انتخاب کنید. ارسال نهایی پیام تنها با تأیید شما در واتساپ انجام می‌شود؛ این مرحله به معنی تشکیل قطعی پرونده یا مشاوره حقوقی نیست.</p>
   <form onSubmit={openWhatsApp}>
    <label htmlFor="kv-wa-name"><span>نام شما (اختیاری)</span><input id="kv-wa-name" type="text" value={name} maxLength={80} autoComplete="name" onChange={e=>{setName(e.target.value);resetStatus()}} placeholder="مثلاً علی رضایی"/></label>
    <label htmlFor="kv-wa-destination"><span>کشور یا مقصد موردنظر *</span>
@@ -69,10 +69,10 @@ export default function ConsultationForm(){
    <button type="submit" disabled={!ready} aria-disabled={!ready} className={"kv-wa-submit "+(!ready?"is-disabled":"")}>ادامه در واتساپ <span aria-hidden="true">↗</span></button>
    {!selected&&<p className="kv-wa-hint" role="status">برای ادامه، کشور مقصد را مشخص کنید.</p>}
    {selected&&!consent&&<p className="kv-wa-hint">لطفاً قبل از رفتن به واتساپ، توضیح انتقال داده را بخوانید و تأیید کنید.</p>}
-   {!WA_NUMBER_READY&&<p className="kv-wa-warning" role="status">شماره واتساپ خوش‌ویزا معتبر تنظیم نشده است. این فرم اطلاعاتی ارسال یا ذخیره نمی‌کند.</p>}
+   {!WA_NUMBER_READY&&<p className="kv-wa-warning" role="status">شماره واتساپ معتبر تنظیم نشده و اطلاعاتی ارسال نمی‌شود. برای ارتباط اولیه با <a href="tel:+989351300502">۰۹۳۵۱۳۰۰۵۰۲</a> یا <a href="tel:+982146010788">۰۲۱۴۶۰۱۰۷۸۸</a> تماس بگیرید.</p>}
    {status==="opened"&&<div className="kv-wa-notice" role="status"><strong>انتقال به واتساپ آغاز شد؛ پیام هنوز ثبت‌شده محسوب نمی‌شود.</strong><p>متن را در واتساپ بخوانید و برای ارسال، دکمه «ارسال» آن برنامه را بزنید. کد پیگیری این تلاش: <b dir="ltr">{lastReference}</b>. تا زمان دریافت پیام، امکان پیگیری از طرف خوش‌ویزا وجود ندارد.</p></div>}
    {status==="error"&&<p className="kv-wa-warning" role="alert">باز کردن واتساپ انجام نشد. مقصد و رضایت را کنترل کنید؛ اگر لازم بود از یک مرورگر به‌روز استفاده کنید.</p>}
-   <small className="kv-wa-disclaimer">خوش‌ویزا نمایندگی رسمی دولت یا سفارت نیست و نتیجه ویزا را تضمین نمی‌کند. در این صفحه اطلاعات در سرور سایت ثبت نمی‌شود. انتقال احتمالی اطلاعات به ارائه‌دهنده خدمات مستقل فقط پس از اطلاع‌رسانی و رضایت جداگانه انجام خواهد شد.</small>
+   <small className="kv-wa-disclaimer">خوش‌ویزا نماینده رسمی سفارت، صادرکننده ویزا یا ارائه‌دهنده مستقیم مشاوره حقوقی مهاجرتی نیست و نتیجه را تضمین نمی‌کند. اطلاعات این فرم پیش از ارسال واتساپ در سرور سایت ثبت نمی‌شود. هویت مجری مستقل و هدف انتقال اطلاعات پیش از هر ارجاع به اطلاع متقاضی می‌رسد و رضایت جداگانه دریافت خواهد شد.</small>
   </form>
  </div>;
 }
