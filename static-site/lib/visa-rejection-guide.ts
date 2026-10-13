@@ -16,7 +16,7 @@ export const visaRejectionGuide:GuideExpansion={
   rows:[
    {destination:"شینگن",slug:"schengen-visa",requirement:"علت رد و روش و مهلت اعتراض در اعلان تصمیم ذکر می‌شود. امکان درخواست مجدد نیز وجود دارد؛ مبنای اعتراض، کشور تصمیم‌گیر است.",source:"کمیسیون اروپا",href:"https://home-affairs.ec.europa.eu/policies/schengen/visa-policy/applying-schengen-visa_en"},
    {destination:"فرانسه",slug:"france-tourist-visa",requirement:"در کنار چارچوب شینگن، مسیر اعتراض و مرجع رسیدگی را از اعلان رسمی تصمیم فرانسه پیگیری کنید؛ آن را با مسیر آلمان یا ایتالیا یکسان فرض نکنید.",source:"France-Visas",href:"https://www.france-visas.gouv.fr/"},
-   {destination:"آلمان",slug:"germany-tourist-visa",requirement:"برای تصمیم آلمان، اطلاعیه نمایندگی و روش‌های قانونی درج‌شده در نامه رد ملاک‌اند؛ روی روش‌های قدیمی یا مهلت‌های نقل‌شده در سایت‌های ثالث حساب نکنید.",source:"سفارت آلمان در تهران",href:"https://teheran.diplo.de/ir-de/service/05-VisaEinreise"},
+   {destination:"آلمان",slug:"germany-tourist-visa",requirement:"برای تصمیم آلمان، اطلاعیه نمایندگی و روش‌های قانونی درج‌شده در نامه رد ملاک‌اند؛ روی روش‌های قدیمی یا مهلت‌های نقل‌شده در سایت‌های ثالث حساب نکنید.",source:"سفارت آلمان در تهران",href:"https://teheran.diplo.de/ir-de/02-service/2404274-2404274"},
    {destination:"ایتالیا",slug:"italy-tourist-visa",requirement:"بررسی علت رد و امکان اعتراض مطابق اعلامیه تصمیم ایتالیا و ضوابط مرتبط شینگن انجام می‌شود؛ مدارک تکمیلی، حق اعتراض خودکار به هر شیوه‌ای ایجاد نمی‌کند.",source:"سفارت ایتالیا در تهران",href:"https://ambteheran.esteri.it/fa/servizi-consolari-e-visti/servizi-per-il-cittadino-straniero/visti/"},
    {destination:"کانادا",slug:"canada-tourist-visa",requirement:"IRCC توصیه می‌کند در صورت تغییر شرایط یا داشتن اطلاعاتی که علت رد را پاسخ می‌دهد، دوباره درخواست دهید. برای ادعای غیرمنصفانه‌بودن تصمیم، بررسی قضایی مسیر تخصصی است.",source:"IRCC کانادا",href:"https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=1485&top=29"},
    {destination:"انگلیس",slug:"uk-tourist-visa",requirement:"برای رد معمول Standard Visitor حق اعتراض عمومی وجود ندارد؛ برخی پرونده‌های مبتنی بر حقوق بشر شرایط متفاوتی دارند. متن نامه و مقررات مرتبط تعیین‌کننده است.",source:"GOV.UK",href:"https://www.gov.uk/government/publications/visit-guidance/visit-caseworker-guidance-accessible--2"},
@@ -111,7 +111,7 @@ export const visaRejectionGuide:GuideExpansion={
   {name:"وزارت امور خارجه ژاپن — پرسش‌های رد و درخواست مجدد",url:"https://www.mofa.go.jp/j_info/visit/visa/faq.html"},
   {name:"Home Affairs — نتیجه پرونده Visitor 600",url:"https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/visitor-600/tourist-stream-overseas"},
   {name:"France-Visas — راهنمای درخواست و تصمیم",url:"https://www.france-visas.gouv.fr/"},
-  {name:"سفارت آلمان — خدمات ویزا",url:"https://teheran.diplo.de/ir-de/service/05-VisaEinreise"},
+  {name:"سفارت آلمان — خدمات ویزا",url:"https://teheran.diplo.de/ir-de/02-service/2404274-2404274"},
   {name:"سفارت ایتالیا — ویزا",url:"https://ambteheran.esteri.it/fa/servizi-consolari-e-visti/servizi-per-il-cittadino-straniero/visti/"}
  ]
 };
