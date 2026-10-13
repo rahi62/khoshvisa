@@ -34,8 +34,8 @@ for(const [route,tokens] of Object.entries(countryContent)){
 }
 const guideRoutes={
  "/visa-guides/visa-documents":["Article","BreadcrumbList","مدارک ویزای توریستی","جدول مقایسه مدارک","سؤالات متداول","کمیسیون اروپا","GOV.UK"],
- "/visa-guides/visa-rejection":["Article","BreadcrumbList","نامه رد"],
- "/visa-guides/visa-fees":["Article","BreadcrumbList","هزینه"]
+ "/visa-guides/visa-rejection":["Article","WebPage","BreadcrumbList","ریجکتی ویزا","بعد از ریجکتی در ۸ مقصد","ژاپن","شش ماه","IRCC","۲۰۲۶/۱۰/۱۳"],
+ "/visa-guides/visa-fees":["Article","WebPage","BreadcrumbList","هزینه ویزای توریستی ۲۰۲۶","جدول هزینه رسمی","۱۳۵ پوند","۶۸٬۰۰۰٬۰۰۰ ریال","۲۵۰ دلار استرالیا","IRCC","۲۰۲۶/۱۰/۱۳"]
 };
 for(const [route,tokens] of Object.entries(guideRoutes)){
  const file=join(base,"server","app",route.substring(1)+".html");
