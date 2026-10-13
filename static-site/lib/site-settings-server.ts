@@ -56,7 +56,7 @@ export async function saveSiteSettings(data:SiteSettingsData,version:number):Pro
    defaultMetaTitle:old.defaultMetaTitle,defaultMetaDescription:old.defaultMetaDescription,
    defaultOgImageUrl:old.defaultOgImageUrl
   };
-  if(JSON.stringify(previous)===JSON.stringify(data))return "saved";
+  if((Object.keys(data) as (keyof SiteSettingsData)[]).every(key=>previous[key]===data[key]))return "saved";
   await client.query(
     "UPDATE site_settings SET brand_name=$1,brand_name_en=$2,tagline=$3,footer_description=$4,logo_url=$5,favicon_url=$6,support_mobile=$7,support_landline=$8,whatsapp_number=$9,whatsapp_enabled=$10,email=$11,instagram_url=$12,telegram_url=$13,default_meta_title=$14,default_meta_description=$15,default_og_image_url=$16,version=version+1,updated_at=now() WHERE id=1",
     [data.brandName,data.brandNameEn,data.tagline,data.footerDescription,data.logoUrl,
