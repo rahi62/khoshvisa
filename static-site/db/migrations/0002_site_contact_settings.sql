@@ -25,3 +25,8 @@ CREATE TABLE IF NOT EXISTS site_contact_settings_audit (
  current jsonb NOT NULL,
  changed_at timestamptz NOT NULL DEFAULT now()
 );
+
+-- Support recording genuine inbound phone calls without falsely labeling callers as WhatsApp users.
+ALTER TABLE leads DROP CONSTRAINT IF EXISTS leads_source_check;
+ALTER TABLE leads ADD CONSTRAINT leads_source_check
+ CHECK (source IN ('whatsapp_webhook','whatsapp_manual','phone_manual'));
