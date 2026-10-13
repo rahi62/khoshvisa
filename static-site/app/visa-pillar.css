@@ -58,3 +58,10 @@
 .seo-guide-toc{margin-top:18px;border:1px solid #e4e9eb;border-radius:13px;padding:20px;display:grid;gap:11px}.seo-guide-toc strong{font-size:14px;color:#173549}.seo-guide-toc a{font-size:12px;line-height:1.8;color:#557485}.seo-guide-toc a:hover{color:#b38445}
 @media(max-width:900px){.seo-guide-layout{grid-template-columns:1fr;gap:20px;padding-top:30px}.seo-guide-layout aside{position:static;grid-row:1}.seo-guide-toc{display:none}.seo-guide-layout .seo-aside-card{padding:20px}.seo-guide-section{padding:30px 0}.seo-guide-hero{padding:55px 0}}
 @media(max-width:550px){.seo-guide-hero h1{font-size:31px}.seo-guide-hero p{font-size:13px}.seo-guide-section h2{font-size:25px}.seo-guide-section p,.seo-guide-section li{font-size:13px}}
+
+/* Visible, source-backed short answers for semantic SEO and AI citation — no fake ratings. */
+.seo-pillar-direct-answer{border:1px solid #d9e5e6;border-right:4px solid #b9905e;border-radius:14px;background:#f6f8f7;padding:clamp(17px,2.6vw,27px);margin:18px 0 26px;direction:rtl}
+.seo-pillar-direct-answer strong{display:block;color:#183b4b;font-size:clamp(16px,1.5vw,19px);margin-bottom:9px}
+.seo-pillar-direct-answer p{color:#294c5b;line-height:2.08;margin:0 0 10px}
+.seo-pillar-direct-answer a{color:#12566d;font-weight:600;text-decoration:underline;text-underline-offset:4px;line-height:1.8}
+@media(max-width:620px){.seo-pillar-direct-answer{padding:16px}.seo-pillar-direct-answer p{font-size:14px}}

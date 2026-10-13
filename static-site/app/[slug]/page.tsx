@@ -2,11 +2,24 @@ import Link from "next/link";
 import {notFound} from "next/navigation";
 import {visas} from "../../lib/content";
 import {visaProfiles} from "../../lib/visa-profiles";
+import {visaSeoBriefs} from "../../lib/visa-seo-briefs";
 import {VisaPillarPage} from "../../components/VisaPillarPage";
 import {AnimatedSteps} from "../../components/KV3Journey";
 import {Reveal} from "../../components/CinematicMotion";
 export function generateStaticParams(){return visas.map(v=>({slug:v.slug}))}
-export async function generateMetadata({params}:{params:Promise<{slug:string}>}){const {slug}=await params;const v=visas.find(x=>x.slug===slug);const p=visaProfiles[slug];return {title:p?`${p.primaryKeyword} | شرایط، مدارک، هزینه و وقت درخواست`:v?"ویزای توریستی "+v.name+" | شرایط، مدارک و مراحل":"ویزای توریستی",description:p?p.subtitle:v?.summary,alternates:{canonical:"/"+slug+"/"}}}
+export async function generateMetadata({params}:{params:Promise<{slug:string}>}){
+ const {slug}=await params;
+ const visa=visas.find(v=>v.slug===slug);
+ if(!visa)return {};
+ const brief=visaSeoBriefs[slug];
+ const profile=visaProfiles[slug];
+ const title=brief?.title||profile?.primaryKeyword||"ویزای توریستی "+visa.name;
+ const description=brief?.description||profile?.subtitle||visa.summary;
+ const url="https://khoshvisa.ir/"+slug+"/";
+ return {title,description,alternates:{canonical:url},
+  openGraph:{type:"website" as const,locale:"fa_IR",siteName:"خوش‌ویزا",url,title,description},
+  twitter:{card:"summary" as const,title,description}};
+}
 export default async function Page({params}:{params:Promise<{slug:string}>}){
  const {slug}=await params;const visa=visas.find(v=>v.slug===slug);if(!visa)notFound();const profile=visaProfiles[slug];if(profile)return <VisaPillarPage visa={visa} profile={profile}/>;
  return <main className="kv3-visa-page">

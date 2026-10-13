@@ -47,6 +47,9 @@ for(const [route,tokens] of Object.entries(guideRoutes)){
 }
 for(const route of Object.keys(countryContent)){
  const html=readFileSync(join(base,"server","app",route.substring(1)+".html"),"utf8");
+ for(const token of ["پاسخ کوتاه برای متقاضی ایرانی","rel=\"canonical\"","BreadcrumbList","WebPage"]){
+  if(!html.includes(token)){console.error("Destination semantic SEO check failed:",route,token);process.exitCode=1}
+ }
  for(const link of ["/visa-guides/visa-documents/","/visa-guides/visa-rejection/","/visa-guides/visa-fees/"]){
   if(!html.includes('href="'+link+'"')){console.error("Missing money-to-guide link",route,link);process.exitCode=1}
  }

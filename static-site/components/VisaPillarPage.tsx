@@ -1,6 +1,7 @@
 import Link from "next/link";
 import type {Visa} from "../lib/content";
 import type {VisaProfile} from "../lib/visa-profiles";
+import {visaSeoBriefs} from "../lib/visa-seo-briefs";
 
 const sections=[
  ["overview","معرفی و شرایط"],["facts","هزینه و زمان"],["requirements","شرایط پرونده"],["documents","مدارک لازم"],
@@ -34,6 +35,7 @@ export function VisaPillarPage({visa,profile}:{visa:Visa;profile:VisaProfile}){
    <article className="seo-pillar-main">
     <section id="overview" className="seo-section">
       <span className="seo-overline">OVERVIEW / معرفی</span><h2>ویزای {visa.name} برای چه کسانی مناسب است؟</h2>
+      {visaSeoBriefs[visa.slug]&&<div className="seo-pillar-direct-answer"><strong>پاسخ کوتاه برای متقاضی ایرانی</strong><p>{visaSeoBriefs[visa.slug].answer}</p><a href={profile.sources[0]?.url} target="_blank" rel="noopener noreferrer">بررسی مقررات در منبع رسمی ↗</a></div>}
       {profile.overview.map(p=><p key={p}>{p}</p>)}
       <div className="seo-inline-hint"><strong>مهم:</strong> این راهنما جایگزین چک‌لیست صادرشده برای پرونده شخصی یا دستورالعمل سفارت نیست. در صورت تعارض، اعلامیه رسمی مربوط به وضعیت شما ملاک است.</div>
     </section>
