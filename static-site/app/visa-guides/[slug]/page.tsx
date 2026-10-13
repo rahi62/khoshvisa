@@ -38,7 +38,7 @@ export default async function Page({params}:Props){
   {name:"راهنمای ویزا",url:base+"/visa-guides/"},
   {name:guide.title,url}
  ];
- const organization={"@type":"Organization" as const,name:"خوش‌ویزا",url:base+"/"};
+ const organization={"@type":"Organization" as const,name:"خوش‌ویزا",url:base+"/about/"};
  const schema={
   "@context":"https://schema.org",
   "@graph":[
