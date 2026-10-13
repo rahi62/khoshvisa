@@ -14,7 +14,7 @@ const row=(name:keyof SiteSettings,title:string,value:string,maxLength:number,pl
 export default async function Settings({searchParams}:{searchParams:Promise<{error?:string;saved?:string}>}){
  if(!await isAdmin())redirect("/admin/login?next=%2Fadmin%2Fsettings");
  const [params,{settings:s,ready}]=await Promise.all([searchParams,readSiteSettings()]);
- return <main className="admin-shell"><header className="admin-top"><div><strong>✦ خوش‌ویزا</strong><span>تنظیمات عمومی سایت</span></div><Link href="/admin">داشبورد ←</Link></header>
+ return <main className="admin-shell"><header className="admin-top"><div><strong>✦ خوش‌ویزا</strong><span>تنظیمات عمومی سایت</span></div><Link href="/">بازگشت به سایت ←</Link></header>
   <div className="admin-width"><div className="admin-heading"><div><h1>تنظیمات سایت</h1><p>تنظیم اطلاعات برند، پاسخ‌گویی و نمایش عمومی، بدون CMS مجزا.</p></div><Link href="/contact/" target="_blank">مشاهده صفحه تماس ↗</Link></div>
   {params.saved&&<p className="success" role="status">تنظیمات در PostgreSQL ذخیره شدند.</p>}
   {params.error&&<p className="error" role="alert">{errors[params.error]??errors.invalid}</p>}
