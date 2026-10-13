@@ -13,7 +13,7 @@
 
 Set \`NEXT_PUBLIC_KHOSHVISA_WHATSAPP_NUMBER\` for the \`static-site\` **Vercel build** with verified international digits, without \`+\`. Example pattern for Iran: \`98xxxxxxxxxx\`. Never invent a number.
 
-The static build intentionally shows a **disabled but informative** button if the number is unset, blank, or invalid. Next.js static export does not support server API routes, so this is a browser-to-WhatsApp handoff and not a server submission.
+An absent or empty override uses the default response number; an explicitly set but invalid override disables the action and shows a warning. The contact form remains a browser-to-WhatsApp handoff and is **not** a server submission. Current Next.js deployment is hybrid (prerendered SEO pages with serverless `/admin` and `/api` routes); this does not change the form privacy behavior.
 
 After setting the variable, trigger a new Production deployment. Verify the production branch is \`static\` and that the Vercel custom domain points to the intended deployment.
 
@@ -30,10 +30,10 @@ After setting the variable, trigger a new Production deployment. Verify the prod
 ## Test checklist
 
 - Missing/invalid env => action stays disabled and no artificial success.
-- Valid env + missing destination/unchecked consent => no navigation.
+- Default response number (or valid env override) + missing destination/unchecked consent => submit stays disabled; Enter and touch cannot bypass the gate.
 - Valid env + complete selection/consent => actual \`https://wa.me/\` opens in a new tab, prefilling selected fields and reference.
 - Destination passed as \`?destination=canada-tourist-visa\` is preselected.
-- Mobile WhatsApp and desktop WhatsApp Web work with the same international business number.
+- Validate handoff on an actual Android/iOS phone and desktop WhatsApp Web with the confirmed WhatsApp response number. Verify the receiving inbox actually receives a message after the visitor presses Send.
 - No fake success after click; user is reminded to press **Send** inside WhatsApp.
 - After optional webhook activation: verify one inbound message creates one lead and repeating the provider's webhook doesn't duplicate it.
 
