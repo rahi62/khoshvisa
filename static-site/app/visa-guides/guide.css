@@ -23,3 +23,9 @@
  .seo-guide .kv-guide-table th,.seo-guide .kv-guide-table td{padding:11px 12px}
  .seo-guide .kv-guide-questions>div{padding:14px}
 }
+
+/* Contextual next step, no fabricated awards or success-rate callout. */
+.seo-guide .kv-guide-next-step{padding:clamp(18px,3vw,28px);background:#f5f8f8;border:1px solid #dce7e7;border-radius:16px}
+.seo-guide .kv-guide-next-step p{line-height:2.1}
+.seo-guide .kv-guide-next-step .seo-button{display:inline-flex;align-items:center;max-width:100%;white-space:normal;text-align:center}
+@media(max-width:640px){.seo-guide .kv-guide-next-step .seo-button{display:flex;justify-content:center;width:100%}}
