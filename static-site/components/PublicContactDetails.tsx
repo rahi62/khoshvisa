@@ -1,5 +1,6 @@
 "use client";
 import {useEffect,useState} from "react";
+import Link from "next/link";
 import {DEFAULT_SITE_SETTINGS,phoneHref} from "@/lib/site-settings";
 
 type PublicDetails={
@@ -18,7 +19,7 @@ export default function PublicContactDetails(){
  },[]);
  const s=data??DEFAULT_SITE_SETTINGS;
  return <div>
-  <strong>{s.brandName}</strong>
+  <Link className="footerBrand" href="/">✦ {s.brandName}</Link>
   <p>{s.footerDescription}</p>
   {s.supportMobile&&<a href={phoneHref(s.supportMobile)} dir="ltr">{s.supportMobile}</a>}
   {s.supportLandline&&<a href={phoneHref(s.supportLandline)} dir="ltr">{s.supportLandline}</a>}
