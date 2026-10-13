@@ -8,12 +8,16 @@ const sections=[
  ["risks","خطاهای رایج"],["faq","سؤالات متداول"],["sources","منابع رسمی"]
 ];
 function SourceList({profile}:{profile:VisaProfile}){
- return <section id="sources" className="seo-pillar-sources"><span className="seo-overline">REFERENCE & FACT CHECK</span><h2>منابع رسمی و تاریخ بررسی</h2><p>محتوای این صفحه بر اساس منابع دولتی زیر در تاریخ <time dateTime="2026-10-12">{profile.reviewed}</time> مرور شده است. قوانین، هزینه‌ها، خدمات مراکز درخواست و زمان رسیدگی قابل تغییرند؛ قبل از اقدام منبع اصلی را دوباره بررسی کنید.</p>
+ return <section id="sources" className="seo-pillar-sources"><span className="seo-overline">REFERENCE & FACT CHECK</span><h2>منابع رسمی و تاریخ بررسی</h2><p>محتوای این صفحه بر اساس منابع دولتی زیر در تاریخ <time dateTime={profile.reviewedISO||"2026-10-12"}>{profile.reviewed}</time> مرور شده است. قوانین، هزینه‌ها، خدمات مراکز درخواست و زمان رسیدگی قابل تغییرند؛ قبل از اقدام منبع اصلی را دوباره بررسی کنید.</p>
  <ul>{profile.sources.map(source=><li key={source.url}><a href={source.url} target="_blank" rel="noopener noreferrer">{source.label}<span aria-hidden="true">↗</span></a></li>)}</ul><p className="seo-pillar-disclaimer">اطلاعات منتشرشده راهنمای عمومی است، توصیه حقوقی شخصی یا تضمین صدور ویزا نیست. تصمیم نهایی را مرجع رسمی کشور مقصد اتخاذ می‌کند.</p></section>;
 }
 export function VisaPillarPage({visa,profile}:{visa:Visa;profile:VisaProfile}){
  const breadcrumbs=[{name:"خانه",href:"/"},{name:"مقصدهای ویزا",href:"/destinations/"},{name:"ویزای "+visa.name,href:"/"+visa.slug+"/"}];
- const ld={"@context":"https://schema.org","@type":"BreadcrumbList",itemListElement:breadcrumbs.map((b,i)=>({"@type":"ListItem",position:i+1,name:b.name,item:"https://khoshvisa.ir"+b.href}))};
+ const url="https://khoshvisa.ir/"+visa.slug+"/";
+ const ld={"@context":"https://schema.org","@graph":[
+  {"@type":"BreadcrumbList",itemListElement:breadcrumbs.map((b,i)=>({"@type":"ListItem",position:i+1,name:b.name,item:"https://khoshvisa.ir"+b.href}))},
+  {"@type":"WebPage","@id":url+"#webpage",url,name:profile.primaryKeyword+"؛ شرایط، مدارک و هزینه‌ها",description:profile.subtitle,inLanguage:"fa-IR",dateModified:profile.reviewedISO||"2026-10-12",citation:profile.sources.map(x=>x.url),about:{"@type":"Thing",name:profile.primaryKeyword},publisher:{"@type":"Organization",name:"خوش‌ویزا",url:"https://khoshvisa.ir/"}}
+ ]};
  return <main className="seo-pillar">
   <script type="application/ld+json" dangerouslySetInnerHTML={{__html:JSON.stringify(ld).replace(/</g,"\\u003c")}}/>
   <header className="seo-pillar-hero" style={{backgroundImage:"linear-gradient(270deg,rgba(5,24,41,.97) 0%,rgba(7,30,48,.89) 50%,rgba(7,30,48,.38) 100%),url('"+visa.photo+"')"}}>
@@ -24,7 +28,7 @@ export function VisaPillarPage({visa,profile}:{visa:Visa;profile:VisaProfile}){
   <p>{profile.subtitle}</p><div className="seo-hero-actions">
    <a className="seo-button seo-button-gold" href="#facts">هزینه و شرایط را ببینید <span aria-hidden="true">↓</span></a>
    <Link className="seo-button seo-button-outline" href="/visa-readiness/">چک‌لیست اولیه سفر ←</Link></div>
-   <small>تاریخ آخرین بررسی منابع: <time dateTime="2026-10-12">{profile.reviewed}</time> · اطلاعات ممکن است تغییر کند.</small></div></header>
+   <small>تاریخ آخرین بررسی منابع: <time dateTime={profile.reviewedISO||"2026-10-12"}>{profile.reviewed}</time> · اطلاعات ممکن است تغییر کند.</small></div></header>
   <nav className="seo-pillar-mobile-nav" aria-label="فهرست بخش‌های راهنمای ویزا"><div className="seo-container">{sections.map(([id,label])=><a key={id} href={"#"+id}>{label}</a>)}</div></nav>
   <div className="seo-container seo-pillar-layout">
    <article className="seo-pillar-main">
