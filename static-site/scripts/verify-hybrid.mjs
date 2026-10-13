@@ -13,7 +13,12 @@ for(const route of publicRoutes)if(!prerendered.has(route)){console.error("SEO r
 const countryContent={
  "/schengen-visa":["۹۰ یورو","هزینه رسمی بزرگسال","کمیسیون اروپا"],
  "/canada-tourist-visa":["۱۰۰ دلار کانادا","هزینه دولتی هر نفر","IRCC"],
- "/uk-tourist-visa":["۱۳۵ پوند","هزینه پایه ۶ماهه","GOV.UK"]
+ "/uk-tourist-visa":["۱۳۵ پوند","هزینه پایه ۶ماهه","GOV.UK"],
+ "/france-tourist-visa":["France-Visas","۲۶٫۵۰ یورو","WebPage"],
+ "/germany-tourist-visa":["TLScontact","VIDEX","WebPage"],
+ "/italy-tourist-visa":["VisaMetric","۵۰ میلیون ریال","WebPage"],
+ "/japan-tourist-visa":["JVAC","۶۸٬۰۰۰٬۰۰۰ ریال","WebPage"],
+ "/australia-tourist-visa":["ImmiAccount","۲۵۰ دلار استرالیا","WebPage"]
 };
 for(const [route,tokens] of Object.entries(countryContent)){
  const file=join(base,"server","app",route.substring(1)+".html");
@@ -25,6 +30,7 @@ for(const [route,tokens] of Object.entries(countryContent)){
  if(!html.includes('rel="canonical"')){console.error("Missing canonical:",route);process.exitCode=1}
  for(const token of tokens)if(!html.includes(token)){console.error("Missing country content",route,token);process.exitCode=1}
  if(!html.includes("BreadcrumbList")){console.error("Missing breadcrumb structured data",route);process.exitCode=1}
+ if(!html.includes("WebPage")){console.error("Missing citeable WebPage JSON-LD",route);process.exitCode=1}
 }
 if(!prerendered.has("/sitemap.xml")||!prerendered.has("/robots.txt")){
  console.error("Sitemap or robots.txt missing from prerendered routes");process.exitCode=1
