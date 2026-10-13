@@ -134,7 +134,7 @@ export const additionalVisaProfiles:Record<string,VisaProfile>={
    {q:"آیا ویزای ژاپن اینترنتی برای ایرانیان ساکن ایران صادر می‌شود؟",a:"سیستم eVISA برای افراد واجد شرایط مقیم کشورهای مشخص فراهم است و ایران در فهرست جاری وزارت خارجه ژاپن نیست؛ مسیر فعلی ایران از طریق JVAC است."},
    {q:"اگر ویزای ژاپن رد شود چه زمانی دوباره اقدام کنیم؟",a:"صفحه کنسولی سفارت می‌گوید علت رد اعلام نمی‌شود و درخواست با هدف مشابه تا شش ماه امکان‌پذیر نیست. وضعیت خاص را از مرجع رسمی بپرسید."}
   ],
-  related:[{slug:"visa-documents",label:"چک‌لیست مقدماتی مدارک ویزا"},{slug:"australia-tourist-visa",label:"مقایسه روند استرالیا"},{slug:"canada-tourist-visa",label:"مقایسه ویزای کانادا"}],
+  related:[{slug:"uk-tourist-visa",label:"مقایسه با ویزای انگلیس"},{slug:"australia-tourist-visa",label:"مقایسه روند استرالیا"},{slug:"canada-tourist-visa",label:"مقایسه ویزای کانادا"}],
   sources:[
    {label:"سفارت ژاپن در ایران — مقررات و نرخ ویزا",url:japanEmbassy},
    {label:"سفارت ژاپن — افتتاح JVAC تهران و شرایط مراجعه",url:japanJVAC},
