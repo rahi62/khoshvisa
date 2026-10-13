@@ -16,7 +16,7 @@ export function VisaPillarPage({visa,profile}:{visa:Visa;profile:VisaProfile}){
  const url="https://khoshvisa.ir/"+visa.slug+"/";
  const ld={"@context":"https://schema.org","@graph":[
   {"@type":"BreadcrumbList",itemListElement:breadcrumbs.map((b,i)=>({"@type":"ListItem",position:i+1,name:b.name,item:"https://khoshvisa.ir"+b.href}))},
-  {"@type":"WebPage","@id":url+"#webpage",url,name:profile.primaryKeyword+"؛ شرایط، مدارک و هزینه‌ها",description:profile.subtitle,inLanguage:"fa-IR",dateModified:profile.reviewedISO||"2026-10-12",citation:profile.sources.map(x=>x.url),about:{"@type":"Thing",name:profile.primaryKeyword},publisher:{"@type":"Organization",name:"خوش‌ویزا",url:"https://khoshvisa.ir/"}}
+  {"@type":"WebPage","@id":url+"#webpage",url,name:profile.primaryKeyword+"؛ شرایط، مدارک و هزینه‌ها",description:profile.subtitle,inLanguage:"fa-IR",dateModified:profile.reviewedISO||"2026-10-12",citation:profile.sources.map(x=>x.url),about:{"@type":"Thing",name:profile.primaryKeyword},publisher:{"@id":"https://khoshvisa.ir/#organization"},isPartOf:{"@id":"https://khoshvisa.ir/#website"}}
  ]};
  return <main className="seo-pillar">
   <script type="application/ld+json" dangerouslySetInnerHTML={{__html:JSON.stringify(ld).replace(/</g,"\\u003c")}}/>
@@ -40,7 +40,7 @@ export function VisaPillarPage({visa,profile}:{visa:Visa;profile:VisaProfile}){
     <section id="facts" className="seo-section">
       <span className="seo-overline">QUICK FACTS / اطلاعات سریع</span><h2>هزینه، زمان رسیدگی و مشخصات کلیدی</h2>
       <div className="seo-fact-grid">{profile.quick.map(f=><div className="seo-fact" key={f.label}><span>{f.label}</span><strong>{f.value}</strong>{f.note&&<small>{f.note}</small>}{f.source&&<a href={f.source} target="_blank" rel="noopener noreferrer">استعلام از مرجع رسمی ↗</a>}</div>)}</div>
-      <p className="seo-footnote">ارقام ذکرشده هزینه رسمی دولتی هستند و لزوماً شامل خدمات مرکز درخواست، ترجمه، بیمه یا خدمات خصوصی نمی‌شوند. مبالغ، مهلت‌ها و زمان‌های اعلام‌شده را در تاریخ اقدام بازبینی کنید.</p>
+      <p className="seo-footnote">ارقام ذکرشده هزینه رسمی دولتی هستند و لزوماً شامل خدمات مرکز درخواست، ترجمه، بیمه یا خدمات خصوصی نمی‌شوند. مبالغ، مهلت‌ها و زمان‌های اعلام‌شده را در تاریخ اقدام بازبینی کنید.</p><p className="seo-related-inline">مطالعه تکمیلی: <Link href="/visa-guides/visa-fees/">هزینه رسمی ویزا، بیومتریک و هزینه‌های جانبی ←</Link></p>
     </section>
     <section id="requirements" className="seo-section">
       <span className="seo-overline">ELIGIBILITY / شرایط پرونده</span><h2>شرایط و الزامات اصلی</h2>
@@ -75,15 +75,15 @@ export function VisaPillarPage({visa,profile}:{visa:Visa;profile:VisaProfile}){
     <span className="seo-overline">YOUR TRAVEL ROADMAP</span>
     <h2>قدم بعدی در مسیر ویزای {visa.name}</h2>
     <p>قبل از هر اقدامی، چک‌لیست اولیه وضعیت خود را تهیه و مرجع رسمی کشور مقصد را بررسی کنید.</p>
-    <Link href={"/consultation/?destination="+visa.slug} className="seo-button seo-button-gold">درخواست راهنمایی در واتساپ ←</Link>
+    <Link href={"/consultation/?destination="+visa.slug} className="seo-button seo-button-gold">شروع ارتباط اولیه ←</Link>
     <a href={profile.sources[0].url} target="_blank" rel="noopener noreferrer" className="seo-aside-source">مشاهده راهنمای رسمی ↗</a>
-    <p className="seo-aside-note">پیام فقط پس از تأیید و ارسال خود شما در واتساپ دریافت می‌شود؛ اطلاعات پیش از آن از فرم سایت ارسال نمی‌شود.</p></div>
+    <p className="seo-aside-note">واتساپ فقط در صورت فعال‌بودن شماره رسمی در دسترس است. پیام بعد از تأیید شما ارسال می‌شود؛ نتیجه ویزا تضمینی نیست.</p></div>
     <div className="seo-aside-toc"><strong>در این راهنما</strong>{sections.map(([id,label])=><a href={"#"+id} key={id}>{label}</a>)}</div>
    </aside>
   </div>
   <section className="seo-container seo-related"><span className="seo-overline">CONTINUE EXPLORING</span><h2>راهنماهای مرتبط</h2>
     <div>{profile.related.map(x=><Link key={x.slug} href={"/"+x.slug+"/"}>{x.label}<span aria-hidden="true">←</span></Link>)}
-    <Link href="/visa-explorer/">مقایسه مقصدهای ویزا <span aria-hidden="true">←</span></Link></div>
+    <Link href="/visa-guides/visa-documents/">مدارک و چک‌لیست متقاضی ایرانی <span aria-hidden="true">←</span></Link><Link href="/visa-guides/visa-fees/">هزینه رسمی ویزا <span aria-hidden="true">←</span></Link><Link href="/visa-guides/visa-rejection/">پس از ریجکتی ویزا <span aria-hidden="true">←</span></Link><Link href="/visa-explorer/">مقایسه مقصدهای ویزا <span aria-hidden="true">←</span></Link></div>
   </section>
  </main>;
 }

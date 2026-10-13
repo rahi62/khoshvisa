@@ -39,8 +39,8 @@ export default function ConsultationForm(){
  }
  return <div className="refForm kv-wa-form">
   <span className="kv-wa-overline">KHOSHVISA / WHATSAPP CONTACT</span>
-  <h2>درخواست راهنمایی ویزا</h2>
-  <p>اطلاعات اولیه سفر را انتخاب کنید؛ سپس متن آماده را در واتساپ خوش‌ویزا بررسی و در صورت تمایل ارسال کنید. ارسال نهایی با خود شماست.</p>
+  <h2>ثبت درخواست اولیه سفر</h2>
+  <p>مقصد و زمان سفر را انتخاب کنید؛ در صورت فعال‌بودن واتساپ رسمی، متن آماده را ببینید و فقط در صورت تمایل خودتان ارسال کنید. این کار به معنای تشکیل پرونده نیست.</p>
   <form onSubmit={e=>e.preventDefault()}>
    <label htmlFor="kv-wa-name"><span>نام شما (اختیاری)</span><input id="kv-wa-name" type="text" value={name} maxLength={80} autoComplete="name" onChange={e=>{setName(e.target.value);resetStatus()}} placeholder="مثلاً علی رضایی"/></label>
    <label htmlFor="kv-wa-destination"><span>کشور یا مقصد موردنظر *</span>
@@ -57,10 +57,10 @@ export default function ConsultationForm(){
    {WA_NUMBER_READY?<a href={"https://wa.me/"+(process.env.NEXT_PUBLIC_KHOSHVISA_WHATSAPP_NUMBER||"").replace(/\D/g,"")} target="_blank" rel="noopener noreferrer" onClick={openWhatsApp} aria-disabled={!ready} className={"kv-wa-submit "+(!ready?"is-disabled":"")}>ادامه در واتساپ <span aria-hidden="true">↗</span></a>:<button type="button" disabled className="kv-wa-submit is-disabled" aria-disabled="true">واتساپ خوش‌ویزا در حال راه‌اندازی است</button>}
    {!selected&&<p className="kv-wa-hint" role="status">برای ادامه، کشور مقصد را مشخص کنید.</p>}
    {selected&&!consent&&<p className="kv-wa-hint">لطفاً قبل از رفتن به واتساپ، توضیح انتقال داده را بخوانید و تأیید کنید.</p>}
-   {!WA_NUMBER_READY&&<p className="kv-wa-warning" role="status">شماره رسمی واتساپ خوش‌ویزا هنوز توسط مدیر سایت تنظیم نشده است. این فرم اطلاعاتی ارسال یا ذخیره نمی‌کند.</p>}
+   {!WA_NUMBER_READY&&<div className="kv-wa-warning" role="status">واتساپ فعلاً در این فرم فعال نیست و هیچ اطلاعاتی ارسال نمی‌شود. برای ارتباط اولیه با <a href="tel:+989351300502">۰۹۳۵۱۳۰۰۵۰۲</a> یا <a href="tel:+982146010788">۰۲۱۴۶۰۱۰۷۸۸</a> تماس بگیرید.</div>
    {status==="opened"&&<div className="kv-wa-notice" role="status"><strong>واتساپ باز شد؛ پیام هنوز ثبت‌شده محسوب نمی‌شود.</strong><p>متن را در واتساپ بخوانید و برای ارسال، دکمه «ارسال» آن برنامه را بزنید. کد پیگیری همین مکالمه: <b dir="ltr">{lastReference}</b>. تا زمان دریافت پیام، امکان پیگیری از طرف خوش‌ویزا وجود ندارد.</p></div>}
    {status==="error"&&<p className="kv-wa-warning" role="alert">باز کردن واتساپ انجام نشد. مقصد و رضایت را کنترل کنید؛ اگر لازم بود از یک مرورگر به‌روز استفاده کنید.</p>}
-   <small className="kv-wa-disclaimer">خوش‌ویزا نمایندگی رسمی دولت یا سفارت نیست و نتیجه ویزا را تضمین نمی‌کند. در این صفحه اطلاعات در سرور سایت ثبت نمی‌شود. انتقال احتمالی اطلاعات به ارائه‌دهنده خدمات مستقل فقط پس از اطلاع‌رسانی و رضایت جداگانه انجام خواهد شد.</small>
+   <small className="kv-wa-disclaimer">خوش‌ویزا نمایندگی رسمی سفارت، صادرکننده ویزا یا ارائه‌دهنده مستقیم مشاوره تخصصی نیست و نتیجه را تضمین نمی‌کند. در این صفحه اطلاعات در سرور سایت ثبت نمی‌شود. هویت مجری احتمالی و هدف انتقال داده پیش از اشتراک‌گذاری اعلام و رضایت جداگانه گرفته خواهد شد.</small>
   </form>
  </div>;
 }

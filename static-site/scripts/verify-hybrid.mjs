@@ -45,6 +45,12 @@ for(const [route,tokens] of Object.entries(guideRoutes)){
  if(!html.includes('rel="canonical"')){console.error("Missing guide canonical:",route);process.exitCode=1}
  for(const token of tokens)if(!html.includes(token)){console.error("Missing guide schema/content token:",route,token);process.exitCode=1}
 }
+for(const route of Object.keys(countryContent)){
+ const html=readFileSync(join(base,"server","app",route.substring(1)+".html"),"utf8");
+ for(const link of ["/visa-guides/visa-documents/","/visa-guides/visa-rejection/","/visa-guides/visa-fees/"]){
+  if(!html.includes('href="'+link+'"')){console.error("Missing money-to-guide link",route,link);process.exitCode=1}
+ }
+}
 if(!prerendered.has("/sitemap.xml")||!prerendered.has("/robots.txt")){
  console.error("Sitemap or robots.txt missing from prerendered routes");process.exitCode=1
 }
