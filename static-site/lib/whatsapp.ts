@@ -38,8 +38,8 @@ export function buildWhatsAppMessage(draft:WhatsAppDraft,ref:string,visas:Visa[]
   parts.push("کد پیگیری: "+ref);
   return parts.join("\n");
 }
-export function buildWhatsAppUrl(draft:WhatsAppDraft,reference:string,visas:Visa[]):string{
-  if(!WA_NUMBER_READY)throw new Error("whatsapp_not_configured");
+export function buildWhatsAppUrl(draft:WhatsAppDraft,reference:string,visas:Visa[],recipient=WA_NUMBER):string{
+  if(!/^[1-9][0-9]{7,14}$/.test(recipient))throw new Error("whatsapp_not_configured");
   const text=buildWhatsAppMessage(draft,reference,visas);
-  return "https://wa.me/"+WA_NUMBER+"?text="+encodeURIComponent(text);
+  return "https://wa.me/"+recipient+"?text="+encodeURIComponent(text);
 }
