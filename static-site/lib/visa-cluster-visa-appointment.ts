@@ -177,6 +177,27 @@ export const visaAppointmentGuide:GuideExpansion={
       "sourceUrls": [
         "https://visas-de.tlscontact.com/fa-ir/country/ir/vac/irTHR2de/news"
       ]
+    },
+    {
+      "title": "اطلاعیه ۱۵ ژوئیه ۲۰۲۶ آلمان دقیقاً چه محدودیتی داشت؟",
+      "paragraphs": [
+        "TLScontact در اطلاعیه ۱۵ ژوئیه ۲۰۲۶ اعلام کرد سامانه فهرست انتظار جدید برای دسته‌های دیگری نیز باز می‌شود، اما در همان مقطع ظرفیت سفارت بسیار محدود بود و تخصیص وقت فعلاً فقط برای فهرست تأیید مدارک انجام می‌شد. این وضعیت نشان می‌دهد «ثبت‌نام در فهرست انتظار» با «وجود وقت تحویل درخواست توریستی» یکی نیست.",
+        "این اطلاعیه را نباید به‌عنوان گزارش زنده وضعیت ۱۴ اکتبر تکرار کرد. متقاضی گردشگری آلمان باید پیش از برنامه‌ریزی سفر یا پرداخت به واسطه، آخرین پیام بخش Schengen C و وضعیت فهرست انتظار حساب خود را در TLScontact بررسی کند."
+      ],
+      "sourceUrls": [
+        "https://visas-de.tlscontact.com/fa-ir/country/ir/vac/irTHR2de/news"
+      ]
+    },
+    {
+      "title": "سه نوع پول در مسیر وقت ایتالیا و آلمان",
+      "paragraphs": [
+        "کارمزد رسمی مرکز، ودیعه رزرو و هزینه اختیاری VIP سه چیز متفاوت‌اند. برای مثال، سایت VisaMetric ایتالیا رزرو وقت را یک مرحله پیش از دریافت مدارک نشان می‌دهد و خود مرکز تصمیم صادر نمی‌کند.",
+        "TLScontact در فهرست خدمات تهران تصریح می‌کند خرید خدمات ممتاز، مزیتی برای نتیجه پرونده، جلو افتادن وقت یا تسریع تصمیم سفارت ایجاد نمی‌کند. بنابراین هر درخواست پول اضافه را باید از نظر نوع خدمت و دریافت‌کننده بررسی کرد."
+      ],
+      "sourceUrls": [
+        "https://www.visametric.com/iran/Italy/fa/p/rond-drkhoast-oza-shngn",
+        "https://visas-de.tlscontact.com/fa-ir/country/ir/vac/irTHR2de/address-opening-hours"
+      ]
     }
   ],
   "questions": [
@@ -203,6 +224,10 @@ export const visaAppointmentGuide:GuideExpansion={
     {
       "q": "آیا سایت خوش‌ویزا وقت زنده سفارت‌ها را نشان می‌دهد؟",
       "a": "خیر. این مقاله راهنمای عمومی است و موجودی یا ظرفیت لحظه‌ای هیچ سامانه‌ای را گزارش نمی‌کند."
+    },
+    {
+      "q": "ثبت‌نام در لیست انتظار TLScontact آلمان یعنی وقت دارم؟",
+      "a": "خیر. فهرست انتظار و وقت قطعی متفاوت‌اند. اطلاعیه‌های رسمی تاریخ‌دار TLScontact را برای دسته Schengen C کنترل کنید."
     }
   ],
   "related": [
@@ -259,9 +284,17 @@ export const visaAppointmentGuide:GuideExpansion={
     {
       "name": "راهنمای رسمی تکمیلی",
       "url": "https://visas-de.tlscontact.com/fa-ir/country/ir/vac/irTHR2de/news"
+    },
+    {
+      "name": "منبع رسمی تکمیلی — VisaMetric",
+      "url": "https://www.visametric.com/iran/Italy/fa/p/rond-drkhoast-oza-shngn"
+    },
+    {
+      "name": "منبع رسمی تکمیلی — TLScontact",
+      "url": "https://visas-de.tlscontact.com/fa-ir/country/ir/vac/irTHR2de/address-opening-hours"
     }
   ],
-  "lead": "قبل از اینکه برای «وقت سفارت» پول بدهید، بپرسید نوبت کدام کشور و کدام کارگزاری است. وقت VFS فرانسه، فهرست انتظار TLScontact آلمان و تحویل بدون وقت JVAC ژاپن سه روند متفاوت‌اند.",
+  "lead": "وقت سفارت خریدنی است یا باید در فهرست انتظار بمانید؟ پاسخ به کشور، نوع ویزا و تاریخ بستگی دارد. قبل از واریز وجه به هر سایتی، مرجع معرفی‌شده در سایت سفارت را مشخص کنید و ببینید نوبت برای چه مرحله‌ای است.",
   "decisionAid": {
     "title": "پیش از رزرو وقت چه کنیم؟",
     "intro": "چطور قدم‌به‌قدم جلو برویم؟",

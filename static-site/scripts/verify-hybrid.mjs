@@ -51,6 +51,15 @@ for(const [route,tokens] of Object.entries(guideRoutes)){
  if(!html.includes('rel="canonical"')){console.error("Missing guide canonical:",route);process.exitCode=1}
  for(const token of tokens)if(!html.includes(token)){console.error("Missing guide schema/content token:",route,token);process.exitCode=1}
 }
+const editorialGapChecks=[["/visa-guides/visa-proof-of-funds","شش‌ماهه"],["/visa-guides/visa-without-travel-history","گذرنامه‌های پیشین"],["/visa-guides/visa-appointment","۱۵ ژوئیه ۲۰۲۶"],["/visa-guides/visa-document-translation","نام لاتین"],["/visa-guides/visa-invitation-letter","Super Visa"],["/visa-guides/single-vs-multiple-entry-visa","برچسب شینگن"]];
+for(const [route,token] of editorialGapChecks){
+ const path=join(base,"server","app",route.substring(1)+".html");
+ if(!existsSync(path)){console.error("Missing prerendered cluster:",route);process.exitCode=1;continue}
+ const html=readFileSync(path,"utf8");
+ for(const phrase of [token,"راهنمای عملی","منابع رسمی"]){
+  if(!html.includes(phrase)){console.error("Cluster gap-content not rendered:",route,phrase);process.exitCode=1}
+ }
+}
 for(const route of Object.keys(countryContent)){
  const html=readFileSync(join(base,"server","app",route.substring(1)+".html"),"utf8");
  for(const token of ["پاسخ کوتاه برای متقاضی ایرانی","rel=\"canonical\"","BreadcrumbList","WebPage"]){
