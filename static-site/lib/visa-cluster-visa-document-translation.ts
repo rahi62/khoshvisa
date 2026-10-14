@@ -244,6 +244,18 @@ export const visaDocumentTranslationGuide:GuideExpansion={
     {
       "slug": "japan-tourist-visa",
       "title": "مدارک ویزای ژاپن"
+    },
+    {
+      "slug": "france-tourist-visa",
+      "title": "ویزای فرانسه؛ مدارک و شرایط اختصاصی"
+    },
+    {
+      "slug": "germany-tourist-visa",
+      "title": "ویزای آلمان؛ مدارک و شرایط اختصاصی"
+    },
+    {
+      "slug": "italy-tourist-visa",
+      "title": "ویزای ایتالیا؛ مدارک و شرایط اختصاصی"
     }
   ],
   "sources": [

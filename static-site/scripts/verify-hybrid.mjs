@@ -51,6 +51,17 @@ for(const [route,tokens] of Object.entries(guideRoutes)){
  if(!html.includes('rel="canonical"')){console.error("Missing guide canonical:",route);process.exitCode=1}
  for(const token of tokens)if(!html.includes(token)){console.error("Missing guide schema/content token:",route,token);process.exitCode=1}
 }
+// Post-deploy regression: country Money Pages and contextually relevant guides link back.
+const requiredReverseLinks={
+ "/visa-guides/visa-proof-of-funds":["france-tourist-visa","germany-tourist-visa","italy-tourist-visa"],
+ "/visa-guides/visa-document-translation":["france-tourist-visa","germany-tourist-visa","italy-tourist-visa"]
+};
+for(const [route,targets] of Object.entries(requiredReverseLinks)){
+ const html=readFileSync(join(base,"server","app",route.substring(1)+".html"),"utf8");
+ for(const target of targets)if(!html.includes('href="/'+target+'/"')){
+  console.error("Missing contextual return path",route,target);process.exitCode=1;
+ }
+}
 const editorialGapChecks=[["/visa-guides/visa-proof-of-funds","شش‌ماهه"],["/visa-guides/visa-without-travel-history","گذرنامه‌های پیشین"],["/visa-guides/visa-appointment","۱۵ ژوئیه ۲۰۲۶"],["/visa-guides/visa-document-translation","نام لاتین"],["/visa-guides/visa-invitation-letter","Super Visa"],["/visa-guides/single-vs-multiple-entry-visa","برچسب شینگن"]];
 for(const [route,token] of editorialGapChecks){
  const path=join(base,"server","app",route.substring(1)+".html");

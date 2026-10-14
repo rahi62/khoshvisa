@@ -234,6 +234,18 @@ export const visaProofOfFundsGuide:GuideExpansion={
     {
       "slug": "australia-tourist-visa",
       "title": "ویزای استرالیا"
+    },
+    {
+      "slug": "france-tourist-visa",
+      "title": "ویزای فرانسه؛ مدارک و شرایط اختصاصی"
+    },
+    {
+      "slug": "germany-tourist-visa",
+      "title": "ویزای آلمان؛ مدارک و شرایط اختصاصی"
+    },
+    {
+      "slug": "italy-tourist-visa",
+      "title": "ویزای ایتالیا؛ مدارک و شرایط اختصاصی"
     }
   ],
   "sources": [
