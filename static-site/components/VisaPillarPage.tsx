@@ -1,5 +1,6 @@
 import Link from "next/link";
-import type {Visa} from "../lib/content";
+import {guides,type Visa} from "../lib/content";
+import {moneyClusterLinks} from "../lib/guide-cluster-links";
 import type {VisaProfile} from "../lib/visa-profiles";
 import {visaSeoBriefs} from "../lib/visa-seo-briefs";
 
@@ -86,6 +87,13 @@ export function VisaPillarPage({visa,profile}:{visa:Visa;profile:VisaProfile}){
   <section className="seo-container seo-related"><span className="seo-overline">CONTINUE EXPLORING</span><h2>راهنماهای مرتبط</h2>
     <div>{profile.related.map(x=><Link key={x.slug} href={"/"+x.slug+"/"}>{x.label}<span aria-hidden="true">←</span></Link>)}
     <Link href="/visa-guides/visa-documents/">مدارک و چک‌لیست متقاضی ایرانی <span aria-hidden="true">←</span></Link><Link href="/visa-guides/visa-fees/">هزینه رسمی ویزا <span aria-hidden="true">←</span></Link><Link href="/visa-guides/visa-rejection/">پس از ریجکتی ویزا <span aria-hidden="true">←</span></Link><Link href="/visa-explorer/">مقایسه مقصدهای ویزا <span aria-hidden="true">←</span></Link></div>
+    <div className="kv-money-topic-cluster">
+     <h3>مقاله‌های پشتیبان ویزای {visa.name}</h3>
+     <p>برای هر موضوع جزئیات و تفاوت قوانین کشورها را بخوانید. در روز اقدام مرجع رسمی و چک‌لیست مقصد شما ملاک است.</p>
+     <nav aria-label={"مطالب مرتبط با ویزای "+visa.name}>
+      {(moneyClusterLinks[visa.slug]||[]).map(slug=><Link key={slug} href={"/visa-guides/"+slug+"/"}>{guides.find(g=>g.slug===slug)?.title||slug} ←</Link>)}
+     </nav>
+    </div>
   </section>
  </main>;
 }

@@ -8,7 +8,7 @@ if(!existsSync(prerenderFile)){
 const manifest=JSON.parse(readFileSync(prerenderFile,"utf8"));
 const normalize=p=>(p.replace(/\/+$/,"")||"/");
 const prerendered=new Set(Object.keys(manifest.routes||{}).map(normalize));
-const publicRoutes=["/","/destinations","/visa-explorer","/visa-readiness","/motion-lab","/consultation","/visa-guides","/editorial-policy","/schengen-visa","/canada-tourist-visa","/uk-tourist-visa","/japan-tourist-visa","/france-tourist-visa","/italy-tourist-visa","/germany-tourist-visa","/australia-tourist-visa","/visa-guides/visa-documents","/visa-guides/visa-rejection","/visa-guides/visa-fees"];
+const publicRoutes=["/","/destinations","/visa-explorer","/visa-readiness","/motion-lab","/consultation","/visa-guides","/editorial-policy","/schengen-visa","/canada-tourist-visa","/uk-tourist-visa","/japan-tourist-visa","/france-tourist-visa","/italy-tourist-visa","/germany-tourist-visa","/australia-tourist-visa","/visa-guides/visa-documents","/visa-guides/visa-rejection","/visa-guides/visa-fees","/visa-guides/visa-proof-of-funds","/visa-guides/visa-without-travel-history","/visa-guides/visa-appointment","/visa-guides/visa-document-translation","/visa-guides/visa-invitation-letter","/visa-guides/single-vs-multiple-entry-visa"];
 for(const route of publicRoutes)if(!prerendered.has(route)){console.error("SEO route is no longer prerendered:",route);process.exitCode=1}
 const countryContent={
  "/schengen-visa":["۹۰ یورو","هزینه رسمی بزرگسال","کمیسیون اروپا"],
@@ -35,7 +35,13 @@ for(const [route,tokens] of Object.entries(countryContent)){
 const guideRoutes={
  "/visa-guides/visa-documents":["Article","BreadcrumbList","مدارک ویزای توریستی","جدول مقایسه مدارک","سؤالات متداول","کمیسیون اروپا","GOV.UK"],
  "/visa-guides/visa-rejection":["Article","WebPage","BreadcrumbList","ریجکتی ویزا","بعد از ریجکتی در ۸ مقصد","ژاپن","شش ماه","IRCC","۲۰۲۶/۱۰/۱۳"],
- "/visa-guides/visa-fees":["Article","WebPage","BreadcrumbList","هزینه ویزای توریستی ۲۰۲۶","جدول هزینه رسمی","۱۳۵ پوند","۶۸٬۰۰۰٬۰۰۰ ریال","۲۵۰ دلار استرالیا","IRCC","۲۰۲۶/۱۰/۱۳"]
+ "/visa-guides/visa-fees":["Article","WebPage","BreadcrumbList","هزینه ویزای توریستی ۲۰۲۶","جدول هزینه رسمی","۱۳۵ پوند","۶۸٬۰۰۰٬۰۰۰ ریال","۲۵۰ دلار استرالیا","IRCC","۲۰۲۶/۱۰/۱۳"],
+ "/visa-guides/visa-proof-of-funds":["Article","BreadcrumbList","تمکن مالی","گردش حساب","IRCC"],
+ "/visa-guides/visa-without-travel-history":["Article","BreadcrumbList","بدون سابقه سفر","پاسپورت سفید"],
+ "/visa-guides/visa-appointment":["Article","BreadcrumbList","وقت سفارت","VisaMetric","JVAC"],
+ "/visa-guides/visa-document-translation":["Article","BreadcrumbList","ترجمه مدارک","مترجم","کانادا"],
+ "/visa-guides/visa-invitation-letter":["Article","BreadcrumbList","دعوت‌نامه","IRCC","میزبان"],
+ "/visa-guides/single-vs-multiple-entry-visa":["Article","BreadcrumbList","سینگل","مولتی","۹۰ روز"]
 };
 for(const [route,tokens] of Object.entries(guideRoutes)){
  const file=join(base,"server","app",route.substring(1)+".html");

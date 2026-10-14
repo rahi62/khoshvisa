@@ -3,6 +3,7 @@ import {notFound} from "next/navigation";
 import Link from "next/link";
 import {guides} from "../../../lib/content";
 import {guideExpansions} from "../../../lib/guide-expansions";
+import {articleGuideLinks} from "../../../lib/guide-cluster-links";
 import "../guide.css";
 
 const base="https://khoshvisa.ir";
@@ -113,7 +114,7 @@ export default async function Page({params}:Props){
   </div>
   <section className="seo-container seo-related"><span className="seo-overline">صفحات مرتبط</span><h2>راهنمای ویزا برای مقصدهای مختلف</h2>
    <div>{detail.related.map(r=><Link href={"/"+r.slug+"/"} key={r.slug}>{r.title} <span>←</span></Link>)}</div>
-   <p>راهنماهای تکمیلی: {guides.filter(item=>item.slug!==slug).map((item,i)=><span key={item.slug}>{i>0&&" · "}<Link href={"/visa-guides/"+item.slug+"/"}>{item.title}</Link></span>)}</p>
+   <p>راهنماهای تکمیلی: {guides.filter(item=>(articleGuideLinks[slug]||[]).includes(item.slug)).map((item,i)=><span key={item.slug}>{i>0&&" · "}<Link href={"/visa-guides/"+item.slug+"/"}>{item.title}</Link></span>)}</p>
   </section>
  </main>;
 }

@@ -1,0 +1,218 @@
+import type {GuideExpansion} from "./guide-expansions";
+/** Editorial review 2026-10-14, source-grounded and non-advisory. */
+export const visaProofOfFundsGuide:GuideExpansion={
+  "intro": "تمکن مالی و گردش حساب ویزای توریستی برای ایرانیان به معنی نشان‌دادن منابع واقعی و دسترسی‌پذیر متناسب با سفر است، نه خرید یک عدد ثابت از بانک. این راهنما تفاوت مدارک شینگن، کانادا، انگلیس و استرالیا را همراه با نمونه بودجه و خطاهای رایج توضیح می‌دهد.",
+  "quickAnswerTitle": "برای ویزای توریستی چقدر تمکن مالی لازم است؟",
+  "quickAnswer": "یک رقم جهانی برای تمکن مالی ویزای توریستی وجود ندارد. مبلغ و نوع مدارک به کشور، مدت سفر، محل اقامت، تعداد همراهان و اینکه چه کسی هزینه‌ها را می‌پردازد بستگی دارد. گردش حساب واقعی، منبع درآمد و توضیح واریزهای مهم باید با برنامه سفر سازگار باشد؛ صرف موجودی بالا یا گواهی تمکن، صدور ویزا را تضمین نمی‌کند.",
+  "metaDescription": "تمکن مالی و گردش حساب ویزای توریستی؛ تفاوت شینگن، کانادا، انگلیس و استرالیا، واریز ناگهانی، اسپانسر و نمونه بودجه واقعی.",
+  "notice": "این صفحه شرایط مالی ویزا را به‌صورت عمومی توضیح می‌دهد؛ عدد قطعی، حداقل لازم و فهرست مدارک هر پرونده باید از مرجع رسمی مقصد و چک‌لیست همان متقاضی بررسی شود. هیچ نتیجه ویزایی تضمین نمی‌شود.",
+  "updated": "۲۰۲۶/۱۰/۱۴",
+  "updatedISO": "2026-10-14",
+  "comparisonTitle": "تمکن مالی و گردش حساب در چهار مسیر ویزا چه تفاوتی دارد؟",
+  "comparisonCaption": "مدارک و منطق عمومی بررسی مالی؛ نه مبلغ تضمینی و نه الزام واحد",
+  "comparisonRequirementLabel": "معیار مالی و نمونه شواهد",
+  "comparison": {
+    "intro": "در این جدول، شرایط متداول مدارک مالی را مقایسه کرده‌ایم. دستورالعمل سفارت و فرم متناسب با شرایط فردی همواره بر متن عمومی مقدم است.",
+    "rows": [
+      {
+        "destination": "شینگن",
+        "slug": "schengen-visa",
+        "requirement": "شواهد تأمین هزینه اقامت، محل اقامت و بازگشت؛ مقدار کافی و اسناد دقیق می‌تواند بین کشورها متفاوت باشد.",
+        "source": "کمیسیون اروپا",
+        "href": "https://home-affairs.ec.europa.eu/policies/schengen/visa-policy/applying-schengen-visa_en"
+      },
+      {
+        "destination": "کانادا",
+        "slug": "canada-tourist-visa",
+        "requirement": "IRCC می‌گوید مبلغ موردنیاز به مدت و محل اقامت بستگی دارد؛ پیوند با کشور محل زندگی و توان پرداخت اهمیت دارند.",
+        "source": "IRCC",
+        "href": "https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada/eligibility.html"
+      },
+      {
+        "destination": "انگلیس",
+        "slug": "uk-tourist-visa",
+        "requirement": "اسناد دسترسی به وجوه و منشأ آن، شواهد درآمد و حمایت مالی میزبان اگر وجود دارد؛ رقم تضمینی تعریف نشده است.",
+        "source": "GOV.UK",
+        "href": "https://www.gov.uk/government/publications/visitor-visa-guide-to-supporting-documents/guide-to-supporting-documents-visiting-the-uk"
+      },
+      {
+        "destination": "استرالیا",
+        "slug": "australia-tourist-visa",
+        "requirement": "شواهد منابع کافی برای اقامت و خروج؛ صورت‌حساب جزئی، حقوق، مالیات یا درآمد کسب‌وکار با توجه به شرایط.",
+        "source": "Home Affairs",
+        "href": "https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/visitor-600/tourist-stream-overseas"
+      }
+    ]
+  },
+  "sections": [
+    {
+      "title": "تمکن مالی با گردش حساب چه فرقی دارد؟",
+      "paragraphs": [
+        "گواهی تمکن معمولاً تصویری از دارایی یا موجودی در تاریخ مشخص ارائه می‌کند؛ گردش حساب مسیر ورود و خروج پول در بازه‌ای از زمان را نشان می‌دهد. ارزش هر دو سند زمانی روشن می‌شود که با شغل، درآمد، هزینه سفر و وضعیت متقاضی مرتبط باشند.",
+        "اگر مانده حساب بالا ولی هیچ سابقه درآمد یا توضیح قابل اتکایی برای آن وجود نداشته باشد، پرونده لزوماً قوی‌تر نمی‌شود. برعکس، متقاضی با درآمد مستمر و بودجه متناسب ممکن است تصویر روشن‌تری از توان پرداخت ارائه دهد. هیچ قاعده‌ای مبنی بر موفقیت قطعی یک الگو وجود ندارد."
+      ],
+      "sourceUrls": [
+        "https://www.gov.uk/government/publications/visitor-visa-guide-to-supporting-documents/guide-to-supporting-documents-visiting-the-uk",
+        "https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada/eligibility.html"
+      ]
+    },
+    {
+      "title": "چرا نمی‌توان برای همه کشورها رقم مشخص اعلام کرد؟",
+      "paragraphs": [
+        "IRCC صریحاً توضیح می‌دهد که پول لازم برای بازدید به طول اقامت و اینکه در هتل می‌مانید یا منزل دوستان و خانواده بستگی دارد. مقررات بریتانیا نیز بر هزینه‌های معقول سفر و خروج از کشور تمرکز دارد، نه یک سپرده بانکی ثابت برای همه بازدیدکنندگان.",
+        "در شینگن، کشور مقصد اصلی و مقررات مرتبط با اثبات وسایل معاش اهمیت دارند؛ بنابراین عددی که برای یک کشور یا یک سفر مناسب است، نباید به همه حوزه شینگن تعمیم داده شود. تنها مسیر قابل اطمینان بررسی جدول و چک‌لیست رسمی همان کشور در روز اقدام است."
+      ],
+      "sourceUrls": [
+        "https://home-affairs.ec.europa.eu/policies/schengen/visa-policy/applying-schengen-visa_en",
+        "https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada/eligibility.html",
+        "https://www.gov.uk/guidance/immigration-rules/immigration-rules-appendix-v-visitor"
+      ]
+    },
+    {
+      "title": "چگونه بودجه واقعی سفر را محاسبه کنیم؟",
+      "paragraphs": [
+        "برای آماده‌سازی شخصی می‌توان یک برآورد ساخت: هزینه رفت‌وبرگشت + اقامت + خوراک و حمل‌ونقل روزانه × روزهای سفر + بیمه و هزینه‌های ضروری + هزینه همراهان. این فرمول آموزشی است و به معنی حداقل رسمی تمکن یا مبلغ مورد تأیید سفارت نیست.",
+        "مثال فرضی: فردی برای سفر ده‌روزه به لندن هزینه پرواز، ده شب اقامت، حمل‌ونقل و بازگشت را با قیمت‌های واقعی روز محاسبه می‌کند. سپس نشان می‌دهد چه سهمی را خود او از درآمد و پس‌اندازش می‌پردازد. بهتر است توضیح اعداد در فرم، حساب بانکی و مدارک شغلی با هم تناقض نداشته باشد."
+      ],
+      "bullets": [
+        "مقصد و طول سفر را دقیق مشخص کنید.",
+        "برای هر هزینه منبع پرداخت واقعی داشته باشید.",
+        "در صورت همراه، بودجه را برای همه افراد بررسی کنید.",
+        "مبلغ احتمالی میزبان را جدا از منابع شخصی ثبت کنید.",
+        "از معرفی این بودجه به‌عنوان «تمکن لازم سفارت» پرهیز کنید."
+      ],
+      "sourceUrls": [
+        "https://www.gov.uk/guidance/immigration-rules/immigration-rules-appendix-v-visitor",
+        "https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada/eligibility.html"
+      ]
+    },
+    {
+      "title": "کارمند، صاحب کسب‌وکار، فریلنسر یا بازنشسته چه ارائه کند؟",
+      "paragraphs": [
+        "کارمند می‌تواند متناسب با چک‌لیست از نامه اشتغال، فیش حقوقی و صورت‌حساب استفاده کند. برای صاحبان کسب‌وکار و فریلنسرها، مدارک فعالیت واقعی، قرارداد، فاکتور، اظهارنامه مالیاتی یا گردش حساب مرتبط ممکن است مفید باشد. دانشجو یا بازنشسته نیز باید منبع هزینه سفر خود را روشن کند.",
+        "میزان و نوع مدارک نباید تقلیدی باشد؛ اگر درخواست‌کننده درآمد پروژه‌ای دارد، ساختن گواهی حقوق ثابت صوری یا واریز پول امانی به حساب راهکار قابل دفاعی نیست. مدارک باید وضعیت واقعی را توضیح دهند."
+      ],
+      "sourceUrls": [
+        "https://www.gov.uk/government/publications/visitor-visa-guide-to-supporting-documents/guide-to-supporting-documents-visiting-the-uk",
+        "https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/visitor-600/tourist-stream-overseas"
+      ]
+    },
+    {
+      "title": "واریز ناگهانی به حساب قبل از ویزا چه پیامدی دارد؟",
+      "paragraphs": [
+        "انتقال قابل‌توجه وجه همیشه مشکل‌ساز نیست؛ سؤال اصلی منشأ واقعی و دسترسی متقاضی به وجه است. مثلاً فروش ملک، دریافت پاداش شغلی یا انتقال پس‌انداز از حساب شخصی ممکن است توضیح و سند مرتبط داشته باشد.",
+        "اگر پول متعلق به متقاضی نیست یا فقط برای نمایش موجودی موقت وارد حساب شده، نباید آن را به‌عنوان منبع آزاد و در دسترس معرفی کرد. برای هر واریز مهم که به پرونده ارتباط دارد، تاریخ، طرف تراکنش و علت اقتصادی واقعی را حفظ کنید."
+      ],
+      "sourceUrls": [
+        "https://www.gov.uk/government/publications/visitor-visa-guide-to-supporting-documents/guide-to-supporting-documents-visiting-the-uk"
+      ]
+    },
+    {
+      "title": "اگر شخص دیگری هزینه سفر را می‌دهد چه کنیم؟",
+      "paragraphs": [
+        "در انگلیس، وقتی حامی مالی مخارج یا اسکان را تقبل می‌کند، نوع حمایت، رابطه، قانونی‌بودن حضور او در کشور و توانایی تأمین هزینه بدون لطمه به تعهدات خودش اهمیت دارد. در کانادا نیز ممکن است دعوت‌نامه یا اسناد میزبان برای هدف و تأمین هزینه مطرح باشند.",
+        "نمونه فرضی: متقاضی برای دیدار خواهر خود به کانادا می‌رود و خواهر هزینه اقامت را می‌دهد. بهتر است رابطه، مدت اقامت، محل اسکان و مسئولیت هر پرداخت روشن باشد. دعوت‌نامه یا حمایت میزبان جایگزین ارزیابی کامل متقاضی نیست."
+      ],
+      "sourceUrls": [
+        "https://www.gov.uk/government/publications/visitor-visa-guide-to-supporting-documents/guide-to-supporting-documents-visiting-the-uk",
+        "https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada/eligibility.html"
+      ]
+    },
+    {
+      "title": "مدارک مالی در پرونده خانوادگی چگونه ارزیابی می‌شوند؟",
+      "paragraphs": [
+        "برای سفر خانوادگی، برآورد را برای مجموع همراهان انجام دهید و از دو بار شمردن یک منبع پول پرهیز کنید. اگر یکی از اعضای خانواده حامی دیگران است، پوشش هزینه‌ها و رابطه خانوادگی باید قابل توضیح باشد.",
+        "در کانادا و انگلیس الزامات یا سقف‌های هزینه دولتی خانوادگی با موضوع تمکن فرق دارد؛ جمع‌کردن هزینه ویزا با منابع مورد نیاز سفر یا استفاده از یک گردش حساب به‌جای مدارک همه اشخاص، بدون توجه به چک‌لیست شخصی، صحیح نیست."
+      ],
+      "sourceUrls": [
+        "https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada/eligibility.html",
+        "https://www.gov.uk/government/publications/visitor-visa-guide-to-supporting-documents/guide-to-supporting-documents-visiting-the-uk"
+      ]
+    },
+    {
+      "title": "چک‌لیست کنترل مدارک مالی پیش از ارسال",
+      "paragraphs": [
+        "به‌جای افزایش تعداد فایل‌ها، دنبال زنجیره روشن شواهد باشید: شغل یا منبع درآمد واقعی، حساب قابل دسترسی، هزینه قابل دفاع سفر و اسناد توضیح‌دهنده حمایت احتمالی. اگر سامانه شخصی مدارک مشخص دیگری می‌خواهد، همان سامانه مقدم است."
+      ],
+      "bullets": [
+        "حساب بانکی به نام صاحب واقعی آن و با اطلاعات خوانا باشد.",
+        "واریزهای مهمِ مرتبط با هزینه سفر توضیح صادقانه داشته باشند.",
+        "منبع درآمد با شغل و شرح فرم تناقض نداشته باشد.",
+        "هزینه اقامت و همراهان در بودجه لحاظ شود.",
+        "در صورت حمایت شخص ثالث، رابطه و حدود پرداخت مستند شود.",
+        "از گردش حساب ساختگی یا ضمانت‌های تبلیغاتی استفاده نشود."
+      ],
+      "sourceUrls": [
+        "https://www.gov.uk/government/publications/visitor-visa-guide-to-supporting-documents/guide-to-supporting-documents-visiting-the-uk",
+        "https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada/eligibility.html",
+        "https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/visitor-600/tourist-stream-overseas"
+      ]
+    }
+  ],
+  "questions": [
+    {
+      "q": "برای ویزای توریستی چقدر پول در حساب لازم است؟",
+      "a": "مبلغ واحد و تضمینی وجود ندارد. مقصد، مدت سفر، شرایط اقامت، همراهان و منبع هزینه مهم‌اند؛ برای حداقل‌های مقصد خاص به سفارت یا مرجع رسمی آن مراجعه کنید."
+    },
+    {
+      "q": "تمکن مالی بدون گردش حساب کافی است؟",
+      "a": "همیشه خیر. برخی مرجع‌ها به شواهد منبع پول و جریان درآمد نیز توجه می‌کنند. چک‌لیست نوع ویزای خود را ملاک بگذارید."
+    },
+    {
+      "q": "واریز پول یک روز قبل از درخواست باعث ریجکتی می‌شود؟",
+      "a": "هیچ قاعده جهانی برای رد خودکار به‌خاطر یک واریز وجود ندارد؛ اما منشأ وجوه مهم و غیرقابل توضیح بودن آن می‌تواند سؤال ایجاد کند. تنها منبع واقعی را مستند کنید."
+    },
+    {
+      "q": "آیا اسپانسر می‌تواند تمام هزینه سفر را بدهد؟",
+      "a": "در برخی مسیرها حمایت مالی قابل ارائه است، اما رابطه، توان پرداخت میزبان و شرایط متقاضی باید طبق مقررات مقصد روشن باشد. اسپانسر ضامن قبولی نیست."
+    },
+    {
+      "q": "گردش حساب چندماهه برای ویزای کانادا لازم است؟",
+      "a": "چک‌لیست شخصی IRCC هنگام ثبت آنلاین تعیین‌کننده است. مدت گردش حساب را از یک مقاله عمومی به همه پرونده‌ها تعمیم ندهید."
+    },
+    {
+      "q": "آیا می‌توان با حساب شرکتی درخواست ویزا داد؟",
+      "a": "اگر منابع درآمد یا حمایت مالی از کسب‌وکار است، مدارک واقعی مالکیت و امکان استفاده شخصی از وجوه ممکن است مطرح باشد. حساب شرکت را خودکار معادل دارایی شخصی تلقی نکنید."
+    }
+  ],
+  "related": [
+    {
+      "slug": "schengen-visa",
+      "title": "ویزای شینگن"
+    },
+    {
+      "slug": "canada-tourist-visa",
+      "title": "ویزای کانادا"
+    },
+    {
+      "slug": "uk-tourist-visa",
+      "title": "ویزای انگلیس"
+    },
+    {
+      "slug": "australia-tourist-visa",
+      "title": "ویزای استرالیا"
+    }
+  ],
+  "sources": [
+    {
+      "name": "کمیسیون اروپا — درخواست شینگن و شواهد مالی",
+      "url": "https://home-affairs.ec.europa.eu/policies/schengen/visa-policy/applying-schengen-visa_en"
+    },
+    {
+      "name": "IRCC — شرایط تمکن و بازگشت Visitor Visa",
+      "url": "https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada/eligibility.html"
+    },
+    {
+      "name": "GOV.UK — اسناد مالی و حامی بازدیدکننده",
+      "url": "https://www.gov.uk/government/publications/visitor-visa-guide-to-supporting-documents/guide-to-supporting-documents-visiting-the-uk"
+    },
+    {
+      "name": "GOV.UK — شرایط بازدیدکننده واقعی",
+      "url": "https://www.gov.uk/guidance/immigration-rules/immigration-rules-appendix-v-visitor"
+    },
+    {
+      "name": "Home Affairs — Visitor 600 Tourist Stream",
+      "url": "https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/visitor-600/tourist-stream-overseas"
+    }
+  ]
+};

@@ -29,3 +29,15 @@
 .seo-guide .kv-guide-next-step p{line-height:2.1}
 .seo-guide .kv-guide-next-step .seo-button{display:inline-flex;align-items:center;max-width:100%;white-space:normal;text-align:center}
 @media(max-width:640px){.seo-guide .kv-guide-next-step .seo-button{display:flex;justify-content:center;width:100%}}
+
+/* Cluster hub and structured editorial navigation */
+.kv-guide-hub-intro{max-width:800px;line-height:2;margin-bottom:40px}
+.kv-guide-hub-group{margin-block:32px 55px;scroll-margin-top:95px}
+.kv-guide-hub-group>h2{font-size:clamp(21px,3vw,31px);color:#17384a}
+.kv-guide-hub-group>p{margin-bottom:25px;color:#526d7c;line-height:1.9}
+.kv-guide-hub-group .guideCards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+.kv-guide-hub-group .guideCard{height:100%;min-width:0}
+.kv-guide-index-explain nav{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+.kv-guide-index-explain nav a{border:1px solid #dae4e7;border-radius:10px;padding:12px;color:#18445c;text-decoration:none}
+@media(max-width:900px){.kv-guide-hub-group .guideCards{grid-template-columns:repeat(2,minmax(0,1fr))}.kv-guide-index-explain nav{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:600px){.kv-guide-hub-group .guideCards{grid-template-columns:1fr}.kv-guide-index-explain nav{grid-template-columns:1fr}}

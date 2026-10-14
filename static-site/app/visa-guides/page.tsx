@@ -1,1 +1,21 @@
-import Link from "next/link";import {guides,visas} from "../../lib/content";export const metadata={alternates:{canonical:"/visa-guides/"},title:"راهنماهای ویزای توریستی",description:"راهنمای مدارک ویزا، دلایل ریجکتی و هزینه درخواست ویزای توریستی."};export default function Page(){return <main><section className="innerHero"><div className="shell"><span className="overline">TRAVEL JOURNAL</span><h1>راهنمای سفر، <em>پیش از حرکت</em></h1><p>پاسخ‌های کاربردی برای مدارک، هزینه‌ها و تصمیم‌های مهم پیش از درخواست ویزا.</p></div></section><section className="shell sectionSpace"><div className="guideCards">{guides.map((g,i)=><Link href={"/visa-guides/"+g.slug+"/"} className="guideCard" key={g.slug}><div className={"guidePhoto guide"+i}/><div><span>راهنمای ویزا / ۰{i+1}</span><h3>{g.title}</h3><p>{g.summary}</p><b>مطالعه مقاله ↗</b></div></Link>)}</div><div className="kv-guide-index-explain"><h2>از کدام راهنما شروع کنیم؟</h2><p>مقاله مدارک ویزا دسته‌بندی و تفاوت چک‌لیست‌ها را توضیح می‌دهد؛ مقاله ریجکتی مسیرهای پس از رد درخواست را بررسی می‌کند و مقاله هزینه‌ها تعرفه دولتی و اقلام جانبی را از هم جدا می‌کند.</p><nav aria-label="صفحات مقصدها">{visas.map(v=><Link href={"/"+v.slug+"/"} key={v.slug}>ویزای {v.name} ←</Link>)}</nav></div></section></main>}
+import Link from "next/link";
+import {guides,visas} from "../../lib/content";
+export const metadata={alternates:{canonical:"/visa-guides/"},title:"راهنمای ویزای توریستی | مدارک، وقت و تمکن مالی",description:"مجموعه راهنماهای مستند ویزای توریستی برای ایرانیان: مدارک، گردش حساب، وقت سفارت، ترجمه، دعوت‌نامه، سینگل و مولتی و ریجکتی."};
+const groups=[
+ {title:"مدارک و آمادگی پرونده",description:"برای آماده‌سازی واقعی مدارک، منابع مالی و شرایط سفر اول",slugs:["visa-documents","visa-proof-of-funds","visa-document-translation","visa-without-travel-history"]},
+ {title:"مراحل درخواست و هدف سفر",description:"رزرو وقت رسمی، دعوت‌نامه واقعی و تعداد ورودهای مجاز",slugs:["visa-appointment","visa-invitation-letter","single-vs-multiple-entry-visa"]},
+ {title:"هزینه و تصمیم نهایی",description:"تعرفه‌های دولتی و مسیر درست پس از رد درخواست",slugs:["visa-fees","visa-rejection"]}
+];
+export default function Page(){return <main>
+ <section className="innerHero"><div className="shell"><span className="overline">VISA KNOWLEDGE HUB</span><h1>راهنماهای ویزای توریستی <em>برای ایرانیان</em></h1><p>از مدارک و گردش حساب تا وقت سفارت و دعوت‌نامه؛ هر موضوع با منابع رسمی و توضیح تفاوت مقصدها بررسی شده است.</p></div></section>
+ <div className="shell sectionSpace">
+  <div className="kv-guide-hub-intro"><h2>از کدام موضوع شروع کنیم؟</h2><p>راهنماهای این صفحه پاسخ به سؤال‌های عمومی‌اند. برای مسیر اقدام کشور مشخص، صفحه اختصاصی همان مقصد و سپس چک‌لیست رسمی را مطالعه کنید. این مطالب ضمانت نتیجه یا مشاوره حقوقی اختصاصی نیستند.</p></div>
+  {groups.map((group,index)=><section key={group.title} className="kv-guide-hub-group" aria-labelledby={"cluster-"+index}>
+   <h2 id={"cluster-"+index}>{group.title}</h2><p>{group.description}</p>
+   <div className="guideCards">{group.slugs.map((slug,i)=>{const g=guides.find(item=>item.slug===slug);return g?<Link href={"/visa-guides/"+g.slug+"/"} className="guideCard" key={g.slug}><div className={"guidePhoto guide"+(i%3)} aria-hidden="true"/><div><span>راهنمای مستند · {new Intl.NumberFormat("fa-IR",{minimumIntegerDigits:2}).format(i+1)}</span><h3>{g.title}</h3><p>{g.summary}</p><b>مطالعه راهنما ←</b></div></Link>:null})}</div>
+  </section>)}
+  <section className="kv-guide-index-explain"><h2>راهنمای ویزای مقصدها</h2><p>اطلاعات عمومی را با شرایط واقعی کشور خود تطبیق دهید. صفحات مقصد برای شینگن، کانادا، انگلیس، فرانسه، آلمان، ایتالیا، ژاپن و استرالیا به منابع رسمی و راهنماهای پشتیبان متصل هستند.</p>
+   <nav aria-label="صفحات اختصاصی کشورها">{visas.map(v=><Link href={"/"+v.slug+"/"} key={v.slug}>ویزای {v.name} ←</Link>)}</nav>
+  </section>
+ </div>
+ </main>}
