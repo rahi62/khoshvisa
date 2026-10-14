@@ -41,3 +41,19 @@
 .kv-guide-index-explain nav a{border:1px solid #dae4e7;border-radius:10px;padding:12px;color:#18445c;text-decoration:none}
 @media(max-width:900px){.kv-guide-hub-group .guideCards{grid-template-columns:repeat(2,minmax(0,1fr))}.kv-guide-index-explain nav{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:600px){.kv-guide-hub-group .guideCards{grid-template-columns:1fr}.kv-guide-index-explain nav{grid-template-columns:1fr}}
+
+/* Topic-specific explanatory visuals, server-rendered and accessible (no third-party image dependency). */
+.seo-guide .kv-article-human-lead{font-size:clamp(1rem,1.4vw,1.14rem);line-height:2.35;color:#204357;border-right:3px solid #b99260;padding:14px 22px;margin:8px 0 27px;background:#f8faf9;border-radius:0 12px 12px 0}
+.seo-guide .kv-editorial-path{margin:25px 0 40px;border:1px solid #cddfdf;border-radius:17px;padding:clamp(16px,3vw,31px);background:linear-gradient(130deg,#f7fbfa,#f2f7f7);direction:rtl}
+.seo-guide .kv-editorial-path figcaption{display:block}
+.seo-guide .kv-editorial-path figcaption h2{font-size:clamp(1.3rem,2vw,1.85rem);margin:9px 0 12px;line-height:1.5}
+.seo-guide .kv-editorial-path ol{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;list-style:none;counter-reset:none;padding:0;margin:20px 0}
+.seo-guide .kv-editorial-path li{display:flex;gap:13px;align-items:flex-start;min-width:0;border:1px solid #d9e5e4;border-radius:13px;padding:14px;background:white}
+.seo-guide .kv-editorial-path li>span{display:flex;align-items:center;justify-content:center;background:#164459;color:#fff;border-radius:50%;width:33px;height:33px;flex:none;font-variant-numeric:tabular-nums}
+.seo-guide .kv-editorial-path strong{font-weight:700;color:#173d50}
+.seo-guide .kv-editorial-path li p{font-size:.91rem;line-height:2;margin:5px 0 0}
+.seo-guide .kv-path-conclusion{font-weight:600;background:#e9f1ef;border-right:3px solid #9f8153;padding:12px 15px;border-radius:7px;line-height:2}
+.seo-guide .kv-editorial-path a,.seo-guide .kv-context-link a,.seo-guide .kv-editorial-byline a{color:#16546c;text-decoration:underline;text-underline-offset:4px}
+.seo-guide .kv-context-link{border-right:3px solid #d4b27f;padding:10px 16px;background:#faf8f1;line-height:2.1}
+.seo-guide .kv-editorial-byline{font-size:.91rem;color:#426475;background:#f4f8f9;padding:15px;line-height:2}
+@media(max-width:680px){.seo-guide .kv-editorial-path ol{grid-template-columns:1fr}.seo-guide .kv-article-human-lead{padding:12px 15px}.seo-guide .kv-editorial-path li{padding:12px}}

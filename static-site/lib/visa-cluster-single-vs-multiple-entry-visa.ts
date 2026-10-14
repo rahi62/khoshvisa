@@ -144,6 +144,17 @@ export const singleVsMultipleEntryVisaGuide:GuideExpansion={
         "https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada/about-visitor-visa.html",
         "https://www.gov.uk/guidance/immigration-rules/immigration-rules-appendix-v-visitor"
       ]
+    },
+    {
+      "title": "ویزای دوبارورود و استثنای ورود مجدد کانادا",
+      "paragraphs": [
+        "علاوه بر سینگل و مولتی، روی برخی برچسب‌های شینگن عدد «۲» برای دوبارورود دیده می‌شود. این حالت برای سفرهایی است که باید دو بار از بیرون وارد حوزه شینگن شوند؛ همچنان مدت اقامت و اعتبار ویزا ملاک است.",
+        "در کانادا نیز IRCC استثنای مشروطی برای بازگشت مستقیم از آمریکا (از جمله قلمروهای آن) یا سن‌پیر و میکلون با ویزای سینگل توضیح داده است. پس عبارت «بعد از هر خروج از کانادا همیشه ویزای جدید لازم است» دقیق نیست؛ شرایط رسمی استثنا را باید بررسی کرد."
+      ],
+      "sourceUrls": [
+        "https://www.netherlandsworldwide.nl/visa-the-netherlands/difference-single-multiple-entry-visa",
+        "https://www.ircc.canada.ca/english/helpcentre/answer.asp?qnum=417"
+      ]
     }
   ],
   "questions": [
@@ -214,6 +225,45 @@ export const singleVsMultipleEntryVisaGuide:GuideExpansion={
     {
       "name": "Home Affairs — ورود سینگل و مولتی Visitor 600",
       "url": "https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/visitor-600/tourist-stream-overseas"
+    },
+    {
+      "name": "راهنمای رسمی تکمیلی",
+      "url": "https://www.netherlandsworldwide.nl/visa-the-netherlands/difference-single-multiple-entry-visa"
+    }
+  ],
+  "lead": "مسیر پاریس، لندن و بعد رم را تصور کنید. حتی اگر تاریخ ویزای شینگن شما هنوز تمام نشده باشد، با ویزای یک‌بارورود ممکن است نتوانید از لندن دوباره به حوزه شینگن برگردید؛ تعداد ورود با مدت اعتبار فرق دارد.",
+  "decisionAid": {
+    "title": "ورودها را قبل از سفر بشمارید",
+    "intro": "چطور قدم‌به‌قدم جلو برویم؟",
+    "steps": [
+      {
+        "title": "مسئله را مشخص کنید",
+        "body": "مرز شینگن و خارج از شینگن را در برنامه سفر مشخص کنید."
+      },
+      {
+        "title": "شواهد را بررسی کنید",
+        "body": "تعداد ورودهای درج‌شده روی ویزا را بخوانید."
+      },
+      {
+        "title": "تعارض‌ها را برطرف کنید",
+        "body": "اعتبار زمانی را جدا کنترل کنید."
+      },
+      {
+        "title": "منبع رسمی را کنترل کنید",
+        "body": "روزهای اقامت مجاز را مستقل محاسبه کنید."
+      }
+    ],
+    "conclusion": "این مراحل راهنمای آماده‌سازی‌اند، نه ارزیابی قطعی یا تضمین دریافت ویزا.",
+    "sourceUrl": "https://www.netherlandsworldwide.nl/visa-the-netherlands/difference-single-multiple-entry-visa",
+    "accessibleSummary": "چهار گام عملی برای آماده‌سازی درست مدارک و تصمیم‌گیری درباره درخواست ویزا."
+  },
+  "contextualLinks": [
+    {
+      "section": "مولتی شینگن و قانون ۹۰ روز در ۱۸۰ روز",
+      "slug": "schengen-visa",
+      "label": "مقررات ویزای شینگن",
+      "before": "برای بررسی مقصد اصلی و محدودیت اقامت، ",
+      "after": " را بخوانید."
     }
   ]
 };

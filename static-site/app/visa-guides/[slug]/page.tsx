@@ -63,13 +63,19 @@ export default async function Page({params}:Props){
   </div></header>
   <div className="seo-container seo-guide-layout">
    <article>
+    {detail.lead&&<p className="kv-article-human-lead">{detail.lead}</p>}
     <div className="seo-guide-notice">{detail.notice||"این مطلب راهنمای عمومی برای متقاضیان ایرانی است و جایگزین چک‌لیست صادرشده از سفارت یا سامانه رسمی مربوط به شرایط شخصی شما نیست."}</div>
     {detail.quickAnswer&&<section id="answer" className="seo-guide-section kv-guide-answer"><span className="seo-overline">پاسخ کوتاه</span>
      <h2>{detail.quickAnswerTitle||"مدارک ویزای توریستی چیست؟"}</h2><p>{detail.quickAnswer}</p>
      <p className="kv-guide-hint">برای مشاهده تفاوت مقصدها، <a href="#countries">{detail.comparisonTitle||"جدول مقایسه مدارک هشت مقصد"}</a> را ببینید.</p>
     </section>}
+    {detail.decisionAid&&<figure id="decision-path" className="seo-guide-section kv-editorial-path" aria-label={detail.decisionAid.accessibleSummary}>
+      <figcaption><span className="seo-overline">راهنمای عملی / مسیر تصمیم‌گیری</span><h2>{detail.decisionAid.title}</h2><p>{detail.decisionAid.intro}</p></figcaption>
+      <ol>{detail.decisionAid.steps.map((step,i)=><li key={step.title}><span aria-hidden="true">{new Intl.NumberFormat("fa-IR").format(i+1)}</span><div><strong>{step.title}</strong><p>{step.body}</p></div></li>)}</ol>
+      <p className="kv-path-conclusion">{detail.decisionAid.conclusion}</p><p><a href={detail.decisionAid.sourceUrl} target="_blank" rel="noopener noreferrer">بررسی معیارهای رسمی این مسیر ↗</a></p>
+    </figure>}
     {detail.comparison&&<section className="seo-guide-section" id="countries">
-     <span className="seo-overline">تفاوت مدارک کشورها</span><h2>{detail.comparisonTitle||"مقایسه چک‌لیست مدارک ویزای ۸ مقصد"}</h2><p>{detail.comparison.intro}</p>
+     <span className="seo-overline">مقایسه منابع رسمی و شرایط کشورها</span><h2>{detail.comparisonTitle||"مقایسه چک‌لیست مدارک ویزای ۸ مقصد"}</h2><p>{detail.comparison.intro}</p>
      <div className="kv-guide-table-wrap"><table className="kv-guide-table"><caption>{detail.comparisonCaption||"مقایسه کلی مدارک متقاضی ایرانی به تفکیک مقصد"}</caption>
       <thead><tr><th scope="col">مقصد</th><th scope="col">{detail.comparisonRequirementLabel||"تمرکز مدارک"}</th><th scope="col">منبع رسمی</th></tr></thead>
       <tbody>{detail.comparison.rows.map(row=><tr key={row.slug}><th scope="row"><Link href={"/"+row.slug+"/"}>{row.destination}</Link></th><td>{row.requirement}</td><td><a href={row.href} target="_blank" rel="noopener noreferrer">{row.source} ↗</a></td></tr>)}</tbody>
@@ -80,6 +86,7 @@ export default async function Page({params}:Props){
      <h2>{section.title}</h2>
      {section.paragraphs.map(p=><p key={p}>{p}</p>)}
      {section.bullets&&<ul>{section.bullets.map(item=><li key={item}>{item}</li>)}</ul>}
+     {detail.contextualLinks?.filter(link=>link.section===section.title).map(link=><p className="kv-context-link" key={link.slug+link.section}>{link.before}<Link href={link.slug.includes("tourist-visa")||link.slug==="schengen-visa"?"/"+link.slug+"/":"/visa-guides/"+link.slug+"/"}>{link.label}</Link>{link.after}</p>)}
      {section.sourceUrls&&<p className="kv-guide-inline-sources"><strong>منابع این بخش:</strong>{" "}
        {section.sourceUrls.map((source,j)=><span key={source}>{j>0&&" · "}<a href={source} target="_blank" rel="noopener noreferrer">{detail.sources.find(s=>s.url===source)?.name||"مرجع رسمی"} ↗</a></span>)}
       </p>}
@@ -95,6 +102,7 @@ export default async function Page({params}:Props){
     <section className="seo-guide-section" id="references">
      <span className="seo-overline">منابع اولیه و به‌روزرسانی</span><h2>منابع رسمی مقاله</h2>
      <p>این منابع در تاریخ <time dateTime={date}>{detail.updated}</time> برای محتوای فعلی مرور شده‌اند؛ در روز ثبت درخواست، نسخه جدید مرجع رسمی را دوباره بررسی کنید. خوش‌ویزا نماینده سفارت یا صادرکننده ویزا نیست.</p>
+     <p className="kv-editorial-byline">مسئولیت انتشار: تیم محتوای خوش‌ویزا · بازبینی حقوقی اختصاصی یا تأیید توسط کارشناس دارای مجوز برای این مطلب ادعا نمی‌شود. <Link href="/editorial-policy/">روش پژوهش و ارزیابی مطالب</Link></p>
      <ul className="seo-guide-sources">{detail.sources.map(s=><li key={s.url}><a href={s.url} target="_blank" rel="noopener noreferrer">{s.name} ↗</a></li>)}</ul>
      <p>درباره شیوه تهیه و اصلاح مطالب بیشتر بدانید: <Link href="/editorial-policy/">سیاست بررسی محتوای خوش‌ویزا</Link>.</p>
     </section>
@@ -105,6 +113,7 @@ export default async function Page({params}:Props){
      <p><Link href="/visa-readiness/">بررسی آمادگی اولیه سفر ←</Link></p></div>
     <nav className="seo-guide-toc" aria-label="فهرست بخش‌های مقاله"><strong>در این مقاله</strong>
      {detail.quickAnswer&&<a href="#answer">پاسخ کوتاه</a>}
+     {detail.decisionAid&&<a href="#decision-path">مسیر تصمیم‌گیری</a>}
      {detail.comparison&&<a href="#countries">{detail.comparisonTitle||"جدول مقایسه مدارک"}</a>}
      {detail.sections.map((s,i)=><a key={s.title} href={"#section-"+(i+1)}>{s.title}</a>)}
      {detail.questions&&<a href="#questions">سؤالات متداول</a>}

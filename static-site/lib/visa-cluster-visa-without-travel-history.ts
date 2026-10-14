@@ -149,6 +149,16 @@ export const visaWithoutTravelHistoryGuide:GuideExpansion={
         "https://www.canada.ca/en/immigration-refugees-citizenship/services/application/application-forms-guides/imm5484.html",
         "https://home-affairs.ec.europa.eu/policies/schengen/visa-policy/applying-schengen-visa_en"
       ]
+    },
+    {
+      "title": "آیا سفر شینگن پیش‌شرط ویزای توریستی کاناداست؟",
+      "paragraphs": [
+        "در شرایط عمومی IRCC الزامی مبنی بر داشتن ویزای شینگن یا آمریکا به‌عنوان پیش‌نیاز درخواست Visitor Visa مطرح نشده است. نبود این سفرها را نباید دلیل کافی برای رد خودکار فرض کرد.",
+        "برای اولین درخواست، وضعیت شغلی یا تحصیلی، توان پرداخت هزینه و دلایل بازگشت را مستند کنید. داشتن مهر سفر واقعی می‌تواند سابقه شما را نشان دهد، اما وعده قبولی به همراه ندارد."
+      ],
+      "sourceUrls": [
+        "https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada/eligibility.html"
+      ]
     }
   ],
   "questions": [
@@ -219,6 +229,41 @@ export const visaWithoutTravelHistoryGuide:GuideExpansion={
     {
       "name": "Home Affairs — Visitor 600",
       "url": "https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/visitor-600/tourist-stream-overseas"
+    }
+  ],
+  "lead": "پاسپورت هنوز هیچ مهری ندارد؟ این موضوع به‌تنهایی نه درخواست را غیرممکن می‌کند و نه نتیجه‌ای را تضمین می‌کند. بهتر است به‌جای خرید سفر بی‌هدف، هدف واقعی سفر اول و شواهد بازگشتتان را روشن کنید.",
+  "decisionAid": {
+    "title": "نقشه آمادگی برای سفر اول",
+    "intro": "چطور قدم‌به‌قدم جلو برویم؟",
+    "steps": [
+      {
+        "title": "مسئله را مشخص کنید",
+        "body": "سابقه سفر و ریجکتی را جدا و صادقانه ثبت کنید."
+      },
+      {
+        "title": "شواهد را بررسی کنید",
+        "body": "هدف، اقامت و تاریخ‌های سفر اول را مشخص کنید."
+      },
+      {
+        "title": "تعارض‌ها را برطرف کنید",
+        "body": "درآمد و تعهدات واقعی زندگی را مستند کنید."
+      },
+      {
+        "title": "منبع رسمی را کنترل کنید",
+        "body": "چک‌لیست و فرم مقصد را بدون جعل تکمیل کنید."
+      }
+    ],
+    "conclusion": "این مراحل راهنمای آماده‌سازی‌اند، نه ارزیابی قطعی یا تضمین دریافت ویزا.",
+    "sourceUrl": "https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada/eligibility.html",
+    "accessibleSummary": "چهار گام عملی برای آماده‌سازی درست مدارک و تصمیم‌گیری درباره درخواست ویزا."
+  },
+  "contextualLinks": [
+    {
+      "section": "برای ویزای اول به‌جای مهر سفر روی چه چیزی تمرکز کنیم؟",
+      "slug": "visa-proof-of-funds",
+      "label": "راهنمای گردش حساب و تمکن واقعی",
+      "before": "برای تنظیم بودجه سفر، ",
+      "after": " به شما کمک می‌کند."
     }
   ]
 };

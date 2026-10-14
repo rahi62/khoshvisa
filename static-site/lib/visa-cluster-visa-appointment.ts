@@ -167,6 +167,16 @@ export const visaAppointmentGuide:GuideExpansion={
         "https://france-visas.gouv.fr/en/iran",
         "https://home-affairs.ec.europa.eu/policies/schengen/visa-policy/applying-schengen-visa_en"
       ]
+    },
+    {
+      "title": "فهرست انتظار آلمان و خطر وب‌سایت‌های مشابه کارگزاری",
+      "paragraphs": [
+        "TLScontact تهران در اطلاعیه‌های رسمی از فهرست انتظار و ظرفیت محدود برخی انواع ویزا خبر داده است. بنابراین مشاهده یک فرم در سایت دیگر به معنای وجود وقت آزاد امروز نیست.",
+        "حتی اگر عنوان یا دامنه یک سایت نام TLScontact یا VFS را تکرار کند، ابتدا لینک کارگزاری را از نمایندگی رسمی باز کنید. برای دریافت «وقت تضمینی» پول یا تصویر گذرنامه را به واسطه تأییدنشده ندهید."
+      ],
+      "sourceUrls": [
+        "https://visas-de.tlscontact.com/fa-ir/country/ir/vac/irTHR2de/news"
+      ]
     }
   ],
   "questions": [
@@ -245,6 +255,45 @@ export const visaAppointmentGuide:GuideExpansion={
     {
       "name": "GOV.UK — ثبت درخواست Standard Visitor",
       "url": "https://www.gov.uk/standard-visitor/apply-standard-visitor-visa"
+    },
+    {
+      "name": "راهنمای رسمی تکمیلی",
+      "url": "https://visas-de.tlscontact.com/fa-ir/country/ir/vac/irTHR2de/news"
+    }
+  ],
+  "lead": "قبل از اینکه برای «وقت سفارت» پول بدهید، بپرسید نوبت کدام کشور و کدام کارگزاری است. وقت VFS فرانسه، فهرست انتظار TLScontact آلمان و تحویل بدون وقت JVAC ژاپن سه روند متفاوت‌اند.",
+  "decisionAid": {
+    "title": "پیش از رزرو وقت چه کنیم؟",
+    "intro": "چطور قدم‌به‌قدم جلو برویم؟",
+    "steps": [
+      {
+        "title": "مسئله را مشخص کنید",
+        "body": "کشور مقصد اصلی و نوع ویزا را تعیین کنید."
+      },
+      {
+        "title": "شواهد را بررسی کنید",
+        "body": "از سایت رسمی سفارت به کارگزاری بروید."
+      },
+      {
+        "title": "تعارض‌ها را برطرف کنید",
+        "body": "وقت مستقیم، فهرست انتظار یا مراجعه آزاد را تشخیص دهید."
+      },
+      {
+        "title": "منبع رسمی را کنترل کنید",
+        "body": "رسید پرداخت و شرایط استرداد را نگه دارید."
+      }
+    ],
+    "conclusion": "این مراحل راهنمای آماده‌سازی‌اند، نه ارزیابی قطعی یا تضمین دریافت ویزا.",
+    "sourceUrl": "https://visas-de.tlscontact.com/fa-ir/country/ir/vac/irTHR2de/news",
+    "accessibleSummary": "چهار گام عملی برای آماده‌سازی درست مدارک و تصمیم‌گیری درباره درخواست ویزا."
+  },
+  "contextualLinks": [
+    {
+      "section": "اشتباهات هنگام رزرو وقت و پرداخت",
+      "slug": "visa-fees",
+      "label": "هزینه واقعی سفارت و کارگزاری",
+      "before": "برای تفکیک هزینه دولتی از ودیعه یا خدمات، ",
+      "after": " را مطالعه کنید."
     }
   ]
 };

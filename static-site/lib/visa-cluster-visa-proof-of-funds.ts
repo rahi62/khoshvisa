@@ -147,6 +147,17 @@ export const visaProofOfFundsGuide:GuideExpansion={
         "https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada/eligibility.html",
         "https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/visitor-600/tourist-stream-overseas"
       ]
+    },
+    {
+      "title": "قانون ۲۸ روزه انگلیس را با تمکن ویزای توریستی اشتباه نگیرید",
+      "paragraphs": [
+        "در برخی نوشته‌ها گفته می‌شود پول ویزای انگلیس باید دقیقاً ۲۸ روز در حساب بماند؛ این عبارت را نباید به‌طور عمومی به Standard Visitor تعمیم داد. مقررات بازدیدکننده به توان پرداخت مخارج معقول، دسترسی به منابع و شرایط حمایت مالی شخص ثالث اشاره می‌کند.",
+        "برای گردشگری انگلیس، به‌جای ساختن موجودی مصنوعی، سند واقعی درآمد و منابع مالی و برنامه سفر را بررسی کنید. اگر از کسی حمایت مالی می‌گیرید، رابطه واقعی و توان او را هم توضیح دهید."
+      ],
+      "sourceUrls": [
+        "https://www.gov.uk/guidance/immigration-rules/immigration-rules-appendix-v-visitor",
+        "https://www.gov.uk/government/publications/visitor-visa-guide-to-supporting-documents/guide-to-supporting-documents-visiting-the-uk"
+      ]
     }
   ],
   "questions": [
@@ -213,6 +224,41 @@ export const visaProofOfFundsGuide:GuideExpansion={
     {
       "name": "Home Affairs — Visitor 600 Tourist Stream",
       "url": "https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/visitor-600/tourist-stream-overseas"
+    }
+  ],
+  "lead": "«چقدر پول در حسابم باشد؟» جواب قابل اعتماد با یک عدد شروع نمی‌شود. باید بدانیم سفر چند روز است، چه کسی هزینه‌ها را می‌پردازد و پول واقعاً از کجا آمده. تنها بعد از پاسخ به این سؤال‌هاست که می‌توان درباره مدارک مالی حرف زد.",
+  "decisionAid": {
+    "title": "مسیر سنجش تمکن واقعی",
+    "intro": "چطور قدم‌به‌قدم جلو برویم؟",
+    "steps": [
+      {
+        "title": "مسئله را مشخص کنید",
+        "body": "بودجه واقعی رفت‌وبرگشت و اقامت را تهیه کنید."
+      },
+      {
+        "title": "شواهد را بررسی کنید",
+        "body": "منبع پرداخت هر هزینه را مشخص کنید."
+      },
+      {
+        "title": "تعارض‌ها را برطرف کنید",
+        "body": "گردش حساب را با درآمد و واریزهای بزرگ تطبیق دهید."
+      },
+      {
+        "title": "منبع رسمی را کنترل کنید",
+        "body": "دوره صورت‌حساب و اسناد را از چک‌لیست مقصد بخوانید."
+      }
+    ],
+    "conclusion": "این مراحل راهنمای آماده‌سازی‌اند، نه ارزیابی قطعی یا تضمین دریافت ویزا.",
+    "sourceUrl": "https://www.gov.uk/guidance/immigration-rules/immigration-rules-appendix-v-visitor",
+    "accessibleSummary": "چهار گام عملی برای آماده‌سازی درست مدارک و تصمیم‌گیری درباره درخواست ویزا."
+  },
+  "contextualLinks": [
+    {
+      "section": "چگونه بودجه واقعی سفر را محاسبه کنیم؟",
+      "slug": "visa-invitation-letter",
+      "label": "راهنمای دعوت‌نامه و حمایت میزبان",
+      "before": "اگر هزینه‌ها را میزبان می‌پردازد، ",
+      "after": " را هم بخوانید."
     }
   ]
 };

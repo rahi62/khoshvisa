@@ -13,6 +13,9 @@ import {visaInvitationLetterGuide} from "./visa-cluster-visa-invitation-letter";
 import {singleVsMultipleEntryVisaGuide} from "./visa-cluster-single-vs-multiple-entry-visa";
 export type GuideExpansion={
  intro:string;
+ lead?:string;
+ decisionAid?:{title:string;intro:string;steps:{title:string;body:string}[];conclusion:string;sourceUrl:string;accessibleSummary:string};
+ contextualLinks?:{section:string;slug:string;label:string;before:string;after:string}[];
  updated:string;
  updatedISO?:string;
  quickAnswer?:string;

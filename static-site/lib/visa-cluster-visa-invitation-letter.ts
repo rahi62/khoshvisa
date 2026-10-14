@@ -151,6 +151,17 @@ export const visaInvitationLetterGuide:GuideExpansion={
         "https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada/letter-invitation.html",
         "https://www.gov.uk/government/publications/visitor-visa-guide-to-supporting-documents/guide-to-supporting-documents-visiting-the-uk"
       ]
+    },
+    {
+      "title": "دعوت‌نامه با تعهد پرداخت تمام هزینه‌ها یکسان نیست",
+      "paragraphs": [
+        "میزبان ممکن است فقط محل اقامت فراهم کند، بخشی از هزینه‌ها را بپردازد یا حامی مالی کامل باشد. در نامه باید معلوم شود کدام‌یک واقعیت دارد؛ این تفاوت برای مدارک مالی متقاضی هم مهم است.",
+        "IRCC می‌گوید دعوت‌نامه به‌خودی‌خود صدور ویزا را تضمین نمی‌کند. داشتن یک نامه پر از عبارت‌های رسمی، جای رابطه و برنامه واقعی سفر را نمی‌گیرد."
+      ],
+      "sourceUrls": [
+        "https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada/letter-invitation.html",
+        "https://www.gov.uk/guidance/immigration-rules/immigration-rules-appendix-v-visitor"
+      ]
     }
   ],
   "questions": [
@@ -225,6 +236,41 @@ export const visaInvitationLetterGuide:GuideExpansion={
     {
       "name": "سفارت ژاپن — انواع ویزای کوتاه‌مدت و دعوت‌نامه",
       "url": "https://www.ir.emb-japan.go.jp/itpr_fa/visa_type.html"
+    }
+  ],
+  "lead": "فرض کنید خواهرتان در کانادا گفته می‌توانید هنگام سفر در خانه او بمانید. آیا همین دعوت‌نامه کافی است؟ نه؛ نامه بخشی از توضیح هدف و اسکان است و جای بررسی وضعیت مالی، هدف سفر و دلایل بازگشت متقاضی را نمی‌گیرد.",
+  "decisionAid": {
+    "title": "آیا دعوت‌نامه برای من مناسب است؟",
+    "intro": "چطور قدم‌به‌قدم جلو برویم؟",
+    "steps": [
+      {
+        "title": "مسئله را مشخص کنید",
+        "body": "مشخص کنید گردشگری مستقل است یا دیدار خانواده."
+      },
+      {
+        "title": "شواهد را بررسی کنید",
+        "body": "رابطه واقعی و شرایط میزبان را روشن کنید."
+      },
+      {
+        "title": "تعارض‌ها را برطرف کنید",
+        "body": "تاریخ، نشانی و پرداخت هزینه‌ها را هماهنگ بنویسید."
+      },
+      {
+        "title": "منبع رسمی را کنترل کنید",
+        "body": "مدارک حمایتی را طبق چک‌لیست مقصد ضمیمه کنید."
+      }
+    ],
+    "conclusion": "این مراحل راهنمای آماده‌سازی‌اند، نه ارزیابی قطعی یا تضمین دریافت ویزا.",
+    "sourceUrl": "https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada/letter-invitation.html",
+    "accessibleSummary": "چهار گام عملی برای آماده‌سازی درست مدارک و تصمیم‌گیری درباره درخواست ویزا."
+  },
+  "contextualLinks": [
+    {
+      "section": "حمایت میزبان در ویزای انگلیس چگونه ارائه می‌شود؟",
+      "slug": "visa-proof-of-funds",
+      "label": "تمکن مالی و منابع واقعی سفر",
+      "before": "وقتی میزبان مسئول بخشی از هزینه‌هاست، ",
+      "after": " را هم بررسی کنید."
     }
   ]
 };

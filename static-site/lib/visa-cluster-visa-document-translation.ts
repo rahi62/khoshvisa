@@ -160,6 +160,16 @@ export const visaDocumentTranslationGuide:GuideExpansion={
         "https://www.canada.ca/en/immigration-refugees-citizenship/services/application/application-forms-guides/guide-5256-applying-visitor-visa-temporary-resident-visa.html",
         "https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/visitor-600/tourist-stream-overseas"
       ]
+    },
+    {
+      "title": "چرا «همه مدارک باید سه‌مهره باشد» توصیه درستی نیست؟",
+      "paragraphs": [
+        "راهنمای رسمی GOV.UK ترجمه کامل با تأیید دقت، تاریخ و مشخصات مترجم را مطرح می‌کند؛ از این متن نمی‌توان الزام عمومی به مهر دادگستری ایران را برای همه اسناد بازدیدکننده نتیجه گرفت.",
+        "قبل از پرداخت برای مهر اضافی، از مترجم بخواهید منبع رسمی درخواست آن مهر را مشخص کند. مدارک و الزامات استرالیا، کانادا و شینگن نیز باید مستقل کنترل شوند؛ یکی را به دیگری تعمیم ندهید."
+      ],
+      "sourceUrls": [
+        "https://www.gov.uk/government/publications/visitor-visa-guide-to-supporting-documents/guide-to-supporting-documents-visiting-the-uk"
+      ]
     }
   ],
   "questions": [
@@ -234,6 +244,41 @@ export const visaDocumentTranslationGuide:GuideExpansion={
     {
       "name": "سفارت ژاپن — اطلاعیه‌های ویزا",
       "url": "https://www.ir.emb-japan.go.jp/itpr_fa/visa.html"
+    }
+  ],
+  "lead": "دارالترجمه می‌پرسد مهر دادگستری و وزارت خارجه هم لازم است؟ پاسخ برای همه مقصدها یکسان نیست. قبل از سفارش ترجمه، باید مشخص شود چه مدرکی، به چه زبانی و با چه نوع گواهی برای پرونده شما پذیرفته می‌شود.",
+  "decisionAid": {
+    "title": "چهار سؤال پیش از سفارش ترجمه",
+    "intro": "چطور قدم‌به‌قدم جلو برویم؟",
+    "steps": [
+      {
+        "title": "مسئله را مشخص کنید",
+        "body": "چک‌لیست کشور و نوع ویزا را دریافت کنید."
+      },
+      {
+        "title": "شواهد را بررسی کنید",
+        "body": "فقط اسناد خواسته‌شده را انتخاب کنید."
+      },
+      {
+        "title": "تعارض‌ها را برطرف کنید",
+        "body": "زبان و شرایط مترجم را مطابقت دهید."
+      },
+      {
+        "title": "منبع رسمی را کنترل کنید",
+        "body": "تأییدات اضافی را فقط در صورت الزام بگیرید."
+      }
+    ],
+    "conclusion": "این مراحل راهنمای آماده‌سازی‌اند، نه ارزیابی قطعی یا تضمین دریافت ویزا.",
+    "sourceUrl": "https://www.gov.uk/government/publications/visitor-visa-guide-to-supporting-documents/guide-to-supporting-documents-visiting-the-uk",
+    "accessibleSummary": "چهار گام عملی برای آماده‌سازی درست مدارک و تصمیم‌گیری درباره درخواست ویزا."
+  },
+  "contextualLinks": [
+    {
+      "section": "شینگن: آیا ترجمه انگلیسی برای فرانسه، آلمان و ایتالیا کافی است؟",
+      "slug": "visa-documents",
+      "label": "چک‌لیست عمومی مدارک ویزای توریستی",
+      "before": "پیش از سفارش ترجمه، ",
+      "after": " را با فهرست رسمی کشور مقایسه کنید."
     }
   ]
 };
