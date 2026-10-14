@@ -5,8 +5,17 @@
 import {visaDocumentsGuide} from "./visa-documents-guide";
 import {visaRejectionGuide} from "./visa-rejection-guide";
 import {visaFeesGuide} from "./visa-fees-guide";
+import {visaProofOfFundsGuide} from "./visa-cluster-visa-proof-of-funds";
+import {visaWithoutTravelHistoryGuide} from "./visa-cluster-visa-without-travel-history";
+import {visaAppointmentGuide} from "./visa-cluster-visa-appointment";
+import {visaDocumentTranslationGuide} from "./visa-cluster-visa-document-translation";
+import {visaInvitationLetterGuide} from "./visa-cluster-visa-invitation-letter";
+import {singleVsMultipleEntryVisaGuide} from "./visa-cluster-single-vs-multiple-entry-visa";
 export type GuideExpansion={
  intro:string;
+ lead?:string;
+ decisionAid?:{title:string;intro:string;steps:{title:string;body:string}[];conclusion:string;sourceUrl:string;accessibleSummary:string};
+ contextualLinks?:{section:string;slug:string;label:string;before:string;after:string}[];
  updated:string;
  updatedISO?:string;
  quickAnswer?:string;
@@ -26,6 +35,12 @@ export type GuideExpansion={
 export const guideExpansions:Record<string,GuideExpansion>={
  "visa-documents":visaDocumentsGuide,
  "visa-rejection":visaRejectionGuide,
- "visa-fees":visaFeesGuide
+ "visa-fees":visaFeesGuide,
+ "visa-proof-of-funds":visaProofOfFundsGuide,
+ "visa-without-travel-history":visaWithoutTravelHistoryGuide,
+ "visa-appointment":visaAppointmentGuide,
+ "visa-document-translation":visaDocumentTranslationGuide,
+ "visa-invitation-letter":visaInvitationLetterGuide,
+ "single-vs-multiple-entry-visa":singleVsMultipleEntryVisaGuide
 
 };

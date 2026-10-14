@@ -10,7 +10,7 @@ Premium Persian RTL tourism visa website, built with Next.js App Router and Type
 - Public content stays static; optional serverless CRM uses PostgreSQL. The WhatsApp consultation form runs fully in the visitor browser.
 
 ## Architecture
-- 8 destination guides, three editorial guides, destination search and region filters
+- 8 destination Money Pages and 9 editorial guides (3 established + 6 planned in PR #24), destination search and region filters
 - Mobile menu, mobile consultation/destination dock, responsive layouts
 - Static metadata, canonical routes, robots.txt and sitemap.xml
 - Official visa references and transparent no-guarantee disclosures
@@ -22,3 +22,8 @@ Premium Persian RTL tourism visa website, built with Next.js App Router and Type
 4. QA build, real devices, accessibility, Core Web Vitals, sitemap and indexing in Search Console.
 
 Never represent visa approvals as guaranteed. Existing main branch and CMS remain untouched.
+
+## Editorial source of truth
+- Production branch: `static`; feature branches + explicit manager approval to merge.
+- Content creation and post-edit QA: [SEO-TOPIC-CLUSTERS-2026-10-14.md](docs/SEO-TOPIC-CLUSTERS-2026-10-14.md) includes mandatory Google Top-10 organic research, gap analysis, original synthesis, fact-checking and humanization. If Google top-10 cannot be directly verified, do not mark the SERP audit as complete.
+- Public [editorial policy](/editorial-policy/) should remain consistent with the editorial SOP.

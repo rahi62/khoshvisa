@@ -65,3 +65,12 @@
 .seo-pillar-direct-answer p{color:#294c5b;line-height:2.08;margin:0 0 10px}
 .seo-pillar-direct-answer a{color:#12566d;font-weight:600;text-decoration:underline;text-underline-offset:4px;line-height:1.8}
 @media(max-width:620px){.seo-pillar-direct-answer{padding:16px}.seo-pillar-direct-answer p{font-size:14px}}
+
+/* Curated, bidirectional informational clusters on country Money Pages */
+.kv-money-topic-cluster{margin-top:25px;padding:20px;border:1px solid #dce7e8;border-radius:15px;background:#f8fbfb;direction:rtl}
+.kv-money-topic-cluster h3{color:#173b4d;margin:0 0 12px;font-size:clamp(17px,2vw,22px)}
+.kv-money-topic-cluster p{line-height:2;font-size:14px}
+.kv-money-topic-cluster nav{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:13px}
+.kv-money-topic-cluster nav a{display:block;padding:11px 14px;border-radius:9px;border:1px solid #dce5e8;background:#fff;color:#16445d;text-decoration:none;line-height:1.9;overflow-wrap:anywhere}
+.kv-money-topic-cluster nav a:hover,.kv-money-topic-cluster nav a:focus-visible{border-color:#b89064;text-decoration:underline}
+@media(max-width:600px){.kv-money-topic-cluster nav{grid-template-columns:1fr}}
