@@ -29,3 +29,10 @@
 
 ## Git and release discipline
 Keep PR #29 Draft, and do not merge to `static` or touch `main` until full editorial QA and explicit owner approval. No changes in this verification report alter public site content.
+
+## Applied editorial fixes (same Draft PR, 2026-10-17)
+- Updated `visa-cluster-schengen-main-destination.ts`: scenario 1 now explicitly identifies arrival into Schengen via Rome followed by 10 nights in France, eliminating ambiguity between airport transit and first external-border entry.
+- Replaced an off-topic article contextual link in the main-destination guide with a topical 90/180 link within the section discussing travel-day calculation. The two legal questions are explicitly distinguished.
+- Updated `visa-cluster-schengen-90-180-day-rule.ts`: replaced a repetitive second visa-sticker explanation with a concrete hypothetical single-entry sticker (1 June–31 August validity / 20 authorised days) and a caveat distinguishing dates from stay rights.
+- Additional web checks found competitor search excerpts, but direct opening of two candidate article bodies failed (cache miss). They remain **INDEXED_ONLY**, not FULL_READ. The full independent competitor-audit gate remains incomplete.
+- CI/Next build, complete HTML output, actual mobile review, and full ten-guide fact audit have **not** been executed in this pass; do not claim completion.
