@@ -54,3 +54,24 @@ The current work reviewed substantive primary sources: EC applying for Schengen 
 - Added France fee timing, Germany representative requirements, Italy booking refund caveats, offshore Australian family/translation rules and Canadian portal eligibility.
 - Fixed shared guide template: only display `#countries` link when comparison table actually exists; otherwise point to the first visible article section.
 - Still a **draft**. More content is not itself SEO evidence or a substitute for a full competitor audit.
+
+## Second source-verification pass — 2026-10-17
+
+Primary pages opened in full: Embassy of Japan in Iran JVAC announcement (2026-08-03); France-Visas Iran; VFS Global France Iran current notice; TLScontact Germany Iran; IRCC Portal/New version; GOV.UK Standard Visitor and supporting documents; VisaMetric Italy Iran booking; Australian Home Affairs Visitor 600 offshore; EU short-stay calculator. Findings:
+
+| Guide | Verified issue | Editorial action |
+|---|---|---|
+| F01 — France | The France-Visas Iran page still shows Mega Pars contact address, but VFS Global's newer Tehran relocation announcement names **Heravi Center, fourth floor**, following the June 14, 2026 reopening. The source pages disagree. | Added both primary links, explained discrepancy and instructed users to check appointment confirmation/current VFS notices rather than publish one unqualified address. |
+| I01 — Italy | VisaMetric says 50,000,000 IRR reservation fee per applicant, refundable after lodging the application; no amendment/cancellation once an appointment is assigned; nonattendance without submission makes fee nonrefundable. Earlier cancellation is distinct. | Explicit conditions added with source; avoid replicating payment card or bank account credentials on KhoshVisa. |
+| C01 — Canada | Four *simultaneous* requirements for IRCC Portal New version: 18+, never applied before, applying alone, no representative including family/friends acting on behalf. | Added checklist and fallback to regular IRCC Portal. |
+| U01 — UK | GOV.UK requires a passport valid during the entire proposed UK stay, not a universal two-year term; flight/hotel bookings generally less useful as evidence, save transit exception. | Added passport clarification, retained guidance on truthful genuine visitor evidence. |
+| J01 — Japan | Embassy official notice says no prior appointment is needed for ordinary JVAC Tehran lodging; ordinary drop-off hours 08:00–15:00 Sun–Thu; consular decisions remain at embassy. | Corrected article and removed the superseded embassy visa landing URL. |
+| S01 / S02 | Several competitor snippets equate equal nights with automatic first entry and portray 180 days as a fixed semester; a full opened competitor page incorrectly counts Jan 10–20 as 10 days, despite both entry and exit days counting. | Keep actual Visa Code Article 5 + rolling 180-day interpretation and example verification as controlling sources; no copying of competitor's arithmetic. |
+
+### Technical verification status
+
+- Typecheck, unit tests, Next.js hybrid static build and Vercel Preview passed on PR #29 head `ad99d467d27cf3b0b7dc238e8b136b499d27ac35`.
+- 23 guide registry slugs are unique. All 10 new guides are linked in the registry and hub; local reference checks found no missing declared source URLs, related destination routes, or guide cross-links. Guides contain 12–14 topical sections and 6 FAQs each.
+- Fixed the generic *no comparison table* link to `#countries` and added a static HTML regression guard for every new guide route.
+- The remote web environment still cannot fetch `khoshvisa.ir` or its sitemap; this is not proof of site downtime. Therefore browser/mobile live QA, HTTP 200 verification, and finalized competitor audit are **not** certified.
+- **Do not call the batch READY_TO_PUBLISH.** Some indexed competitors cannot be opened directly, and the planned 10 full independent competitor pages per topic have not been completed. Move Draft to publication only on explicit fact/source editorial clearance and approval of a QA exception or completion of the audit.
