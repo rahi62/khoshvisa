@@ -8,7 +8,7 @@ if(!existsSync(prerenderFile)){
 const manifest=JSON.parse(readFileSync(prerenderFile,"utf8"));
 const normalize=p=>(p.replace(/\/+$/,"")||"/");
 const prerendered=new Set(Object.keys(manifest.routes||{}).map(normalize));
-const publicRoutes=["/","/destinations","/visa-explorer","/visa-readiness","/motion-lab","/consultation","/visa-guides","/editorial-policy","/schengen-visa","/canada-tourist-visa","/uk-tourist-visa","/japan-tourist-visa","/france-tourist-visa","/italy-tourist-visa","/germany-tourist-visa","/australia-tourist-visa","/visa-guides/visa-documents","/visa-guides/visa-rejection","/visa-guides/visa-fees","/visa-guides/visa-proof-of-funds","/visa-guides/visa-without-travel-history","/visa-guides/visa-appointment","/visa-guides/visa-document-translation","/visa-guides/visa-invitation-letter","/visa-guides/single-vs-multiple-entry-visa"];
+const publicRoutes=["/","/destinations","/visa-explorer","/visa-readiness","/motion-lab","/consultation","/visa-guides","/editorial-policy","/schengen-visa","/canada-tourist-visa","/uk-tourist-visa","/japan-tourist-visa","/france-tourist-visa","/italy-tourist-visa","/germany-tourist-visa","/australia-tourist-visa","/visa-guides/visa-documents","/visa-guides/visa-rejection","/visa-guides/visa-fees","/visa-guides/visa-proof-of-funds","/visa-guides/visa-without-travel-history","/visa-guides/visa-appointment","/visa-guides/visa-document-translation","/visa-guides/visa-invitation-letter","/visa-guides/single-vs-multiple-entry-visa","/visa-guides/visa-biometrics","/visa-guides/schengen-travel-insurance","/visa-guides/visa-flight-hotel-reservations","/visa-guides/visa-application-form-mistakes"];
 for(const route of publicRoutes)if(!prerendered.has(route)){console.error("SEO route is no longer prerendered:",route);process.exitCode=1}
 const countryContent={
  "/schengen-visa":["۹۰ یورو","هزینه رسمی بزرگسال","کمیسیون اروپا"],
@@ -41,7 +41,11 @@ const guideRoutes={
  "/visa-guides/visa-appointment":["Article","BreadcrumbList","وقت سفارت","VisaMetric","JVAC"],
  "/visa-guides/visa-document-translation":["Article","BreadcrumbList","ترجمه مدارک","مترجم","کانادا"],
  "/visa-guides/visa-invitation-letter":["Article","BreadcrumbList","دعوت‌نامه","IRCC","میزبان"],
- "/visa-guides/single-vs-multiple-entry-visa":["Article","BreadcrumbList","سینگل","مولتی","۹۰ روز"]
+ "/visa-guides/single-vs-multiple-entry-visa":["Article","BreadcrumbList","سینگل","مولتی","۹۰ روز"],
+ "/visa-guides/visa-biometrics":["Article","BreadcrumbList","بیومتریک","BIL","۱۰ سال"],
+ "/visa-guides/schengen-travel-insurance":["Article","BreadcrumbList","۳۰ هزار یورو","بیمه","بازگرداندن"],
+ "/visa-guides/visa-flight-hotel-reservations":["Article","BreadcrumbList","رزرو","هتل","بلیت"],
+ "/visa-guides/visa-application-form-mistakes":["Article","BreadcrumbList","اشتباهات فرم","ImmiAccount","اصلاح"]
 };
 for(const [route,tokens] of Object.entries(guideRoutes)){
  const file=join(base,"server","app",route.substring(1)+".html");
@@ -50,6 +54,33 @@ for(const [route,tokens] of Object.entries(guideRoutes)){
  if(!html.includes('lang="fa"')||!html.includes('dir="rtl"')){console.error("Incorrect guide language/RTL:",route);process.exitCode=1}
  if(!html.includes('rel="canonical"')){console.error("Missing guide canonical:",route);process.exitCode=1}
  for(const token of tokens)if(!html.includes(token)){console.error("Missing guide schema/content token:",route,token);process.exitCode=1}
+}
+// Post-deploy regression: country Money Pages and contextually relevant guides link back.
+const requiredReverseLinks={
+ "/visa-guides/visa-proof-of-funds":["france-tourist-visa","germany-tourist-visa","italy-tourist-visa"],
+ "/visa-guides/visa-document-translation":["france-tourist-visa","germany-tourist-visa","italy-tourist-visa"]
+};
+for(const [route,targets] of Object.entries(requiredReverseLinks)){
+ const html=readFileSync(join(base,"server","app",route.substring(1)+".html"),"utf8");
+ for(const target of targets)if(!html.includes('href="/'+target+'/"')){
+  console.error("Missing contextual return path",route,target);process.exitCode=1;
+ }
+}
+// Country Money Page ⇄ informational cluster links remain crawlable in static HTML.
+const newMoneyGuideRequirements={
+ "/schengen-visa":["visa-biometrics","schengen-travel-insurance","visa-flight-hotel-reservations","visa-application-form-mistakes"],
+ "/canada-tourist-visa":["visa-biometrics","visa-application-form-mistakes"],
+ "/uk-tourist-visa":["visa-biometrics","visa-application-form-mistakes"],
+ "/france-tourist-visa":["schengen-travel-insurance","visa-flight-hotel-reservations"],
+ "/germany-tourist-visa":["schengen-travel-insurance","visa-flight-hotel-reservations"],
+ "/italy-tourist-visa":["schengen-travel-insurance","visa-flight-hotel-reservations"],
+ "/australia-tourist-visa":["visa-biometrics","visa-application-form-mistakes"]
+};
+for(const [route,slugs] of Object.entries(newMoneyGuideRequirements)){
+ const html=readFileSync(join(base,"server","app",route.substring(1)+".html"),"utf8");
+ for(const slug of slugs)if(!html.includes('href="/visa-guides/'+slug+'/')){
+  console.error("Missing Money Page to cluster link:",route,slug);process.exitCode=1;
+ }
 }
 const editorialGapChecks=[["/visa-guides/visa-proof-of-funds","شش‌ماهه"],["/visa-guides/visa-without-travel-history","گذرنامه‌های پیشین"],["/visa-guides/visa-appointment","۱۵ ژوئیه ۲۰۲۶"],["/visa-guides/visa-document-translation","نام لاتین"],["/visa-guides/visa-invitation-letter","Super Visa"],["/visa-guides/single-vs-multiple-entry-visa","برچسب شینگن"]];
 for(const [route,token] of editorialGapChecks){
