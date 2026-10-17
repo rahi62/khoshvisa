@@ -99,6 +99,46 @@ export const freelancerSelfEmployedTouristVisaGuide:GuideExpansion={
       "sourceUrls": [
         "https://home-affairs.ec.europa.eu/policies/schengen/visa-policy/applying-schengen-visa_en"
       ]
+    },
+    {
+      "title": "نمونه جدول تطبیق درآمد پروژه‌ای با گردش حساب",
+      "paragraphs": [
+        "فرض کنید یک طراح مستقل در سه ماه اخیر برای طراحی سایت، پشتیبانی و آموزش سه فاکتور واقعی صادر کرده است. می‌تواند در یک جدول ساده شماره فاکتور، تاریخ انجام کار، مبلغ و تاریخ واریز متناظر را مشخص کند؛ چنین جدولی فقط ابزار توضیح اسناد است، نه مدرک مالی ساختگی.",
+        "اگر درآمد به چند حساب مختلف وارد می‌شود، باید مسیر واقعی انتقال را با مستندات قابل ارائه شرح دهید. موجودی لحظه‌ای حساب بدون توضیح منشأ پول و توان پوشش هزینه سفر تصویر کاملی ارائه نمی‌کند."
+      ],
+      "sourceUrls": [
+        "https://www.gov.uk/government/publications/visitor-visa-guide-to-supporting-documents/guide-to-supporting-documents-visiting-the-uk"
+      ]
+    },
+    {
+      "title": "محدودیت فعالیت حرفه‌ای هنگام سفر توریستی",
+      "paragraphs": [
+        "فریلنسر بودن در ایران خودبه‌خود به معنی مجازبودن انجام فعالیت درآمدزا در کشور مقصد با ویزای توریستی نیست. پیش از برنامه‌ریزی برای جلسه مشتری یا کار از راه دور، قواعد فعالیت مجاز Visitor همان کشور را بررسی کنید.",
+        "اگر هدف اصلی سفر کار، عقد قرارداد دارای شرایط خاص یا ارائه خدمت حضوری است، انتخاب دسته توریستی ممکن است با هدف واقعی سازگار نباشد. عنوان شغل را مخفی نکنید؛ مسیر ویزا را با فعالیت واقعی هماهنگ کنید."
+      ],
+      "sourceUrls": [
+        "https://www.gov.uk/government/publications/visitor-visa-guide-to-supporting-documents/guide-to-supporting-documents-visiting-the-uk"
+      ]
+    },
+    {
+      "title": "قرارداد و فاکتور چگونه اصالت دارند؟",
+      "paragraphs": [
+        "قرارداد معتبر باید طرفین واقعی، شرح خدمت، زمان‌بندی و در صورت وجود نحوه پرداخت را مشخص کند. فاکتور یا سوابق پروژه نیز باید با دریافتی قابل توضیح مطابقت داشته باشد؛ یک قالب آماده PDF به‌تنهایی اثبات انجام کار نیست.",
+        "انتشار تصاویر محرمانه قرارداد مشتری در فرم عمومی یا پیام‌رسان ناشناس ضروری نیست. داده‌های لازم را طبق دستور رسمی و با رعایت محرمانگی ارائه کنید."
+      ],
+      "sourceUrls": [
+        "https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada/eligibility.html"
+      ]
+    },
+    {
+      "title": "نبود بیمه و نامه کارفرما؛ چه راهی منطقی است؟",
+      "paragraphs": [
+        "فریلنسر ممکن است نه کارفرمای واحد داشته باشد نه فیش بیمه مشابه کارمندان. به جای تهیه این اسناد به شکل صوری، شرح صادقانه وضعیت شغلی، قراردادها و مدارک واقعی فعالیت را در قالب متناسب مقصد فراهم کنید.",
+        "اگر برای کشور مقصد چک‌لیست اختصاصی مربوط به خوداشتغال‌ها وجود دارد، همان اولویت دارد. ضابطه نمونه GOV.UK درباره فاکتورها را نمی‌توان بدون بررسی به فرانسه، کانادا یا استرالیا تعمیم داد."
+      ],
+      "sourceUrls": [
+        "https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada/eligibility.html"
+      ]
     }
   ],
   "questions": [
@@ -183,5 +223,15 @@ export const freelancerSelfEmployedTouristVisaGuide:GuideExpansion={
     "conclusion": "نسخه رسمی راهنما را هنگام اقدام دوباره بررسی کنید؛ صدور ویزا تضمین نمی‌شود.",
     "sourceUrl": "https://www.gov.uk/government/publications/visitor-visa-guide-to-supporting-documents/guide-to-supporting-documents-visiting-the-uk",
     "accessibleSummary": "چهار مرحله بررسی مدارک، هزینه‌ها، هدف و اصالت مستندات"
-  }
+  },
+  "contextualLinks": [
+    {
+      "section": "گردش حساب و منبع پول را مرتبط کنید",
+      "slug": "visa-proof-of-funds",
+      "label": "بررسی گردش حساب و منبع پول",
+      "before": "برای بررسی دقیق‌تر مدارک مالی، ",
+      "after": " مفید است."
+    }
+  ],
+  "faqTitle": "سؤالات متداول درباره خوداشتغال‌ها و ویزای توریستی"
 };

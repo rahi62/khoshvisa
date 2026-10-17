@@ -99,6 +99,36 @@ export const ukStandardVisitorApplicationGuide:GuideExpansion={
       "sourceUrls": [
         "https://www.gov.uk/standard-visitor"
       ]
+    },
+    {
+      "title": "چه مدت پیش از سفر می‌توان درخواست Visitor ثبت کرد؟",
+      "paragraphs": [
+        "GOV.UK می‌گوید زودترین زمان ثبت Standard Visitor معمولاً سه ماه پیش از تاریخ سفر است. این سقف شروع درخواست را با مدت اعتبار ویزا یا مدت زمان رسیدگی یکی ندانید؛ صف وقت بیومتریک هم می‌تواند زمان عملی برنامه‌ریزی را تغییر دهد.",
+        "برای اعضای خانواده، هر فرد درخواست و هزینه خود را دارد و برای مراجعه به مرکز نیز مراحل اختصاصی تعیین می‌شود. قبل از پرداخت برای تمام همراهان، گذرنامه و برنامه سفر هر نفر را کنترل کنید."
+      ],
+      "sourceUrls": [
+        "https://www.gov.uk/standard-visitor/apply-standard-visitor-visa"
+      ]
+    },
+    {
+      "title": "مدارک کم‌ارزش و مدارک مؤثر از نظر راهنمای رسمی",
+      "paragraphs": [
+        "راهنمای Supporting Documents دولت انگلیس به‌صراحت می‌گوید رزرو پرواز و هتل، جز استثناهای مرتبط با ترانزیت، معمولاً ارزش پشتیبانی محدودی دارند. در مقابل شواهد منابع مالی، هدف و ارتباط واقعی متقاضی با کشور محل زندگی برای ارزیابی پرونده معنادارتر هستند.",
+        "اگر میزبان دارید، رابطه شما با او، نوع حمایت و توان انجام تعهد را از طریق مدارک واقعی نشان دهید. دعوت‌نامه صرف و تصویر جذاب از مقصد، جای اثبات genuine visitor را نمی‌گیرد."
+      ],
+      "sourceUrls": [
+        "https://www.gov.uk/standard-visitor/apply-standard-visitor-visa"
+      ]
+    },
+    {
+      "title": "قانون ترجمه مدارک فارسی",
+      "paragraphs": [
+        "برای مدارکی که به انگلیسی یا ولزی نیستند، GOV.UK ترجمه کامل و قابل بررسی همراه با تاریخ، تأیید مترجم بر صحت ترجمه، نام و امضا و اطلاعات تماس مترجم را توضیح می‌دهد. کیفیت ترجمه صرفاً به مهرهای تزئینی یا یک برگه گران‌تر وابسته نیست.",
+        "اگر نام در ترجمه و گذرنامه متفاوت نوشته شده است، قبل از آپلود علت را رفع کنید. اسناد خوانا و معتبر به افسر کمک می‌کند اطلاعات را با فرم تطبیق دهد؛ مدرک غیرواقعی خطر جداگانه دارد."
+      ],
+      "sourceUrls": [
+        "https://www.gov.uk/government/publications/visitor-visa-guide-to-supporting-documents/guide-to-supporting-documents-visiting-the-uk"
+      ]
     }
   ],
   "questions": [
@@ -171,5 +201,15 @@ export const ukStandardVisitorApplicationGuide:GuideExpansion={
     "conclusion": "فرایند اجرایی و نرخ‌ها را هنگام اقدام در مرجع رسمی کنترل کنید.",
     "sourceUrl": "https://www.gov.uk/standard-visitor/apply-standard-visitor-visa",
     "accessibleSummary": "چهار مرحله برای کنترل اطلاعات، فرم، هدف و مدارک"
-  }
+  },
+  "contextualLinks": [
+    {
+      "section": "چه اطلاعاتی باید در فرم آنلاین آماده باشد؟",
+      "slug": "visa-documents",
+      "label": "چک‌لیست مدارک ویزا برای ایرانیان",
+      "before": "برای کنار هم قرار دادن مدارک عمومی، ",
+      "after": " را مطالعه کنید."
+    }
+  ],
+  "faqTitle": "سؤالات متداول درباره Standard Visitor انگلیس"
 };

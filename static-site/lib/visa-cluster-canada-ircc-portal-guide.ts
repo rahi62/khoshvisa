@@ -99,6 +99,36 @@ export const canadaIrccPortalGuide:GuideExpansion={
       "sourceUrls": [
         "https://www.canada.ca/en/immigration-refugees-citizenship/services/application/online-account.html"
       ]
+    },
+    {
+      "title": "چطور مسیر درخواست خانوادگی از پورتال جدید متمایز می‌شود؟",
+      "paragraphs": [
+        "صفحه IRCC Portal – New version شرط اقدام انفرادی را همراه با ۱۸ سال یا بیشتر بودن، نداشتن درخواست قبلی و نبود نماینده ذکر می‌کند. اگر برای همسر و کودک یا با نماینده اقدام می‌کنید، نباید فرض کنید این نسخه مسیر درست شماست.",
+        "در پورتال عادی ممکن است بتوانید درخواست‌های اعضای خانواده را طبق فرم‌های مربوط مدیریت کنید. با این حال هر متقاضی باید اطلاعات و مدارک شخصی متناسب داشته باشد؛ شماره پاسپورت یک نفر را به‌عنوان اطلاعات عضو دیگر استفاده نکنید."
+      ],
+      "sourceUrls": [
+        "https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada/apply-visitor-visa.html"
+      ]
+    },
+    {
+      "title": "نامه بیومتریک کانادا با تأیید نتیجه تفاوت دارد",
+      "paragraphs": [
+        "IRCC در صورت نیاز نامه دستور ارائه اطلاعات بیومتریک صادر می‌کند. دریافت BIL به معنای آن نیست که پرونده از نظر شرایط Visitor Visa پذیرفته شده است؛ این نامه فقط یکی از مراحل شناسایی است.",
+        "پس از رزرو رسمی VAC، تاریخ نامه و مهلت مراجعه را چک کنید. اگر قبلاً اطلاعات بیومتریک معتبر دارید، شرایط رسمی IRCC را برای اعتبار باقی‌مانده بررسی کنید و از پرداخت هزینه‌های غیرضروری خودداری کنید."
+      ],
+      "sourceUrls": [
+        "https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada/apply-visitor-visa.html"
+      ]
+    },
+    {
+      "title": "خطای اطلاعات پس از ارسال؛ از چه مسیری خبر بدهیم؟",
+      "paragraphs": [
+        "اگر بعد از ارسال متوجه خطای مهمی در نام، تاریخ یا فایل شوید، ابتدا دستور رسمی Update your application را بررسی کنید. روش اطلاع‌رسانی ممکن است با حساب، نوع پرونده و وضعیت آن متفاوت باشد؛ به‌صورت خودکار پرونده را حذف یا دوباره ثبت نکنید.",
+        "در توضیح اصلاح، اطلاعات صحیح و سند پشتیبان را روشن بنویسید. ارسال مکرر پیام‌های مشابه یا ادعای دریافت نامه رسمی از آدرس غیرمعتبر می‌تواند پیگیری پرونده را پیچیده‌تر کند."
+      ],
+      "sourceUrls": [
+        "https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada/portal-application-process.html"
+      ]
     }
   ],
   "questions": [
@@ -171,5 +201,15 @@ export const canadaIrccPortalGuide:GuideExpansion={
     "conclusion": "فرایند اجرایی و نرخ‌ها را هنگام اقدام در مرجع رسمی کنترل کنید.",
     "sourceUrl": "https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada/apply-visitor-visa.html",
     "accessibleSummary": "چهار مرحله برای کنترل اطلاعات، فرم، هدف و مدارک"
-  }
+  },
+  "contextualLinks": [
+    {
+      "section": "IRCC Portal یا New version: کدام برای شماست؟",
+      "slug": "visa-documents",
+      "label": "چک‌لیست مدارک ویزا برای ایرانیان",
+      "before": "برای کنار هم قرار دادن مدارک عمومی، ",
+      "after": " را مطالعه کنید."
+    }
+  ],
+  "faqTitle": "سؤالات متداول درباره IRCC Portal"
 };
