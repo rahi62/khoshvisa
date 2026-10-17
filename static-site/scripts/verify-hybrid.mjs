@@ -90,6 +90,7 @@ for(const [route,markers] of Object.entries(tenGuideAssertions)){
  const html=readFileSync(path,"utf8");
  for(const m of markers)if(!html.includes(m)){console.error("Guide token missing:",route,m);process.exitCode=1;}
  if(!html.includes('rel="canonical"')){console.error("Guide canonical absent:",route);process.exitCode=1;}
+ if(html.includes('href="#countries"')){console.error("Nonexistent comparison table anchor in guide:",route);process.exitCode=1;}
 }
 const editorialGapChecks=[["/visa-guides/visa-proof-of-funds","شش‌ماهه"],["/visa-guides/visa-without-travel-history","گذرنامه‌های پیشین"],["/visa-guides/visa-appointment","۱۵ ژوئیه ۲۰۲۶"],["/visa-guides/visa-document-translation","نام لاتین"],["/visa-guides/visa-invitation-letter","Super Visa"],["/visa-guides/single-vs-multiple-entry-visa","برچسب شینگن"]];
 for(const [route,token] of editorialGapChecks){

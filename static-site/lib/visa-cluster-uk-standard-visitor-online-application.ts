@@ -129,6 +129,16 @@ export const ukStandardVisitorApplicationGuide:GuideExpansion={
       "sourceUrls": [
         "https://www.gov.uk/government/publications/visitor-visa-guide-to-supporting-documents/guide-to-supporting-documents-visiting-the-uk"
       ]
+    },
+    {
+      "title": "پاسپورت برای انگلیس به چند ماه اعتبار نیاز دارد؟",
+      "paragraphs": [
+        "GOV.UK در راهنمای Standard Visitor می‌گوید گذرنامه یا سند مسافرتی باید برای تمام مدت اقامت در بریتانیا معتبر باشد. توصیه‌های تجاری درباره «دو سال اعتبار اجباری» برای همه پرونده‌ها در این صفحه رسمی تأیید نمی‌شود؛ ملاک خود دستور UKVI و الزامات واقعی سفر است.",
+        "اگر گذرنامه در آینده نزدیک منقضی می‌شود، قبل از ثبت فرم درباره تمدید و تأثیر آن بر اطلاعات درخواست تصمیم بگیرید. نام لاتین و شماره گذرنامه جدید را در نسخه نهایی فرم درست درج کنید."
+      ],
+      "sourceUrls": [
+        "https://www.gov.uk/standard-visitor/apply-standard-visitor-visa"
+      ]
     }
   ],
   "questions": [

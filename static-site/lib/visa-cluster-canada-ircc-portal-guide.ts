@@ -129,6 +129,22 @@ export const canadaIrccPortalGuide:GuideExpansion={
       "sourceUrls": [
         "https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada/portal-application-process.html"
       ]
+    },
+    {
+      "title": "جدول تصمیم کوتاه برای انتخاب پورتال کانادا",
+      "paragraphs": [
+        "طبق اعلام IRCC، چهار پرسش برای امکان استفاده از New version باید هم‌زمان پاسخ مثبت داشته باشند: آیا ۱۸ سال یا بیشتر دارید؟ آیا پیش‌تر هیچ درخواستی نزد IRCC ثبت نکرده‌اید؟ آیا به‌صورت انفرادی اقدام می‌کنید؟ آیا بدون نماینده، حتی بدون عضو خانواده‌ای که به‌جای شما درخواست دهد، اقدام می‌کنید؟",
+        "اگر جواب حتی یکی از این چهار پرسش منفی است، صفحه رسمی استفاده از IRCC Portal عادی را پیشنهاد می‌کند. چهار پاسخ مثبت صرفاً امکان استفاده از حساب جدید را مطرح می‌کند و به‌معنی واجد شرایط شدن قطعی برای صدور ویزا نیست."
+      ],
+      "bullets": [
+        "۱۸ سال یا بیشتر: بله/خیر",
+        "سابقه نداشتن هرگونه درخواست قبلی نزد IRCC: بله/خیر",
+        "اقدام انفرادی: بله/خیر",
+        "نداشتن نماینده برای ثبت درخواست: بله/خیر"
+      ],
+      "sourceUrls": [
+        "https://www.canada.ca/en/immigration-refugees-citizenship/services/application/online-account.html"
+      ]
     }
   ],
   "questions": [
