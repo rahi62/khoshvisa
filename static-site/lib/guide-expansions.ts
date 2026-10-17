@@ -11,6 +11,10 @@ import {visaAppointmentGuide} from "./visa-cluster-visa-appointment";
 import {visaDocumentTranslationGuide} from "./visa-cluster-visa-document-translation";
 import {visaInvitationLetterGuide} from "./visa-cluster-visa-invitation-letter";
 import {singleVsMultipleEntryVisaGuide} from "./visa-cluster-single-vs-multiple-entry-visa";
+import {visaBiometricsGuide} from "./visa-cluster-visa-biometrics";
+import {schengenTravelInsuranceGuide} from "./visa-cluster-schengen-travel-insurance";
+import {visaFlightHotelReservationsGuide} from "./visa-cluster-visa-flight-hotel-reservations";
+import {visaApplicationFormMistakesGuide} from "./visa-cluster-visa-application-form-mistakes";
 export type GuideExpansion={
  intro:string;
  lead?:string;
@@ -41,6 +45,10 @@ export const guideExpansions:Record<string,GuideExpansion>={
  "visa-appointment":visaAppointmentGuide,
  "visa-document-translation":visaDocumentTranslationGuide,
  "visa-invitation-letter":visaInvitationLetterGuide,
- "single-vs-multiple-entry-visa":singleVsMultipleEntryVisaGuide
+ "single-vs-multiple-entry-visa":singleVsMultipleEntryVisaGuide,
+ "visa-biometrics":visaBiometricsGuide,
+ "schengen-travel-insurance":schengenTravelInsuranceGuide,
+ "visa-flight-hotel-reservations":visaFlightHotelReservationsGuide,
+ "visa-application-form-mistakes":visaApplicationFormMistakesGuide
 
 };
