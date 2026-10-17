@@ -1,13 +1,13 @@
 import Link from "next/link";
 import {guides,visas} from "../../lib/content";
-export const metadata={alternates:{canonical:"/visa-guides/"},title:"راهنمای ویزای توریستی | مدارک، وقت و تمکن مالی",description:"۱۳ راهنمای مستند ویزای توریستی: مدارک، انگشت‌نگاری، بیمه شینگن، بلیت و هتل، فرم ویزا، وقت سفارت، تمکن مالی و ریجکتی."};
+export const metadata={alternates:{canonical:"/visa-guides/"},title:"راهنمای ویزای توریستی | مدارک، وقت و تمکن مالی",description:"۲۳ راهنمای مستند ویزای توریستی: مدارک، انگشت‌نگاری، بیمه شینگن، بلیت و هتل، فرم ویزا، وقت سفارت، تمکن مالی و ریجکتی."};
 const groups=[
- {title:"مدارک و آمادگی پرونده",description:"برای آماده‌سازی واقعی مدارک، منابع مالی و شرایط سفر اول",slugs:["visa-documents","visa-proof-of-funds","visa-document-translation","visa-without-travel-history","schengen-travel-insurance","visa-flight-hotel-reservations"]},
- {title:"مراحل درخواست و هدف سفر",description:"رزرو وقت رسمی، دعوت‌نامه واقعی و تعداد ورودهای مجاز",slugs:["visa-appointment","visa-biometrics","visa-invitation-letter","single-vs-multiple-entry-visa"]},
+ {title:"مدارک و آمادگی پرونده",description:"برای آماده‌سازی واقعی مدارک، منابع مالی و شرایط سفر اول",slugs:["visa-documents","visa-proof-of-funds","visa-document-translation","visa-without-travel-history","schengen-travel-insurance","visa-flight-hotel-reservations","freelancer-self-employed-tourist-visa"]},
+ {title:"مراحل درخواست و هدف سفر",description:"رزرو وقت رسمی، دعوت‌نامه واقعی و تعداد ورودهای مجاز",slugs:["visa-appointment","visa-biometrics","visa-invitation-letter","single-vs-multiple-entry-visa","schengen-main-destination","schengen-90-180-day-rule","japan-jvac-iran-process","france-visas-iran-application","germany-videx-form-guide","canada-ircc-portal-guide","uk-standard-visitor-online-application","italy-visametric-iran-appointment","australia-visitor-600-offshore-guide"]},
  {title:"هزینه و تصمیم نهایی",description:"تعرفه‌های دولتی و مسیر درست پس از رد درخواست",slugs:["visa-fees","visa-rejection","visa-application-form-mistakes"]}
 ];
 export default function Page(){return <main>
- <section className="innerHero"><div className="shell"><span className="overline">VISA KNOWLEDGE HUB</span><h1>راهنماهای ویزای توریستی <em>برای ایرانیان</em></h1><p>از انگشت‌نگاری و بیمه سفر تا رزرو بلیت و هتل و اصلاح فرم؛ ۱۳ راهنمای کاربردی برای متقاضیان ایرانی، با ارجاع به منابع رسمی.</p></div></section>
+ <section className="innerHero"><div className="shell"><span className="overline">VISA KNOWLEDGE HUB</span><h1>راهنماهای ویزای توریستی <em>برای ایرانیان</em></h1><p>از انگشت‌نگاری و بیمه سفر تا رزرو بلیت و هتل و اصلاح فرم؛ ۲۳ راهنمای کاربردی برای متقاضیان ایرانی، با ارجاع به منابع رسمی.</p></div></section>
  <div className="shell sectionSpace">
   <div className="kv-guide-hub-intro"><h2>از کدام موضوع شروع کنیم؟</h2><p>راهنماهای این صفحه پاسخ به سؤال‌های عمومی‌اند. برای مسیر اقدام کشور مشخص، صفحه اختصاصی همان مقصد و سپس چک‌لیست رسمی را مطالعه کنید. این مطالب ضمانت نتیجه یا مشاوره حقوقی اختصاصی نیستند.</p></div>
   {groups.map((group,index)=><section key={group.title} className="kv-guide-hub-group" aria-labelledby={"cluster-"+index}>
