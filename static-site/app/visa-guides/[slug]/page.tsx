@@ -67,7 +67,7 @@ export default async function Page({params}:Props){
     <div className="seo-guide-notice">{detail.notice||"این مطلب راهنمای عمومی برای متقاضیان ایرانی است و جایگزین چک‌لیست صادرشده از سفارت یا سامانه رسمی مربوط به شرایط شخصی شما نیست."}</div>
     {detail.quickAnswer&&<section id="answer" className="seo-guide-section kv-guide-answer"><span className="seo-overline">پاسخ کوتاه</span>
      <h2>{detail.quickAnswerTitle||"مدارک ویزای توریستی چیست؟"}</h2><p>{detail.quickAnswer}</p>
-     <p className="kv-guide-hint">برای مشاهده تفاوت مقصدها، <a href="#countries">{detail.comparisonTitle||"جدول مقایسه مدارک هشت مقصد"}</a> را ببینید.</p>
+     <p className="kv-guide-hint">{detail.comparison?<>برای مشاهده جزئیات مقصدها، <a href="#countries">{detail.comparisonTitle||"جدول مقایسه مقصدها"}</a> را ببینید.</>:<>برای جزئیات و استثناها، <a href="#section-1">ادامه راهنما</a> را بخوانید.</>}</p>
     </section>}
     {detail.decisionAid&&<figure id="decision-path" className="seo-guide-section kv-editorial-path" aria-label={detail.decisionAid.accessibleSummary}>
       <figcaption><span className="seo-overline">راهنمای عملی / مسیر تصمیم‌گیری</span><h2>{detail.decisionAid.title}</h2><p>{detail.decisionAid.intro}</p></figcaption>

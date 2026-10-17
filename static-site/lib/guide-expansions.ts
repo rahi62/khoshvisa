@@ -15,6 +15,16 @@ import {visaBiometricsGuide} from "./visa-cluster-visa-biometrics";
 import {schengenTravelInsuranceGuide} from "./visa-cluster-schengen-travel-insurance";
 import {visaFlightHotelReservationsGuide} from "./visa-cluster-visa-flight-hotel-reservations";
 import {visaApplicationFormMistakesGuide} from "./visa-cluster-visa-application-form-mistakes";
+import {schengenMainDestinationGuide} from "./visa-cluster-schengen-main-destination";
+import {schengenNinetyOneEightyGuide} from "./visa-cluster-schengen-90-180-day-rule";
+import {japanJvacIranGuide} from "./visa-cluster-japan-jvac-iran-process";
+import {franceVisasIranApplicationGuide} from "./visa-cluster-france-visas-iran-application";
+import {germanyVidexFormGuide} from "./visa-cluster-germany-videx-form-guide";
+import {canadaIrccPortalGuide} from "./visa-cluster-canada-ircc-portal-guide";
+import {ukStandardVisitorApplicationGuide} from "./visa-cluster-uk-standard-visitor-online-application";
+import {italyVisametricAppointmentGuide} from "./visa-cluster-italy-visametric-iran-appointment";
+import {australiaVisitor600OffshoreGuide} from "./visa-cluster-australia-visitor-600-offshore-guide";
+import {freelancerSelfEmployedTouristVisaGuide} from "./visa-cluster-freelancer-self-employed-tourist-visa";
 export type GuideExpansion={
  intro:string;
  lead?:string;
@@ -49,6 +59,16 @@ export const guideExpansions:Record<string,GuideExpansion>={
  "visa-biometrics":visaBiometricsGuide,
  "schengen-travel-insurance":schengenTravelInsuranceGuide,
  "visa-flight-hotel-reservations":visaFlightHotelReservationsGuide,
- "visa-application-form-mistakes":visaApplicationFormMistakesGuide
+ "visa-application-form-mistakes":visaApplicationFormMistakesGuide,
+ "schengen-main-destination":schengenMainDestinationGuide,
+ "schengen-90-180-day-rule":schengenNinetyOneEightyGuide,
+ "japan-jvac-iran-process":japanJvacIranGuide,
+ "france-visas-iran-application":franceVisasIranApplicationGuide,
+ "germany-videx-form-guide":germanyVidexFormGuide,
+ "canada-ircc-portal-guide":canadaIrccPortalGuide,
+ "uk-standard-visitor-online-application":ukStandardVisitorApplicationGuide,
+ "italy-visametric-iran-appointment":italyVisametricAppointmentGuide,
+ "australia-visitor-600-offshore-guide":australiaVisitor600OffshoreGuide,
+ "freelancer-self-employed-tourist-visa":freelancerSelfEmployedTouristVisaGuide
 
 };
