@@ -127,7 +127,7 @@ export const japanJvacIranGuide:GuideExpansion={
         "هنگام پرداخت از متصدی درباره تفکیک مبلغ روادید، خدمات مرکز و خدمات انتخابی بپرسید و رسید مربوط را نگه دارید. پرداخت وجه اضافی نه بررسی خارج از نوبت را تضمین می‌کند نه نتیجه مثبت را."
       ],
       "sourceUrls": [
-        "https://www.ir.emb-japan.go.jp/itpr_fa/visa.html"
+        "https://www.ir.emb-japan.go.jp/itpr_ja/11_000001_01140.html"
       ]
     },
     {
@@ -137,7 +137,7 @@ export const japanJvacIranGuide:GuideExpansion={
         "اگر متقاضی کودک، سالمند یا شخصی با شرایط ویژه است، قبل از مراجعه شکل حضور، امضای فرم و مدارک رابطه خانوادگی یا نمایندگی را از راهنمای رسمی JVAC مشخص کنید."
       ],
       "sourceUrls": [
-        "https://www.ir.emb-japan.go.jp/itpr_fa/visa.html"
+        "https://www.ir.emb-japan.go.jp/itpr_ja/11_000001_01140.html"
       ]
     }
   ],
@@ -181,10 +181,6 @@ export const japanJvacIranGuide:GuideExpansion={
     {
       "name": "سفارت ژاپن در ایران — افتتاح JVAC",
       "url": "https://www.ir.emb-japan.go.jp/itpr_ja/11_000001_01140.html"
-    },
-    {
-      "name": "سفارت ژاپن — اطلاعات روادید",
-      "url": "https://www.ir.emb-japan.go.jp/itpr_fa/visa.html"
     }
   ],
   "decisionAid": {
