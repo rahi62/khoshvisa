@@ -30,9 +30,9 @@ export const visaApplicationFormMistakesGuide:GuideExpansion={
       {
         "destination": "انگلیس",
         "slug": "uk-tourist-visa",
-        "requirement": "پس از ارسال، راهنمای UKVI و مرکز مربوط را برای توضیح، مدارک تکمیلی یا لغو درخواست بررسی کنید.",
-        "source": "VFS بریتانیا در ایران",
-        "href": "https://visa.vfsglobal.com/irn/fa/gbr/faq"
+        "requirement": "پس از ارسال درخواست Standard Visitor، برای تغییر اطلاعات با UKVI تماس بگیرید؛ بازپرداخت هزینه لغو درخواست به شروع‌نشدن رسیدگی بستگی دارد.",
+        "source": "GOV.UK — Standard Visitor",
+        "href": "https://www.gov.uk/standard-visitor/apply-standard-visitor-visa"
       },
       {
         "destination": "استرالیا",
@@ -152,13 +152,13 @@ export const visaApplicationFormMistakesGuide:GuideExpansion={
       ]
     },
     {
-      "title": "انگلیس: اصلاح بعد از پرداخت یا رزرو بیومتریک",
+      "title": "انگلیس: اصلاح اطلاعات بعد از ارسال فرم",
       "paragraphs": [
-        "راهنمای مرکز VFS انگلستان در ایران می‌گوید اگر پیش از رزرو بیومتریک متوجه خطا شدید، ابتدا از درخواست در سامانه UKVI اقدام به اصلاح کنید؛ پس از ارسال و پرداخت ممکن است نامه توضیحی یا لغو درخواست و شروع دوباره مطرح شود.",
-        "امکان بازپرداخت، مهلت‌ها و مراحل لغو با شرایط همان پرونده وابسته است؛ نسخه فرم یا فایل آپلودشده را بدون توجه به دستور مرکز تغییر ندهید و هیچ گزینه‌ای را نتیجه تضمینی فرض نکنید."
+        "طبق راهنمای رسمی GOV.UK، اگر درخواست Standard Visitor را ارسال کرده‌اید و لازم است اطلاعاتی را تغییر دهید، باید با UKVI تماس بگیرید. این وضعیت با فرم ذخیره‌شده‌ای که هنوز ارسال نشده فرق دارد؛ نباید فرض کرد ویرایش درخواست ثبت‌شده از طریق مرکز بیومتریک همیشه ممکن است.",
+        "می‌توانید درباره لغو درخواست اقدام کنید، اما طبق GOV.UK هزینه آن تنها در صورتی بازپرداخت می‌شود که بررسی درخواست هنوز آغاز نشده باشد. قبل از هر اقدام، دستورالعمل پرونده و پاسخ رسمی UKVI را ملاک بگذارید و تأیید خودکار اصلاح را تضمینی تلقی نکنید."
       ],
       "sourceUrls": [
-        "https://visa.vfsglobal.com/irn/fa/gbr/faq"
+        "https://www.gov.uk/standard-visitor/apply-standard-visitor-visa"
       ]
     },
     {
@@ -264,8 +264,8 @@ export const visaApplicationFormMistakesGuide:GuideExpansion={
       "url": "https://immi.homeaffairs.gov.au/support-subsite/Pages/Applying-online-or-paper/after-you-apply.aspx"
     },
     {
-      "name": "VFS Global انگلستان در ایران — پرسش‌های فرم و اصلاح",
-      "url": "https://visa.vfsglobal.com/irn/fa/gbr/faq"
+      "name": "GOV.UK — تغییر و لغو درخواست Standard Visitor",
+      "url": "https://www.gov.uk/standard-visitor/apply-standard-visitor-visa"
     }
   ],
   "updated": "۲۰۲۶/۱۰/۱۷",

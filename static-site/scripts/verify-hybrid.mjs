@@ -45,7 +45,7 @@ const guideRoutes={
  "/visa-guides/visa-biometrics":["Article","BreadcrumbList","بیومتریک","BIL","۱۰ سال"],
  "/visa-guides/schengen-travel-insurance":["Article","BreadcrumbList","۳۰ هزار یورو","بیمه","بازگرداندن"],
  "/visa-guides/visa-flight-hotel-reservations":["Article","BreadcrumbList","رزرو","هتل","بلیت"],
- "/visa-guides/visa-application-form-mistakes":["Article","BreadcrumbList","اشتباهات فرم","ImmiAccount","اصلاح"]
+ "/visa-guides/visa-application-form-mistakes":["Article","BreadcrumbList","اشتباهات فرم","ImmiAccount","اصلاح","با UKVI تماس بگیرید"]
 };
 for(const [route,tokens] of Object.entries(guideRoutes)){
  const file=join(base,"server","app",route.substring(1)+".html");
