@@ -88,7 +88,7 @@ export default async function Page({params}:Props){
      {section.bullets&&<ul>{section.bullets.map(item=><li key={item}>{item}</li>)}</ul>}
      {detail.contextualLinks?.filter(link=>link.section===section.title).map(link=><p className="kv-context-link" key={link.slug+link.section}>{link.before}<Link href={link.slug.includes("tourist-visa")||link.slug==="schengen-visa"?"/"+link.slug+"/":"/visa-guides/"+link.slug+"/"}>{link.label}</Link>{link.after}</p>)}
      {section.sourceUrls&&<p className="kv-guide-inline-sources"><strong>منابع این بخش:</strong>{" "}
-       {section.sourceUrls.map((source,j)=><span key={source}>{j>0&&" · "}<a href={source} target="_blank" rel="noopener noreferrer">{detail.sources.find(s=>s.url===source)?.name||"مرجع رسمی"} ↗</a></span>)}
+       {section.sourceUrls.map((source,j)=><span key={source}>{j>0&&" · "}<a href={source} target="_blank" rel="noopener noreferrer">{detail.sources.find(s=>s.url===source)?.name||"مشاهده منبع"} ↗</a></span>)}
       </p>}
     </section>)}
     {detail.questions&&<section className="seo-guide-section" id="questions"><span className="seo-overline">پرسش‌های متداول</span><h2>{detail.faqTitle||"سؤالات متداول درباره مدارک ویزا"}</h2>
