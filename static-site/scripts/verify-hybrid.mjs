@@ -8,7 +8,7 @@ if(!existsSync(prerenderFile)){
 const manifest=JSON.parse(readFileSync(prerenderFile,"utf8"));
 const normalize=p=>(p.replace(/\/+$/,"")||"/");
 const prerendered=new Set(Object.keys(manifest.routes||{}).map(normalize));
-const publicRoutes=["/","/destinations","/visa-explorer","/visa-readiness","/motion-lab","/consultation","/visa-guides","/editorial-policy","/schengen-visa","/canada-tourist-visa","/uk-tourist-visa","/japan-tourist-visa","/france-tourist-visa","/italy-tourist-visa","/germany-tourist-visa","/australia-tourist-visa","/visa-guides/visa-documents","/visa-guides/visa-rejection","/visa-guides/visa-fees","/visa-guides/visa-proof-of-funds","/visa-guides/visa-without-travel-history","/visa-guides/visa-appointment","/visa-guides/visa-document-translation","/visa-guides/visa-invitation-letter","/visa-guides/single-vs-multiple-entry-visa","/visa-guides/visa-biometrics","/visa-guides/schengen-travel-insurance","/visa-guides/visa-flight-hotel-reservations","/visa-guides/visa-application-form-mistakes"];
+const publicRoutes=["/","/destinations","/visa-explorer","/visa-readiness","/motion-lab","/consultation","/visa-guides","/editorial-policy","/schengen-visa","/canada-tourist-visa","/uk-tourist-visa","/japan-tourist-visa","/france-tourist-visa","/italy-tourist-visa","/germany-tourist-visa","/australia-tourist-visa","/visa-guides/visa-documents","/visa-guides/visa-rejection","/visa-guides/visa-fees","/visa-guides/visa-proof-of-funds","/visa-guides/visa-without-travel-history","/visa-guides/visa-appointment","/visa-guides/visa-document-translation","/visa-guides/visa-invitation-letter","/visa-guides/single-vs-multiple-entry-visa","/visa-guides/visa-biometrics","/visa-guides/schengen-travel-insurance","/visa-guides/visa-flight-hotel-reservations","/visa-guides/visa-application-form-mistakes","/visa-guides/schengen-main-destination","/visa-guides/schengen-90-180-day-rule","/visa-guides/japan-jvac-iran-process","/visa-guides/france-visas-iran-application","/visa-guides/germany-videx-form-guide","/visa-guides/canada-ircc-portal-guide","/visa-guides/uk-standard-visitor-online-application","/visa-guides/italy-visametric-iran-appointment","/visa-guides/australia-visitor-600-offshore-guide","/visa-guides/freelancer-self-employed-tourist-visa"];
 for(const route of publicRoutes)if(!prerendered.has(route)){console.error("SEO route is no longer prerendered:",route);process.exitCode=1}
 const countryContent={
  "/schengen-visa":["۹۰ یورو","هزینه رسمی بزرگسال","کمیسیون اروپا"],
@@ -45,7 +45,7 @@ const guideRoutes={
  "/visa-guides/visa-biometrics":["Article","BreadcrumbList","بیومتریک","BIL","۱۰ سال"],
  "/visa-guides/schengen-travel-insurance":["Article","BreadcrumbList","۳۰ هزار یورو","بیمه","بازگرداندن"],
  "/visa-guides/visa-flight-hotel-reservations":["Article","BreadcrumbList","رزرو","هتل","بلیت"],
- "/visa-guides/visa-application-form-mistakes":["Article","BreadcrumbList","اشتباهات فرم","ImmiAccount","اصلاح"]
+ "/visa-guides/visa-application-form-mistakes":["Article","BreadcrumbList","اشتباهات فرم","ImmiAccount","اصلاح","با UKVI تماس بگیرید"]
 };
 for(const [route,tokens] of Object.entries(guideRoutes)){
  const file=join(base,"server","app",route.substring(1)+".html");
@@ -81,6 +81,16 @@ for(const [route,slugs] of Object.entries(newMoneyGuideRequirements)){
  for(const slug of slugs)if(!html.includes('href="/visa-guides/'+slug+'/')){
   console.error("Missing Money Page to cluster link:",route,slug);process.exitCode=1;
  }
+}
+// Verify the ten planned guide pages prerender with Article, canonical and substantive factual text.
+const tenGuideAssertions={"/visa-guides/schengen-main-destination":["Article","BreadcrumbList","مقصد اصلی"],"/visa-guides/schengen-90-180-day-rule":["Article","BreadcrumbList","۱۸۰"],"/visa-guides/japan-jvac-iran-process":["Article","BreadcrumbList","JVAC","نیازی به وقت قبلی نیست"],"/visa-guides/france-visas-iran-application":["Article","BreadcrumbList","France-Visas"],"/visa-guides/germany-videx-form-guide":["Article","BreadcrumbList","VIDEX"],"/visa-guides/canada-ircc-portal-guide":["Article","BreadcrumbList","IRCC"],"/visa-guides/uk-standard-visitor-online-application":["Article","BreadcrumbList","Standard Visitor"],"/visa-guides/italy-visametric-iran-appointment":["Article","BreadcrumbList","VisaMetric"],"/visa-guides/australia-visitor-600-offshore-guide":["Article","BreadcrumbList","Visitor 600"],"/visa-guides/freelancer-self-employed-tourist-visa":["Article","BreadcrumbList","فریلنسر"]};
+for(const [route,markers] of Object.entries(tenGuideAssertions)){
+ const path=join(base,"server","app",route.substring(1)+".html");
+ if(!existsSync(path)){console.error("Guide prerender missing:",route);process.exitCode=1;continue;}
+ const html=readFileSync(path,"utf8");
+ for(const m of markers)if(!html.includes(m)){console.error("Guide token missing:",route,m);process.exitCode=1;}
+ if(!html.includes('rel="canonical"')){console.error("Guide canonical absent:",route);process.exitCode=1;}
+ if(html.includes('href="#countries"')){console.error("Nonexistent comparison table anchor in guide:",route);process.exitCode=1;}
 }
 const editorialGapChecks=[["/visa-guides/visa-proof-of-funds","شش‌ماهه"],["/visa-guides/visa-without-travel-history","گذرنامه‌های پیشین"],["/visa-guides/visa-appointment","۱۵ ژوئیه ۲۰۲۶"],["/visa-guides/visa-document-translation","نام لاتین"],["/visa-guides/visa-invitation-letter","Super Visa"],["/visa-guides/single-vs-multiple-entry-visa","برچسب شینگن"]];
 for(const [route,token] of editorialGapChecks){

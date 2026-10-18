@@ -67,7 +67,7 @@ export default async function Page({params}:Props){
     <div className="seo-guide-notice">{detail.notice||"این مطلب راهنمای عمومی برای متقاضیان ایرانی است و جایگزین چک‌لیست صادرشده از سفارت یا سامانه رسمی مربوط به شرایط شخصی شما نیست."}</div>
     {detail.quickAnswer&&<section id="answer" className="seo-guide-section kv-guide-answer"><span className="seo-overline">پاسخ کوتاه</span>
      <h2>{detail.quickAnswerTitle||"مدارک ویزای توریستی چیست؟"}</h2><p>{detail.quickAnswer}</p>
-     <p className="kv-guide-hint">برای مشاهده تفاوت مقصدها، <a href="#countries">{detail.comparisonTitle||"جدول مقایسه مدارک هشت مقصد"}</a> را ببینید.</p>
+     <p className="kv-guide-hint">{detail.comparison?<>برای مشاهده جزئیات مقصدها، <a href="#countries">{detail.comparisonTitle||"جدول مقایسه مقصدها"}</a> را ببینید.</>:<>برای جزئیات و استثناها، <a href="#section-1">ادامه راهنما</a> را بخوانید.</>}</p>
     </section>}
     {detail.decisionAid&&<figure id="decision-path" className="seo-guide-section kv-editorial-path" aria-label={detail.decisionAid.accessibleSummary}>
       <figcaption><span className="seo-overline">راهنمای عملی / مسیر تصمیم‌گیری</span><h2>{detail.decisionAid.title}</h2><p>{detail.decisionAid.intro}</p></figcaption>
@@ -88,7 +88,7 @@ export default async function Page({params}:Props){
      {section.bullets&&<ul>{section.bullets.map(item=><li key={item}>{item}</li>)}</ul>}
      {detail.contextualLinks?.filter(link=>link.section===section.title).map(link=><p className="kv-context-link" key={link.slug+link.section}>{link.before}<Link href={link.slug.includes("tourist-visa")||link.slug==="schengen-visa"?"/"+link.slug+"/":"/visa-guides/"+link.slug+"/"}>{link.label}</Link>{link.after}</p>)}
      {section.sourceUrls&&<p className="kv-guide-inline-sources"><strong>منابع این بخش:</strong>{" "}
-       {section.sourceUrls.map((source,j)=><span key={source}>{j>0&&" · "}<a href={source} target="_blank" rel="noopener noreferrer">{detail.sources.find(s=>s.url===source)?.name||"مرجع رسمی"} ↗</a></span>)}
+       {section.sourceUrls.map((source,j)=><span key={source}>{j>0&&" · "}<a href={source} target="_blank" rel="noopener noreferrer">{detail.sources.find(s=>s.url===source)?.name||"مشاهده منبع"} ↗</a></span>)}
       </p>}
     </section>)}
     {detail.questions&&<section className="seo-guide-section" id="questions"><span className="seo-overline">پرسش‌های متداول</span><h2>{detail.faqTitle||"سؤالات متداول درباره مدارک ویزا"}</h2>
