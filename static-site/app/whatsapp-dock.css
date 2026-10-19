@@ -1,0 +1,50 @@
+/* Persistent public contact CTA: a floating action on desktop, one dock slot on mobile. */
+.kv-wa-floating{
+ position:fixed;
+ right:24px;
+ bottom:calc(24px + env(safe-area-inset-bottom,0px));
+ z-index:90;
+ display:inline-flex;
+ align-items:center;
+ justify-content:center;
+ gap:11px;
+ min-height:54px;
+ padding:13px 19px;
+ border:1px solid #ffffff2c;
+ border-radius:999px;
+ background:#18794b;
+ box-shadow:0 12px 36px #052a1c45;
+ color:#fff;
+ font-size:14px;
+ line-height:1.4;
+ font-weight:800;
+ text-decoration:none;
+ white-space:nowrap;
+ transition:background-color .2s ease,transform .2s ease,box-shadow .2s ease;
+}
+.kv-wa-floating:visited,.kv-wa-floating:hover,.kv-wa-floating:focus-visible{color:#fff}
+.kv-wa-floating:hover{background:#10683f;transform:translateY(-2px);box-shadow:0 15px 38px #052a1c52}
+.kv-wa-floating:focus-visible,.mobileDock .kv-wa-dock-link:focus-visible{outline:3px solid #e9b769;outline-offset:3px}
+.kv-wa-icon{width:23px;height:23px;flex:none}
+.kv-wa-form{scroll-margin-top:110px}
+
+@media(max-width:760px){
+ .kv-wa-floating{display:none}
+ /* Reuse the site's existing fixed two-item bottom bar instead of stacking CTAs. */
+ .mobileDock{z-index:95}
+ .mobileDock a{min-height:48px;border-radius:10px;box-sizing:border-box}
+ .mobileDock a.kv-wa-dock-link,
+ .mobileDock a.kv-wa-dock-link:last-child{background:#18794b;color:#fff}
+ .mobileDock a.kv-wa-dock-link:hover{background:#11653e}
+ .mobileDock a.kv-wa-dock-link span{font-size:13px;font-weight:850;white-space:nowrap}
+ .mobileDock .kv-wa-icon{width:21px;height:21px}
+}
+@media(max-width:365px){
+ .mobileDock{padding-inline:10px;gap:7px}
+ .mobileDock a{gap:6px}
+ .mobileDock a.kv-wa-dock-link span{font-size:12px}
+}
+@media(prefers-reduced-motion:reduce){
+ .kv-wa-floating{transition:none}
+ .kv-wa-floating:hover{transform:none}
+}
