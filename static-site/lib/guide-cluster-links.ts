@@ -13,6 +13,7 @@ export const moneyClusterLinks:Record<string,string[]>={
     "schengen-90-180-day-rule"
   ],
   "canada-tourist-visa": [
+    "canada-visitor-visa-documents",
     "visa-proof-of-funds",
     "visa-without-travel-history",
     "visa-invitation-letter",
@@ -186,7 +187,13 @@ export const articleGuideLinks:Record<string,string[]>={
     "visa-application-form-mistakes",
     "visa-appointment"
   ],
+  "canada-visitor-visa-documents": [
+    "canada-ircc-portal-guide",
+    "visa-proof-of-funds",
+    "visa-documents"
+  ],
   "canada-ircc-portal-guide": [
+    "canada-visitor-visa-documents",
     "visa-application-form-mistakes",
     "visa-biometrics"
   ],
