@@ -14,8 +14,8 @@ import SiteChrome from "../components/SiteChrome";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://khoshvisa.ir"),
-  title: { default: "خوش‌ویزا | ویزای توریستی و راهنمای سفر", template: "%s | خوش‌ویزا" },
-  description: "راهنمای تخصصی ویزای توریستی شینگن، کانادا، انگلیس، ژاپن و دیگر مقصدها؛ شرایط، مدارک، هزینه‌ها و مسیر درخواست.",
+  title: { default: "خوش‌ویزا | ثبت درخواست ویزای توریستی", template: "%s | خوش‌ویزا" },
+  description: "ثبت درخواست ویزای توریستی شینگن، کانادا، انگلیس، ژاپن و دیگر مقصدها؛ بررسی شرایط و مدارک و هماهنگی مراحل درخواست.",
   openGraph: { type: "website", locale: "fa_IR", siteName: "خوش‌ویزا" },
   icons: { icon: [{ url: "/icon.svg?v=2", type: "image/svg+xml" }], shortcut: ["/icon.svg?v=2"] },
   robots: { index: true, follow: true },
