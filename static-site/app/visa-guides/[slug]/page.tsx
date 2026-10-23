@@ -103,9 +103,8 @@ export default async function Page({params}:Props){
     <section className="seo-guide-section" id="references">
      <span className="seo-overline">منابع اولیه و به‌روزرسانی</span><h2>منابع رسمی مقاله</h2>
      <p>این منابع در تاریخ <time dateTime={date}>{detail.updated}</time> برای محتوای فعلی مرور شده‌اند؛ در روز ثبت درخواست، نسخه جدید مرجع رسمی را دوباره بررسی کنید. خوش‌ویزا نماینده سفارت یا صادرکننده ویزا نیست.</p>
-     <p className="kv-editorial-byline">مسئولیت انتشار: تیم محتوای خوش‌ویزا · بازبینی حقوقی اختصاصی یا تأیید توسط کارشناس دارای مجوز برای این مطلب ادعا نمی‌شود. <Link href="/editorial-policy/">روش پژوهش و ارزیابی مطالب</Link></p>
+     <p className="kv-editorial-byline">مسئولیت انتشار: تیم محتوای خوش‌ویزا · بازبینی حقوقی اختصاصی یا تأیید توسط کارشناس دارای مجوز برای این مطلب ادعا نمی‌شود.</p>
      <ul className="seo-guide-sources">{detail.sources.map(s=><li key={s.url}><a href={s.url} target="_blank" rel="noopener noreferrer">{s.name} ↗</a></li>)}</ul>
-     <p>درباره شیوه تهیه و اصلاح مطالب بیشتر بدانید: <Link href="/editorial-policy/">سیاست بررسی محتوای خوش‌ویزا</Link>.</p>
     </section>
    </article>
    <aside>
