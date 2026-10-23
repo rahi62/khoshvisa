@@ -22,15 +22,15 @@ export function VisaPillarPage({visa,profile}:{visa:Visa;profile:VisaProfile}){
  ]};
  return <main className="seo-pillar">
   <script type="application/ld+json" dangerouslySetInnerHTML={{__html:JSON.stringify(ld).replace(/</g,"\\u003c")}}/>
-  <header className="seo-pillar-hero" style={{backgroundImage:"linear-gradient(270deg,rgba(5,24,41,.97) 0%,rgba(7,30,48,.89) 50%,rgba(7,30,48,.38) 100%),url('"+visa.photo+"')"}}>
+  <header className="seo-pillar-hero" style={{backgroundImage:"linear-gradient(270deg,rgba(235,248,255,.98) 0%,rgba(226,245,255,.91) 52%,rgba(222,245,255,.38) 100%),url('"+visa.photo+"')"}}>
   <div className="seo-container">
   <nav className="seo-breadcrumb" aria-label="مسیر صفحه">{breadcrumbs.map((b,i)=><span key={b.href}>{i>0&&<span aria-hidden="true"> / </span>}{i===breadcrumbs.length-1?<span aria-current="page">{b.name}</span>:<Link href={b.href}>{b.name}</Link>}</span>)}</nav>
   <span className="seo-hero-kicker">{visa.flag} راهنمای ویزای توریستی · اطلاعات مستند</span>
   <h1>{profile.primaryKeyword}؛ شرایط، مدارک و هزینه‌ها</h1>
   <p>{profile.subtitle}</p><div className="seo-hero-actions">
-   <a className="seo-button seo-button-gold" href="#facts">هزینه و شرایط را ببینید <span aria-hidden="true">↓</span></a>
-   <Link className="seo-button seo-button-outline" href="/visa-readiness/">چک‌لیست اولیه سفر ←</Link></div>
-   <small>تاریخ آخرین بررسی منابع: <time dateTime={profile.reviewedISO||"2026-10-12"}>{profile.reviewed}</time> · اطلاعات ممکن است تغییر کند.</small></div></header>
+   <a className="seo-button seo-button-gold" href="#facts">شرایط و هزینه ویزا <span aria-hidden="true">↓</span></a>
+   <Link className="seo-button seo-button-outline" href={"/consultation/?destination="+encodeURIComponent(visa.slug)}>ثبت درخواست ویزا ←</Link></div>
+   <small>آخرین بررسی شرایط: <time dateTime={profile.reviewedISO||"2026-10-12"}>{profile.reviewed}</time> · اطلاعات ممکن است تغییر کند.</small></div></header>
   <nav className="seo-pillar-mobile-nav" aria-label="فهرست بخش‌های راهنمای ویزا"><div className="seo-container">{sections.map(([id,label])=><a key={id} href={"#"+id}>{label}</a>)}</div></nav>
   <div className="seo-container seo-pillar-layout">
    <article className="seo-pillar-main">

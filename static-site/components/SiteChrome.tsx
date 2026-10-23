@@ -1,11 +1,19 @@
 "use client";
-import {usePathname} from "next/navigation";
-import type {ReactNode} from "react";
+import { usePathname } from "next/navigation";
+import type { ReactNode } from "react";
+import { Header, Footer, StickyBar } from "./home/sections";
 
-/** Public content keeps SiteHeader/Footer. Admin views are a separate interface on the same domain. */
-export default function SiteChrome({header,footer,children}:{header:ReactNode;footer:ReactNode;children:ReactNode}){
- const path=usePathname();
- const isAdmin=path==="/admin"||path.startsWith("/admin/");
- if(isAdmin || path==="/" || path==="/new" || path==="/new/")return <>{children}</>;
- return <>{header}{children}{footer}<div className="mobileDock"><a href="/destinations/">⌕ <span>مقصدها</span></a><a href="/consultation/">✦ <span>ارتباط</span></a></div></>;
+/** A single brand-consistent header and footer for every public route. Admin remains independent. */
+export default function SiteChrome({ children }: { children: ReactNode }) {
+  const path = usePathname();
+  const isAdmin = path === "/admin" || path.startsWith("/admin/");
+  if (isAdmin) return <>{children}</>;
+
+  return (
+    <>
+      <div className="kvh kvh-shared-header" dir="rtl"><Header /></div>
+      {children}
+      <div className="kvh kvh-shared-footer" dir="rtl"><Footer /><StickyBar /></div>
+    </>
+  );
 }

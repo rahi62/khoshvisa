@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Vazirmatn } from "next/font/google";
 import JournalSection from "@/components/home/JournalSection";
-import { Consult, Directory, Footer, Header, Hero, Process, StickyBar, Trust } from "@/components/home/sections";
+import { Consult, Directory, Hero, Process, Trust } from "@/components/home/sections";
 import "@/styles/home.css";
 
 const vazirmatn = Vazirmatn({
@@ -11,14 +11,13 @@ const vazirmatn = Vazirmatn({
 });
 
 export const metadata: Metadata = {
-  title: "خوش‌ویزا | راهنمای ویزای توریستی برای ایرانیان",
+  title: "درخواست ویزای توریستی | خدمات اخذ ویزا - خوش‌ویزا",
   description:
-    "مدارک، شرایط و هزینه‌های رسمی ویزای شینگن، کانادا، انگلیس، فرانسه، آلمان، ایتالیا، ژاپن و استرالیا برای ایرانیان.",
-  // Staging route next to the current homepage: keep it out of the index until it replaces "/".
-  robots: { index: false, follow: false },
+    "ثبت درخواست ویزای توریستی شینگن، کانادا، انگلیس و سایر مقصدها؛ بررسی شرایط اولیه و هماهنگی مراحل درخواست ویزا.",
+  alternates: { canonical: "/" },
 };
 
-const homeSchema={"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://khoshvisa.ir/#organization",name:"خوش‌ویزا",url:"https://khoshvisa.ir/",description:"پلتفرم مستقل راهنمای ویزا و هماهنگی اولیه درخواست",contactPoint:[{"@type":"ContactPoint",contactType:"customer support",telephone:"+989351300502",availableLanguage:["fa"]},{"@type":"ContactPoint",contactType:"customer support",telephone:"+982146010788",availableLanguage:["fa"]}]},{"@type":"WebSite","@id":"https://khoshvisa.ir/#website",url:"https://khoshvisa.ir/",name:"خوش‌ویزا",inLanguage:"fa-IR",publisher:{"@id":"https://khoshvisa.ir/#organization"}}]};
+const homeSchema={"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://khoshvisa.ir/#organization",name:"خوش‌ویزا",url:"https://khoshvisa.ir/",description:"ثبت درخواست و هماهنگی خدمات ویزای توریستی",contactPoint:[{"@type":"ContactPoint",contactType:"customer support",telephone:"+989351300502",availableLanguage:["fa"]},{"@type":"ContactPoint",contactType:"customer support",telephone:"+982146010788",availableLanguage:["fa"]}]},{"@type":"WebSite","@id":"https://khoshvisa.ir/#website",url:"https://khoshvisa.ir/",name:"خوش‌ویزا",inLanguage:"fa-IR",publisher:{"@id":"https://khoshvisa.ir/#organization"}}]};
 
 export default function NewHomePage() {
   return (
@@ -29,7 +28,6 @@ export default function NewHomePage() {
           __html: JSON.stringify(homeSchema).replace(/</g, "\\u003c")
         }}
       />
-      <Header />
       <main>
         <Hero />
         <Directory />
@@ -38,8 +36,6 @@ export default function NewHomePage() {
         <Trust />
         <Consult />
       </main>
-      <Footer />
-      <StickyBar />
     </div>
   );
 }

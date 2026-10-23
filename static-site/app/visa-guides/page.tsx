@@ -7,9 +7,9 @@ const groups=[
  {title:"هزینه و تصمیم نهایی",description:"تعرفه‌های دولتی و مسیر درست پس از رد درخواست",slugs:["visa-fees","visa-rejection","visa-application-form-mistakes"]}
 ];
 export default function Page(){return <main>
- <section className="innerHero"><div className="shell"><span className="overline">VISA KNOWLEDGE HUB</span><h1>راهنماهای ویزای توریستی <em>برای ایرانیان</em></h1><p>از انگشت‌نگاری و بیمه سفر تا رزرو بلیت و هتل و اصلاح فرم؛ ۲۳ راهنمای کاربردی برای متقاضیان ایرانی، با ارجاع به منابع رسمی.</p></div></section>
- <div className="shell sectionSpace">
-  <div className="kv-guide-hub-intro"><h2>از کدام موضوع شروع کنیم؟</h2><p>راهنماهای این صفحه پاسخ به سؤال‌های عمومی‌اند. برای مسیر اقدام کشور مشخص، صفحه اختصاصی همان مقصد و سپس چک‌لیست رسمی را مطالعه کنید. این مطالب ضمانت نتیجه یا مشاوره حقوقی اختصاصی نیستند.</p></div>
+ <section className="innerHero"><div className="shell"><span className="overline">VISA APPLICATION SUPPORT</span><h1>مدارک و مراحل <em>درخواست ویزای توریستی</em></h1><p>برای شروع درخواست ویزا، مدارک، هزینه‌ها و مراحل اقدام را بشناس و برای هماهنگی پرونده با خوش‌ویزا تماس بگیر.</p></div></section>
+ <div className="shell sectionSpace"><p><Link className="btn btnDark" href="/consultation/">ثبت درخواست ویزای توریستی ←</Link></p>
+  <div className="kv-guide-hub-intro"><h2>برای درخواست ویزا چه چیزهایی لازم است؟</h2><p>موضوع موردنظرت را بررسی کن و برای دریافت راهنمایی درباره شروع درخواست، مقصدت را انتخاب کن. صدور ویزا به تصمیم مرجع رسمی وابسته است.</p></div>
   {groups.map((group,index)=><section key={group.title} className="kv-guide-hub-group" aria-labelledby={"cluster-"+index}>
    <h2 id={"cluster-"+index}>{group.title}</h2><p>{group.description}</p>
    <div className="guideCards">{group.slugs.map((slug,i)=>{const g=guides.find(item=>item.slug===slug);return g?<Link href={"/visa-guides/"+g.slug+"/"} className="guideCard" key={g.slug}><div className={"guidePhoto guide"+(i%3)} aria-hidden="true"/><div><span>راهنمای مستند · {new Intl.NumberFormat("fa-IR",{minimumIntegerDigits:2}).format(i+1)}</span><h3>{g.title}</h3><p>{g.summary}</p><b>مطالعه راهنما ←</b></div></Link>:null})}</div>
