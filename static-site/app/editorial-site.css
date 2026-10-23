@@ -222,3 +222,24 @@ body:has(.kvh-shared-header) select:focus-visible,
 body:has(.kvh-shared-header) textarea:focus-visible {
   outline:2px solid var(--kv-editorial-accent);outline-offset:2px;
 }
+
+/* 2026 unified bright-blue visual system — all public pages */
+body:has(.kvh-shared-header){--navy:#1764d4;--dark:#eaf5ff;--gold:#2176ff;--cream:#f2f9ff;--teal:#18a4df;--ink:#173b63;--muted:#55738f;--kv-editorial-bg:#f4faff;--kv-editorial-ink:#16395d;--kv-editorial-accent:#1478e6;background:#f4faff;color:#16395d}
+body:has(.kvh-shared-header) .kvh{--bg:#f4faff;--surface:#fff;--ink:#16395d;--muted:#55738f;--line:#d7e8f7;--brand:#1478e6;--brand-ink:#fff;--soft:#e7f4ff;--stamp:#36b4dc;--band:#e7f4ff;--band-ink:#16395d;color-scheme:light}
+body:has(.kvh-shared-header) .kvh .top{background:#ffffffef}
+body:has(.kvh-shared-header) .kvh .band{background:linear-gradient(115deg,#e8f5ff,#d9efff);color:#16395d}
+body:has(.kvh-shared-header) .kvh .band .note{border-color:#bddcf3}
+body:has(.kvh-shared-header) .kvh .btn-primary,body:has(.kvh-shared-header) .btnDark,body:has(.kvh-shared-header) .seo-button-gold,body:has(.kvh-shared-header) .kv3-button-gold{background:#1478e6!important;color:#fff!important;border-color:#1478e6!important}
+body:has(.kvh-shared-header) .kvh .btn-ghost{background:white;color:#1478e6;border-color:#c5e0f6}
+body:has(.kvh-shared-header) .innerHero{background:linear-gradient(115deg,#def2ff,#f7fcff 65%);border-color:#cde5f7}
+body:has(.kvh-shared-header) .seo-pillar-hero{background-blend-mode:screen;background-color:#b7e0fa;color:#12395d}
+body:has(.kvh-shared-header) .seo-pillar-hero h1,body:has(.kvh-shared-header) .seo-pillar-hero p,body:has(.kvh-shared-header) .seo-pillar-hero small{color:#133b64!important}
+body:has(.kvh-shared-header) .seo-guide-hero{background:linear-gradient(110deg,#ddf0ff,#f8fcff)}
+body:has(.kvh-shared-header) .seo-fact,body:has(.kvh-shared-header) .guideCard,body:has(.kvh-shared-header) .seo-guide-section{box-shadow:0 12px 32px #357ebe0a}
+body:has(.kvh-shared-header) .kvh .hero{position:relative;overflow:hidden;background:linear-gradient(115deg,#e8f6ff 5%,#fff 65%)}
+body:has(.kvh-shared-header) .kvh .hero::before{content:"";position:absolute;inset:0;opacity:.10;pointer-events:none;background:radial-gradient(circle at 25% 30%,#009fe8,#e0f5ff 55%,transparent 70%)}
+body:has(.kvh-shared-header) .kvh .hero>.wrap{position:relative}
+body:has(.kvh-shared-header) .kvh .checker,body:has(.kvh-shared-header) .kvh .feat{box-shadow:0 16px 45px #2a80bf13}
+body:has(.kvh-shared-header) .kvh .top a:hover,body:has(.kvh-shared-header) .kvh .more:hover{color:#0766c8}
+body:has(.kvh-shared-header) .seo-pillar .seo-hero-actions .seo-button-outline{background:#fff;color:#1665be;border-color:#b6d9f3}
+@media(prefers-color-scheme:dark){body:has(.kvh-shared-header) .kvh{--bg:#f4faff;--surface:#fff;--ink:#16395d;--muted:#55738f;--line:#d7e8f7;--brand:#1478e6;--brand-ink:#fff;--soft:#e7f4ff;--band:#e7f4ff;--band-ink:#16395d;color-scheme:light}}
