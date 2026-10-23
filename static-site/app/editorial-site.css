@@ -318,3 +318,7 @@ body:has(.kvh-shared-header) .kv-mobile-menu{display:none}
 @media(prefers-reduced-motion:reduce){
  body:has(.kvh-shared-header) .kv-mobile-panel,body:has(.kvh-shared-header) .kv-menu-lines>span{transition:none}
 }
+
+/* Typography consistency: inline Persian words must inherit the self-hosted Next font. */
+body:has(.kvh-shared-header) :is(.seo-overline,.seo-hero-kicker,.overline,.heroEyebrow,.kv-wa-overline,.kv-menu-trigger,.kv-mobile-panel,.kv-mobile-panel-heading,.kv-mobile-links,.kv-mobile-action) {font-family:inherit}
+body:has(.kvh-shared-header) :is(button,input,select,textarea,option) {font-family:inherit}
