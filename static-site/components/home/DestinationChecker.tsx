@@ -40,10 +40,10 @@ export default function DestinationChecker() {
           </div>
         </dl>
         <Link className="btn btn-primary" href={d.href}>
-          راهنمای کامل این مقصد
+          شرایط ویزای این مقصد
         </Link>
-        <Link className="alt" href="/visa-readiness/">
-          آیا شرایطم مناسب است؟ بررسی اولیه
+        <Link className="alt" href="/consultation/">
+          شروع درخواست ویزا
         </Link>
       </div>
     </div>
