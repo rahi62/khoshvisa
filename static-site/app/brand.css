@@ -1,0 +1,45 @@
+/* Approved KhoshVisa brand marks: legible over the current navy UI, responsive and RTL-safe. */
+.kv3-brand{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  flex:none;
+  padding:2px 8px;
+  background:#fff;
+  border-radius:12px;
+  line-height:0;
+}
+.kv3-brand-wordmark{
+  display:block;
+  width:166px;
+  height:auto;
+  aspect-ratio:330/141;
+  object-fit:contain;
+}
+.kv3-brand:hover .kv3-brand-wordmark{opacity:.92}
+.footerBrandLogo{
+  display:inline-flex;
+  width:max-content;
+  align-items:center;
+  justify-content:center;
+  padding:3px 8px;
+  border-radius:12px;
+  background:#fff;
+  line-height:0;
+}
+.footerBrandLogo img{
+  display:block;
+  width:172px;
+  height:auto;
+}
+@media(max-width:930px){
+  .kv3-brand{padding:2px 6px;border-radius:10px}
+  .kv3-brand-wordmark{width:140px}
+}
+@media(max-width:650px){
+  .kv3-brand-wordmark{width:132px}
+  .footerBrandLogo img{width:155px}
+}
+@media(prefers-reduced-motion:reduce){
+  .kv3-brand-wordmark{transition:none}
+}
