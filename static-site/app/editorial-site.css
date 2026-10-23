@@ -270,3 +270,18 @@ body:has(.kvh-shared-header) .seo-hero-kicker,body:has(.kvh-shared-header) .seo-
 body:has(.kvh-shared-header) .kvh .bar{background:white}
 body:has(.kvh-shared-header) .kvh .bar .btn{box-shadow:0 3px 18px #2176ff1c}
 @media(max-width:760px){body:has(.kvh-shared-header) .innerHero::before,body:has(.kvh-shared-header) .seo-guide-hero::before{background-position:65% center}}
+
+/* One accessible responsive navigation on all public pages */
+@media(max-width:820px){
+ body:has(.kvh-shared-header) .kvh-shared-header .top .wrap{
+   height:auto;min-height:76px;display:grid;grid-template-columns:1fr auto;
+   gap:0 12px;padding-block:8px;
+ }
+ body:has(.kvh-shared-header) .kvh-shared-header .top .nav{
+   display:flex;grid-column:1/-1;grid-row:2;gap:18px;overflow-x:auto;
+   flex-wrap:nowrap;max-width:calc(100vw - 32px);padding:10px 0 4px;margin:0;
+   white-space:nowrap;font-size:.88rem;
+ }
+ body:has(.kvh-shared-header) .kvh-shared-header .top .nav a{min-height:40px;display:inline-flex;align-items:center}
+ body:has(.kvh-shared-header) .kvh-shared-header .top .btn{padding:0 12px;min-height:40px;font-size:.84rem}
+}
