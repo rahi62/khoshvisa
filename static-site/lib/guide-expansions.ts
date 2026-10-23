@@ -22,6 +22,7 @@ import {franceVisasIranApplicationGuide} from "./visa-cluster-france-visas-iran-
 import {germanyVidexFormGuide} from "./visa-cluster-germany-videx-form-guide";
 import {canadaIrccPortalGuide} from "./visa-cluster-canada-ircc-portal-guide";
 import {canadaVisitorDocumentsGuide} from "./visa-cluster-canada-visitor-visa-documents";
+import {canadaVisitorProofOfFundsGuide} from "./visa-cluster-canada-visitor-proof-of-funds";
 import {ukStandardVisitorApplicationGuide} from "./visa-cluster-uk-standard-visitor-online-application";
 import {italyVisametricAppointmentGuide} from "./visa-cluster-italy-visametric-iran-appointment";
 import {australiaVisitor600OffshoreGuide} from "./visa-cluster-australia-visitor-600-offshore-guide";
@@ -68,6 +69,7 @@ export const guideExpansions:Record<string,GuideExpansion>={
  "germany-videx-form-guide":germanyVidexFormGuide,
  "canada-ircc-portal-guide":canadaIrccPortalGuide,
  "canada-visitor-visa-documents":canadaVisitorDocumentsGuide,
+ "canada-visitor-proof-of-funds":canadaVisitorProofOfFundsGuide,
  "uk-standard-visitor-online-application":ukStandardVisitorApplicationGuide,
  "italy-visametric-iran-appointment":italyVisametricAppointmentGuide,
  "australia-visitor-600-offshore-guide":australiaVisitor600OffshoreGuide,
