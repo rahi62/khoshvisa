@@ -59,6 +59,7 @@ export default async function Page({params}:Props){
    <span className="seo-overline">راهنمای کاربردی ویزای توریستی</span>
    <h1>{guide.title}</h1>
    <p>{detail.intro}</p>
+   <Link className="seo-button seo-button-gold" href="/consultation/">ثبت درخواست ویزای توریستی ←</Link>
    <small>آخرین بررسی منابع: <time dateTime={date}>{detail.updated}</time> · مقررات ممکن است تغییر کنند.</small>
   </div></header>
   <div className="seo-container seo-guide-layout">
@@ -95,7 +96,7 @@ export default async function Page({params}:Props){
      <div className="kv-guide-questions">{detail.questions.map(({q,a})=><div key={q}><h3>{q}</h3><p>{a}</p></div>)}</div>
     </section>}
     <section className="seo-guide-section kv-guide-next-step">
-     <span className="seo-overline">گام بعدی</span><h2>قبل از تصمیم، راهنمای مقصد خود را بررسی کنید</h2>
+     <span className="seo-overline">گام بعدی</span><h2>برای شروع درخواست ویزای توریستی اقدام کنید</h2>
      <p>اطلاعات این صفحه عمومی است؛ برای مسیر واقعی، مقررات و شرایط همان نوع ویزا ملاک‌اند. می‌توانید مقصدتان را انتخاب کنید و در صورت فعال‌بودن کانال ارتباطی، درخواست اولیه خود را برای هماهنگی به خوش‌ویزا بفرستید. هیچ نتیجه ویزایی تضمین نمی‌شود.</p>
      <p><Link className="seo-button seo-button-gold" href="/consultation/">شروع ارتباط اولیه با خوش‌ویزا ←</Link></p>
     </section>
