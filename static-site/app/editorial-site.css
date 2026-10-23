@@ -168,3 +168,57 @@ body:has(.kvh-shared-header) .seo-pillar-disclaimer {
   body:has(.kvh-shared-header) .seo-guide-hero h1,
   body:has(.kvh-shared-header) .seo-pillar-hero h1 {font-size:clamp(1.75rem,7vw,2.25rem)}
 }
+
+/* Utility pages and contact: keep fields and help text legible across viewports */
+body:has(.kvh-shared-header) .refConsultStandalone,
+body:has(.kvh-shared-header) .kv-wa-layout,
+body:has(.kvh-shared-header) .cin-tools-page .sectionSpace {
+  max-width:1120px;
+}
+body:has(.kvh-shared-header) .kv-wa-explainer,
+body:has(.kvh-shared-header) .kv-guide-hub-group,
+body:has(.kvh-shared-header) .kv-guide-index-explain {
+  border-radius:18px;
+}
+body:has(.kvh-shared-header) .kv-wa-explainer {
+  background:var(--kv-editorial-white);
+  border:1px solid var(--kv-editorial-line);
+}
+body:has(.kvh-shared-header) .prose {
+  max-width:850px;
+  margin-inline:auto;
+  font-size:1.02rem;
+}
+body:has(.kvh-shared-header) .prose h2 {margin-top:2em;margin-bottom:.65em}
+body:has(.kvh-shared-header) .prose p,
+body:has(.kvh-shared-header) .prose li {color:var(--kv-editorial-muted);line-height:2.1}
+body:has(.kvh-shared-header) .prose strong {color:var(--kv-editorial-ink)}
+body:has(.kvh-shared-header) .prose .btn {
+  border-radius:14px;min-height:48px;
+}
+body:has(.kvh-shared-header) .prose .btnDark {
+  background:var(--kv-editorial-accent);color:white;
+}
+body:has(.kvh-shared-header) .prose .btnGold {
+  background:var(--kv-editorial-ink);color:white;
+}
+body:has(.kvh-shared-header) .kv-public-phones {
+  background:var(--kv-editorial-white);
+  border:1px solid var(--kv-editorial-line);
+  border-radius:16px;
+  padding:20px 42px 20px 20px;
+}
+body:has(.kvh-shared-header) .kv-public-phones a {
+  color:var(--kv-editorial-accent);
+  font-weight:700;
+}
+body:has(.kvh-shared-header) input,
+body:has(.kvh-shared-header) select,
+body:has(.kvh-shared-header) textarea {
+  accent-color:var(--kv-editorial-accent);
+}
+body:has(.kvh-shared-header) input:focus-visible,
+body:has(.kvh-shared-header) select:focus-visible,
+body:has(.kvh-shared-header) textarea:focus-visible {
+  outline:2px solid var(--kv-editorial-accent);outline-offset:2px;
+}
