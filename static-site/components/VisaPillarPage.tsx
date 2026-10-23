@@ -28,9 +28,9 @@ export function VisaPillarPage({visa,profile}:{visa:Visa;profile:VisaProfile}){
   <span className="seo-hero-kicker">{visa.flag} راهنمای ویزای توریستی · اطلاعات مستند</span>
   <h1>{profile.primaryKeyword}؛ شرایط، مدارک و هزینه‌ها</h1>
   <p>{profile.subtitle}</p><div className="seo-hero-actions">
-   <a className="seo-button seo-button-gold" href="#facts">هزینه و شرایط را ببینید <span aria-hidden="true">↓</span></a>
-   <Link className="seo-button seo-button-outline" href="/visa-readiness/">چک‌لیست اولیه سفر ←</Link></div>
-   <small>تاریخ آخرین بررسی منابع: <time dateTime={profile.reviewedISO||"2026-10-12"}>{profile.reviewed}</time> · اطلاعات ممکن است تغییر کند.</small></div></header>
+   <a className="seo-button seo-button-gold" href="#facts">شرایط و هزینه ویزا <span aria-hidden="true">↓</span></a>
+   <Link className="seo-button seo-button-outline" href={"/consultation/?destination="+encodeURIComponent(visa.slug)}>ثبت درخواست ویزا ←</Link></div>
+   <small>آخرین بررسی شرایط: <time dateTime={profile.reviewedISO||"2026-10-12"}>{profile.reviewed}</time> · اطلاعات ممکن است تغییر کند.</small></div></header>
   <nav className="seo-pillar-mobile-nav" aria-label="فهرست بخش‌های راهنمای ویزا"><div className="seo-container">{sections.map(([id,label])=><a key={id} href={"#"+id}>{label}</a>)}</div></nav>
   <div className="seo-container seo-pillar-layout">
    <article className="seo-pillar-main">
