@@ -22,7 +22,7 @@ export function VisaPillarPage({visa,profile}:{visa:Visa;profile:VisaProfile}){
  ]};
  return <main className="seo-pillar">
   <script type="application/ld+json" dangerouslySetInnerHTML={{__html:JSON.stringify(ld).replace(/</g,"\\u003c")}}/>
-  <header className="seo-pillar-hero" style={{backgroundImage:"linear-gradient(270deg,rgba(5,24,41,.97) 0%,rgba(7,30,48,.89) 50%,rgba(7,30,48,.38) 100%),url('"+visa.photo+"')"}}>
+  <header className="seo-pillar-hero" style={{backgroundImage:"linear-gradient(270deg,rgba(235,248,255,.98) 0%,rgba(226,245,255,.91) 52%,rgba(222,245,255,.38) 100%),url('"+visa.photo+"')"}}>
   <div className="seo-container">
   <nav className="seo-breadcrumb" aria-label="مسیر صفحه">{breadcrumbs.map((b,i)=><span key={b.href}>{i>0&&<span aria-hidden="true"> / </span>}{i===breadcrumbs.length-1?<span aria-current="page">{b.name}</span>:<Link href={b.href}>{b.name}</Link>}</span>)}</nav>
   <span className="seo-hero-kicker">{visa.flag} راهنمای ویزای توریستی · اطلاعات مستند</span>
