@@ -22,11 +22,10 @@ export function Header() {
         </Link>
         <nav className="nav" aria-label="منوی اصلی">
           <Link href="/destinations/">مقصدها</Link>
-          <Link href="/visa-guides/">مجله</Link>
-          <Link href="/editorial-policy/">روش بررسی محتوا</Link>
+          <Link href="/visa-guides/">راهنمای ویزا</Link>
           <Link href="/about/">درباره ما</Link>
         </nav>
-        <Link className="btn btn-ghost" href="/contact/">ارتباط با ما</Link>
+        <Link className="btn btn-ghost" href="/contact/">درخواست ویزا</Link>
       </div>
     </header>
   );
@@ -37,18 +36,18 @@ export function Hero() {
     <section className="hero" aria-labelledby="hero-title">
       <div className="wrap">
         <div>
-          <h1 id="hero-title">ویزای توریستی را با منبع رسمی و قدم‌به‌قدم بشناس</h1>
+          <h1 id="hero-title">برای اخذ ویزای توریستی مقصدت اقدام کن</h1>
           <p className="lead">
-            مدارک، هزینه و مسیر درخواست ویزای هشت مقصد پرمراجعه برای ایرانیان؛ هر مطلب با پیوند به مرجع رسمی همان کشور.
+            برای ویزای شینگن، کانادا، انگلیس، ژاپن و دیگر مقصدها درخواستت را ثبت کن. شرایط و مدارک اولیه را بررسی می‌کنیم و برای مراحل بعدی با تو هماهنگ می‌شویم.
           </p>
           <div className="cta-row">
-            <Link className="btn btn-primary" href="/visa-readiness/">شروع بررسی اولیه</Link>
+            <Link className="btn btn-primary" href="/consultation/">ثبت درخواست ویزا</Link>
             <Link className="btn btn-ghost" href="/visa-explorer/">مقایسه مقصدها</Link>
           </div>
           <div className="facts">
             <span><b>{fa(destinations.length)}</b> مقصد</span>
-            <span><b>{fa(GUIDE_COUNT)}</b> راهنمای مستند</span>
-            <span>لینک مستقیم به مراجع رسمی</span>
+            <span><b>{fa(GUIDE_COUNT)}</b> راهنمای کاربردی ویزا</span>
+            <span><a href="tel:+989351300502">تماس: ۰۹۳۵۱۳۰۰۵۰۲</a></span>
           </div>
         </div>
         <DestinationChecker />
@@ -63,8 +62,8 @@ export function Directory() {
       <div className="wrap">
         <div className="head">
           <div>
-            <h2 id="directory-title">راهنمای ویزای همه مقصدها</h2>
-            <p className="muted">هر کشور مدارک و مسیر اختصاصی دارد. مقصد را انتخاب کن و راهنمایش را بخوان.</p>
+            <h2 id="directory-title">خدمات درخواست ویزای توریستی</h2>
+            <p className="muted">مقصد سفرت را انتخاب کن، شرایط اولیه را ببین و برای شروع درخواست با ما تماس بگیر.</p>
           </div>
           <Link className="more" href="/destinations/">همه مقصدها</Link>
         </div>
@@ -117,19 +116,19 @@ export function Trust() {
   return (
     <section className="band" aria-labelledby="trust-title">
       <div className="wrap">
-        <h2 id="trust-title" style={{ marginBottom: 32 }}>چرا می‌شود به این راهنماها تکیه کرد؟</h2>
+        <h2 id="trust-title" style={{ marginBottom: 32 }}>چرا درخواست ویزایت را با خوش‌ویزا شروع کنی؟</h2>
         <div className="g">
           <div>
-            <h3>منبع رسمی در هر مطلب</h3>
-            <p>هزینه‌ها و مدارک از سایت سفارت یا مرکز رسمی همان کشور گرفته می‌شود و پیوند آن در مطلب هست.</p>
+            <h3>بررسی شرایط متناسب با مقصد</h3>
+            <p>اطلاعات و مدارک موردنیاز را بر اساس مقصد و شرایط اولیه درخواست بررسی می‌کنیم.</p>
           </div>
           <div>
-            <h3>روش بررسی شفاف</h3>
-            <p>نحوه جمع‌آوری، بازبینی و بروزرسانی محتوا در صفحه «روش بررسی محتوا» توضیح داده شده است.</p>
+            <h3>ارتباط و پیگیری درخواست</h3>
+            <p>با ثبت درخواست، مسیر هماهنگی اولیه و گام‌های بعدی برایت روشن می‌شود.</p>
           </div>
           <div>
-            <h3>مرز مشخص با سفارت</h3>
-            <p>خوش‌ویزا نماینده سفارت یا صادرکننده ویزا نیست و نتیجه‌ای را تضمین نمی‌کند.</p>
+            <h3>اطلاع‌رسانی شفاف</h3>
+            <p>شرایط و الزامات هر مقصد را شفاف توضیح می‌دهیم؛ تصمیم صدور ویزا با مرجع رسمی است.</p>
           </div>
         </div>
         <p className="note">
@@ -145,10 +144,10 @@ export function Consult() {
     <section aria-labelledby="consult-title">
       <div className="wrap" style={{ display: "flex", justifyContent: "space-between", alignItems: "center", gap: 24, flexWrap: "wrap" }}>
         <div>
-          <h2 id="consult-title">سؤال داری؟ از همین‌جا شروع کن.</h2>
-          <p className="muted" style={{ marginTop: 8 }}>پیش از هر اقدام، وضعیتت را با ما در میان بگذار.</p>
+          <h2 id="consult-title">برای درخواست ویزا آماده‌ای؟</h2>
+          <p className="muted" style={{ marginTop: 8 }}>مقصد و زمان سفرت را ثبت کن تا برای شروع فرآیند هماهنگی کنیم.</p>
         </div>
-        <Link className="btn btn-primary" href="/consultation/">شروع ارتباط با خوش‌ویزا</Link>
+        <Link className="btn btn-primary" href="/consultation/">ثبت درخواست اخذ ویزا</Link>
       </div>
     </section>
   );
@@ -159,7 +158,7 @@ export function Footer() {
     <footer>
       <div className="wrap">
         <div>
-          خوش‌ویزا — پلتفرم مستقل اطلاعات ویزای توریستی
+          خوش‌ویزا — ثبت درخواست و هماهنگی خدمات ویزای توریستی
           <br />
           <a href="tel:+989351300502" dir="ltr">۰۹۳۵۱۳۰۰۵۰۲</a>{" · "}<a href="tel:+982146010788" dir="ltr">۰۲۱۴۶۰۱۰۷۸۸</a>
         </div>
@@ -167,7 +166,6 @@ export function Footer() {
           <Link href="/about/">درباره ما</Link>
           <Link href="/contact/">ارتباط با ما</Link>
           <Link href="/privacy/">حریم خصوصی</Link>
-          <Link href="/editorial-policy/">روش بررسی محتوا</Link>
         </nav>
       </div>
     </footer>
@@ -177,7 +175,7 @@ export function Footer() {
 export function StickyBar() {
   return (
     <div className="bar">
-      <Link className="btn btn-primary" href="/visa-readiness/">بررسی اولیه</Link>
+      <Link className="btn btn-primary" href="/consultation/">درخواست ویزا</Link>
       <Link className="btn btn-ghost" href="/consultation/">ارتباط با ما</Link>
     </div>
   );
