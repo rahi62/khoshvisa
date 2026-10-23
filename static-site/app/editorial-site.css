@@ -287,7 +287,7 @@ body:has(.kvh-shared-header) .kv-mobile-menu{display:none}
  body:has(.kvh-shared-header) .kv-menu-trigger{
   position:relative;z-index:103;display:inline-flex;align-items:center;gap:9px;
   min-height:44px;padding:8px 14px;border-radius:13px;background:#eaf5ff;
-  border:1px solid #c5e3fc;color:#176bc6;font:700 14px inherit;cursor:pointer
+  border:1px solid #c5e3fc;color:#176bc6;font-family:inherit;font-size:14px;font-weight:700;cursor:pointer
  }
  body:has(.kvh-shared-header) .kv-menu-lines{display:flex;flex-direction:column;gap:4px;width:20px}
  body:has(.kvh-shared-header) .kv-menu-lines>span{display:block;height:2px;width:20px;border-radius:3px;background:currentColor;transition:transform .22s,opacity .22s}
