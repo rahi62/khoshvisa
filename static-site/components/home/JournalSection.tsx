@@ -14,8 +14,8 @@ export default function JournalSection() {
       <div className="wrap">
         <div className="head">
           <div>
-            <h2 id="journal-title">مجله ویزا</h2>
-            <p className="muted">راهنماهای مستند درباره مدارک، هزینه و ریجکتی.</p>
+            <h2 id="journal-title">مدارک و راهنمای درخواست ویزا</h2>
+            <p className="muted">پاسخ به سؤال‌های مهم درباره مدارک، هزینه‌ها و مراحل درخواست ویزا.</p>
           </div>
           <Link className="more" href="/visa-guides/">همه راهنماها</Link>
         </div>
