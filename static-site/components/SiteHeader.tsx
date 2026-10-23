@@ -1,5 +1,6 @@
 "use client";
 import Link from "next/link";
+import Image from "next/image";
 import {usePathname} from "next/navigation";
 import {useEffect,useRef,useState} from "react";
 import {visas} from "../lib/content";
@@ -10,7 +11,7 @@ export default function SiteHeader(){
  useEffect(()=>{const media=window.matchMedia("(prefers-reduced-motion: reduce)");setReduced(media.matches);const change=()=>setReduced(media.matches);media.addEventListener("change",change);return()=>media.removeEventListener("change",change)},[]);
  useEffect(()=>{document.documentElement.dataset.kvMotion=reduced?"off":"on"},[reduced]);
  useEffect(()=>{if(!menu)return;const before=document.body.style.overflow;document.body.style.overflow="hidden";const handler=(e:KeyboardEvent)=>{if(e.key==="Escape"){setMenu(false);close.current?.focus()}if(e.key==="Tab"){const items=Array.from(overlay.current?.querySelectorAll<HTMLElement>("a,button")||[]);if(!items.length)return;const first=items[0],last=items[items.length-1];if(e.shiftKey&&document.activeElement===first){e.preventDefault();last.focus()}else if(!e.shiftKey&&document.activeElement===last){e.preventDefault();first.focus()}}};document.addEventListener("keydown",handler);overlay.current?.querySelector<HTMLElement>("a")?.focus();return()=>{document.body.style.overflow=before;document.removeEventListener("keydown",handler)}},[menu]);
- const brand=<><svg className="kv3-brand-icon" viewBox="0 0 48 48" fill="none" aria-hidden="true"><circle cx="24" cy="24" r="21" stroke="currentColor" strokeWidth="1.3" opacity=".65"/><path d="M8 27 40 13 29 40 23 28 8 27Z" stroke="currentColor" strokeWidth="2.2" strokeLinejoin="round"/><path d="m23 28 17-15" stroke="currentColor" strokeWidth="1.7"/><path d="M10 13c4-5 9-7 15-7" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round"/></svg><span>خوش‌ویزا<small>KHOSHVISA · TRAVEL BEYOND</small></span></>;
+ const brand=<Image src="/khoshvisa-logo.svg" alt="خوش‌ویزا" width={330} height={141} priority unoptimized className="kv3-brand-wordmark"/>;
  return <header className="kv3-header"><div className="kv3-header-inner kv3-container"><Link href="/" className="kv3-brand" aria-label="خوش‌ویزا، صفحه اصلی">{brand}</Link>
  <nav aria-label="ناوبری اصلی" className="kv3-main-nav"><Link href="/" className={path==="/"?"active":""}>خانه</Link>
  <div className="kv3-mega-root" onMouseEnter={()=>setMega(true)} onMouseLeave={()=>setMega(false)} onFocus={()=>setMega(true)} onBlur={e=>{if(!e.currentTarget.contains(e.relatedTarget))setMega(false)}}>
