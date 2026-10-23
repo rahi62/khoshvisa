@@ -243,3 +243,30 @@ body:has(.kvh-shared-header) .kvh .checker,body:has(.kvh-shared-header) .kvh .fe
 body:has(.kvh-shared-header) .kvh .top a:hover,body:has(.kvh-shared-header) .kvh .more:hover{color:#0766c8}
 body:has(.kvh-shared-header) .seo-pillar .seo-hero-actions .seo-button-outline{background:#fff;color:#1665be;border-color:#b6d9f3}
 @media(prefers-color-scheme:dark){body:has(.kvh-shared-header) .kvh{--bg:#f4faff;--surface:#fff;--ink:#16395d;--muted:#55738f;--line:#d7e8f7;--brand:#1478e6;--brand-ink:#fff;--soft:#e7f4ff;--band:#e7f4ff;--band-ink:#16395d;color-scheme:light}}
+
+/* Travel photography across public routes, using existing destination image assets */
+body:has(.kvh-shared-header) .kvh .hero::before {
+  background:url("https://images.unsplash.com/photo-1502602898657-3e91760cbb34?auto=format&fit=crop&w=1800&q=82") 15% center/cover no-repeat;
+  opacity:.20;filter:saturate(1.2);
+}
+body:has(.kvh-shared-header) .innerHero {position:relative;isolation:isolate;overflow:hidden}
+body:has(.kvh-shared-header) .innerHero::before {
+  content:"";position:absolute;inset:0;z-index:-1;
+  background:linear-gradient(270deg,rgba(237,249,255,.98) 0%,rgba(233,247,255,.92) 46%,rgba(235,249,255,.32) 100%),
+    url("https://images.unsplash.com/photo-1488085061387-422e29b40080?auto=format&fit=crop&w=1600&q=82") left center/cover no-repeat;
+}
+body:has(.kvh-shared-header) .seo-guide-hero {position:relative;isolation:isolate;overflow:hidden}
+body:has(.kvh-shared-header) .seo-guide-hero::before{
+  content:"";position:absolute;inset:0;z-index:-1;
+  background:linear-gradient(270deg,#edf9ff 10%,#edf9ffee 57%,#edf9ff55),
+  url("https://images.unsplash.com/photo-1488085061387-422e29b40080?auto=format&fit=crop&w=1600&q=82") left center/cover;
+}
+body:has(.kvh-shared-header) .kv-guide-answer{background:#e9f6ff;border-color:#cae7f9}
+body:has(.kvh-shared-header) .kv-guide-inline-sources,
+body:has(.kvh-shared-header) .kv-article-human-lead,
+body:has(.kvh-shared-header) .kv-context-link{background:#eff8ff;border-inline-start:3px solid #4ca6eb}
+body:has(.kvh-shared-header) .kv-editorial-path{background:linear-gradient(120deg,#eaf7ff,#f7fcff);border-color:#c9e7f8}
+body:has(.kvh-shared-header) .seo-hero-kicker,body:has(.kvh-shared-header) .seo-overline{color:#1979d2}
+body:has(.kvh-shared-header) .kvh .bar{background:white}
+body:has(.kvh-shared-header) .kvh .bar .btn{box-shadow:0 3px 18px #2176ff1c}
+@media(max-width:760px){body:has(.kvh-shared-header) .innerHero::before,body:has(.kvh-shared-header) .seo-guide-hero::before{background-position:65% center}}
