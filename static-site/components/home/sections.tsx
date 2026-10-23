@@ -2,6 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { destinations, GUIDE_COUNT } from "@/lib/home-data";
 import DestinationChecker from "./DestinationChecker";
+import MobileMenu from "./MobileMenu";
 
 const fa = (n: number) => n.toLocaleString("fa-IR");
 
@@ -25,7 +26,7 @@ export function Header() {
           <Link href="/visa-guides/">راهنمای ویزا</Link>
           <Link href="/about/">درباره ما</Link>
         </nav>
-        <Link className="btn btn-ghost" href="/contact/">درخواست ویزا</Link>
+        <div className="kv-header-actions"><Link className="btn btn-ghost kv-desktop-contact" href="/consultation/">درخواست ویزا</Link><MobileMenu /></div>
       </div>
     </header>
   );
