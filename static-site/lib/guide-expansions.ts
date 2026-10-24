@@ -5,6 +5,7 @@
 import {visaDocumentsGuide} from "./visa-documents-guide";
 import {visaRejectionGuide} from "./visa-rejection-guide";
 import {visaFeesGuide} from "./visa-fees-guide";
+import {schengenVisaFees2026Guide} from "./visa-cluster-schengen-visa-fees-2026";
 import {visaProofOfFundsGuide} from "./visa-cluster-visa-proof-of-funds";
 import {visaWithoutTravelHistoryGuide} from "./visa-cluster-visa-without-travel-history";
 import {visaAppointmentGuide} from "./visa-cluster-visa-appointment";
@@ -52,6 +53,7 @@ export const guideExpansions:Record<string,GuideExpansion>={
  "visa-documents":visaDocumentsGuide,
  "visa-rejection":visaRejectionGuide,
  "visa-fees":visaFeesGuide,
+ "schengen-visa-fees-2026":schengenVisaFees2026Guide,
  "visa-proof-of-funds":visaProofOfFundsGuide,
  "visa-without-travel-history":visaWithoutTravelHistoryGuide,
  "visa-appointment":visaAppointmentGuide,

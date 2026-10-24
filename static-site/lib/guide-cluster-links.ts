@@ -1,6 +1,7 @@
 /** Curated relevant money-to-guide and article-to-guide links. */
 export const moneyClusterLinks:Record<string,string[]>={
   "schengen-visa": [
+    "schengen-visa-fees-2026",
     "visa-proof-of-funds",
     "visa-appointment",
     "visa-document-translation",
@@ -103,7 +104,13 @@ export const articleGuideLinks:Record<string,string[]>={
     "visa-proof-of-funds",
     "visa-application-form-mistakes"
   ],
+  "schengen-visa-fees-2026": [
+    "visa-fees",
+    "schengen-travel-insurance",
+    "visa-document-translation"
+  ],
   "visa-fees": [
+    "schengen-visa-fees-2026",
     "visa-appointment",
     "visa-proof-of-funds",
     "schengen-travel-insurance",
