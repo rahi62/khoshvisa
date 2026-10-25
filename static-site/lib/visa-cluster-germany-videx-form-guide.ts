@@ -152,6 +152,17 @@ export const germanyVidexFormGuide:GuideExpansion={
         "https://jaunde.diplo.de/cm-de/service/2570788-2570788",
         "https://visas-de.tlscontact.com/fa-ir/country/ir/vac/irTHR2de/application-process"
       ]
+    },
+    {
+      "title": "ذخیره فرم و بازیابی اطلاعات: تفاوت Save و نسخه PDF",
+      "paragraphs": [
+        "در راهنمای جدید وزارت خارجه آلمان، فرم VIDEX قابلیت ذخیره اطلاعات روی دستگاه و بازگرداندن آنها با گزینه Import data را دارد. این فایل با PDF نهایی بارکددار یکسان نیست: فایل ذخیره‌شده برای ادامه یا اصلاح اطلاعات است و خروجی چاپی برای ارائه به مرکز کاربرد دارد.",
+        "پیش از بستن صفحه، اطلاعات را ذخیره کنید و پس از اصلاح نهایی، همه صفحه‌های PDF و بارکدها را دوباره تولید و چاپ کنید. این نکته به‌ویژه برای متقاضیانی مهم است که فرم را در چند نوبت آماده می‌کنند."
+      ],
+      "sourceUrls": [
+        "https://nigeria.diplo.de/ng-en/2756498-2756498",
+        "https://visas-de.tlscontact.com/fa-ir/country/ir/vac/irTHR2de/application-process"
+      ]
     }
   ],
   "questions": [
