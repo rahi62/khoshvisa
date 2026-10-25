@@ -7,8 +7,8 @@ export const canadaIrccPortalGuide:GuideExpansion={
   "quickAnswer": "ابتدا از صفحه رسمی How to apply IRCC هدف سفر را مشخص کنید. در IRCC Portal حساب ایجاد کنید و فرم و مدارک را ارسال کنید؛ نسخه جدید پورتال فقط برای افرادی با شرایط مشخص مانند حداقل ۱۸ سال سن، سابقه نداشتن درخواست قبلی و اقدام انفرادی بدون نماینده قابل استفاده است. دستور واقعی همان حساب و پرونده ملاک است.",
   "metaDescription": "انتخاب IRCC Portal یا New version، حساب، مدارک دیجیتال، هزینه، ارسال و بیومتریک برای متقاضی ایرانی.",
   "notice": "نسخه جدید IRCC Portal فقط برای متقاضیانی قابل بررسی است که هم‌زمان ۱۸ سال یا بیشتر دارند، پیش‌تر هیچ درخواستی به IRCC نداده‌اند، به‌تنهایی و بدون نماینده اقدام می‌کنند. در غیر این صورت مسیر Portal معمولی را بررسی کنید. هزینه، مدارک و زمان رسیدگی را پیش از پرداخت از وب‌سایت رسمی کنترل کنید و هیچ نتیجه‌ای را تضمین‌شده ندانید.",
-  "updated": "۲۰۲۶/۱۰/۱۷",
-  "updatedISO": "2026-10-17",
+  "updated": "۲۰۲۶/۱۰/۲۵",
+  "updatedISO": "2026-10-25",
   "sections": [
     {
       "title": "IRCC Portal چه کاری انجام می‌دهد؟",
@@ -144,6 +144,60 @@ export const canadaIrccPortalGuide:GuideExpansion={
       ],
       "sourceUrls": [
         "https://www.canada.ca/en/immigration-refugees-citizenship/services/application/online-account.html"
+      ]
+    },
+    {
+      "title": "اشتباه رایج: GCKey خودِ حساب IRCC نیست",
+      "paragraphs": [
+        "GCKey یک روش ورود و احراز هویت است، نه خود حساب درخواست مهاجرت. در IRCC secure account می‌توانید از GCKey یا Sign-In Partner استفاده کنید؛ در Portal معمولی عمدتاً با ایمیل وارد می‌شوید. اگر پرونده قبلی دارید، برای پیگیری آن ابتدا حسابی را که درخواست را در همان ثبت کرده‌اید پیدا کنید، نه اینکه بی‌دلیل پرونده تکراری بسازید.",
+        "مثال: اگر پیام‌های قدیمی پرونده با حساب GCKey مرتبط است، ساختن IRCC Portal جدید الزاماً آن درخواست را منتقل نمی‌کند. راهنمای رسمی ورود به حساب‌ها توضیح می‌دهد که هنگام تردید باید نوع پرونده و روش ورود قبلی را شناسایی کنید."
+      ],
+      "sourceUrls": [
+        "https://www.canada.ca/en/immigration-refugees-citizenship/services/application/register.html",
+        "https://www.canada.ca/en/immigration-refugees-citizenship/services/application/ircc-accounts.html"
+      ]
+    },
+    {
+      "title": "تفاوت Upload، Submit و ارسال مدارک تکمیلی در دو پورتال",
+      "paragraphs": [
+        "بارگذاری مدارک و پرداخت هزینه، مراحل متفاوت‌اند. در راهنمای رسمی IRCC، برای افزودن مدارک تکمیلی در Portal معمولی بخش Additional documents معرفی شده، اما در Portal – New version فیلد Letter of Explanation در صفحه Optional documents ذکر شده است. این دو محل را نباید در آموزش تصویری یکسان نشان داد.",
+        "نکته مهم: محل «Additional documents» یا «Letter of Explanation» در چک‌لیست مرحله ثبت اولیه، با مسیر ارائه مدارکی که IRCC *پس از ارسال* درخواست می‌کند یکی نیست. در پاسخ به درخواست مدارک جدید، طبق راهنمای رسمی IRCC وارد پرونده ارسالی شوید: در Portal عادی بخش «Check full application status» و سپس «How to submit additional documents» را بررسی کنید؛ در نسخه جدید از «View application» و «Submit additional documents» استفاده کنید. اگر جای بارگذاری فعال نیست، طبق دستور IRCC از web form اقدام کنید؛ مهلت نامه افسر را رعایت کنید."
+      ],
+      "sourceUrls": [
+        "https://www.canada.ca/en/immigration-refugees-citizenship/services/application/submit-requested-information-documents.html"
+      ]
+    },
+    {
+      "title": "محاسبه هزینه خانواده و پیگیری مستقل پرونده",
+      "paragraphs": [
+        "بر اساس جدول فعلی IRCC، هزینه بررسی Visitor Visa برای هر نفر ۱۰۰ دلار کانادا است؛ برای خانواده واجد شرایط با ۵ نفر یا بیشتر سقف ۵۰۰ دلار کانادا درج شده است. بیومتریک برای یک نفر معمولاً ۸۵ دلار کانادا و برای خانواده واجد شرایط حداکثر ۱۷۰ دلار کانادا است. این سقف‌ها به شرایط اعلام‌شده وابسته‌اند و معادل قیمت ثابت هر پرونده نیستند.",
+        "پس از ثبت درخواست، برای مشاهده جدول زمانی جزئی‌تر ممکن است بتوانید از Application status tracker جداگانه استفاده کنید که به UCI و شماره پرونده نیاز دارد. این ابزار از حساب ثبت درخواست متمایز است و وضعیت «بیومتریک انجام شد» نیز تأیید ویزا نیست."
+      ],
+      "sourceUrls": [
+        "https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada/apply-visitor-visa.html",
+        "https://www.canada.ca/en/immigration-refugees-citizenship/services/application/check-status.html"
+      ]
+    },
+    {
+      "title": "بیومتریک برای متقاضی ساکن ایران؛ انتخاب VAC بدون وعده وقت",
+      "paragraphs": [
+        "پس از ارسال پرونده، اگر به ارائه اطلاعات بیومتریک نیاز باشد، باید نامه Biometric Instruction Letter را مطابق دستور IRCC دریافت و سپس برای مرکز درخواست ویزا (VAC) وقت رزرو کنید. راهنمای رسمی کانادا می‌گوید اگر در کشور محل درخواست VAC وجود نداشته باشد می‌توان از VAC کشور دیگر استفاده کرد؛ فهرست مراکز و وضعیت نوبت را پیش از برنامه‌ریزی سفر بررسی کنید.",
+        "مثال آموزشی: متقاضی ساکن تهران می‌خواهد برای بیومتریک به ترکیه برود. پیش از خرید بلیت باید مهلت نامه، شرایط ورود به کشور مقصد، نشانی مرکز مجاز و وقت قابل رزرو را جداگانه کنترل کند. دریافت نامه بیومتریک یا مراجعه به VAC به‌معنای موافقت با ویزا نیست."
+      ],
+      "sourceUrls": [
+        "https://www.canada.ca/en/immigration-refugees-citizenship/corporate/contact-ircc/offices/find-visa-application-centre.html",
+        "https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada/after-apply-next-steps.html"
+      ]
+    },
+    {
+      "title": "بررسی گذرنامه و پایان فرایند؛ نکات گم‌شده در آموزش‌های قدیمی",
+      "paragraphs": [
+        "راهنمای فعلی IRCC برای درخواست Visitor Visa توصیه می‌کند گذرنامه هنگام سفر برنامه‌ریزی‌شده دست‌کم شش ماه اعتبار داشته باشد. همچنین از صفحه مشخصات و صفحه‌های دارای مهر یا ویزا کپی رنگی خوانا می‌خواهد؛ جزئیات نهایی را با چک‌لیست شخصی همان درخواست تطبیق دهید.",
+        "اگر پرونده آنلاین تأیید شود، IRCC معمولاً نامه درخواست گذرنامه می‌فرستد. دریافت پاسخ مثبت در حساب به‌تنهایی مجوز سفر نیست؛ برای متقاضی نیازمند ویزا، الصاق ویزا به گذرنامه و کنترل مدارک ورود مرحله جداگانه‌ای است. گذرنامه را فقط پس از دستور رسمی و طبق روش VAC ارسال کنید."
+      ],
+      "sourceUrls": [
+        "https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada/apply-visitor-visa.html",
+        "https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada/after-apply-next-steps.html"
       ]
     }
   ],
