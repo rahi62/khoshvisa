@@ -7,8 +7,8 @@ export const canadaIrccPortalGuide:GuideExpansion={
   "quickAnswer": "ابتدا از صفحه رسمی How to apply IRCC هدف سفر را مشخص کنید. در IRCC Portal حساب ایجاد کنید و فرم و مدارک را ارسال کنید؛ نسخه جدید پورتال فقط برای افرادی با شرایط مشخص مانند حداقل ۱۸ سال سن، سابقه نداشتن درخواست قبلی و اقدام انفرادی بدون نماینده قابل استفاده است. دستور واقعی همان حساب و پرونده ملاک است.",
   "metaDescription": "انتخاب IRCC Portal یا New version، حساب، مدارک دیجیتال، هزینه، ارسال و بیومتریک برای متقاضی ایرانی.",
   "notice": "نسخه جدید IRCC Portal فقط برای متقاضیانی قابل بررسی است که هم‌زمان ۱۸ سال یا بیشتر دارند، پیش‌تر هیچ درخواستی به IRCC نداده‌اند، به‌تنهایی و بدون نماینده اقدام می‌کنند. در غیر این صورت مسیر Portal معمولی را بررسی کنید. هزینه، مدارک و زمان رسیدگی را پیش از پرداخت از وب‌سایت رسمی کنترل کنید و هیچ نتیجه‌ای را تضمین‌شده ندانید.",
-  "updated": "۲۰۲۶/۱۰/۱۷",
-  "updatedISO": "2026-10-17",
+  "updated": "۲۰۲۶/۱۰/۲۵",
+  "updatedISO": "2026-10-25",
   "sections": [
     {
       "title": "IRCC Portal چه کاری انجام می‌دهد؟",
@@ -144,6 +144,38 @@ export const canadaIrccPortalGuide:GuideExpansion={
       ],
       "sourceUrls": [
         "https://www.canada.ca/en/immigration-refugees-citizenship/services/application/online-account.html"
+      ]
+    },
+    {
+      "title": "اشتباه رایج: GCKey خودِ حساب IRCC نیست",
+      "paragraphs": [
+        "GCKey یک روش ورود و احراز هویت است، نه خود حساب درخواست مهاجرت. در IRCC secure account می‌توانید از GCKey یا Sign-In Partner استفاده کنید؛ در Portal معمولی عمدتاً با ایمیل وارد می‌شوید. اگر پرونده قبلی دارید، برای پیگیری آن ابتدا حسابی را که درخواست را در همان ثبت کرده‌اید پیدا کنید، نه اینکه بی‌دلیل پرونده تکراری بسازید.",
+        "مثال: اگر پیام‌های قدیمی پرونده با حساب GCKey مرتبط است، ساختن IRCC Portal جدید الزاماً آن درخواست را منتقل نمی‌کند. راهنمای رسمی ورود به حساب‌ها توضیح می‌دهد که هنگام تردید باید نوع پرونده و روش ورود قبلی را شناسایی کنید."
+      ],
+      "sourceUrls": [
+        "https://www.canada.ca/en/immigration-refugees-citizenship/services/application/register.html",
+        "https://www.canada.ca/en/immigration-refugees-citizenship/services/application/ircc-accounts.html"
+      ]
+    },
+    {
+      "title": "تفاوت Upload، Submit و ارسال مدارک تکمیلی در دو پورتال",
+      "paragraphs": [
+        "بارگذاری مدارک و پرداخت هزینه، مراحل متفاوت‌اند. در راهنمای رسمی IRCC، برای افزودن مدارک تکمیلی در Portal معمولی بخش Additional documents معرفی شده، اما در Portal – New version فیلد Letter of Explanation در صفحه Optional documents ذکر شده است. این دو محل را نباید در آموزش تصویری یکسان نشان داد.",
+        "اگر پس از ارسال پرونده IRCC مدرک بیشتری خواست، متن درخواست و مهلت تعیین‌شده را ملاک قرار دهید؛ ارسال فایل به جای اشتباه ممکن است پاسخ به درخواست افسر را تکمیل نکند."
+      ],
+      "sourceUrls": [
+        "https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada/apply-visitor-visa.html"
+      ]
+    },
+    {
+      "title": "محاسبه هزینه خانواده و پیگیری مستقل پرونده",
+      "paragraphs": [
+        "بر اساس جدول فعلی IRCC، هزینه بررسی Visitor Visa برای هر نفر ۱۰۰ دلار کانادا است؛ برای خانواده واجد شرایط با ۵ نفر یا بیشتر سقف ۵۰۰ دلار کانادا درج شده است. بیومتریک برای یک نفر معمولاً ۸۵ دلار کانادا و برای خانواده واجد شرایط حداکثر ۱۷۰ دلار کانادا است. این سقف‌ها به شرایط اعلام‌شده وابسته‌اند و معادل قیمت ثابت هر پرونده نیستند.",
+        "پس از ثبت درخواست، برای مشاهده جدول زمانی جزئی‌تر ممکن است بتوانید از Application status tracker جداگانه استفاده کنید که به UCI و شماره پرونده نیاز دارد. این ابزار از حساب ثبت درخواست متمایز است و وضعیت «بیومتریک انجام شد» نیز تأیید ویزا نیست."
+      ],
+      "sourceUrls": [
+        "https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada/apply-visitor-visa.html",
+        "https://www.canada.ca/en/immigration-refugees-citizenship/services/application/check-status.html"
       ]
     }
   ],
