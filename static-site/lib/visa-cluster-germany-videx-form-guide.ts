@@ -129,7 +129,7 @@ export const germanyVidexFormGuide:GuideExpansion={
       "sourceUrls": [
         "https://videx.diplo.de/"
       ]
-    }
+    },
     {
       "title": "کدام فیلدهای واقعی VIDEX بیشترین خطا را ایجاد می‌کنند؟",
       "paragraphs": [
