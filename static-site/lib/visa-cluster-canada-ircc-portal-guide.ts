@@ -177,6 +177,28 @@ export const canadaIrccPortalGuide:GuideExpansion={
         "https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada/apply-visitor-visa.html",
         "https://www.canada.ca/en/immigration-refugees-citizenship/services/application/check-status.html"
       ]
+    },
+    {
+      "title": "بیومتریک برای متقاضی ساکن ایران؛ انتخاب VAC بدون وعده وقت",
+      "paragraphs": [
+        "پس از ارسال پرونده، اگر به ارائه اطلاعات بیومتریک نیاز باشد، باید نامه Biometric Instruction Letter را مطابق دستور IRCC دریافت و سپس برای مرکز درخواست ویزا (VAC) وقت رزرو کنید. راهنمای رسمی کانادا می‌گوید اگر در کشور محل درخواست VAC وجود نداشته باشد می‌توان از VAC کشور دیگر استفاده کرد؛ فهرست مراکز و وضعیت نوبت را پیش از برنامه‌ریزی سفر بررسی کنید.",
+        "مثال آموزشی: متقاضی ساکن تهران می‌خواهد برای بیومتریک به ترکیه برود. پیش از خرید بلیت باید مهلت نامه، شرایط ورود به کشور مقصد، نشانی مرکز مجاز و وقت قابل رزرو را جداگانه کنترل کند. دریافت نامه بیومتریک یا مراجعه به VAC به‌معنای موافقت با ویزا نیست."
+      ],
+      "sourceUrls": [
+        "https://www.canada.ca/en/immigration-refugees-citizenship/corporate/contact-ircc/offices/find-visa-application-centre.html",
+        "https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada/after-apply-next-steps.html"
+      ]
+    },
+    {
+      "title": "بررسی گذرنامه و پایان فرایند؛ نکات گم‌شده در آموزش‌های قدیمی",
+      "paragraphs": [
+        "راهنمای فعلی IRCC برای درخواست Visitor Visa توصیه می‌کند گذرنامه هنگام سفر برنامه‌ریزی‌شده دست‌کم شش ماه اعتبار داشته باشد. همچنین از صفحه مشخصات و صفحه‌های دارای مهر یا ویزا کپی رنگی خوانا می‌خواهد؛ جزئیات نهایی را با چک‌لیست شخصی همان درخواست تطبیق دهید.",
+        "اگر پرونده آنلاین تأیید شود، IRCC معمولاً نامه درخواست گذرنامه می‌فرستد. دریافت پاسخ مثبت در حساب به‌تنهایی مجوز سفر نیست؛ برای متقاضی نیازمند ویزا، الصاق ویزا به گذرنامه و کنترل مدارک ورود مرحله جداگانه‌ای است. گذرنامه را فقط پس از دستور رسمی و طبق روش VAC ارسال کنید."
+      ],
+      "sourceUrls": [
+        "https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada/apply-visitor-visa.html",
+        "https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada/after-apply-next-steps.html"
+      ]
     }
   ],
   "questions": [
