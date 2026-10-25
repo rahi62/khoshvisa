@@ -130,7 +130,6 @@ export const germanyVidexFormGuide:GuideExpansion={
         "https://videx.diplo.de/"
       ]
     }
-  ],
     {
       "title": "کدام فیلدهای واقعی VIDEX بیشترین خطا را ایجاد می‌کنند؟",
       "paragraphs": [
@@ -153,7 +152,8 @@ export const germanyVidexFormGuide:GuideExpansion={
         "https://jaunde.diplo.de/cm-de/service/2570788-2570788",
         "https://visas-de.tlscontact.com/fa-ir/country/ir/vac/irTHR2de/application-process"
       ]
-    },
+    }
+  ],
   "questions": [
     {
       "q": "VIDEX همان سایت رزرو وقت آلمان است؟",
