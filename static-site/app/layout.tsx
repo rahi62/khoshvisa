@@ -1,7 +1,5 @@
 import type { Metadata } from "next";
-import { Vazirmatn } from "next/font/google";
 
-const vazirmatn = Vazirmatn({ subsets: ["arabic", "latin"], weight: ["400", "600", "800"], display: "swap" });
 import "./style.css";
 import "./reference.css";
 import "./cinematic.css";
@@ -24,5 +22,5 @@ export const metadata: Metadata = {
   robots: { index: true, follow: true },
 };
 export default function RootLayout({ children }: { children: React.ReactNode }) {
-  return <html lang="fa" dir="rtl"><body className={vazirmatn.className}><SiteChrome>{children}</SiteChrome></body></html>;
+  return <html lang="fa" dir="rtl"><body><SiteChrome>{children}</SiteChrome></body></html>;
 }
