@@ -161,10 +161,10 @@ export const canadaIrccPortalGuide:GuideExpansion={
       "title": "تفاوت Upload، Submit و ارسال مدارک تکمیلی در دو پورتال",
       "paragraphs": [
         "بارگذاری مدارک و پرداخت هزینه، مراحل متفاوت‌اند. در راهنمای رسمی IRCC، برای افزودن مدارک تکمیلی در Portal معمولی بخش Additional documents معرفی شده، اما در Portal – New version فیلد Letter of Explanation در صفحه Optional documents ذکر شده است. این دو محل را نباید در آموزش تصویری یکسان نشان داد.",
-        "اگر پس از ارسال پرونده IRCC مدرک بیشتری خواست، متن درخواست و مهلت تعیین‌شده را ملاک قرار دهید؛ ارسال فایل به جای اشتباه ممکن است پاسخ به درخواست افسر را تکمیل نکند."
+        "نکته مهم: محل «Additional documents» یا «Letter of Explanation» در چک‌لیست مرحله ثبت اولیه، با مسیر ارائه مدارکی که IRCC *پس از ارسال* درخواست می‌کند یکی نیست. در پاسخ به درخواست مدارک جدید، طبق راهنمای رسمی IRCC وارد پرونده ارسالی شوید: در Portal عادی بخش «Check full application status» و سپس «How to submit additional documents» را بررسی کنید؛ در نسخه جدید از «View application» و «Submit additional documents» استفاده کنید. اگر جای بارگذاری فعال نیست، طبق دستور IRCC از web form اقدام کنید؛ مهلت نامه افسر را رعایت کنید."
       ],
       "sourceUrls": [
-        "https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada/apply-visitor-visa.html"
+        "https://www.canada.ca/en/immigration-refugees-citizenship/services/application/submit-requested-information-documents.html"
       ]
     },
     {
