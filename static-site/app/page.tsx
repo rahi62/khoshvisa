@@ -1,14 +1,7 @@
 import type { Metadata } from "next";
-import { Vazirmatn } from "next/font/google";
 import JournalSection from "@/components/home/JournalSection";
 import { Consult, Directory, Hero, Process, Trust } from "@/components/home/sections";
 import "@/styles/home.css";
-
-const vazirmatn = Vazirmatn({
-  subsets: ["arabic", "latin"],
-  weight: ["400", "600", "800"],
-  display: "swap",
-});
 
 export const metadata: Metadata = {
   title: "درخواست ویزای توریستی | خدمات اخذ ویزا - خوش‌ویزا",
@@ -21,7 +14,7 @@ const homeSchema={"@context":"https://schema.org","@graph":[{"@type":"Organizati
 
 export default function NewHomePage() {
   return (
-    <div className={`kvh ${vazirmatn.className}`} dir="rtl" lang="fa">
+    <div className="kvh" dir="rtl" lang="fa">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
