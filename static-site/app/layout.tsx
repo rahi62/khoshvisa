@@ -10,6 +10,7 @@ import "./whatsapp.css";
 import "./destination-fixes.css";
 import "./brand.css";
 import "../styles/home.css";
+import "../styles/contact-actions.css";
 import "./editorial-site.css";
 import SiteChrome from "../components/SiteChrome";
 
