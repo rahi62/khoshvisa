@@ -3,6 +3,7 @@ import Image from "next/image";
 import { destinations, GUIDE_COUNT } from "@/lib/home-data";
 import DestinationChecker from "./DestinationChecker";
 import MobileMenu from "./MobileMenu";
+import ContactActions from "./ContactActions";
 
 const fa = (n: number) => n.toLocaleString("fa-IR");
 
@@ -174,10 +175,5 @@ export function Footer() {
 }
 
 export function StickyBar() {
-  return (
-    <div className="bar">
-      <Link className="btn btn-primary" href="/consultation/">درخواست ویزا</Link>
-      <Link className="btn btn-ghost" href="/consultation/">ارتباط با ما</Link>
-    </div>
-  );
+  return <ContactActions />;
 }
