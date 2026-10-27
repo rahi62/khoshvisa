@@ -1,0 +1,3 @@
+import DestinationExplorer from "../../components/DestinationExplorer";import {VisaCompare} from "../../components/VisaTools";import {visas} from "../../lib/content";
+export const metadata={alternates:{canonical:"/visa-explorer/"},title:"انتخاب مقصد برای درخواست ویزا",description:"جست‌وجو، فیلتر و مقایسه اطلاعات مقدماتی ویزای توریستی مقصدهای مختلف."};
+export default function Page(){return <main className="cin-tools-page"><section className="innerHero"><div className="shell"><span className="overline">VISA EXPLORER</span><h1>جهانت را <em>کشف کن</em></h1><p>مقصد سفرت را پیدا کن و برای ثبت درخواست ویزای توریستی اقدام کن.</p></div></section><div className="shell sectionSpace"><DestinationExplorer items={visas}/><VisaCompare items={visas}/></div></main>}

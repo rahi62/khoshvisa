@@ -1,0 +1,31 @@
+/* WhatsApp lead contact flow — RTL, accessible, no fake submit states */
+.kv-wa-page{background:#f6f7f6}.kv-wa-layout{display:grid;grid-template-columns:minmax(0,1fr) minmax(300px,.95fr);align-items:start;gap:44px;padding-block:68px!important}
+.kv-wa-form{width:100%;max-width:650px;margin:0;border-radius:22px;padding:clamp(22px,4vw,42px);background:#fff;border:1px solid #e2e7eb;box-shadow:0 25px 65px #06223819;color:#102d40;display:block}
+.kv-wa-form .kv-wa-overline,.kv-wa-overline{display:block;font:10px Arial;letter-spacing:2px;color:#b48748;margin-bottom:14px}
+.kv-wa-form h2{font-size:clamp(25px,2.6vw,37px);line-height:1.5;margin:8px 0 15px;color:#112e42;font-weight:900}
+.kv-wa-form>p{font-size:13px;color:#5b7687;line-height:2.2;margin:0 0 23px}
+.kv-wa-form form{display:grid;gap:14px}.kv-wa-form form>label{display:flex;flex-direction:column;gap:7px;margin:0;font-size:13px;font-weight:700;color:#2f4b5e}
+.kv-wa-form input[type=text],.kv-wa-form select{width:100%;min-height:49px;border-radius:9px;border:1px solid #d6e0e6;color:#17394b;background:#fff;padding:11px 14px;font:inherit;font-size:13px;box-sizing:border-box}
+.kv-wa-form input:focus-visible,.kv-wa-form select:focus-visible{outline:2px solid #c99747;outline-offset:2px;border-color:#ba894a}
+.kv-wa-privacy{background:#faf7f0;border:1px solid #ebdec8;padding:16px;border-radius:12px;margin-top:6px;display:grid;gap:11px}
+.kv-wa-form .kv-wa-privacy label.kv-wa-consent{display:flex;flex-direction:row;align-items:flex-start;gap:11px;margin:0;color:#475d67;font-size:12px;font-weight:500;line-height:2.1;cursor:pointer}
+.kv-wa-consent input[type=checkbox]{width:19px;height:19px;min-width:19px;accent-color:#a77d40;margin:4px 0 0}
+.kv-wa-privacy>a{color:#a27435;font-size:12px;font-weight:800;text-decoration:underline;text-underline-offset:3px}
+.kv-wa-form .kv-wa-submit{font-family:inherit;border:0;display:flex;align-items:center;justify-content:center;gap:23px;background:linear-gradient(115deg,#186d43,#269e67);border-radius:11px;color:#fff;min-height:55px;width:100%;cursor:pointer;font-size:14px;font-weight:850;padding:12px 20px;box-shadow:0 12px 25px #135c392c;transition:background .2s,transform .2s;box-sizing:border-box}
+.kv-wa-form .kv-wa-submit:hover:not(.is-disabled){background:linear-gradient(115deg,#125a37,#218954);transform:translateY(-2px)}
+.kv-wa-form .kv-wa-submit.is-disabled{background:#a9b7bd;color:#fff;box-shadow:none;opacity:.78;cursor:not-allowed;transform:none}
+.kv-wa-form .kv-wa-submit:focus-visible{outline:3px solid #c99747;outline-offset:3px}
+.kv-wa-form .kv-wa-submit>span{font-size:20px}
+.kv-wa-form .kv-wa-hint,.kv-wa-form .kv-wa-warning{font-size:12px;line-height:2;margin:0;color:#6f7874}
+.kv-wa-form .kv-wa-warning{color:#875021;background:#fff7e9;padding:10px 13px;border:1px solid #e8ca9a;border-radius:8px}
+.kv-wa-form .kv-wa-notice{background:#eaf7f0;border-right:4px solid #268457;color:#184935;padding:13px;border-radius:9px}
+.kv-wa-form .kv-wa-notice strong{font-size:13px}.kv-wa-form .kv-wa-notice p{font-size:12px;color:#245b42;line-height:2;margin:8px 0}.kv-wa-notice b{font-size:12px;word-break:break-word}
+.kv-wa-form .kv-wa-disclaimer{display:block;border-top:1px solid #e4e8e9;padding-top:16px;color:#667a85;font-size:11px;line-height:2.1;font-weight:400}
+.kv-wa-explainer{padding:28px 4px;color:#123247}.kv-wa-explainer h2{font-size:clamp(28px,3vw,43px);margin-bottom:28px;line-height:1.55;color:#123247}
+.kv-wa-explainer ol{padding:0;margin:0;display:grid;list-style:none}.kv-wa-explainer li{display:flex;gap:17px;padding:18px 0;border-bottom:1px solid #dfe5e8}.kv-wa-explainer li>span{font-size:25px;font-weight:900;line-height:1.2;color:#bc8949}
+.kv-wa-explainer li strong{font-size:16px}.kv-wa-explainer li p{font-size:13px;color:#5e7380;line-height:2.3;margin:6px 0 0}
+.kv-wa-explainer-alert{background:#f8f0e5;border-radius:10px;padding:17px 19px;font-size:12px;line-height:2.3;margin-top:30px;color:#5d5147}.kv-wa-explainer-alert a{font-weight:800;color:#a27334;text-decoration:underline}
+.kv-wa-privacy-page .prose h2{margin-top:27px}.kv-wa-privacy-page .prose p{line-height:2.3}
+@media(max-width:880px){.kv-wa-layout{grid-template-columns:1fr;gap:10px;padding-block:38px!important}.kv-wa-form{max-width:100%}.kv-wa-explainer{padding:20px 5px}}
+@media(max-width:540px){.kv-wa-layout{padding-block:20px!important}.kv-wa-form{padding:21px 16px;border-radius:13px}.kv-wa-form h2{font-size:27px}.kv-wa-privacy{padding:12px}.kv-wa-explainer li p{font-size:12px}.kv-wa-explainer h2{font-size:29px}}
+@media(prefers-reduced-motion:reduce){.kv-wa-form .kv-wa-submit{transition:none}.kv-wa-form .kv-wa-submit:hover{transform:none}}
