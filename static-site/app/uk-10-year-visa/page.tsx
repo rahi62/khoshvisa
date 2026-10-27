@@ -40,13 +40,13 @@ export default function UkTenYearDoctorsPage() {
           </div>
           <aside className={styles.offer} aria-label="شرایط عودت وجه">
             <span className={styles.offerIcon} aria-hidden="true">✓</span>
-            <h2>با تضمین عودت وجه*</h2>
+            <h2>با تضمین عودت وجه</h2>
             <p>جزئیات شرایط اختصاصی خدمات و ضمانت بازگشت وجه را پیش از ثبت درخواست، تلفنی دریافت کنید.</p>
             <div className={styles.rule} />
             <strong>چطور شامل این طرح می‌شوید؟</strong>
             <p>برای اطلاع از شرایط و جزئیات قرارداد با خوش‌ویزا تماس بگیرید.</p>
             <a href={`tel:${phoneMobile}`} className={styles.primary}>استعلام تلفنی شرایط</a>
-            <p className={styles.micro}>*تضمین عودت وجه، مشروط به مفاد قرارداد خدمات و دامنه تعهدات ارائه‌دهنده است؛ صدور ویزا تضمین نمی‌شود.</p>
+            <p className={styles.micro}>جزئیات و شرایط تضمین عودت وجه هنگام تماس توضیح داده می‌شود.</p>
           </aside>
         </div>
       </section>
