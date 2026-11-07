@@ -142,7 +142,7 @@ deploy/install-cms-admin.sh
 
 ## Optional WordPress REST API integration
 
-The frontend includes an isolated, server-side WordPress REST API client at `frontend/lib/wordpress.ts`. It is configured through `WORDPRESS_API_URL`, which must point to the REST API root (for example, `https://cms.example.com/wp-json/wp/v2`). Keep this variable server-only; do not expose it through a `NEXT_PUBLIC_` variable.
+The frontend includes an isolated, server-side WordPress REST API client at `frontend/lib/wordpress.ts`. Configure it with `WORDPRESS_BASE_URL` (the WordPress origin, for example `https://cms.example.com`) and `WORDPRESS_REST_API_PATH` (defaults to `/wp-json/wp/v2`). Both variables are server-only; do not expose them through `NEXT_PUBLIC_` variables.
 
 Available helpers include published post/page lookups by slug, paginated post/page lists, and category listing. When `WORDPRESS_API_URL` is unset, the client returns empty results or `null` without breaking the existing application.
 
