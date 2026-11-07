@@ -1,4 +1,7 @@
-const WORDPRESS_API_URL = process.env.WORDPRESS_API_URL?.replace(/\/+$/, "");
+const WORDPRESS_BASE_URL = process.env.WORDPRESS_BASE_URL?.replace(/\/+$/, "");
+const WORDPRESS_REST_API_PATH = (process.env.WORDPRESS_REST_API_PATH ?? "/wp-json/wp/v2")
+  .replace(/^\/+/, "")
+  .replace(/\/+$/, "");
 const FETCH_TIMEOUT_MS = 5_000;
 
 export type WordPressRendered = { rendered: string };
@@ -56,7 +59,7 @@ async function wordpressRequest<T>(path: string, revalidate = 300): Promise<T | 
 }
 
 export function isWordPressConfigured() {
-  return Boolean(WORDPRESS_API_URL);
+  return Boolean(WORDPRESS_BASE_URL);
 }
 
 export async function getWordPressPosts(params: {
