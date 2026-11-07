@@ -139,3 +139,11 @@ deploy/install-cms-admin.sh
 ```
 
 یک‌بار روی سرور setup انجام می‌شود. پس از آن GitHub Actions در هر deploy نسخه pin‌شده `@digitalafarin/cms-admin@0.4.0` را در staging scaffold و build می‌کند و فقط بعد از build، restart و health-check موفق، نسخه فعال را جایگزین نهایی می‌کند. اگر activation یا proxy health-check fail شود، نسخه قبلی Admin برگردانده می‌شود.
+
+## Optional WordPress REST API integration
+
+The frontend includes an isolated, server-side WordPress REST API client at `frontend/lib/wordpress.ts`. It is configured through `WORDPRESS_API_URL`, which must point to the REST API root (for example, `https://cms.example.com/wp-json/wp/v2`). Keep this variable server-only; do not expose it through a `NEXT_PUBLIC_` variable.
+
+Available helpers include published post/page lookups by slug, paginated post/page lists, and category listing. When `WORDPRESS_API_URL` is unset, the client returns empty results or `null` without breaking the existing application.
+
+**Migration safety:** the current DigitalAfarin CMS and existing frontend routes remain the active content source. The WordPress client is not wired into public routes yet. Before switching any route to WordPress, audit the live URL inventory and map each legacy path to its WordPress content record. Preserve existing slugs and canonical URLs; use explicit 301 redirects only when a path genuinely must change. Do not change the sitemap or indexing behavior as part of enabling the API client.
