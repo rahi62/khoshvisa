@@ -37,8 +37,8 @@ export type WordPressCategory = {
 };
 
 function apiUrl(path: string) {
-  if (!WORDPRESS_API_URL) return null;
-  return `${WORDPRESS_API_URL}/${path.replace(/^\/+/, "")}`;
+  if (!WORDPRESS_BASE_URL) return null;
+  return `${WORDPRESS_BASE_URL}/${WORDPRESS_REST_API_PATH}/${path.replace(/^\/+/, "")}`;
 }
 
 async function wordpressRequest<T>(path: string, revalidate = 300): Promise<T | null> {
