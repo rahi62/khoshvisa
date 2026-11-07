@@ -6,6 +6,11 @@ const FETCH_TIMEOUT_MS = 5_000;
 
 export type WordPressRendered = { rendered: string };
 
+type WordPressEmbedded = {
+  "wp:featuredmedia"?: Array<{ source_url?: string; alt_text?: string; media_details?: { sizes?: Record<string, { source_url?: string }> } }>;
+  author?: Array<{ name?: string }>;
+};
+
 export type WordPressPost = {
   id: number;
   date: string;
@@ -19,6 +24,8 @@ export type WordPressPost = {
   featured_media: number;
   categories: number[];
   tags: number[];
+  _embedded?: WordPressEmbedded;
+  yoast_head_json?: { title?: string; description?: string; canonical?: string };
 };
 
 export type WordPressPage = Omit<WordPressPost, "categories" | "tags"> & {
@@ -68,7 +75,12 @@ export async function getWordPressPosts(params: {
   perPage?: number;
   category?: number;
 } = {}): Promise<WordPressPost[]> {
-  const query = new URLSearchParams({ _embed: "1", per_page: String(params.perPage ?? 10), page: String(params.page ?? 1) });
+  const query = new URLSearchParams({
+    _embed: "1",
+    status: "publish",
+    per_page: String(Math.min(Math.max(params.perPage ?? 10, 1), 100)),
+    page: String(Math.max(params.page ?? 1, 1)),
+  });
   if (params.slug) query.set("slug", params.slug);
   if (params.category) query.set("categories", String(params.category));
   return (await wordpressRequest<WordPressPost[]>(`posts?${query.toString()}`)) ?? [];
@@ -84,7 +96,12 @@ export async function getWordPressPages(params: {
   page?: number;
   perPage?: number;
 } = {}): Promise<WordPressPage[]> {
-  const query = new URLSearchParams({ _embed: "1", per_page: String(params.perPage ?? 100), page: String(params.page ?? 1) });
+  const query = new URLSearchParams({
+    _embed: "1",
+    status: "publish",
+    per_page: String(Math.min(Math.max(params.perPage ?? 100, 1), 100)),
+    page: String(Math.max(params.page ?? 1, 1)),
+  });
   if (params.slug) query.set("slug", params.slug);
   return (await wordpressRequest<WordPressPage[]>(`pages?${query.toString()}`)) ?? [];
 }
@@ -94,6 +111,48 @@ export async function getWordPressPageBySlug(slug: string): Promise<WordPressPag
   return pages.find((page) => page.status === "publish") ?? null;
 }
 
+function normalizePath(path: string) {
+  let decoded = path;
+  try {
+    decoded = decodeURIComponent(path);
+  } catch {
+    // Keep the original path if it contains malformed percent-encoding.
+  }
+  const normalized = `/${decoded.split("/").filter(Boolean).join("/")}`;
+  return normalized === "/" ? "/" : `${normalized}/`;
+}
+
+/** Resolve a WordPress page only when its permalink path exactly matches the requested frontend path. */
+export async function getWordPressPageByPath(path: string): Promise<WordPressPage | null> {
+  const slug = path.split("/").filter(Boolean).at(-1);
+  if (!slug) return null;
+  const pages = await getWordPressPages({ slug, perPage: 100 });
+  const requestedPath = normalizePath(path);
+  return pages.find((page) => {
+    try {
+      return normalizePath(new URL(page.link).pathname) === requestedPath;
+    } catch {
+      return false;
+    }
+  }) ?? null;
+}
+
 export async function getWordPressCategories(): Promise<WordPressCategory[]> {
   return (await wordpressRequest<WordPressCategory[]>("categories?per_page=100&hide_empty=true")) ?? [];
+}
+
+export function getWordPressFeaturedImage(item: WordPressPost | WordPressPage) {
+  const media = item._embedded?.["wp:featuredmedia"]?.[0];
+  return media?.media_details?.sizes?.medium_large?.source_url
+    ?? media?.media_details?.sizes?.large?.source_url
+    ?? media?.source_url
+    ?? null;
+}
+
+export function getWordPressFeaturedImageAlt(item: WordPressPost | WordPressPage) {
+  return item._embedded?.["wp:featuredmedia"]?.[0]?.alt_text ?? item.title.rendered;
+}
+
+export function getWordPressAuthor(item: WordPressPost | WordPressPage) {
+  return item._embedded?.author?.[0]?.name ?? "";
 }
