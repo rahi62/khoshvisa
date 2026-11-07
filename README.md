@@ -15,7 +15,7 @@ Django Admin همچنان برای امور فنی و نگهداری در دست
 ```bash
 cd backend
 python -m venv .venv
-# Windows: .venv\Scripts\activate
+# Windows: .venv\\Scripts\\activate
 # Linux/macOS: source .venv/bin/activate
 pip install -r requirements.txt
 python manage.py migrate
@@ -138,12 +138,34 @@ deploy/nginx.cms.conf
 deploy/install-cms-admin.sh
 ```
 
-یک‌بار روی سرور setup انجام می‌شود. پس از آن GitHub Actions در هر deploy نسخه pin‌شده `@digitalafarin/cms-admin@0.4.0` را در staging scaffold و build می‌کند و فقط بعد از build، restart و health-check موفق، نسخه فعال را جایگزین نهایی می‌کند. اگر activation یا proxy health-check fail شود، نسخه قبلی Admin برگردانده می‌شود.
+یک‌بار روی سرور setup انجام می‌شود. پس از آن GitHub Actions در هر deploy نسخه pin‌شده `@digitalafarin/cms-admin@0.4.0` را در staging scaffold و build می‌کند و فقط بعد از build، restart و health-check موفق، نسخه فعال را جایگزین نهایی می‌کند. اگر activation یا proxy health-check fail شود، نسخه قبلی Admin برمی‌گردد.
 
-## Optional WordPress REST API integration
+## WordPress headless integration
 
-The frontend includes an isolated, server-side WordPress REST API client at `frontend/lib/wordpress.ts`. Configure it with `WORDPRESS_BASE_URL` (the WordPress origin, for example `https://cms.example.com`) and `WORDPRESS_REST_API_PATH` (defaults to `/wp-json/wp/v2`). Both variables are server-only; do not expose them through `NEXT_PUBLIC_` variables.
+فرانت‌اند یک REST client مستقل و server-side در `frontend/lib/wordpress.ts` دارد. برای اتصال محلی، این مقادیر را در `frontend/.env.local` قرار بده:
 
-Available helpers include published post/page lookups by slug, paginated post/page lists, and category listing. When `WORDPRESS_API_URL` is unset, the client returns empty results or `null` without breaking the existing application.
+```env
+WORDPRESS_BASE_URL=https://cms.khoshvisa.ir
+WORDPRESS_REST_API_PATH=/wp-json/wp/v2
+```
 
-**Migration safety:** the current DigitalAfarin CMS and existing frontend routes remain the active content source. The WordPress client is not wired into public routes yet. Before switching any route to WordPress, audit the live URL inventory and map each legacy path to its WordPress content record. Preserve existing slugs and canonical URLs; use explicit 301 redirects only when a path genuinely must change. Do not change the sitemap or indexing behavior as part of enabling the API client.
+اگر WordPress در مسیر دیگری نصب شده، مقدار base URL باید همان مسیر نصب را هم داشته باشد؛ مثلاً `https://example.com/cms`. مسیر REST API قابل تنظیم است و در صورت حذف، به `/wp-json/wp/v2` برمی‌گردد. این متغیرها server-only هستند و نباید `NEXT_PUBLIC_` داشته باشند.
+
+### مسیرهای متصل
+
+- `/blog`: فهرست نوشته‌های منتشرشده، ۱۲ نوشته در هر صفحه
+- `/blog/{slug}`: صفحه مقاله، تصویر شاخص، تاریخ، نویسنده و SEO metadata
+- برگه‌های WordPress: در مسیر permalink خودشان، پس از بررسی عدم وجود محتوای هم‌مسیر در DigitalAfarin CMS
+- Sitemap: نوشته‌ها و برگه‌های منتشرشده WordPress به sitemap فعلی افزوده می‌شوند
+
+محتوای DigitalAfarin CMS برای مسیرهای موجود اولویت دارد. صفحات اختصاصی `/visa/{slug}` و `/tours/{slug}` و canonical فعلی آن‌ها تغییر نمی‌کنند. اگر WordPress پاسخ ندهد یا متغیرهای اتصال تنظیم نشده باشند، مسیرهای فعلی سایت بدون وابستگی به WordPress کار می‌کنند.
+
+### تست محلی
+
+1. مقادیر بالا را در `frontend/.env.local` قرار بده.
+2. مطمئن شو REST API روی `https://cms.khoshvisa.ir/wp-json/wp/v2` در دسترس است.
+3. حداقل یک نوشته با وضعیت Published در WordPress داشته باش.
+4. فرانت‌اند را با `npm run dev` اجرا کن و مسیرهای `/blog` و `/blog/{slug}` را بررسی کن.
+5. یک برگه منتشرشده را با permalink خودش باز کن؛ اگر همان مسیر در DigitalAfarin CMS وجود داشته باشد، محتوای CMS نمایش داده می‌شود.
+
+**ملاحظات مهاجرت و سئو:** این اتصال هیچ نوشته‌ای را خودکار منتقل یا منتشر نمی‌کند و هیچ slug یا canonical موجودی را تغییر نمی‌دهد. قبل از انتقال صفحات خدمات ویزا یا تور به WordPress، باید URL inventory و نگاشت slugها به‌صورت جداگانه بررسی شود. محتوای HTML خروجی WordPress به‌عنوان محتوای قابل اعتماد همان سایت رندر می‌شود؛ دسترسی و نقش کاربرانی که در WordPress محتوا منتشر می‌کنند باید کنترل شود.
