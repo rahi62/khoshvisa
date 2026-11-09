@@ -5,7 +5,7 @@
 .kv-wa-form h2{font-size:clamp(25px,2.6vw,37px);line-height:1.5;margin:8px 0 15px;color:#112e42;font-weight:900}
 .kv-wa-form>p{font-size:13px;color:#5b7687;line-height:2.2;margin:0 0 23px}
 .kv-wa-form form{display:grid;gap:14px}.kv-wa-form form>label{display:flex;flex-direction:column;gap:7px;margin:0;font-size:13px;font-weight:700;color:#2f4b5e}
-.kv-wa-form input[type=text],.kv-wa-form select{width:100%;min-height:49px;border-radius:9px;border:1px solid #d6e0e6;color:#17394b;background:#fff;padding:11px 14px;font:inherit;font-size:13px;box-sizing:border-box}
+.kv-wa-form input[type=text],.kv-wa-form input[type=tel],.kv-wa-form select{width:100%;min-height:49px;border-radius:9px;border:1px solid #d6e0e6;color:#17394b;background:#fff;padding:11px 14px;font:inherit;font-size:13px;box-sizing:border-box}
 .kv-wa-form input:focus-visible,.kv-wa-form select:focus-visible{outline:2px solid #c99747;outline-offset:2px;border-color:#ba894a}
 .kv-wa-privacy{background:#faf7f0;border:1px solid #ebdec8;padding:16px;border-radius:12px;margin-top:6px;display:grid;gap:11px}
 .kv-wa-form .kv-wa-privacy label.kv-wa-consent{display:flex;flex-direction:row;align-items:flex-start;gap:11px;margin:0;color:#475d67;font-size:12px;font-weight:500;line-height:2.1;cursor:pointer}
@@ -17,6 +17,7 @@
 .kv-wa-form .kv-wa-submit:focus-visible{outline:3px solid #c99747;outline-offset:3px}
 .kv-wa-form .kv-wa-submit>span{font-size:20px}
 .kv-wa-form .kv-wa-hint,.kv-wa-form .kv-wa-warning{font-size:12px;line-height:2;margin:0;color:#6f7874}
+.kv-wa-form input[type=tel]{text-align:right;letter-spacing:.5px}.kv-wa-form input[aria-invalid=true]{border-color:#c98a3c}.kv-wa-form #kv-wa-phone-hint{margin-top:-8px}
 .kv-wa-form .kv-wa-warning{color:#875021;background:#fff7e9;padding:10px 13px;border:1px solid #e8ca9a;border-radius:8px}
 .kv-wa-form .kv-wa-notice{background:#eaf7f0;border-right:4px solid #268457;color:#184935;padding:13px;border-radius:9px}
 .kv-wa-form .kv-wa-notice strong{font-size:13px}.kv-wa-form .kv-wa-notice p{font-size:12px;color:#245b42;line-height:2;margin:8px 0}.kv-wa-notice b{font-size:12px;word-break:break-word}

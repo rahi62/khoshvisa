@@ -9,12 +9,32 @@ export type WhatsAppDraft={
   destination:string;
   purpose:string;
   timing:string;
+  phone:string;
   sourcePath:string;
 };
 // Public response number provided by the site operator (09351300502). The Vercel variable may override it.
 export const DEFAULT_WA_NUMBER="989351300502";
 export const WA_NUMBER=(process.env.NEXT_PUBLIC_KHOSHVISA_WHATSAPP_NUMBER?.trim()||DEFAULT_WA_NUMBER).replace(/\D/g,"");
 export const WA_NUMBER_READY=/^[1-9][0-9]{7,14}$/.test(WA_NUMBER);
+
+const FA_DIGITS="۰۱۲۳۴۵۶۷۸۹",AR_DIGITS="٠١٢٣٤٥٦٧٨٩";
+/**
+ * Normalizes a visitor-entered contact number. Accepts Persian/Arabic digits and common separators.
+ * Iranian mobiles become 09XXXXXXXXX; other numbers must carry an international prefix and become 00<country><number>
+ * ("00" instead of "+" keeps the digits in order inside right-to-left WhatsApp text). Returns null when invalid.
+ */
+export function normalizePhone(input:string):string|null{
+  const ascii=input.normalize("NFC").replace(/[۰-۹٠-٩]/g,d=>String(FA_DIGITS.includes(d)?FA_DIGITS.indexOf(d):AR_DIGITS.indexOf(d)));
+  const cleaned=ascii.replace(/[\s\-().\u200c\u200e\u200f]/g,"");
+  if(!/^\+?[0-9]{8,17}$/.test(cleaned))return null;
+  let digits=cleaned.startsWith("+")?"00"+cleaned.slice(1):cleaned;
+  if(digits.startsWith("0098"))digits="0"+digits.slice(4);
+  else if(/^989[0-9]{9}$/.test(digits))digits="0"+digits.slice(2);
+  else if(/^9[0-9]{9}$/.test(digits))digits="0"+digits;
+  if(/^09[0-9]{9}$/.test(digits))return digits;
+  if(/^00[1-9][0-9]{7,14}$/.test(digits))return digits;
+  return null;
+}
 
 const compact=(s:string,max:number)=>s.normalize("NFC").replace(/[\r\n\t]+/g," ").replace(/\s+/g," ").trim().slice(0,max);
 
@@ -34,7 +54,10 @@ export function buildWhatsAppMessage(draft:WhatsAppDraft,ref:string,visas:Visa[]
     "هدف سفر: "+compact(draft.purpose,60),
     "زمان تقریبی سفر: "+compact(draft.timing,60),
   ];
+  const phone=normalizePhone(draft.phone);
+  if(!phone)throw new Error("invalid_phone");
   if(compact(draft.name,80))parts.push("نام: "+compact(draft.name,80));
+  parts.push("شماره تماس: "+phone);
   const clean=compact(draft.sourcePath,160);
   if(/^\/[a-z0-9/-]*\/?$/.test(clean))parts.push("صفحه ورود: "+clean);
   parts.push("کد پیگیری: "+ref);

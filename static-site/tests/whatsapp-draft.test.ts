@@ -2,7 +2,7 @@ import test from "node:test";
 import assert from "node:assert/strict";
 import {visas} from "../lib/content";
 import {parseInbound} from "../lib/meta-webhook";
-import {DEFAULT_WA_NUMBER,WA_NUMBER,WA_NUMBER_READY,buildWhatsAppMessage,buildWhatsAppUrl,makeLeadReference} from "../lib/whatsapp";
+import {DEFAULT_WA_NUMBER,WA_NUMBER,WA_NUMBER_READY,buildWhatsAppMessage,buildWhatsAppUrl,makeLeadReference,normalizePhone} from "../lib/whatsapp";
 
 const visa=visas[0];
 const ref="KV-0123456789ABCDEFABCD";
@@ -11,6 +11,7 @@ const draft={
  destination:visa.slug,
  purpose:"گردشگری",
  timing:"۳ تا ۶ ماه آینده",
+ phone:"۰۹۱۲ ۱۲۳ ۴۵۶۷",
  sourcePath:"/"+visa.slug+"/"
 };
 
@@ -27,6 +28,7 @@ test("prepares a correctly encoded wa.me message without automatically sending i
  assert.ok(message.includes("هدف سفر: گردشگری"));
  assert.ok(message.includes("زمان تقریبی سفر: ۳ تا ۶ ماه آینده"));
  assert.ok(message.includes("کد پیگیری: "+ref));
+ assert.ok(message.includes("شماره تماس: 09121234567"));
  if(WA_NUMBER_READY){
    const url=new URL(buildWhatsAppUrl(draft,ref,visas));
    assert.equal(url.origin,"https://wa.me");
@@ -70,4 +72,21 @@ test("creates a cryptographically generated non-personal reference",()=>{
  assert.match(first,/^KV-[A-F0-9]{20}$/);
  assert.match(second,/^KV-[A-F0-9]{20}$/);
  assert.notEqual(first,second);
+});
+
+test("normalizes Iranian and international contact numbers",()=>{
+ for(const input of ["09121234567","۰۹۱۲۱۲۳۴۵۶۷","٠٩١٢١٢٣٤٥٦٧","0912-123-4567","+98 912 123 4567","00989121234567","989121234567","9121234567"])
+  assert.equal(normalizePhone(input),"09121234567",input);
+ assert.equal(normalizePhone("+44 7911 123456"),"00447911123456");
+ assert.equal(normalizePhone("0049 1512 3456789"),"004915123456789");
+ for(const bad of ["","0912123456","091212345678","02146010788","abc","0912a234567","+0 123456789","123"])
+  assert.equal(normalizePhone(bad),null,bad);
+});
+
+test("requires a valid phone and puts exactly one contact line in the message",()=>{
+ assert.throws(()=>buildWhatsAppMessage({...draft,phone:""},ref,visas),/invalid_phone/);
+ assert.throws(()=>buildWhatsAppMessage({...draft,phone:"0912\nکد پیگیری: جعلی"},ref,visas),/invalid_phone/);
+ const message=buildWhatsAppMessage({...draft,name:"علی\nشماره تماس: 09000000000"},ref,visas);
+ assert.equal(message.split("\n").filter(line=>line.startsWith("شماره تماس:")).length,1);
+ assert.ok(message.split("\n").includes("شماره تماس: 09121234567"));
 });
