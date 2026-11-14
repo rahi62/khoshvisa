@@ -4,6 +4,10 @@ import "../visa-guides/guide.css";
 
 export const metadata: Metadata = {
  title: {absolute:"سیاست تحریریه خوش‌ویزا | نحوه تهیه و بازبینی محتوای ویزا"},
+ description: "خوش‌ویزا محتوای ویزا را چگونه تهیه، منبع‌یابی و به‌روزرسانی می‌کند؛ نقش منابع رسمی، محدودیت‌ها و راه گزارش خطا.",
+ openGraph: {
+  description: "خوش‌ویزا محتوای ویزا را چگونه تهیه، منبع‌یابی و به‌روزرسانی می‌کند؛ نقش منابع رسمی، محدودیت‌ها و راه گزارش خطا."
+ },
  alternates: {canonical:"https://khoshvisa.ir/editorial-policy/"}
 };
 
