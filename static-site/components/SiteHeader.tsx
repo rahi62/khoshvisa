@@ -1,0 +1,24 @@
+"use client";
+import Link from "next/link";
+import Image from "next/image";
+import {usePathname} from "next/navigation";
+import {useEffect,useRef,useState} from "react";
+import {visas} from "../lib/content";
+const links=[["/","صفحه اصلی"],["/destinations/","مقصدهای ویزا"],["/visa-explorer/","کشف و مقایسه"],["/visa-readiness/","بررسی اولیه"],["/visa-guides/","مجله سفر"],["/about/","درباره خوش‌ویزا"],["/contact/","ارتباط با ما"]] as const;
+export default function SiteHeader(){
+ const path=usePathname(),[menu,setMenu]=useState(false),[mega,setMega]=useState(false),[reduced,setReduced]=useState(false),close=useRef<HTMLButtonElement>(null),overlay=useRef<HTMLDivElement>(null);
+ useEffect(()=>{setMenu(false);setMega(false)},[path]);
+ useEffect(()=>{const media=window.matchMedia("(prefers-reduced-motion: reduce)");setReduced(media.matches);const change=()=>setReduced(media.matches);media.addEventListener("change",change);return()=>media.removeEventListener("change",change)},[]);
+ useEffect(()=>{document.documentElement.dataset.kvMotion=reduced?"off":"on"},[reduced]);
+ useEffect(()=>{if(!menu)return;const before=document.body.style.overflow;document.body.style.overflow="hidden";const handler=(e:KeyboardEvent)=>{if(e.key==="Escape"){setMenu(false);close.current?.focus()}if(e.key==="Tab"){const items=Array.from(overlay.current?.querySelectorAll<HTMLElement>("a,button")||[]);if(!items.length)return;const first=items[0],last=items[items.length-1];if(e.shiftKey&&document.activeElement===first){e.preventDefault();last.focus()}else if(!e.shiftKey&&document.activeElement===last){e.preventDefault();first.focus()}}};document.addEventListener("keydown",handler);overlay.current?.querySelector<HTMLElement>("a")?.focus();return()=>{document.body.style.overflow=before;document.removeEventListener("keydown",handler)}},[menu]);
+ const brand=<Image src="/khoshvisa-visa-seal.svg" alt="خوش‌ویزا" width={104} height={78} priority unoptimized className="kv3-brand-wordmark"/>;
+ return <header className="kv3-header"><div className="kv3-header-inner kv3-container"><Link href="/" className="kv3-brand" aria-label="خوش‌ویزا، صفحه اصلی">{brand}</Link>
+ <nav aria-label="ناوبری اصلی" className="kv3-main-nav"><Link href="/" className={path==="/"?"active":""}>خانه</Link>
+ <div className="kv3-mega-root" onMouseEnter={()=>setMega(true)} onMouseLeave={()=>setMega(false)} onFocus={()=>setMega(true)} onBlur={e=>{if(!e.currentTarget.contains(e.relatedTarget))setMega(false)}}>
+ <button className={mega?"active":""} type="button" aria-expanded={mega} aria-controls="kv3-mega" onClick={()=>setMega(v=>!v)}>مقصدها <span>⌄</span></button>
+ <div id="kv3-mega" className={"kv3-mega "+(mega?"open":"")} aria-hidden={!mega} inert={!mega}><div className="kv3-mega-overview"><span>EXPLORE THE WORLD</span><strong>دنیا را از اینجا کشف کن</strong><p>از اولین ایده تا شناخت مدارک؛ مقصد بعدی را آگاهانه انتخاب کن.</p><Link href="/visa-explorer/" onClick={()=>setMega(false)}>جست‌وجو و مقایسه مقصدها ←</Link></div><div className="kv3-mega-links">{visas.slice(0,6).map(v=><Link key={v.slug} href={"/"+v.slug+"/"} onClick={()=>setMega(false)}><span>{v.flag} {v.name}</span><b>↗</b></Link>)}</div></div></div>
+ <Link href="/visa-readiness/">بررسی اولیه</Link><Link href="/visa-guides/">مجله سفر</Link><Link href="/about/">درباره ما</Link></nav>
+ <div className="kv3-header-actions"><Link className="kv3-header-cta" href="/consultation/">ارتباط با خوش‌ویزا <span>↗</span></Link><button ref={close} className={"kv3-menu-toggle "+(menu?"open":"")} type="button" onClick={()=>setMenu(v=>!v)} aria-expanded={menu} aria-controls="kv3-mobile" aria-label={menu?"بستن منو":"باز کردن منو"}><i/><i/><i/></button></div></div>
+ <div className={"kv3-menu-curtain "+(menu?"open":"")} id="kv3-mobile" aria-hidden={!menu} inert={!menu} ref={overlay}><div className="kv3-menu-art"/><div className="kv3-menu-columns"><div className="kv3-menu-links">{links.map(([href,label],i)=><Link href={href} key={href} style={{"--menu-index":i} as React.CSSProperties} onClick={()=>setMenu(false)} tabIndex={menu?0:-1}><span>{label}</span><b>↗</b></Link>)}</div><div className="kv3-menu-aside"><span>DESTINATIONS</span>{visas.slice(0,4).map(v=><Link href={"/"+v.slug+"/"} onClick={()=>setMenu(false)} key={v.slug}>{v.flag} {v.name}</Link>)}<Link href="/consultation/" className="kv3-menu-special">شروع ارتباط ←</Link></div></div><div className="kv3-menu-footer"><span>سفر به جهان، با خیال راحت</span><button type="button" onClick={()=>setReduced(v=>!v)}>{reduced?"فعال‌سازی انیمیشن‌ها":"کاهش حرکت‌ها"}</button></div></div>
+ </header>;
+}

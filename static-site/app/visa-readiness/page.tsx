@@ -1,0 +1,3 @@
+import {VisaReadiness} from "../../components/VisaTools";import {visas} from "../../lib/content";
+export const metadata={alternates:{canonical:"/visa-readiness/"},title:"بررسی شرایط درخواست ویزای توریستی",description:"راهنمای مرحله‌ای و چک‌لیست مقدماتی سفر و ویزا بر اساس مقصد، هدف و زمان برنامه‌ریزی."};
+export default function Page(){return <main className="cin-tools-page"><section className="innerHero"><div className="shell"><span className="overline">VISA READINESS</span><h1>برای سفرت <em>آماده‌ای؟</em></h1><p>مقصد و شرایط سفرت را در چند گام بررسی کن و برای شروع درخواست ویزا اقدام کن.</p></div></section><div className="shell sectionSpace"><VisaReadiness items={visas}/></div></main>}

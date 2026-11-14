@@ -1,0 +1,47 @@
+/* KhoshVisa visa-stamp identity; transparent badge, no white container. */
+.kv3-brand{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  flex:none;
+  padding:0;
+  background:transparent;
+  border-radius:0;
+  line-height:0;
+  overflow:visible;
+}
+.kv3-brand-wordmark{
+  display:block;
+  width:106px;
+  height:auto;
+  aspect-ratio:4/3;
+  object-fit:contain;
+  filter:drop-shadow(0 1px 2px rgba(0,0,0,.2));
+}
+.kv3-brand:hover .kv3-brand-wordmark{opacity:.94}
+.footerBrandLogo{
+  display:inline-flex;
+  width:max-content;
+  align-items:center;
+  justify-content:center;
+  padding:0;
+  background:transparent;
+  border-radius:0;
+  line-height:0;
+}
+.footerBrandLogo img{
+  display:block;
+  width:116px;
+  height:auto;
+  object-fit:contain;
+  aspect-ratio:4/3;
+}
+@media(max-width:930px){
+  .kv3-brand-wordmark{width:88px}
+  .footerBrandLogo img{width:105px}
+}
+@media(max-width:650px){
+  .kv3-brand-wordmark{width:86px}
+  .footerBrandLogo img{width:100px}
+}
+@media(prefers-reduced-motion:reduce){.kv3-brand-wordmark{transition:none}}

@@ -1,0 +1,59 @@
+/* Scoped styles for reference-style visa guides; preserve existing site's RTL layout. */
+.seo-guide .kv-guide-answer{background:#f7f3e9;border:1px solid #e4d8bd;border-radius:16px;padding:clamp(18px,3vw,28px)}
+.seo-guide .kv-guide-answer p{line-height:2.15}
+.seo-guide .kv-guide-hint{font-size:.93rem}
+.seo-guide .kv-guide-hint a,.seo-guide .kv-guide-inline-sources a,.seo-guide .seo-related a{text-decoration:underline;text-underline-offset:3px}
+.seo-guide .kv-guide-table-wrap{max-width:100%;overflow-x:auto;margin:20px 0 30px;border:1px solid #dae4ea;border-radius:14px;overscroll-behavior-x:contain}
+.seo-guide .kv-guide-table{width:100%;border-collapse:collapse;min-width:530px;font-size:.9rem;line-height:1.95;text-align:right}
+.seo-guide .kv-guide-table caption{caption-side:top;text-align:right;font-weight:700;padding:12px 16px;background:#f1f5f7;color:#36515f}
+.seo-guide .kv-guide-table th,.seo-guide .kv-guide-table td{border-top:1px solid #dfe6ea;padding:14px 16px;vertical-align:top;overflow-wrap:anywhere}
+.seo-guide .kv-guide-table thead th{background:#eff4f6;color:#244256;white-space:nowrap}
+.seo-guide .kv-guide-table tbody tr:nth-child(even){background:#fafcfd}
+.seo-guide .kv-guide-table tbody th{font-weight:750;white-space:nowrap}
+.seo-guide .kv-guide-table a{color:#0e536a;text-decoration:underline;text-underline-offset:3px}
+.seo-guide .kv-guide-inline-sources{border-right:3px solid #c5a26b;padding:10px 12px;margin:20px 0;background:#f6f8f9;font-size:.84rem;line-height:2;color:#475f6c}
+.seo-guide .kv-guide-inline-sources span{display:inline}
+.seo-guide .kv-guide-questions{display:grid;gap:13px}
+.seo-guide .kv-guide-questions>div{border:1px solid #e0e7eb;border-radius:14px;padding:18px 20px;background:#fff}
+.seo-guide .kv-guide-questions h3{font-size:1.05rem;margin:0 0 10px;line-height:1.9}
+.seo-guide .kv-guide-questions p{margin:0;line-height:2}
+.seo-guide :is(.kv-guide-answer,.seo-guide-section){scroll-margin-top:120px}
+@media(max-width:720px){
+ .seo-guide .kv-guide-table{font-size:.82rem}
+ .seo-guide .kv-guide-table th,.seo-guide .kv-guide-table td{padding:11px 12px}
+ .seo-guide .kv-guide-questions>div{padding:14px}
+}
+
+/* Contextual next step, no fabricated awards or success-rate callout. */
+.seo-guide .kv-guide-next-step{padding:clamp(18px,3vw,28px);background:#f5f8f8;border:1px solid #dce7e7;border-radius:16px}
+.seo-guide .kv-guide-next-step p{line-height:2.1}
+.seo-guide .kv-guide-next-step .seo-button{display:inline-flex;align-items:center;max-width:100%;white-space:normal;text-align:center}
+@media(max-width:640px){.seo-guide .kv-guide-next-step .seo-button{display:flex;justify-content:center;width:100%}}
+
+/* Cluster hub and structured editorial navigation */
+.kv-guide-hub-intro{max-width:800px;line-height:2;margin-bottom:40px}
+.kv-guide-hub-group{margin-block:32px 55px;scroll-margin-top:95px}
+.kv-guide-hub-group>h2{font-size:clamp(21px,3vw,31px);color:#17384a}
+.kv-guide-hub-group>p{margin-bottom:25px;color:#526d7c;line-height:1.9}
+.kv-guide-hub-group .guideCards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+.kv-guide-hub-group .guideCard{height:100%;min-width:0}
+.kv-guide-index-explain nav{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+.kv-guide-index-explain nav a{border:1px solid #dae4e7;border-radius:10px;padding:12px;color:#18445c;text-decoration:none}
+@media(max-width:900px){.kv-guide-hub-group .guideCards{grid-template-columns:repeat(2,minmax(0,1fr))}.kv-guide-index-explain nav{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:600px){.kv-guide-hub-group .guideCards{grid-template-columns:1fr}.kv-guide-index-explain nav{grid-template-columns:1fr}}
+
+/* Topic-specific explanatory visuals, server-rendered and accessible (no third-party image dependency). */
+.seo-guide .kv-article-human-lead{font-size:clamp(1rem,1.4vw,1.14rem);line-height:2.35;color:#204357;border-right:3px solid #b99260;padding:14px 22px;margin:8px 0 27px;background:#f8faf9;border-radius:0 12px 12px 0}
+.seo-guide .kv-editorial-path{margin:25px 0 40px;border:1px solid #cddfdf;border-radius:17px;padding:clamp(16px,3vw,31px);background:linear-gradient(130deg,#f7fbfa,#f2f7f7);direction:rtl}
+.seo-guide .kv-editorial-path figcaption{display:block}
+.seo-guide .kv-editorial-path figcaption h2{font-size:clamp(1.3rem,2vw,1.85rem);margin:9px 0 12px;line-height:1.5}
+.seo-guide .kv-editorial-path ol{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;list-style:none;counter-reset:none;padding:0;margin:20px 0}
+.seo-guide .kv-editorial-path li{display:flex;gap:13px;align-items:flex-start;min-width:0;border:1px solid #d9e5e4;border-radius:13px;padding:14px;background:white}
+.seo-guide .kv-editorial-path li>span{display:flex;align-items:center;justify-content:center;background:#164459;color:#fff;border-radius:50%;width:33px;height:33px;flex:none;font-variant-numeric:tabular-nums}
+.seo-guide .kv-editorial-path strong{font-weight:700;color:#173d50}
+.seo-guide .kv-editorial-path li p{font-size:.91rem;line-height:2;margin:5px 0 0}
+.seo-guide .kv-path-conclusion{font-weight:600;background:#e9f1ef;border-right:3px solid #9f8153;padding:12px 15px;border-radius:7px;line-height:2}
+.seo-guide .kv-editorial-path a,.seo-guide .kv-context-link a,.seo-guide .kv-editorial-byline a{color:#16546c;text-decoration:underline;text-underline-offset:4px}
+.seo-guide .kv-context-link{border-right:3px solid #d4b27f;padding:10px 16px;background:#faf8f1;line-height:2.1}
+.seo-guide .kv-editorial-byline{font-size:.91rem;color:#426475;background:#f4f8f9;padding:15px;line-height:2}
+@media(max-width:680px){.seo-guide .kv-editorial-path ol{grid-template-columns:1fr}.seo-guide .kv-article-human-lead{padding:12px 15px}.seo-guide .kv-editorial-path li{padding:12px}}
