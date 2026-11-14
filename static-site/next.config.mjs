@@ -9,6 +9,16 @@ export default {
  images: {unoptimized: true},
  reactStrictMode: true,
  poweredByHeader: false,
+ async redirects() {
+  const guideSlugs=[
+    "canada-ircc-portal-guide","canada-visitor-visa-documents","visa-proof-of-funds","visa-documents",
+    "visa-fees","schengen-travel-insurance","visa-document-translation","visa-appointment"
+  ];
+  return [
+    ...guideSlugs.map(s=>({source:"/"+s,destination:"/visa-guides/"+s+"/",permanent:true})),
+    {source:"/visa",destination:"/visa-guides/",permanent:true}
+  ];
+ },
  async headers() {
   return [
    {source:"/admin/:path*",headers:[

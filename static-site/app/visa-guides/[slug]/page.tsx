@@ -122,7 +122,7 @@ export default async function Page({params}:Props){
    </aside>
   </div>
   <section className="seo-container seo-related"><span className="seo-overline">صفحات مرتبط</span><h2>راهنمای ویزا برای مقصدهای مختلف</h2>
-   <div>{detail.related.map(r=><Link href={"/"+r.slug+"/"} key={r.slug}>{r.title} <span>←</span></Link>)}</div>
+   <div>{detail.related.map(r=><Link href={(guides.some(g=>g.slug===r.slug)?"/visa-guides/":"/")+r.slug+"/"} key={r.slug}>{r.title} <span>←</span></Link>)}</div>
    <p>راهنماهای تکمیلی: {guides.filter(item=>(articleGuideLinks[slug]||[]).includes(item.slug)).map((item,i)=><span key={item.slug}>{i>0&&" · "}<Link href={"/visa-guides/"+item.slug+"/"}>{item.title}</Link></span>)}</p>
   </section>
  </main>;
